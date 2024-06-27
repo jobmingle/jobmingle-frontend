@@ -1,3 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=Raleway:wght@600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 43 31 31;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+    --foundation-blue-darker: #ffffff;
+  }
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+
+  color: rgb(var(--foreground-rgb));
+  background: var(--foundation-blue-darker, #ffffff);
+  overflow-x: hidden;
+}
+/* In your CSS file (e.g., globals.css) */

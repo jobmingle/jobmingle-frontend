@@ -1,5 +1,10 @@
-import Image from 'next/image'
+import Image from "next/image";
+import Hero from "./component/ui/Hero";
 
 export default function Home() {
-    return <main>Jobmingle</main>
+  return (
+    <main>
+      <Hero />
+    </main>
+  );
 }
