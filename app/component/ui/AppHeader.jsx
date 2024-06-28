@@ -11,7 +11,7 @@ const AppHeader = () => {
   };
 
   return (
-    <nav className=" bg-[#000000] text-white flex justify-around  md:shrink-0  max-md:contents">
+    <nav className=" bg-[#000000]  text-white flex justify-around  md:shrink-0  max-md:contents">
       <div className="w-[100vw] h-20 border-b-[0.5px] border-b-[#9a8888] bg-[#000000] flex items-center justify-around">
         <div className="flex  items-center ">
           <img
@@ -22,27 +22,24 @@ const AppHeader = () => {
             height={50}
           />
           <div className="font-sans text-[1.625rem] ml-2 font-medium leading-[1.4375rem] hover:text-[#FFBE0B]">
-            <Link href="/"> Jobmingle </Link>
+            <Link href="#home"> Jobmingle </Link>
           </div>
         </div>
 
         <div className="inline-flex items-start gap-10  max-md:hidden">
           <div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
-            <Link href="/about">About us</Link>
+            <Link href="#about">About us</Link>
           </div>
           <div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
-            <Link href="/training">Training</Link>
+            <Link href="/Jobs">Jobs</Link>
           </div>
           <div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
-            <Link href="/blockchain">Blockchain</Link>
-          </div>
-          <div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
-            <Link href="/blog">Blog</Link>
+            <Link href="#footer">contact</Link>
           </div>
         </div>
         <div className="inline-flex items-start mr-6  max-md:hidden">
-          <Button className="w-[200px] border-white border-solid bg-[#f1eb15]">
-            Contact Us
+          <Button className="w-[200px] border-white border-solid bg-[#f5cb1a]">
+            signup
           </Button>
         </div>
         {/* Mobile Menu Toggle */}
@@ -89,20 +86,18 @@ const AppHeader = () => {
           }`}
         >
           <div className="text-lg font-medium leading-6 my-4">
-            <Link href="/about">About us</Link>
+            <Link href="/AboutUs">About us</Link>
           </div>
           <div className="text-lg font-medium leading-6 my-4">
-            <Link href="/training">Training</Link>
+            <Link href="/jobs">Jobs</Link>
           </div>
+
           <div className="text-lg font-medium leading-6 my-4">
-            <Link href="/blockchain">Blockchain</Link>
-          </div>
-          <div className="text-lg font-medium leading-6 my-4">
-            <Link href="/blog">Blog</Link>
+            <Link href="/footer">Contact Us</Link>
           </div>
           <div className="inline-flex items-start mr-6  ">
-            <Button className="w-[200px] bg-[#f1eb15]  text-black border-solid  border-10 border-white">
-              Contact Us
+            <Button className="w-[200px] bg-[#f5cb1a]  text-black border-solid  border-10 border-white">
+              Sign Up
             </Button>
           </div>
         </div>

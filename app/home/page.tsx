@@ -1,11 +1,10 @@
 "use client";
-import Button from "../Button";
 import Image from "next/image";
 import image from "@/public/woman-looking-through-magnifying-glass.jpg";
-
+import Button from "../component/Button";
 const Hero = () => {
   return (
-    <div className="relative h-screen">
+    <div  id='home' className="relative h-screen">
       <Image
         src={image}
         alt="Background"
@@ -18,11 +17,11 @@ const Hero = () => {
         <div
           className="flex w-full  items-center justify-center flex-col"
           data-aos="zoom-in"
-          style={{ fontFamily: "DM Sans" }}
+          style={{ fontFamily: "Poppins" }}
         >
           <div className="w-full  max-sm:text-[33px] text-center text-[3rem] font-bold font-sans max-md:text-[2rem] max-md:leading-normal text-white">
             Your
-            <span className="text-[#f1eb15] font-extrabold">
+            <span className="text-[#f5cb1a] font-extrabold">
               {" "}
               Dream Remote Job
             </span>{" "}
@@ -31,7 +30,7 @@ const Hero = () => {
           </div>
         </div>
         <div
-          className="font-sans w-[645px] font-revert text-white text-center mb-3 mt-5 text-lg font-medium max-md:w-[344px]"
+          className="font-sans w-[645px] font-revert text-white text-center mb-3 mt-5 text-lg font-medium max-md:w-[300px]"
           data-aos="zoom-in"
           data-aos-duration="1000"
           data-aos-delay="500"

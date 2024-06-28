@@ -34,3 +34,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- Task: Build landing page
+
+Notes: 
+1. Use the attached image as a template for the hero section.
+2. The navbar should remain the same.
+3. The navbar links should be about, contact, jobs, and the cta(signup). The logo should serve as the home link
+4. It should be a one page site. All the links should scroll to the required section on the page (except the job)
+5. You're expected to embed the about page into the homepage. (The point of being a one page site)
+6. Stick to the jobmingle brand colours and you can use high quality images of your choice that express the design properly (from unsplashed and co)
+7. Use your intuition to improve the designs but stick to the primary colours and the branding (i.e no illustrations) -->
