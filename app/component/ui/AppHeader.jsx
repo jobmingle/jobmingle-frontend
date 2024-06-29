@@ -11,8 +11,8 @@ const AppHeader = () => {
   };
 
   return (
-    <nav className=" bg-[#000000]  text-white flex justify-around  md:shrink-0  max-md:contents">
-      <div className="w-[100vw] h-20 border-b-[0.5px] border-b-[#9a8888] bg-[#000000] flex items-center justify-around">
+    <nav className="  bg-white text-black flex justify-around  md:shrink-0  max-md:contents">
+      <div className="w-[100vw] h-20 border-b-[0.5px] border-b-[#9a8888] bg-white flex items-center justify-around">
         <div className="flex  items-center ">
           <img
             src="https://www.jobmingle.co/_next/image?url=%2FVector.webp&w=256&q=75"

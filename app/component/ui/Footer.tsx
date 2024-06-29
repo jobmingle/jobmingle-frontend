@@ -1,126 +1,115 @@
+import Link from "next/link";
 import Image from "next/image";
-import FaceBook from "@/public/svg-icons/facebook.svg";
-import Instagram from "@/public/svg-icons/instagram.svg";
-import LinkedIn from "@/public/svg-icons/linkedin.svg";
-import Twitter from "@/public/svg-icons/twitter.svg";
-import Contact from "@/public/svg-icons/call-us.svg";
-import Location from "@/public/svg-icons/location.svg";
-import Mail from "@/public/svg-icons/email.svg";
-import Button from "../Button";
 
-const AppFooter = () => {
+export default function Footer() {
   return (
-    <footer id="footer" className=" z-20  max-md:flex-col px-12 py-5  bg-black   max-md:pl-[0px]   mt-9  text-[#d9d9e8] justify-center items-center  flex">
-      {/* Column 1 */}
-      <div className="w-full   flex items-start justify-start  flex-col sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-        <div className="flex items-center justify-center">
-          <div className="w-[45.41px] h-[23.49px] relative">
-            <img
-              src="https://www.jobmingle.co/_next/image?url=%2FVector.webp&w=256&q=75"
-              alt="JobMingle-Logo"
-              className="w-full h-full object-cover"
-            />
-          </div>{" "}
-          <div className="[#d9d9e8] text-[26.10px] font-medium font-['Raleway'] leading-normal">
-            JobMingle
+    <footer className="bg-white border-t-4 border-yellow-500 py-8">
+      <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-center">
+        {/* Social Media and Contact Info */}
+        <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0">
+          <div className="flex space-x-4 mb-4">
+            {/* Placeholder for social media icons */}
+            <Link
+              href="#"
+              className="w-8 h-8 flex justify-center items-center bg-gray-200 rounded-full"
+            >
+              <Image
+                src="/facebook-icon.png"
+                alt="Facebook"
+                width={16}
+                height={16}
+              />
+            </Link>
+            <Link
+              href="#"
+              className="w-8 h-8 flex justify-center items-center bg-gray-200 rounded-full"
+            >
+              <Image
+                src="/twitter-icon.png"
+                alt="Twitter"
+                width={16}
+                height={16}
+              />
+            </Link>
+            <Link
+              href="#"
+              className="w-8 h-8 flex justify-center items-center bg-gray-200 rounded-full"
+            >
+              <Image
+                src="/instagram-icon.png"
+                alt="Instagram"
+                width={16}
+                height={16}
+              />
+            </Link>
+            <Link
+              href="#"
+              className="w-8 h-8 flex justify-center items-center bg-gray-200 rounded-full"
+            >
+              <Image
+                src="/linkedin-icon.png"
+                alt="LinkedIn"
+                width={16}
+                height={16}
+              />
+            </Link>
+          </div>
+          <p className="text-gray-800">Call us at: 12345709876</p>
+          <p className="text-gray-800">
+            Email us at:{" "}
+            <Link href="mailto:hello@jobmingle.co" className="text-yellow-500">
+              hello@jobmingle.co
+            </Link>
+          </p>
+        </div>
+
+        {/* Links Section */}
+        <div className="flex justify-between w-full lg:w-auto">
+          <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0 mx-4">
+            <h3 className="font-bold mb-2">Links</h3>
+            <Link href="#" className="hover:underline">
+              Jobs
+            </Link>
+            <Link href="#" className="hover:underline">
+              Courses
+            </Link>
+            <Link href="#" className="hover:underline">
+              About Us
+            </Link>
+          </div>
+          <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0 mx-4">
+            <h3 className="font-bold mb-2">Links</h3>
+            <Link href="#" className="hover:underline">
+              Services
+            </Link>
+            <Link href="#" className="hover:underline">
+              Terms and Conditions
+            </Link>
+            <Link href="#" className="hover:underline">
+              Privacy Policy
+            </Link>
+          </div>
+          <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0 mx-4">
+            <h3 className="font-bold mb-2">Links</h3>
+            <Link href="#" className="hover:underline">
+              Products
+            </Link>
+            <Link href="#" className="hover:underline">
+              Support
+            </Link>
+            <Link href="#" className="hover:underline">
+              FAQ
+            </Link>
           </div>
         </div>
-        <ul>
-          <li>
-            <div className="[#d9d9e8]  mt-5 text-base font-medium font-['DM Sans'] leading-normal">
-              Follow us on
-            </div>
-          </li>
-          <li>
-            <div className=" flex gap-2 mt-5" id="social-icons">
-              <div className="w-6 h-6 relative">
-                <Image
-                  src={FaceBook}
-                  alt="facebook-logo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="w-6 h-6 relative">
-                <Image
-                  src={Instagram}
-                  alt="Instagram"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="w-6 h-6 relative">
-                <Image
-                  src={LinkedIn}
-                  alt="LinkedIn-Logo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="w-6 h-6 relative">
-                <Image
-                  src={Twitter}
-                  alt="twitter-logo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </li>
-          {/* Add more links as needed */}
-        </ul>
       </div>
 
-      {/* Column 2 */}
-      <div className="w-full  sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-        <div className="flex mt-5 ">
-          <div className="[#d9d9e8]   text-lg font-medium font-['DM Sans'] leading-normal">
-            Contact Us
-          </div>
-        </div>
-        <ul>
-          <li>
-            <div className="flex mt-3 ">
-              <div className="w-6 h-6 relative">
-                <Image
-                  src={Mail}
-                  alt="mail-com"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="[#d9d9e8] text-base ml-2  font-medium font-['DM Sans'] leading-normal">
-                Info@JobMingle.com
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="flex mt-3 ">
-              <div className="w-6 h-6 relative">
-                <Image
-                  src={Contact}
-                  alt="contact-mail"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="[#d9d9e8] text-base ml-2  font-medium font-['DM Sans'] leading-normal">
-                +2349048744395
-              </div>
-            </div>
-          </li>
-
-          {/* Add more links as needed */}
-        </ul>
-      </div>
-
-      {/* Column 3 */}
-      <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-        <div className="flex items-center justify-start">
-          <div className="text-2xl font-meduim  ">Get a course Today !</div>
-        </div>
-        <div className="w-[158px] h-12 justify-start items-start inline-flex mt-2">
-          <Button className="w-[200px] bg-[#f5cb1a]  text-black border-solid  border-10 border-white">
-            Courses
-          </Button>
-        </div>
+      {/* Copyright Section */}
+      <div className="text-center mt-8">
+        <p className="text-gray-600">
+          © Copyright 2023 Jobmingle. All rights reserved.
+        </p>
       </div>
     </footer>
   );
-};
-
-export default AppFooter;
+}
