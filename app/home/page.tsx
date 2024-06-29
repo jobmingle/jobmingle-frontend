@@ -7,10 +7,10 @@ const Hero = () => {
   return (
     <div
       id="home"
-      className="relative h-screen flex justify-center items-start p-10 md:items-center md-justify-center flex-col md:flex-row"
+      className="relative  flex justify-center items-start p-10 md:items-center  mt-10 md-justify-center flex-col md:flex-row"
     >
       {/* Left column */}
-      <div className="relative w-[800px]  flex items-start  md:justify-center justify-center flex-col h-full">
+      <div className="relative   flex items-start  md:justify-center justify-center flex-col h-full">
         <div
           className="flex w-full items-center md:justify-center  justify-start flex-col"
           data-aos="zoom-in"
@@ -27,7 +27,7 @@ const Hero = () => {
         </div>
 
         <div
-          className="font-sans w-[645px]  text-start  md:justify-center font-revert text-[#545454] mb-3 mt-5 text-lg font-medium max-md:w-[300px]"
+          className="  text-start  md:justify-center font-revert text-[#545454] mb-3 mt-5 text-lg font-medium max-md:w-[300px]"
           data-aos="zoom-in"
           data-aos-duration="1000"
           data-aos-delay="500"
@@ -59,7 +59,7 @@ const Hero = () => {
             src={image}
             alt="Background"
             className="rounded-lg shadow-lg"
-            style={{ objectFit: "cover", maxHeight: "80%", maxWidth: "80%" }}
+            style={{ objectFit: "cover", width: "75%" }}
           />
         </div>
       </div>
