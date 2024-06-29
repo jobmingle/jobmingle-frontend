@@ -16,7 +16,7 @@ const Hero = () => {
           data-aos="zoom-in"
           style={{ fontFamily: "Ubuntu" }}
         >
-          <div className="w-full text-[3rem] font-bold font-sans max-sm:text-[33px] max-md:text-[2rem] max-md:leading-normal text-black">
+          <div className="w-full text-[3rem] font-bold font-sans  max-md:text-[1.8rem] max-md:leading-normal text-black">
             Your
             <span className="text-[#f5cb1a] font-extrabold">
               {" "}
@@ -43,10 +43,10 @@ const Hero = () => {
           data-aos-delay="700"
           id="animationbutton"
         >
-          <Button className="w-[200px] max-sm:w-[150px] bg-black text-white rounded-[10px] mr-[30px] hover:text-black hover:bg-yellow-500">
+          <Button className="w-[200px] max-sm:w-[130px] bg-black text-white rounded-[10px] mr-[30px] hover:text-black hover:bg-yellow-500">
             SignUp
           </Button>
-          <Button className="w-[200px] max-sm:w-[150px] bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500">
+          <Button className="w-[200px] max-sm:w-[130px] bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500">
             Login
           </Button>
         </div>
@@ -58,8 +58,8 @@ const Hero = () => {
           <Image
             src={image}
             alt="Background"
-            className="rounded-lg shadow-lg"
-            style={{ objectFit: "cover", width: "75%" }}
+            className="rounded-lg shadow-lg w-[75%] max-md:w-full"
+            style={{ objectFit: "cover"}}
           />
         </div>
       </div>
