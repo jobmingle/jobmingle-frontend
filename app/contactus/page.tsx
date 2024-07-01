@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "../component/Button";
+import Button from "../component/atoms/Button";
 import Input from "../component/atoms/Input";
 import { useState } from "react";
 export default function Contact() {
@@ -47,7 +47,7 @@ export default function Contact() {
             placeholder="Name"
             value={FormData.Name}
             onchange={handleChange}
-            className="w-full text-[#A09999] max-md:h-[50px]  max-md:font-normal bg-[#D2CFCF] md:w-[500.2px] h-[78px] p-2 border rounded  border-opacity-0 mb-4    "
+            className=""
           />
           <label htmlFor="email"> Email</label>
           <Input
@@ -56,7 +56,7 @@ export default function Contact() {
             placeholder="Email"
             value={FormData.Email}
             onchange={handleChange}
-            className="w-full text-[#A09999]  max-md:h-[50px]  max-md:font-normal bg-[#D2CFCF] md:w-[500.2px] h-[78px] p-2 border rounded  border-opacity-0 mb-4    "
+            className=""
           />
           <label htmlFor="message">message</label>
           <Input
@@ -65,7 +65,7 @@ export default function Contact() {
             name="Message"
             value={FormData.Message}
             onchange={handleChange}
-            className="w-full text- #A09999] max-md:h-[50px]  max-md:font-normal bg-[#D2CFCF] md:w-[500.2px] h-[78px] p-2 border rounded  border-opacity-0 mb-4    "
+            className=""
           />
           <Button className="w-full bg-yellow-400 text-white py-2 rounded-[10px] hover:bg-yellow-500">
             Send Message Now

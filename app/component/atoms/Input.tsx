@@ -16,6 +16,11 @@ export default function Input({
   name,
   className,
 }: Props) {
+  const defaultClassName =
+    "w-full text-[#f8f9fa] font-light  bg-[#f4f4f5]  max-md:h-[50px]  max-md:font-normal bg-[#D2CFCF] md:w-[500.2px] h-[61px] p-2 border rounded-[5px]  border-opacity-0 mb-4 ";
+  const finalClassName = className
+    ? `${defaultClassName} ${className}`
+    : defaultClassName;
   return (
     <div>
       {" "}
@@ -25,7 +30,7 @@ export default function Input({
         name={name}
         placeholder={placeholder}
         onChange={onchange}
-        className={className}
+        className={finalClassName}
       />
     </div>
   );

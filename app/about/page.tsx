@@ -3,13 +3,13 @@ import LaptopPic from "@/public/jobSearch.jpg";
 import LaptopPicTwo from "@/public/woman-looking-through-magnifying-glass.jpg";
 import LaptopPicThree from "@/public/jobSearch.jpg";
 import LaptopPicFour from "@/public/woman-looking-through-magnifying-glass.jpg";
-import Button from "../component/Button";
+import Button from "../component/atoms/Button";
 const AboutSection = () => {
   return (
     //   id="about-us" // Add id here
     <section
       id="about"
-      className=" section mt-[2rem] max-md:mb-[80%] flex items-center justify-center flex-col"
+      className="bg-[#f8f9fa] section mt-[2rem] max-md:mb-[80%] flex items-center justify-center flex-col"
     >
       <div className="w-full  h-full flex   flex-row justify-around items-start mt-[100px] max-md:mt-[20px] p-[5rem]  max-md:p-[1rem]  max-md:flex-col max-md:justify-center max-md:items-center">
         <div
@@ -32,7 +32,7 @@ const AboutSection = () => {
             dolore sapiente delectus commodi iusto?
           </p>
           <div className="justify-start items-start inline-flex">
-            <Button className="mt-6 max-md:mt-[2] mb-5 border-white border-solid bg-[#f5cb1a]">
+            <Button className="mt-6 shadow-lg max-md:mt-[2] mb-5 border-white border-solid bg-[#f5cb1a]">
               Learn More
             </Button>
           </div>
@@ -42,30 +42,31 @@ const AboutSection = () => {
           <div className="flex flex-col gap-y-6">
             <Image
               src={LaptopPic}
-              data-aos="zoom-in"
+              data-aos="fade-down-right"
               alt="ImageOne"
-              className="h-[200px]  rounded-2xl object-cover img1"
+              className="h-[200px] shadow-lg rounded-2xl object-cover img1"
             />
 
             <Image
-              className="h-[200px]  rounded-2xl object-cover img2"
+              className="h-[200px] shadow-lg  rounded-2xl object-cover img2"
               src={LaptopPicTwo}
-              data-aos="zoom-in"
+              data-aos="fade-down-left"
               alt="imagetwo"
             />
           </div>
 
           <div className="flex flex-col gap-y-6 mt-[-10%]">
             <Image
-              className="h-[200px]  rounded-2xl object-cover img3"
+              className="h-[200px]  shadow-lg rounded-2xl object-cover img3"
               src={LaptopPicThree}
-              data-aos="zoom-in"
+              data-aos="fade-up-right"
               alt="imagethree"
             />
             <Image
-              className="h-[200px]  rounded-2xl object-cover img4"
+              className="h-[200px] shadow-lg  rounded-2xl object-cover img4"
               src={LaptopPicFour}
-              data-aos="zoom-in"
+              data-aos="fade-up-left"
+            
               alt="imagefour"
             />
           </div>

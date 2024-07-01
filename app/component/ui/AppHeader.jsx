@@ -2,7 +2,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import Button from "../Button";
+import Button from "../atoms/Button";
 const AppHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -41,8 +41,11 @@ const AppHeader = () => {
           </div>
         </div>
         <div className="inline-flex items-start mr-6  max-md:hidden">
-          <Button className="w-[200px] border-white border-solid bg-[#f5cb1a]">
-            signup
+          <Button className="w-[200px] max-sm:w-[130px] bg-black text-white rounded-[10px] mr-[30px] hover:text-black hover:bg-yellow-500">
+            SignUp
+          </Button>
+          <Button className="w-[200px] max-sm:w-[130px] bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500">
+            Login
           </Button>
         </div>
         {/* Mobile Menu Toggle */}

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AppFooter from "./component/ui/Footer";
-
+import MyApp from "@/app/_app";
 import favicon from "./favicon.ico";
 import AppHeader from "@/app/component/ui/AppHeader";
 
@@ -20,7 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ overflowX: "hidden" }}>
+      <MyApp />
       <link rel="icon" href="favico.ico" type="image/x-icon" />
 
       <body className={inter.className}>

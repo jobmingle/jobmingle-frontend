@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
 import image from "@/public/laptopman.png";
-import Button from "../component/Button";
+import Button from "../component/atoms/Button";
 
 const Hero = () => {
   return (
     <div
       id="home"
-      className=" ml-7 flex justify-center items-start p-10 max-md:p-4 md:items-center  mt-[-0.5rem] max-md:mt-4 md-justify-center flex-col md:flex-row"
+      className=" ml-5  max-md:ml-3 flex justify-center items-start p-10 max-md:p-3  md:items-center  mt-[2.5rem] max-md:mt-4 md-justify-center flex-col md:flex-row"
     >
       {/* Left column */}
       <div className="relative   flex items-start  md:justify-center justify-center flex-col h-full">
@@ -43,11 +43,8 @@ const Hero = () => {
           data-aos-delay="700"
           id="animationbutton"
         >
-          <Button className="w-[200px] max-sm:w-[130px] bg-black text-white rounded-[10px] mr-[30px] hover:text-black hover:bg-yellow-500">
-            SignUp
-          </Button>
-          <Button className="w-[200px] max-sm:w-[130px] bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500">
-            Login
+          <Button className="w-[300px] text-[16px] border-white border-solid bg-[#f5cb1a]">
+            Get Started
           </Button>
         </div>
       </div>
@@ -57,8 +54,9 @@ const Hero = () => {
         <img
           src="https://www.netcraft.com/wp-content/uploads/2023/04/home-hero-final-5.png"
           alt="Background"
+          data-aos="zoom-in"
           style={{ objectFit: "cover" }}
-          className=" max-md:w-full max-md:h-[300px]"
+          className=" max-md:w-[400px] max-md:h-[300px]"
         />
       </div>
     </div>
