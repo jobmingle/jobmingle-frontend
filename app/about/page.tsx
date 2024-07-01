@@ -13,16 +13,16 @@ const AboutSection = () => {
     >
       <div className="w-full  h-full flex   flex-row justify-around items-start mt-[100px] max-md:mt-[20px] p-[5rem]  max-md:p-[1rem]  max-md:flex-col max-md:justify-center max-md:items-center">
         <div
-          className=" w-[70%] max-md:w-full text-start flex justify-start flex-col mt-[5rem] max-md:ml-[20px] max-md:mt-[1rem]"
+          className=" w-[70%] max-md:w-full text-start  flex justify-start flex-col mt-[5rem] max-md:ml-[20px] max-md:mt-[1rem]"
           data-aos="zoom-in"
         >
           <div
-            className="text-[56.5px]  max-md:text-[30px] font-extrabold text-black  "
+            className="text-[56.5px]    max-md:text-[30px] font-extrabold text-black  "
             style={{ fontFamily: "Raleway" }}
           >
             Why Choose Us?
           </div>
-          <p className="w-[90%] text-[#4f4f53] font-[50px]  font-sans leading-normal  max-md:text-[15.5px]">
+          <p className="w-[90%] max-md:w-auto text-[#4f4f53] font-[50px]  font-sans leading-normal  max-md:text-[15.5px]">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, minus
             dicta quaerat reiciendis nisi totam neque ut. Corrupti quo, hic
             molestias vero ad maiores aliquam voluptatem culpa perferendis

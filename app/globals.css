@@ -23,3 +23,9 @@ body {
 /* your CSS file (e.g., globals.css) */
 
 /* generate parallax  */
+.check{
+  
+              background-image: url("../public/hello.png");
+              
+          
+}

@@ -1,61 +1,49 @@
 import Link from "next/link";
 import Image from "next/image";
-
+import Email from "@/public/svg-icons/email.svg";
+import Instagram from "@/public/svg-icons/instagram.svg";
+import Facebook from "@/public/svg-icons/facebook.svg";
+import contact from "@/public/svg-icons/call-us.svg";
+import Twitter from "@/public/svg-icons/twitter.svg";
+import LinkedIn from "@/public/svg-icons/linkedin.svg";
 export default function Footer() {
   return (
-    <footer className="bg-white border-t-4 border-yellow-500 py-8">
-      <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-center">
+    <footer
+      id="footer"
+      className=" border-t-4 bg-black text-white border-yellow-500 py-8"
+    >
+      <div className="container mx-auto  gpx-4 flex flex-col lg:flex-row justify-center gap-[20%] max-md:gap-[5%] max-md:block items-center">
         {/* Social Media and Contact Info */}
-        <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0">
+        <div className="flex flex-col  gap-[20%] max-md:gap-[2%] items-center lg:items-start mb-8 lg:mb-0">
           <div className="flex space-x-4 mb-4">
             {/* Placeholder for social media icons */}
             <Link
               href="#"
-              className="w-8 h-8 flex justify-center items-center bg-gray-200 rounded-full"
+              className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full"
             >
-              <Image
-                src="/facebook-icon.png"
-                alt="Facebook"
-                width={16}
-                height={16}
-              />
+              <Image src={Facebook} alt="Facebook" width={16} height={16} />
             </Link>
             <Link
               href="#"
-              className="w-8 h-8 flex justify-center items-center bg-gray-200 rounded-full"
+              className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full"
             >
-              <Image
-                src="/twitter-icon.png"
-                alt="Twitter"
-                width={16}
-                height={16}
-              />
+              <Image src={Twitter} alt="Twitter" width={16} height={16} />
             </Link>
             <Link
               href="#"
-              className="w-8 h-8 flex justify-center items-center bg-gray-200 rounded-full"
+              className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full"
             >
-              <Image
-                src="/instagram-icon.png"
-                alt="Instagram"
-                width={16}
-                height={16}
-              />
+              <Image src={Instagram} alt="Instagram" width={16} height={16} />
             </Link>
             <Link
               href="#"
-              className="w-8 h-8 flex justify-center items-center bg-gray-200 rounded-full"
+              className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full"
             >
-              <Image
-                src="/linkedin-icon.png"
-                alt="LinkedIn"
-                width={16}
-                height={16}
-              />
+              <Image src={LinkedIn} alt="LinkedIn" width={16} height={16} />
             </Link>
           </div>
-          <p className="text-gray-800">Call us at: 12345709876</p>
-          <p className="text-gray-800">
+          <p className="text-white">Call us at: 12345709876</p>
+          <p className="text-white">
             Email us at:{" "}
             <Link href="mailto:hello@jobmingle.co" className="text-yellow-500">
               hello@jobmingle.co
@@ -64,8 +52,8 @@ export default function Footer() {
         </div>
 
         {/* Links Section */}
-        <div className="flex justify-between w-full lg:w-auto">
-          <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0 mx-4">
+        <div className="justify-between w-full lg:w-auto  max-md:flex contents">
+          <div className="flex flex-col items-start justify-start lg:items-start mb-8 lg:mb-0 mr-5">
             <h3 className="font-bold mb-2">Links</h3>
             <Link href="#" className="hover:underline">
               Jobs
@@ -77,7 +65,7 @@ export default function Footer() {
               About Us
             </Link>
           </div>
-          <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0 mx-4">
+          <div className="flex flex-col items-start lg:items-start mb-8 lg:mb-0 mx-4">
             <h3 className="font-bold mb-2">Links</h3>
             <Link href="#" className="hover:underline">
               Services
@@ -89,7 +77,7 @@ export default function Footer() {
               Privacy Policy
             </Link>
           </div>
-          <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0 mx-4">
+          <div className="flex flex-col items-start lg:items-start mb-8 lg:mb-0 mx-4">
             <h3 className="font-bold mb-2">Links</h3>
             <Link href="#" className="hover:underline">
               Products
