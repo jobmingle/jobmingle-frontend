@@ -22,7 +22,8 @@ const Hero = () => {
               {" "}
               Dream Remote Job
             </span>{" "}
-            Awaits - Let Us Skill You Up and Guide You There{" "}
+            Awaits - Let Us Skill You Up and Guide You There
+            <p>The Journey To Your New Career Begins Now!</p>
           </div>
         </div>
 

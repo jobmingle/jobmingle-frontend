@@ -15,7 +15,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-
+  scroll-behavior: smooth;
   color: rgb(var(--foreground-rgb));
   background: var(--foundation-blue-darker, #ffffff);
   overflow-x: hidden;

@@ -4,20 +4,23 @@ import Image from "next/image";
 import AboutImage from "@/public/Pexels Photo by Christina Morillo.svg";
 import Head from "next/head";
 import "@/app/globals.css";
-import bg from "@/public/hello.png";
-
+import SlideImage from "@/public/Pexels Photo by Christina Morillo.svg";
+import Carousel from "../component/ui/Carousel";
 type Props = {
   title: String;
   description: string;
   aos: string;
   aostimer: string;
 };
+
+const slides = [SlideImage, SlideImage, SlideImage];
+
 function CoreValueCard({ title, description, aos, aostimer }: Props) {
   return (
     <div
       data-aos={aos}
       data-aos-duration={aostimer}
-      className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[330px] text-slate-400 h-[300px] hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:bg-[#f5cb1a] hover:shadow-lg max-md:w-[300px] max-md:h-[350px] max-md:hover:ml-[5px] max-md:p-[9px] group border-animate"
+      className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[330px] text-slate-400 h-[320px] hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:bg-[#f5cb1a] hover:shadow-lg max-md:w-[300px] max-md:h-[350px] max-md:hover:ml-[5px] max-md:p-[9px] group border-animate"
     >
       <div className=" relative z-20 flex-shrink-0 w-12 h-12 rounded-full bg-white/[.10] flex items-center justify-center my-5">
         <svg
@@ -42,14 +45,9 @@ function CoreValueCard({ title, description, aos, aostimer }: Props) {
 
 function AboutUs() {
   return (
-    <div
-      className="flex flex-col items-center mt-[72px] justify-center"
-      style={{
-        backgroundImage: `url(${bg})`,
-        backgroundSize: "cover",
-      }}
-    >
+    <div className="flex flex-col items-center mt-[72px] justify-center">
       <Head>
+        {/*  */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
@@ -70,15 +68,20 @@ function AboutUs() {
         >
           overview
         </span>
-        <Image
-          className="w-[1200px] shadow-lg ml-[5%] max-md:ml-[0%] h-auto mt-[20px] max-md:mr-[54px] max-md:h-[322px] max-md:w-[350px] max-md:mt-[21px] object-cover relative rounded-2xl"
-          data-aos="zoom-in "
-          data-aos-duration="300"
-          src={AboutImage}
-          alt="blog-page-image"
-          width={1000}
-          height={500}
-        />
+        <Carousel autoSlide={true}>
+          {[
+            ...slides.map((s) => (
+              <Image
+                src={s}
+                className="w-full shadow-lg  max-md:ml-[0%] h-auto mt-[20px] max-md:mr-[0] max-md:h-[322px] max-md:w-[350px] max-md:mt-[21px] object-cover relative rounded-2xl"
+                alt="blog-page-image"
+                width={1000}
+                height={500}
+              />
+            )),
+          ]}
+        </Carousel>
+
         <div className="z-10 w-96 h-96 opacity-80 bg-[#f5cb1a] rounded-full blur-[190px] absolute top-[150%] max-md:hidden" />
       </div>
 
@@ -87,24 +90,28 @@ function AboutUs() {
       </h3>
 
       <div className=" h-full my-[5%]  max-md:h-fit max-md:mt-[10px]">
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 mt-8 gap-8">
+        <div className="flex flex-wrap items-center justify-center mt-8 gap-8">
           <CoreValueCard
             title="MISSION"
             aos="zoom-in"
             aostimer="3000"
-            description="We believe that we can achieve more as a team than we ever could individually and are eager to give and receive constructive feedback in order to improve."
+            description="To Be The Most Preferred Edtech & Remote Jobs Company Where Employers Can Easily Find
+The Talent They Desire, And Jobseekers Can Effortlessly Find The Jobs They Need."
           />
           <CoreValueCard
             title="VISION"
             aos="zoom-in"
             aostimer="5000"
-            description="Embracing diverse ideas and beliefs without judgment, we foster an open environment where candor and respect guide our interactions."
+            description="To Empower Individuals And Jobseekers With The Tools They Need To Transition To New,
+High-income Careers Through Comprehensive Digital Skills Training And Strategic Connections
+To Remote Opportunities."
           />
           <CoreValueCard
             title="VALUES"
             aos="zoom-in"
             aostimer="6000"
-            description="We uphold our principles with integrity and transparency, ensuring that every action we take aligns with our ethical standards and commitments."
+            description="Being problem solvers is integral to our identity. Therefore, our core values are Teamwork,
+Innovation, Competency, and Community."
           />
         </div>
       </div>

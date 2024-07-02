@@ -13,17 +13,8 @@ const AppHeader = () => {
   return (
     <nav className="  bg-white text-black flex justify-around  md:shrink-0  max-md:contents">
       <div className="w-[100vw]  h-20 border-b-[0.5px] border-b-[#9a8888] bg-white  flex items-center justify-around">
-        <div className="flex  items-center ">
-          <img
-            src="https://www.jobmingle.co/_next/image?url=%2FVector.webp&w=256&q=75"
-            alt="jobmingle"
-            srcSet=""
-            width={50}
-            height={50}
-          />
-          <div className="font-sans text-[1.625rem] ml-2 font-medium leading-[1.4375rem] hover:text-[#FFBE0B]">
-            <Link href="#home"> Jobmingle </Link>
-          </div>
+        <div className="font-sans text-[1.625rem] ml-2 font-medium leading-[1.4375rem] hover:text-[#FFBE0B]">
+          <Link href="#home"> Jobmingle </Link>
         </div>
 
         <div className="inline-flex items-start gap-10  max-md:hidden">

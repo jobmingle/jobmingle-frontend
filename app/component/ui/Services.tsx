@@ -18,7 +18,7 @@ function ServiceCard({ title, description, aos, aostime }: Props) {
       <div
         data-aos={aos}
         data-aos-duration={aostime}
-        className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[350px] text-slate-400 h-[350px] hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500  hover:shadow-lg max-md:w-[300px] max-md:h-[350px] max-md:hover:ml-[5px] max-md:p-[9px] group border-animate"
+        className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[350px] text-slate-400 h-[400px] hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500  hover:shadow-lg max-md:w-[300px] max-md:h-[350px] max-md:hover:ml-[5px] max-md:p-[9px] group border-animate"
       >
         <div className=" relative z-20 flex-shrink-0 w-12 h-12 rounded-full bg-[#FFBE0B] flex items-center justify-center my-5">
           <p className="text-2xl font-bold  h-5 w-5 text-black">1</p>
@@ -60,24 +60,33 @@ function HowItWorks() {
       </h3>
 
       <div className=" h-full my-[1%]  max-md:h-fit max-md:mt-[10px]">
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 mt-8 gap-8">
+        <div className="flex flex-wrap justify-center items-center mt-8 gap-8">
           <ServiceCard
-            title="MISSION"
+            title="RE-SKILLING"
             aostime="3000"
             aos="fade-left"
-            description="We believe that we can achieve more as a team than we ever could individually and are eager to give and receive constructive feedback in order to improve."
+            description="Transitioning to a new career doesn't have to be difficult. All you need is the right kind of training
+to acquire the skills necessary for success, and that's precisely what JobMingle offers. We
+provide you with access to the right courses and experts that guide you from being a novice to a
+pro."
           />
           <ServiceCard
-            title="VISION"
+            title="UP-SKILLING"
             aostime="3000"
             aos="fade-up"
-            description="Embracing diverse ideas and beliefs without judgment, we foster an open environment where candor and respect guide our interactions."
+            description="To stand out in your niche, you must constantly seek ways to improve your existing skills. For
+example, as a Facebook ads expert, it also makes sense to have comprehensive knowledge of
+Google advertising. At JobMingle, we offer a wide variety of digital courses that provide you with
+opportunities to advance your career with ease."
           />
           <ServiceCard
-            title="VALUES"
+            title="REMOTE JOB LISTINGS"
             aostime="3000"
             aos="fade-right"
-            description="We uphold our principles with integrity and transparency, ensuring that every action we take aligns with our ethical standards and commitments."
+            description="In today's world, acquiring a digital skill is not enough; you must be ready to put it to work. One
+of the challenges faced by new freelancers today is the scarcity of remote job opportunities.
+That's why at JobMingle, we not only enhance your skills, but we also provide access to
+numerous remote job opportunities across the country."
           />
         </div>
       </div>

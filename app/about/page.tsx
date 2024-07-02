@@ -9,7 +9,7 @@ const AboutSection = () => {
     //   id="about-us" // Add id here
     <section
       id="about"
-      className="bg-[#f8f9fa] section mt-[2rem] max-md:mb-[80%] flex items-center justify-center flex-col"
+      className="bg-[#f8f9fa]  mt-[2rem]  flex items-center justify-center flex-col"
     >
       <div className="w-full  h-full flex   flex-row justify-around items-start mt-[100px] max-md:mt-[20px] p-[5rem]  max-md:p-[1rem]  max-md:flex-col max-md:justify-center max-md:items-center">
         <div
@@ -20,16 +20,21 @@ const AboutSection = () => {
             className="text-[56.5px]    max-md:text-[30px] font-extrabold text-black  "
             style={{ fontFamily: "Raleway" }}
           >
-            Why Choose Us?
+            ABOUT US
           </div>
           <p className="w-[90%] max-md:w-auto text-[#4f4f53] font-[50px]  font-sans leading-normal  max-md:text-[15.5px]">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, minus
-            dicta quaerat reiciendis nisi totam neque ut. Corrupti quo, hic
-            molestias vero ad maiores aliquam voluptatem culpa perferendis
-            eveniet nostrum. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Tenetur nulla, dolorum nostrum earum facere dolore praesentium
-            temporibus vero eligendi. Iste adipisci fugiat odio neque quia
-            dolore sapiente delectus commodi iusto?
+            JobMingle is an ed-tech and remote job recruitment website that
+            empowers individuals seeking to transition to a new career with
+            high-income skills and provides access to numerous remote job
+            opportunities across the country. Incorporated on July 25th, 2023,
+            and launched in March, 2024, JobMingle aims to assist those who are
+            tired of the traditional 9-5 jobs and are looking for ways to earn
+            money online, working from home doing the things they love. We are
+            committed to building the best ed-tech and remote job recruitment
+            company in Nigeria for job applicants, employers, and course
+            creators. JobMingle is leveraging technology to address the 'skills
+            acquisition gap' and meet human resources needs in the remote
+            industry in Nigeria. Join us as we turn this dream into a reality!
           </p>
           <div className="justify-start items-start inline-flex">
             <Button className="mt-6 shadow-lg max-md:mt-[2] mb-5 border-white border-solid bg-[#f5cb1a]">
@@ -66,7 +71,6 @@ const AboutSection = () => {
               className="h-[200px] shadow-lg  rounded-2xl object-cover img4"
               src={LaptopPicFour}
               data-aos="fade-up-left"
-            
               alt="imagefour"
             />
           </div>
