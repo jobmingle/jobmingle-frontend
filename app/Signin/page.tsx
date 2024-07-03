@@ -6,8 +6,14 @@ import Googleicon from "./Images/Googleicon.png";
 import arrowback from "./Images/arrowback.png";
 import "../globals.css";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 const page = () => {
+   const router = useRouter();
+   const handleSubmit = (e: any) => {
+      e.preventDefault();
+      router.push("/Signin/Verify");
+   };
    return (
       <main className="text-black min-h-[100vh] h-auto ">
          <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center">
@@ -55,11 +61,17 @@ const page = () => {
                         </Link>
                      </section>
 
-                     <button className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.5rem] pl-4 mt-[4.5rem] sm:mt-6 bg-[#F6CC16] text-center">
-                        Login
+                     <button
+                        onClick={handleSubmit}
+                        className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.5rem] pl-4 mt-[4.5rem] sm:mt-6 bg-[#F6CC16] text-center"
+                     >
+                        Create Your Account
                      </button>
                      <p className="text-sm montserrat  font-medium float-right mt-4 text-black-100/80">
-                        Don't have an Account? <span className="text-[#F6CC16]">Sign up now!</span>
+                        Don't have an Account?{" "}
+                        <Link href={"/Signup"} className="text-[#F6CC16]">
+                           Sign up now!
+                        </Link>
                      </p>
                   </form>
                </main>

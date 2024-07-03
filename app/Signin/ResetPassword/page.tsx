@@ -6,9 +6,9 @@ import Googleicon from "../Images/Googleicon.png";
 import arrowback from "../Images/arrowback.png";
 import "../../globals.css";
 import Link from "next/link";
-import Modal from "../../../Components/Modal";
+import SuccessModal from "../../../Components/SuccessModal";
 const page = () => {
-   const [ResetSuccessful, setResetSuccessful] = useState(true);
+   const [ResetSuccessful, setResetSuccessful] = useState(false);
 
    const handleUpdatePassword = (e: any) => {
       e.preventDefault();
@@ -19,7 +19,7 @@ const page = () => {
    useState;
    return (
       <main className="text-black min-h-[100vh] h-auto relative">
-         {ResetSuccessful ? <Modal /> : null}{" "}
+         {ResetSuccessful ? <SuccessModal whereto={" Click here to go back to login"} Act={"Your password has been changed successfully!"} linkto={"/Signin"} /> : null}{" "}
          <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center relative">
             <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
                <Image src={jobmingle} alt="logo" className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8" />
