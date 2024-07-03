@@ -11,10 +11,14 @@ import {useRouter} from "next/navigation";
 const page = () => {
    const [Code, setCode] = useState(["", "", "", ""]);
    const router = useRouter();
+   // onchange functionlities
    const handleChange = (e: any) => {
-      e.preventDefault();
       const value = e.target.value;
       console.log(value);
+   };
+   // onsubmitfunctionalities
+   const handleSubmit = (e: any) => {
+      e.preventDefault();
       router.push("/Signin/ResetPassword");
    };
    return (
@@ -56,7 +60,10 @@ const page = () => {
                            <button className="border-none text-sm sora tracking-wider sora font-semibold text-[#F6CC16]">click here to resend</button>
                         </div>
                      </div>
-                     <button className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.5rem] pl-4 mt-[2rem] sm:mt-6 bg-[#F6CC16] text-center">
+                     <button
+                        onClick={handleSubmit}
+                        className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.5rem] pl-4 mt-[2rem] sm:mt-6 bg-[#F6CC16] text-center"
+                     >
                         Submit pin
                      </button>
                      <Link href={"/Signin"} className="text-sm montserrat  font-medium float-right mt-4 text-black-100/80">
