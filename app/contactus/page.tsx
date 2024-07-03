@@ -23,23 +23,13 @@ export default function Contact() {
       style={{ fontFamily: "Poppins" }}
     >
       {/* Contact Info Section */}
-      <h1 className="text-4xl mb-8 max-md:text-center max-md:text-3xl text-yellow-400 max-md:font-semibold font-meduim">
+      <h1 className="text-4xl mb-8 max-md:text-center max-md:text-3xl text-yellow-400 max-md:font-bold font-bold">
         Contact Information
       </h1>
       <div className="w-full h-1 bg-[#eab308]"></div>
       <div className="flex flex-col lg:flex-row text-white w-full items-center justify-center gap-6 lg:gap-24 p-6">
         {/* Email and Phone */}
-        <div className="flex flex-col items-start justify-center  max-md:w-auto  h-[200px] w-[800px] lg:w-auto bg-white text-black p-10 rounded border-2 border-gray-400 shadow-lg">
-          <p className="flex items-center mb-4">
-            <span className="font-bold mr-2">Email:</span> Jobmingle@info.com
-          </p>
-          <p className="flex items-center">
-            <span className="font-bold mr-2">Phone:</span> 12345709876543
-          </p>
-        </div>
-
-        {/* Contact Form */}
-        <div className="flex  text-black  font-bold flex-col max-md:w-[300px] w-[760px] lg:w-auto bg-white p-6 rounded border-2 border-gray-400 shadow-lg">
+        <div className="flex  text-black  font-bold flex-col max-md:w-[300px] w-[800px] lg:w-auto bg-white p-6 rounded border-2 border-gray-400 shadow-lg">
           <label htmlFor="Name"> Name</label>
           <Input
             type="text"
@@ -71,6 +61,17 @@ export default function Contact() {
             Send Message Now
           </Button>
         </div>
+
+        <div className="flex flex-col items-start justify-center  max-md:w-auto  h-[200px] w-[800px] lg:w-auto bg-white text-black p-10 rounded border-2 border-gray-400 shadow-lg">
+          <p className="flex items-center mb-4">
+            <span className="font-bold mr-2">Email:</span> Jobmingle@info.com
+          </p>
+          <p className="flex items-center">
+            <span className="font-bold mr-2">Phone:</span> 12345709876543
+          </p>
+        </div>
+
+        {/* Contact Form */}
       </div>
 
       {/* Newsletter Section */}

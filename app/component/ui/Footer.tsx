@@ -42,11 +42,14 @@ export default function Footer() {
               <Image src={LinkedIn} alt="LinkedIn" width={16} height={16} />
             </Link>
           </div>
-          <p className="text-white">Call us at: 12345709876</p>
+          <p className="text-white">Call us at:09048744395</p>
           <p className="text-white">
-            Email us at:{" "}
-            <Link href="mailto:hello@jobmingle.co" className="text-yellow-500">
-              hello@jobmingle.co
+            Email us at:
+            <Link
+              href="mailto:contact@jobmingle.co"
+              className="text-yellow-500"
+            >
+              contact@jobmingle.co
             </Link>
           </p>
         </div>
