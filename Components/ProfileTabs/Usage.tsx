@@ -1,7 +1,30 @@
 import React from "react";
+import {usage} from "../Constants";
 
-const Usage = () => {
-   return <div>Usage</div>;
+const Interests: React.FC = ({}) => {
+   const handleSelected = (e: any): void => {
+      e.preventDefault();
+      console.log("hello");
+   };
+
+   return (
+      <div className=" w-full">
+         <p className="montserrat font-semibold text-sm my-4 sm:text-lg text-black-100 w-full text-center px-4">
+            which of these do you want <br /> to do on jobmingle
+         </p>
+         <div className="flex flex-col space-y-6 justify-center">
+            {usage.map(({id, title}) => (
+               <li
+                  className=" list-none py-3 cursor-pointer pl-2 border-black-100 border-solid border-[1px] sora rounded-[10px] capitalize "
+                  key={id}
+                  onClick={() => handleSelected}
+               >
+                  {title}
+               </li>
+            ))}
+         </div>
+      </div>
+   );
 };
 
-export default Usage;
+export default Interests;

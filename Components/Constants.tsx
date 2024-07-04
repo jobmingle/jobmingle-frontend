@@ -2,6 +2,10 @@ interface inter {
    id: number;
    title: string;
 }
+interface use {
+   id: number;
+   title: string;
+}
 
 export const UserInterest: inter[] = [
    {
@@ -35,5 +39,20 @@ export const UserInterest: inter[] = [
    {
       id: 8,
       title: "others",
+   },
+];
+
+export const usage: use[] = [
+   {
+      id: 1,
+      title: "apply for a job/ take a course",
+   },
+   {
+      id: 2,
+      title: "Post a job",
+   },
+   {
+      id: 3,
+      title: "List a course",
    },
 ];

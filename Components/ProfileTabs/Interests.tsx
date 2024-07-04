@@ -27,4 +27,3 @@ const Interests: React.FC = ({}) => {
 
 export default Interests;
 
-// declaring functions in typescript?
