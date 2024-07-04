@@ -1,8 +1,8 @@
 import Image from "next/image";
 import LaptopPic from "@/public/jobSearch.jpg";
-import LaptopPicTwo from "@/public/woman-looking-through-magnifying-glass.jpg";
-import LaptopPicThree from "@/public/jobSearch.jpg";
-import LaptopPicFour from "@/public/woman-looking-through-magnifying-glass.jpg";
+import LaptopPicTwo from "@/public/african-american-business-woman-holding-laptop-standing-by-window.png";
+import LaptopPicThree from "@/public/Pexels Photo by Christina Morillo.svg";
+import LaptopPicFour from "@/public/christina.png";
 import Button from "../component/atoms/Button";
 const AboutSection = () => {
   return (

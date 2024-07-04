@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
           <p className="text-white">Call us at:09048744395</p>
           <p className="text-white">
-            Email us at:
+            Email us @:
             <Link
               href="mailto:contact@jobmingle.co"
               className="text-yellow-500"
@@ -56,7 +56,7 @@ export default function Footer() {
 
         {/* Links Section */}
         <div className="justify-between w-full lg:w-auto  max-md:flex contents">
-          <div className="flex flex-col items-start justify-start lg:items-start mb-8 lg:mb-0 mr-5">
+          <div className="flex flex-col items-start max-md:ml-6 justify-start lg:items-start mb-8 lg:mb-0 mr-5">
             <h3 className="font-bold mb-2">Links</h3>
             <Link href="#" className="hover:underline">
               Jobs

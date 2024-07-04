@@ -28,6 +28,41 @@ body {
     transform: rotate(-360deg) scale(10);
   }
 }
+.custom-scrollbar {
+  overflow-x: auto;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #f5cb1a;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #e5bb0a;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px; /* Width of the vertical scrollbar */
+  height: 5px; /* Height of the horizontal scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: yellow; /* Color of the scrolling thumb */
+  border-radius: 10px; /* Roundness of the scrolling thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color of the scrollbar track */
+  border-radius: 10px; /* Roundness of the scrollbar track */
+}
 
 .animate-rotate {
   animation: rotate 10s linear infinite;

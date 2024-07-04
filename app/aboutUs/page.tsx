@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import AboutImage from "@/public/Pexels Photo by Christina Morillo.svg";
+import SlideImage1 from "@/public/scott-graham-OQMZwNd3ThU-unsplash.jpg";
+import SlideImage2 from "@/public/scott-graham-5fNmWej4tAA-unsplash.jpg";
 import Head from "next/head";
 import "@/app/globals.css";
-import SlideImage from "@/public/Pexels Photo by Christina Morillo.svg";
+import SlideImage3 from "@/public/Pexels Photo by Christina Morillo.svg";
 import Carousel from "../component/ui/Carousel";
 
 type Props = {
@@ -16,13 +17,16 @@ type Props = {
 
 const slides = [
   {
-    imagesone: SlideImage,
+    imagesone: SlideImage1,
     headerText: "The Journey To Your New Career Begins Now!",
   },
   {
-    imagesone: SlideImage,
-    headerText:
-      "Your Dream Remote Job Awaits- Let Us Skill You Up And Guide You There",
+    imagesone: SlideImage2,
+    headerText: "Your Dream Remote Job Awaits ",
+  },
+  {
+    imagesone: SlideImage3,
+    headerText: "Let Us Skill You Up And Guide You There ",
   },
 ];
 
@@ -33,7 +37,7 @@ function CoreValueCard({ title, description, aos, aostimer }: Props) {
       data-aos-duration={aostimer}
       className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[330px] text-slate-400 h-[320px] hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:bg-[#f5cb1a] hover:shadow-lg max-md:w-[300px] max-md:h-[350px] max-md:hover:ml-[5px] max-md:p-[9px] group border-animate"
     >
-      <div className=" relative z-20 flex-shrink-0 w-12 h-12 rounded-full bg-white/[.10] flex items-center justify-center my-5">
+      <div className="relative z-20 flex-shrink-0 w-12 h-12 rounded-full bg-white/[.10] flex items-center justify-center my-5">
         <svg
           width={20}
           height={32}
@@ -66,31 +70,28 @@ function AboutUs() {
       </Head>
 
       <div className="check relative z-20 w-full text-center max-md:w-[287px]">
-        <span
+       
+       <div>
+        </div> <h2
           data-aos="fade-left"
-          className="text-5xl max-md:text-1xl font-extrabold max-md:font-bold leading-[82px] max-md:leading-[24px] max-md:text-[29px]"
+          className="text-5xl  max-md:text-1xl font-extrabold max-md:font-bold leading-[82px] max-md:leading-[24px] max-md:text-[29px]"
         >
-          Jobmingle
-        </span>
-        <span
-          data-aos="fade-right"
-          className="text-yellow-400 ml-8 max-md:ml-1 text-5xl max-md:text-2xl font-extrabold leading-10 max-md:text-[32px]"
-        >
-          overview
-        </span>
+          Jobmingle <span className="text-yellow-400">overview</span>
+        </h2>
+
         <Carousel autoSlide={true}>
           {slides.map((s, index) => (
             <div key={index} className="relative w-full flex-shrink-0">
               <Image
                 src={s.imagesone}
-                className="w-full h-auto object-cover"
+                className="w-full h-[500px] object-cover"
                 alt={`Slide ${index}`}
                 width={1000}
                 height={500}
               />
               <div className="absolute inset-0 bg-black opacity-50"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <h2 className="text-white text-4xl font-bold">
+                <h2 className="text-white text-4xl font-bold max-md:text-[14px] max-md:font-semibold ">
                   {s.headerText}
                 </h2>
               </div>
@@ -104,7 +105,7 @@ function AboutUs() {
         Our Core Values
       </h3>
 
-      <div className=" h-full my-[5%]  max-md:h-fit max-md:mt-[10px]">
+      <div className="h-full my-[5%] max-md:h-fit max-md:mt-[10px]">
         <div className="flex flex-wrap items-center justify-center mt-8 gap-8">
           <CoreValueCard
             title="MISSION"
