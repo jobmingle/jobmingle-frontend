@@ -5,14 +5,13 @@ import HowItWorks from "./component/ui/Services";
 import AboutUs from "./aboutUs/page";
 import TeamSection from "./component/ui/TeamMember";
 import FAQSection from "./component/ui/FAQSection";
-
-
-
+import PartnersSponsors from "./component/ui/PartnersLogo";
 
 export default function Home() {
   return (
     <main>
       <Hero />
+      <PartnersSponsors />
       <HowItWorks />
       <AboutUs />
       <AboutSection />

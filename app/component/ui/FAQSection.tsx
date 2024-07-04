@@ -12,12 +12,19 @@ type Props = {
 const FAQSection = () => {
   return (
     <div className=" flex justify-around items-center max-w-screen-xl mt-20 mx-auto px-5 bg-white min-h-screen">
-      <Image
-        src={LaptopPic}
-        // data-aos="fade-down-right"
-        alt="ImageOne"
-        className="max-md:hidden   w-[500px] h-[500px] shadow rounded-2xl object-cover img1"
-      />
+      <div className="relative group">
+        <Image
+          src={LaptopPic}
+          // data-aos="fade-down-right"
+          alt="ImageOne"
+          className="max-md:hidden   w-[500px] h-[500px] shadow rounded-2xl object-cover img1"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
+          <p className="text-white text-center px-4 text-2xl">
+            Find the best remote jobs available on JobMingle
+          </p>
+        </div>
+      </div>
       <div className="w-full">
         <div className="flex flex-col items-center">
           <h2 className="font-bold text-5xl mt-5 tracking-tight">FAQ</h2>
@@ -79,7 +86,7 @@ const faqItems = [
   {
     question: "What is JobMingle?",
     answer:
-      "JobMingle is an innovative ed-tech platform and remote job recruitment website. We empower individuals seeking to transition to a new career by equipping them with the right skills and providing access to numerous remote job opportunities across the country. We assist employers in finding the remote talent they desire to grow their company and connect job seekers to the jobs they need to succeed"
+      "JobMingle is an innovative ed-tech platform and remote job recruitment website. We empower individuals seeking to transition to a new career by equipping them with the right skills and providing access to numerous remote job opportunities across the country. We assist employers in finding the remote talent they desire to grow their company and connect job seekers to the jobs they need to succeed",
   },
   {
     question: "Do I need a laptop before I can visit Jobmingle.co?",
@@ -106,7 +113,6 @@ const faqItems = [
     answer:
       "Yes, you can. To advertise your brand, please send an email to contact@jobmingle.co to learn more about our advertising rates.",
   },
- 
 ];
 
 export default FAQSection;

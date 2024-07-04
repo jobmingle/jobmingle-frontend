@@ -65,6 +65,10 @@ export default function Contact() {
 
         <div className="flex flex-col items-start justify-center  max-md:w-auto  h-[200px] w-[800px] lg:w-auto bg-white text-black p-10 rounded border-2 border-gray-400 shadow-lg">
           <p className="flex items-center mb-4">
+            <span className="font-bold mr-2">Location:</span> Ajah, Lagos,
+            Nigeria
+          </p>
+          <p className="flex items-center mb-4">
             <span className="font-bold mr-2">Email:</span> Jobmingle@info.com
           </p>
           <p className="flex items-center">
