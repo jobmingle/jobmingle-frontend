@@ -39,9 +39,7 @@ const AppHeader = () => {
           </div>
 
           <div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
-            <Link href="#contact" onClick={toggleMenu}>
-              contact
-            </Link>
+            <Link href="#contact">contact</Link>
           </div>
         </div>
         <div className="inline-flex items-start mr-6  max-md:hidden">
@@ -99,14 +97,20 @@ const AppHeader = () => {
           }`}
         >
           <div className="text-lg font-medium leading-6 my-4">
-            <Link href="#about">About us</Link>
+            <Link href="#about" onClick={toggleMenu}>
+              About us
+            </Link>
           </div>
           <div className="text-lg font-medium leading-6 my-4">
-            <Link href="/jobs">Jobs</Link>
+            <Link href="/jobs" onClick={toggleMenu}>
+              Jobs
+            </Link>
           </div>
 
           <div className="text-lg font-medium leading-6 my-4">
-            <Link href="#contact">Contact Us</Link>
+            <Link href="#contact" onClick={toggleMenu}>
+              Contact Us
+            </Link>
           </div>
           <div className="inline-flex items-start mr-6  ">
             <Button className="w-[200px] bg-[#f5cb1a]  text-black border-solid  border-10 border-white">
