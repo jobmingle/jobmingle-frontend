@@ -15,6 +15,7 @@ import ProfilePic from "@/Components/ProfileTabs/ProfilePic";
 const page = () => {
    const router = useRouter();
    const [ModalActive, setModalActive] = useState(false);
+   const [ModalActive2, setModalActive2] = useState(false);
    const [CurrentTab, setCurrentTab] = useState(0);
    const tabs = [<Interests />, <Usage />, <ProfilePic />];
 
@@ -22,9 +23,14 @@ const page = () => {
       setCurrentTab(CurrentTab + 1);
    };
 
+   const handlefinish = () => {
+      setModalActive2(true);
+   };
+
    return (
       <main className="text-black min-h-[100vh] h-auto overflow-x-hidden ">
          {ModalActive ? <SuccessModal Act={"Email Verified"} linkto={"/Signup/GeneratingProfile"} whereto={"Click Here To Continue The Sign Up Process"} /> : null}
+         {ModalActive2 ? <SuccessModal Act={"Account Created Successfully"} linkto={"/"} whereto={"Click Here To Continue"} /> : null}
          <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden">
             <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg2 ">
                <Image src={jobmingle} alt="logo" className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8" />
@@ -49,7 +55,7 @@ const page = () => {
                   ) : (
                      <button
                         type="submit"
-                        // onClick={handlenext}
+                        onClick={handlefinish}
                         className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.8rem] pl-4 mt-[2rem] bg-[#F6CC16] text-center"
                      >
                         Finish
