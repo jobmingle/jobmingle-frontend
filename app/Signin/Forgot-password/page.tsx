@@ -17,14 +17,14 @@ const page = () => {
       router.push("/Signin/Confirm-email");
    };
    return (
-      <main className="text-black min-h-[100vh] h-auto ">
-         <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center">
+      <main className="text-black min-h-[100vh] h-auto overflow-x-hidden ">
+         <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden">
             <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
                <Image src={jobmingle} alt="logo" className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8" />
             </div>
-            <div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE] sm:h-[100vh] flex sm:justify-center flex-col items-center ">
-               <div className="w-full flex pl-4 items-center py-4 flex-row">
-                  <Image src={arrowback} alt="arrowback" className="  sm:hidden" />
+            <div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE] sm:h-[100vh] relative flex sm:justify-center flex-col items-center ">
+               <div className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2 ">
+                  <Image src={arrowback} alt="arrowback" className="" />
                </div>
                <h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full px-4">Forgot Password</h2>
                <p className="montserrat font-semibold text-[75%] sm:text-sm text-black-100 w-full text-center px-4">

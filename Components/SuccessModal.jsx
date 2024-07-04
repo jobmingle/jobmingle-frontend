@@ -8,7 +8,7 @@ const Modal = ({Act, whereto, linkto}) => {
          <div className="bg-white max-w-[19rem] w-[19rem] h-[12rem] rounded-[4px] flex flex-col justify-center items-center space-y-2">
             <Image src={success} alt="successicon" className=" scale-50 " />
             <p className="text-xs text-center sora px-4"> {Act}</p>
-            <Link href={linkto} className="text-[#F6CC16] underline tracking-wide text-sm montserrat">
+            <Link href={linkto} className="text-[#F6CC16] underline tracking-wide text-sm text-center montserrat">
                {whereto}
             </Link>
          </div>

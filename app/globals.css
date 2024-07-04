@@ -12,6 +12,16 @@
    filter: brightness(40%);
  
 }
+.bg2 {
+   background-image: url("./Signup/images/signuupbanner.png");
+   background-repeat: no-repeat;
+   background-position: center;
+   object-fit:contain;
+   background-position: center;
+   background-size: cover;
+   filter: brightness(40%);
+ 
+}
 
 .montserrat {
    font-family: "Montserrat", sans-serif;

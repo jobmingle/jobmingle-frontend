@@ -18,9 +18,9 @@ const page = () => {
    };
    useState;
    return (
-      <main className="text-black min-h-[100vh] h-auto relative">
+      <main className="text-black min-h-[100vh] h-auto relative overflow-x-hidden">
          {ResetSuccessful ? <SuccessModal whereto={" Click here to go back to login"} Act={"Your password has been changed successfully!"} linkto={"/Signin"} /> : null}{" "}
-         <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center relative">
+         <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center relative overflow-x-hidden">
             <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
                <Image src={jobmingle} alt="logo" className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8" />
             </div>

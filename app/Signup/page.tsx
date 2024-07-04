@@ -1,22 +1,29 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import jobmingle from "../Signin/Images/jobmingle.png";
 import Googleicon from "../Signin/Images/Googleicon.png";
-import arrowback from "../Signin/Images/arrowback.png";
 import "../globals.css";
 import Link from "next/link";
+import {useRouter} from "next/navigation";
 
+//
 const page = () => {
+   const router = useRouter();
+
+   const handleSubmit = (e: any) => {
+      e.preventDefault();
+      // perform neccessary api requests
+      // redirect to verify
+      router.push("/Signup/Verify");
+   };
    return (
       <main className="text-black min-h-[100vh] h-auto ">
          <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center">
-            <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
+            <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg2 ">
                <Image src={jobmingle} alt="logo" className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8" />
             </div>
             <div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE] sm:h-[100vh] flex sm:justify-center flex-col items-center ">
-               <div className="w-full flex pl-4 items-center py-4 flex-row">
-                  <Image src={arrowback} alt="arrowback" className="  sm:hidden" />
-               </div>
                <h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full px-4">Welcome To Jobmingle</h2>
                <p className="montserrat font-semibold text-[75%] sm:text-sm text-black-100 w-full text-center px-4">please create an account to get on board</p>
                <main className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[70%] mt-7 sm:mt-2 p-2 pb-8 sm:pb-2 flex flex-col">
@@ -71,20 +78,21 @@ const page = () => {
                      <section className=" mt-1 flex flex-row justify-between">
                         <div className="flex flex-row gap-1">
                            <input type="checkbox" name="" id="" />
-                           <p className=" montserrat text-xs font-medium">Remember me</p>
+                           <p className=" montserrat text-xs font-medium">i have read and agreed to the terms and conditions of Jobmingle.</p>
                         </div>
-                        <Link href={"/Signin/Forgot-password"} className="text-xs text-[#F6CC16] montserrat font-medium">
-                           Forgot Password?
-                        </Link>
                      </section>
 
-                     <button className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.5rem] pl-4 mt-[4.5rem] sm:mt-6 bg-[#F6CC16] text-center">
-                        Login
+                     <button
+                        onClick={handleSubmit}
+                        type="submit"
+                        className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.5rem] pl-4 mt-[4.5rem] sm:mt-6 bg-[#F6CC16] text-center"
+                     >
+                        Create Your Account
                      </button>
                      <p className="text-sm montserrat  font-medium float-right mt-4 text-black-100/80">
                         Don't have an Account?{" "}
                         <Link href={"/Signin"} className="text-[#F6CC16]">
-                           Login now!
+                           Login
                         </Link>
                      </p>
                   </form>
