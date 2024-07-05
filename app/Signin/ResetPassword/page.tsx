@@ -37,7 +37,7 @@ const page = () => {
                         type="password"
                         name=""
                         id="newpass"
-                        className="focus:outline-none mb-5 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[2.5rem] pl-4"
+                        className="focus:outline-none mb-5 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[3rem] pl-4"
                         placeholder="New Password"
                      />
                      <p className="text-sm py-1 montserrat tracking-wider font-medium ">Confirm Password</p>
@@ -45,7 +45,7 @@ const page = () => {
                         type="password"
                         name=""
                         id="confirm new pass"
-                        className="focus:outline-none mb-2 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[2.5rem] pl-4"
+                        className="focus:outline-none mb-2 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[3rem] pl-4"
                         placeholder="Confirm Password"
                      />
 

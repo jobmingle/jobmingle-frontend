@@ -21,7 +21,7 @@ const page = () => {
                <h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full px-4">Welcome Back To Jobmingle</h2>
                <p className="montserrat font-semibold text-[75%] sm:text-sm text-black-100 w-full text-center px-4">please log in to your account to access feautures</p>
                <main className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[70%] mt-7 sm:mt-4 p-2 pb-8 flex flex-col">
-                  <button className="border-black-100 border-solid montserrat border-[1px] w-full h-[3rem] sm:h-[2.5rem] rounded-[10px] flex justify-center items-center gap-1 bg-transparent">
+                  <button className="border-black-100 border-solid montserrat border-[1px] w-full h-[3rem] sm:h-[3rem] rounded-[10px] flex justify-center items-center gap-1 bg-transparent">
                      <Image src={Googleicon} alt="google icon" className="w-4 h-4" />
                      <p className="text-xs font-bold">Login With Google</p>
                   </button>
@@ -34,7 +34,7 @@ const page = () => {
                         type="text"
                         name=""
                         id="email"
-                        className="focus:outline-none mb-5 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[2.5rem] pl-4"
+                        className="focus:outline-none mb-5 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[3rem] pl-4"
                         placeholder="Enter Your Email Here"
                      />
                      <p className="text-sm py-1 montserrat tracking-wider font-medium ">Password</p>
@@ -42,7 +42,7 @@ const page = () => {
                         type="password"
                         name=""
                         id="password"
-                        className="focus:outline-none mb-2 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[2.5rem] pl-4"
+                        className="focus:outline-none mb-2 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[3rem] pl-4"
                         placeholder="Your Password"
                      />
                      <section className=" mt-1 flex flex-row justify-between">
@@ -55,7 +55,7 @@ const page = () => {
                         </Link>
                      </section>
 
-                     <button className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.5rem] pl-4 mt-[4.5rem] sm:mt-6 bg-[#F6CC16] text-center">
+                     <button className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[3rem] pl-4 mt-[4.5rem] sm:mt-6 bg-[#F6CC16] text-center">
                         Login
                      </button>
                      <p className="text-sm montserrat  font-medium float-right mt-4 text-black-100/80">

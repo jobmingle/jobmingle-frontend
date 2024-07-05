@@ -38,14 +38,14 @@ const page = () => {
                         type="text"
                         name=""
                         id=""
-                        className="focus:outline-none mb-5 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[2.5rem] pl-4"
+                        className="focus:outline-none mb-5 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[3rem] pl-4"
                         placeholder="Enter Your Email Here"
                      />
 
                      <button
                         type="submit"
                         onClick={handleSubmit}
-                        className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.5rem] pl-4 mt-[2rem] sm:mt-6 bg-[#F6CC16] text-center"
+                        className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[3rem] pl-4 mt-[2rem] sm:mt-6 bg-[#F6CC16] text-center"
                      >
                         Reset Password
                      </button>

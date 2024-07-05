@@ -62,7 +62,7 @@ const page = () => {
                      </div>
                      <button
                         onClick={handleSubmit}
-                        className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.5rem] pl-4 mt-[2rem] sm:mt-6 bg-[#F6CC16] text-center"
+                        className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[3rem] pl-4 mt-[2rem] sm:mt-6 bg-[#F6CC16] text-center"
                      >
                         Submit pin
                      </button>
