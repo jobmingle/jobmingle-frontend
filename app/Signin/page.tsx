@@ -33,7 +33,7 @@ const page = () => {
                      <input
                         type="text"
                         name=""
-                        id=""
+                        id="email"
                         className="focus:outline-none mb-5 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[2.5rem] pl-4"
                         placeholder="Enter Your Email Here"
                      />
@@ -41,7 +41,7 @@ const page = () => {
                      <input
                         type="password"
                         name=""
-                        id=""
+                        id="password"
                         className="focus:outline-none mb-2 h-[3rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[2.5rem] pl-4"
                         placeholder="Your Password"
                      />

@@ -39,10 +39,18 @@ const page = () => {
                <div className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2 ">
                   <Image src={arrowback} alt="arrowback" className="" />
                </div>
-               <h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full px-4">Generating Profile</h2>
+               <div className=" w-full h-3 p-0 rounded-full max-w-[95%] sm:max-w-[70%] md:max-w-[90%] lg:max-w-[70%] flex justify-start items-center absolute top-10">
+                  <div
+                     className={`bg-[#F6CC16] ${CurrentTab === 0 ? "w-[33.3%]" : null} min-h-3 m-0 rounded-full  ${CurrentTab === 1 ? "w-[66.6%]" : null}  ${
+                        CurrentTab === 2 ? "w-[100%]" : null
+                     }`}
+                  ></div>
+               </div>
+
+               <h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-3 sm:mt-1 w-full px-4">Generating Profile</h2>
 
                {/*  */}
-               <main className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[70%] p-2 pb-8 sm:pb-2 flex flex-col justify-center items-center">
+               <main className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[70%] p-1 pb-8 sm:pb-2 flex flex-col justify-center items-center">
                   {tabs[CurrentTab]}
                   {CurrentTab < 2 ? (
                      <button
