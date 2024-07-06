@@ -18,25 +18,25 @@ export default function Footer() {
           <div className="flex space-x-4 mb-4">
             {/* Placeholder for social media icons */}
             <Link
-              href="#"
+              href="https://web.facebook.com/profile.php?id=61556529943063"
               className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full"
             >
               <Image src={Facebook} alt="Facebook" width={16} height={16} />
             </Link>
             <Link
-              href="#"
+              href="https://www.linkedin.com/company/jobmingle-nigeria/"
               className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full"
             >
-              <Image src={Twitter} alt="Twitter" width={16} height={16} />
+              <Image src={LinkedIn} alt="Twitter" width={16} height={16} />
             </Link>
             <Link
-              href="#"
+              href="https://www.instagram.com/jobminglengr?igsh=MTZiODRhdnhqeHJtYg=="
               className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full"
             >
               <Image src={Instagram} alt="Instagram" width={16} height={16} />
             </Link>
             <Link
-              href="#"
+              href="https://twitter.com/JobMingleNGR?t=Y9dBxLTQAtyrLzvvc1xfBA&s=09"
               className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full"
             >
               <Image src={LinkedIn} alt="LinkedIn" width={16} height={16} />

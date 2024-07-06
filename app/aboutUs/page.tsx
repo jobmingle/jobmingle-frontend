@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import SlideImage1 from "@/public/scott-graham-OQMZwNd3ThU-unsplash.jpg";
-import SlideImage2 from "@/public/scott-graham-5fNmWej4tAA-unsplash.jpg";
+
 import Head from "next/head";
 import "@/app/globals.css";
-import SlideImage3 from "@/public/Pexels Photo by Christina Morillo.svg";
+import { slides } from "@/lib/ImagesLink";
 import Carousel from "../component/ui/Carousel";
 
 type Props = {
@@ -14,21 +13,6 @@ type Props = {
   aos: string;
   aostimer: string;
 };
-
-const slides = [
-  {
-    imagesone: SlideImage1,
-    headerText: "The Journey To Your New Career Begins Now!",
-  },
-  {
-    imagesone: SlideImage2,
-    headerText: "Your Dream Remote Job Awaits ",
-  },
-  {
-    imagesone: SlideImage3,
-    headerText: "Let Us Skill You Up And Guide You There ",
-  },
-];
 
 function CoreValueCard({ title, description, aos, aostimer }: Props) {
   return (
@@ -70,15 +54,13 @@ function AboutUs() {
       </Head>
 
       <div className="check relative z-20 w-full text-center max-md:w-[287px]">
-       
-       <div>
-        </div> <h2
+        <div></div>{" "}
+        <h2
           data-aos="fade-left"
           className="text-5xl  max-md:text-1xl font-extrabold max-md:font-bold leading-[82px] max-md:leading-[24px] max-md:text-[29px]"
         >
           Jobmingle <span className="text-yellow-400">overview</span>
         </h2>
-
         <Carousel autoSlide={true}>
           {slides.map((s, index) => (
             <div key={index} className="relative w-full flex-shrink-0">

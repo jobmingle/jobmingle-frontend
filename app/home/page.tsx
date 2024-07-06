@@ -1,6 +1,5 @@
 "use client";
-import Image from "next/image";
-import image from "@/public/laptopman.png";
+
 import Button from "../component/atoms/Button";
 
 const Hero = () => {
@@ -21,9 +20,8 @@ const Hero = () => {
             <span className="text-[#f5cb1a] font-extrabold">
               {" "}
               Dream Remote Job
-            </span>{" "}
+            </span>
             Awaits - Let Us Skill You Up and Guide You There
-            <p>The Journey To Your New Career Begins Now!</p>
           </div>
         </div>
 
@@ -35,6 +33,8 @@ const Hero = () => {
         >
           Join the exclusive set of individuals who are now learning a
           high-income skill to make their dream remote job a reality
+          <br />
+          Join the JobMingle family today
         </div>
 
         <div

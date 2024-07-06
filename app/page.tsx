@@ -6,7 +6,7 @@ import AboutUs from "./aboutUs/page";
 import TeamSection from "./component/ui/TeamMember";
 import FAQSection from "./component/ui/FAQSection";
 import PartnersSponsors from "./component/ui/PartnersLogo";
-
+import TestimonialCard from "./component/ui/Testimonial";
 export default function Home() {
   return (
     <main>
@@ -17,6 +17,7 @@ export default function Home() {
       <AboutSection />
       <FAQSection />
       <TeamSection />
+      {/* <TestimonialCard /> */}
       <Contact />
     </main>
   );

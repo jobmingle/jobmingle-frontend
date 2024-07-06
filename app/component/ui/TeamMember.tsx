@@ -72,26 +72,6 @@ export default function TeamSection() {
                       <div className="text-gray-700 font-light mb-2">
                         {member.role}
                       </div>
-                      <div className="flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300">
-                        <a
-                          href="#"
-                          className="flex rounded-full hover:bg-indigo-50 h-10 w-10"
-                        >
-                          <i className="mdi mdi-linkedin text-indigo-500 mx-auto mt-2"></i>
-                        </a>
-                        <a
-                          href="#"
-                          className="flex rounded-full hover:bg-blue-50 h-10 w-10"
-                        >
-                          <i className="mdi mdi-twitter text-blue-300 mx-auto mt-2"></i>
-                        </a>
-                        <a
-                          href="#"
-                          className="flex rounded-full hover:bg-orange-50 h-10 w-10"
-                        >
-                          <i className="mdi mdi-instagram text-orange-400 mx-auto mt-2"></i>
-                        </a>
-                      </div>
                     </div>
                   </div>
                 </div>

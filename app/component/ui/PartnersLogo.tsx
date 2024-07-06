@@ -1,7 +1,7 @@
 import Image from "next/image";
 import GoogleLogo from "@/public/logo2.png";
 import BinanceLogo from "@/public/logo3.jpeg";
-import PlaceholderLogo from "@/public/logo4.png";
+import PlaceholderLogo from "@/public/LUSH.png";
 import PlaceholderLogos from "@/public/logo5.jpeg";
 
 const PartnersSponsors = () => {
@@ -13,36 +13,25 @@ const PartnersSponsors = () => {
         </h2>
         <div className="flex justify-around items-center">
           <div className="border p-2">
-            <Image src={GoogleLogo} alt="Google" width={100} height={100} />
+            <Image src={GoogleLogo} alt="Google" className="w-full h-full" />
           </div>
+
+          <div className="border p-2">
+            <Image src={BinanceLogo} alt="Binance" className="w-full h-full" />
+          </div>
+
           <div className="border p-2">
             <Image
               src={PlaceholderLogo}
               alt="Placeholder"
-              width={100}
-              height={100}
-            />
-          </div>
-          <div className="border p-2">
-            <Image src={BinanceLogo} alt="Binance" width={100} height={100} />
-          </div>
-          <div className="border p-2">
-            <Image src={GoogleLogo} alt="Google" width={100} height={100} />
-          </div>
-          <div className="border p-2">
-            <Image
-              src={PlaceholderLogo}
-              alt="Placeholder"
-              width={100}
-              height={100}
+              className="w-full h-full"
             />
           </div>
           <div className="border p-2">
             <Image
               src={PlaceholderLogos}
               alt="Binance"
-              width={100}
-              height={100}
+              className="w-full h-full"
             />
           </div>
         </div>
