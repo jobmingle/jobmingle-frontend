@@ -42,13 +42,13 @@ const page = () => {
                {/* <div className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2 " onClick={handleback}>
                   <Image src={arrowback} alt="arrowback" className="" />
                </div> */}
-               <div className=" w-full h-3 p-0 rounded-full max-w-[95%] sm:max-w-[70%] md:max-w-[90%] lg:max-w-[70%] flex justify-start items-center absolute top-4">
+               {/* <div className=" w-full h-3 p-0 rounded-full max-w-[95%] sm:max-w-[70%] md:max-w-[90%] lg:max-w-[70%] flex justify-start items-center absolute top-4">
                   <div
                      className={`bg-[#F6CC16] ${CurrentTab === 0 ? "w-[33.3%]" : null} min-h-3 m-0 rounded-full  ${CurrentTab === 1 ? "w-[66.6%]" : null}  ${
                         CurrentTab === 2 ? "w-[100%]" : null
                      }`}
                   ></div>
-               </div>
+               </div> */}
 
                <h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-3 sm:mt-1 w-full px-4">Generating Profile</h2>
 

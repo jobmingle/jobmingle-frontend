@@ -18,12 +18,12 @@ const page = () => {
       router.push("/Signup/Verify");
    };
    return (
-      <main className="text-black min-h-[100vh] h-auto ">
+      <main className="text-black min-h-[100vh] h-auto">
          <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center">
             <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg2 ">
                <Image src={jobmingle} alt="logo" className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8" />
             </div>
-            <div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE] sm:h-[100vh] flex sm:justify-center flex-col items-center ">
+            <div className=" w-full md:w-[50%] h-auto py-4 md:py-0 bg-[#FEFEFE] sm:h-[100vh] flex sm:justify-center flex-col items-center ">
                <h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full px-4">Welcome To Jobmingle</h2>
                <p className="montserrat font-semibold text-[75%] sm:text-sm text-black-100 w-full text-center px-4">please create an account to get on board</p>
                <main className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[70%] mt-7 sm:mt-2 p-2 pb-8 sm:pb-2 flex flex-col">
