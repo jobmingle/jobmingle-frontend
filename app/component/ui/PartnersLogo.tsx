@@ -3,6 +3,7 @@ import GoogleLogo from "@/public/logo2.png";
 import BinanceLogo from "@/public/logo3.jpeg";
 import PlaceholderLogo from "@/public/LUSH.png";
 import PlaceholderLogos from "@/public/logo5.jpeg";
+import Lush from "@/public/logo4.png";
 
 const PartnersSponsors = () => {
   return (
@@ -12,26 +13,29 @@ const PartnersSponsors = () => {
           Our Partners and Sponsors
         </h2>
         <div className="flex justify-around items-center">
-          <div className="border p-2">
-            <Image src={GoogleLogo} alt="Google" className="w-full h-full" />
+          <div >
+            <Image src={GoogleLogo} alt="Google" width={96} height={96} />
           </div>
-
-          <div className="border p-2">
-            <Image src={BinanceLogo} alt="Binance" className="w-full h-full" />
+          <div className="w-24 h-24">
+            <Image src={BinanceLogo} alt="Binance" width={96} height={96} />
           </div>
-
-          <div className="border p-2">
+          <div className="w-24 h-24">
             <Image
               src={PlaceholderLogo}
               alt="Placeholder"
-              className="w-full h-full"
+              width={96}
+              height={96}
             />
           </div>
-          <div className="border p-2">
+          <div className="w-24 h-24">
+            <Image src={Lush} alt="Placeholder" width={96} height={96} />
+          </div>
+          <div className="w-24 h-24">
             <Image
               src={PlaceholderLogos}
-              alt="Binance"
-              className="w-full h-full"
+              alt="Placeholder"
+              width={96}
+              height={96}
             />
           </div>
         </div>

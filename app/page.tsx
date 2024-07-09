@@ -6,18 +6,18 @@ import AboutUs from "./aboutUs/page";
 import TeamSection from "./component/ui/TeamMember";
 import FAQSection from "./component/ui/FAQSection";
 import PartnersSponsors from "./component/ui/PartnersLogo";
-import TestimonialCard from "./component/ui/Testimonial";
+import KeenSliderComponent from "./component/ui/Testimonial";
 export default function Home() {
   return (
     <main>
       <Hero />
       <PartnersSponsors />
+      <AboutSection />
       <HowItWorks />
       <AboutUs />
-      <AboutSection />
       <FAQSection />
       <TeamSection />
-      {/* <TestimonialCard /> */}
+      <KeenSliderComponent />
       <Contact />
     </main>
   );
