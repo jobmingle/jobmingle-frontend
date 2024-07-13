@@ -8,10 +8,20 @@ const Hero = () => {
       id="home"
       className=" ml-5  max-md:ml-3 flex justify-center items-start p-10 max-md:p-3  md:items-center  mt-[2.5rem] max-md:mt-4 md-justify-center flex-col md:flex-row"
     >
+      {/* Right column */}
+      <div className="w-full lg:hidden  h-full flex items-center justify-center">
+        <img
+          src="https://www.netcraft.com/wp-content/uploads/2023/04/home-hero-final-5.png"
+          alt="Background"
+          data-aos="zoom-in"
+          style={{ objectFit: "cover" }}
+          className=" max-md:w-[400px] max-md:h-[300px]"
+        />
+      </div>
       {/* Left column */}
-      <div className="relative   flex items-start  md:justify-center justify-center flex-col h-full">
+      <div className="relative   flex items-start   flex-col h-full">
         <div
-          className="flex w-full items-center md:justify-center  justify-start flex-col"
+          className="flex w-full items-center   justify-start flex-col"
           data-aos="zoom-in"
           style={{ fontFamily: "Ubuntu" }}
         >
@@ -51,7 +61,7 @@ const Hero = () => {
       </div>
 
       {/* Right column */}
-      <div className="w-full h-full flex items-center justify-center">
+      <div className="w-full max-md:hidden h-full flex items-center justify-center">
         <img
           src="https://www.netcraft.com/wp-content/uploads/2023/04/home-hero-final-5.png"
           alt="Background"

@@ -13,8 +13,9 @@ export default function Home() {
       <Hero />
       <PartnersSponsors />
       <AboutSection />
-      <HowItWorks />
       <AboutUs />
+      <HowItWorks />
+
       <FAQSection />
       <TeamSection />
       <KeenSliderComponent />

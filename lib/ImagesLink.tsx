@@ -3,11 +3,38 @@ import SlideImage2 from "@/public/scott-graham-5fNmWej4tAA-unsplash.jpg";
 import SlideImage3 from "@/public/Pexels Photo by Christina Morillo.svg";
 import Esgo from "@/public/founder,esgo.jpeg";
 import Flolog from "@/public/flogog.jpeg";
-import Image from "next/image";
 import Marketer from "@/public/marketer.jpeg";
 import AA from "@/public/Image2.jpeg";
 import Benjamin from "@/public/video Editor.jpeg";
 import KobieBrave from "@/public/kobi brave.jpeg";
+import CEO from "@/public/ceo.jpeg";
+import CoFounder from "@/public/coFounder.jpeg";
+import ProductDesigner from "@/public/productDesigner.jpeg";
+import CTO from "@/public/CTO.jpeg";
+import BrandDesigner from "@/public/graphicsdesigner.jpeg";
+
+export const teamMembers = [
+  {
+    name: "Omole Usuangbon",
+    role: "CEO",
+    src: CEO,
+  },
+  {
+    name: "Tejiri Omaduvie",
+    role: "Product Designer",
+    src: ProductDesigner,
+  },
+  {
+    name: "Iwuanyanwu Anselm",
+    role: "Backend Developer, CTO",
+    src: CTO,
+  },
+  {
+    name: "Princess Ikoko",
+    role: "Brand/Graphic Designer",
+    src: BrandDesigner,
+  },
+];
 export const testimonials = [
   {
     IMG: Esgo,

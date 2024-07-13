@@ -15,7 +15,7 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="flex justify-around items-center max-w-screen-xl mt-20 mx-auto px-5 bg-white min-h-screen">
+    <div  id="FAQ" className="flex justify-around items-center max-w-screen-xl mt-20 mx-auto px-5 bg-white min-h-screen">
       <div className="relative group">
         <Image
           src={LaptopPic}

@@ -13,7 +13,7 @@ const AppHeader = () => {
   return (
     <nav className="  bg-white text-black flex justify-around  md:shrink-0  max-md:contents">
       <div className="w-[100vw]  h-20 border-b-[0.5px] border-b-[#9a8888] bg-white  flex items-center justify-around">
-        <div className="flex  items-center ">
+        <div className="flex  items-center max-md:mr-[45%]">
           <div className="font-sans text-[1.625rem] ml-2 font-medium leading-[1.4375rem] hover:text-[#FFBE0B]">
             <Link href="#home">
               {" "}

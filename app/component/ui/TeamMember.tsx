@@ -1,37 +1,5 @@
 import Image from "next/image";
-import CEO from "@/public/ceo.jpeg";
-import CoFounder from "@/public/coFounder.jpeg";
-import ProductDesigner from "@/public/productDesigner.jpeg";
-import CTO from "@/public/CTO.jpeg";
-import BrandDesigner from "@/public/graphicsdesigner.jpeg";
-
-const teamMembers = [
-  {
-    name: "Omole Usuangbon",
-    role: "CEO",
-    src: CEO,
-  },
-  {
-    name: "Praise Amos",
-    role: "Co-Founder",
-    src: CoFounder,
-  },
-  {
-    name: "Tejiri Omaduvie",
-    role: "Product Designer",
-    src: ProductDesigner,
-  },
-  {
-    name: "Iwuanyanwu Anselm",
-    role: "Backend Developer, CTO",
-    src: CTO,
-  },
-  {
-    name: "Princess Ikoko",
-    role: "Brand/Graphic Designer",
-    src: BrandDesigner,
-  },
-];
+import { teamMembers } from "@/lib/ImagesLink";
 
 export default function TeamSection() {
   return (

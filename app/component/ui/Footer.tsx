@@ -19,7 +19,7 @@ export default function Footer() {
             {/* Placeholder for social media icons */}
             <Link
               href="https://web.facebook.com/profile.php?id=61556529943063"
-              className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full"
+              className="w-8 h-8 flex justify-center items-center bg-[#030202] rounded-full"
             >
               <Image src={Facebook} alt="Facebook" width={16} height={16} />
             </Link>
@@ -42,7 +42,7 @@ export default function Footer() {
               <Image src={LinkedIn} alt="LinkedIn" width={16} height={16} />
             </Link>
           </div>
-          <p className="text-white">Call us at:09048744395</p>
+          <p className="text-white">Call us @:09048744395</p>
           <p className="text-white">
             Email us @:
             <Link
@@ -64,7 +64,7 @@ export default function Footer() {
             <Link href="#" className="hover:underline">
               Courses
             </Link>
-            <Link href="#" className="hover:underline">
+            <Link href="#about" className="hover:underline">
               About Us
             </Link>
           </div>
@@ -88,7 +88,7 @@ export default function Footer() {
             <Link href="#" className="hover:underline">
               Support
             </Link>
-            <Link href="#" className="hover:underline">
+            <Link href="#FAQ" className="hover:underline">
               FAQ
             </Link>
           </div>
