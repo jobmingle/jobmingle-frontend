@@ -25,7 +25,7 @@ function ServiceCard({ title, description, aos, aostime, n }: Props) {
         <div className="font-bold text-[16px] leading-loose mb-3 text-[black]">
           {title}
         </div>
-        <div className="font-medium text-justify font-sans leading-normal mr-5">
+        <div className="font-medium  font-sans leading-normal mr-5">
           {description}
         </div>
       </div>

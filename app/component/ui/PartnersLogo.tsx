@@ -1,5 +1,5 @@
 import Image from "next/image";
-import GoogleLogo from "@/public/logo2.png";
+import GoogleLogo from "@/public/logo4.png";
 import BinanceLogo from "@/public/logo3.jpeg";
 import PlaceholderLogo from "@/public/LUSH.png";
 import PlaceholderLogos from "@/public/logo5.jpeg";
@@ -14,7 +14,7 @@ const PartnersSponsors = () => {
         </h2>
         <div
           data-aos="zoom-in"
-          className="flex flex-wrap justify-around items-center"
+          className="flex max-md:flex-col justify-around items-center"
         >
           <div>
             <Image src={GoogleLogo} alt="Google" width={96} height={96} />

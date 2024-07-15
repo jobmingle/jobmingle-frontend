@@ -9,7 +9,7 @@ const Hero = () => {
       className=" ml-5  max-md:ml-3 flex justify-center items-start p-10 max-md:p-3  md:items-center  mt-[2.5rem] max-md:mt-4 md-justify-center flex-col md:flex-row"
     >
       {/* Right column */}
-      <div className="w-full lg:hidden  h-full flex items-center justify-center">
+      <div className="w-full md:hidden lg:hidden  h-full flex items-center justify-center">
         <img
           src="https://www.netcraft.com/wp-content/uploads/2023/04/home-hero-final-5.png"
           alt="Background"
@@ -27,11 +27,11 @@ const Hero = () => {
         >
           <div className="w-full  text-balance text-[3rem] font-bold font-sans  max-md:text-[1.9rem] max-md:leading-normal text-black">
             Your
-            <span className="text-[#f5cb1a] font-extrabold">
+            <span className="text-[#f5cb1a] font-extrabold max-md:ml-2">
               {" "}
               Dream Remote Job
             </span>
-            Awaits - Let Us Skill You Up and Guide You There
+            <p> Awaits - Let Us Skill You Up and Guide You There</p>
           </div>
         </div>
 
@@ -44,7 +44,7 @@ const Hero = () => {
           Join the exclusive set of individuals who are now learning a
           high-income skill to make their dream remote job a reality
           <br />
-          Join the JobMingle family today
+          <b>Join the JobMingle family today</b>
         </div>
 
         <div
