@@ -14,16 +14,19 @@ const page = () => {
    const handleSubmit = (e: any) => {
       e.preventDefault();
       console.log("hello");
-      router.push("/Signin/Confirm-email");
+      router.push("/signin/confirm-email");
+   };
+   const handleback = () => {
+      router.back();
    };
    return (
-      <main className="text-black min-h-[100vh] h-auto overflow-x-hidden ">
+      <main className="text-black min-h-screen h-auto overflow-x-hidden ">
          <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden">
             <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
                <Image src={jobmingle} alt="logo" className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8" />
             </div>
             <div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE] sm:h-[100vh] relative flex sm:justify-center flex-col items-center ">
-               <div className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2 ">
+               <div onClick={handleback} className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2 ">
                   <Image src={arrowback} alt="arrowback" className="" />
                </div>
                <h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full px-4">Forgot Password</h2>

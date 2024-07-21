@@ -71,7 +71,7 @@ const page = () => {
                      >
                         Finish
                      </button>
-                  )}{" "}
+                  )}
                </main>
             </div>
          </div>

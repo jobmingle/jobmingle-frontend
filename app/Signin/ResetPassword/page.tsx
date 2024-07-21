@@ -7,6 +7,8 @@ import arrowback from "../Images/arrowback.png";
 import "../../globals.css";
 import Link from "next/link";
 import SuccessModal from "../../../Components/SuccessModal";
+import Router from "next/router";
+//
 const page = () => {
    const [ResetSuccessful, setResetSuccessful] = useState(false);
 
@@ -16,16 +18,19 @@ const page = () => {
       // setalert to true
       setResetSuccessful(true);
    };
+   const handleback = () => {
+      Router.back();
+   };
    useState;
    return (
-      <main className="text-black min-h-[100vh] h-auto relative overflow-x-hidden">
-         {ResetSuccessful ? <SuccessModal whereto={" Click here to go back to login"} Act={"Your password has been changed successfully!"} linkto={"/Signin"} /> : null}{" "}
+      <main className="text-black min-h-screen h-auto relative overflow-x-hidden">
+         {ResetSuccessful ? <SuccessModal whereto={" Click here to go back to login"} Act={"Your password has been changed successfully!"} linkto={"/signin"} /> : null}{" "}
          <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center relative overflow-x-hidden">
             <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
                <Image src={jobmingle} alt="logo" className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8" />
             </div>
             <div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE] sm:h-[100vh] flex sm:justify-center flex-col items-center ">
-               <div className="w-full flex pl-4 items-center py-4 flex-row">
+               <div className="w-full flex pl-4 items-center py-4 flex-row" onClick={handleback}>
                   <Image src={arrowback} alt="arrowback" className="  sm:hidden" />
                </div>
                <h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full px-4">Create new Password</h2>

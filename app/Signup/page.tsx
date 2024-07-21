@@ -18,7 +18,7 @@ const page = () => {
       router.push("/Signup/Verify");
    };
    return (
-      <main className="text-black min-h-[100vh] h-auto">
+      <main className="text-black min-h-screen h-auto border">
          <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center">
             <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg2 ">
                <Image src={jobmingle} alt="logo" className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8" />

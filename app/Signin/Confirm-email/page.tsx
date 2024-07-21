@@ -1,34 +1,52 @@
 "use client";
 import Image from "next/image";
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import jobmingle from "../Images/jobmingle.png";
 import Googleicon from "../Images/Googleicon.png";
 import arrowback from "../Images/arrowback.png";
 // import "../globals.css";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
+import Timer from "@/Components/Timer";
 
 const page = () => {
    const [Code, setCode] = useState(["", "", "", ""]);
    const router = useRouter();
+   const inputs = useRef<(HTMLInputElement | null)[]>([]);
    // onchange functionlities
-   const handleChange = (e: any) => {
-      const value = e.target.value;
-      console.log(value);
+   const handleChange = (e: any, index: number) => {
+      const value = e.target.value.replace(/\D/g, "");
+      if (value.length <= 1) {
+         const newCode = [...Code];
+         newCode[index] = value;
+         setCode(newCode);
+
+         // Move focus to the next input if length is less than 4
+         if (value && index < 3) {
+            inputs.current[index + 1]?.focus();
+         }
+      }
+      console.log(Code);
    };
    // onsubmitfunctionalities
    const handleSubmit = (e: any) => {
       e.preventDefault();
-      router.push("/Signin/ResetPassword");
+      router.push("/signin/resetpassword");
+      const code = Code.join("");
+      console.log(code);
    };
+   const handleback = () => {
+      router.back();
+   };
+
    return (
-      <main className="text-black min-h-[100vh] h-auto overflow-x-hidden">
+      <main className="text-black min-h-screen h-auto overflow-x-hidden">
          <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden">
             <div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
                <Image src={jobmingle} alt="logo" className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8" />
             </div>
             <div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE] sm:h-[100vh] flex sm:justify-center relative flex-col items-center">
-               <div className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2 ">
+               <div className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2 " onClick={handleback}>
                   <Image src={arrowback} alt="arrowback" className="" />
                </div>
                <h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full px-4">Confirm Email</h2>
@@ -47,14 +65,18 @@ const page = () => {
                                  id=""
                                  value={digit}
                                  key={index}
-                                 onChange={(e) => handleChange(e)}
-                                 className="border-[1px] border-solid rounded-[5px] border-black-100 w-[46px] h-[46px] text-black-100 text-lg text-center "
+                                 onChange={(e) => handleChange(e, index)}
+                                 maxLength={1}
+                                 ref={(el: any) => (inputs.current[index] = el)}
+                                 className="border-[1px]  overflow-y-hidden border-solid rounded-[5px] border-black-100 w-[46px] h-[46px] text-black-100 text-md font-bold sora text-center "
                               />
                            );
                         })}
                      </div>
                      <div className="mt-3">
-                        <p className="montserrat font-bold text-lg text-[#021C5F] text-center">Expires in 9:40</p>
+                        <section className="montserrat font-bold text-lg text-[#021C5F] text-center">
+                           <Timer minute={10} secs={60} />
+                        </section>
                         <div className="mt-6 w-full text-center">
                            <p className="text-black-100 text-xs sora">Didn't get the email ?</p>
                            <button className="border-none text-sm sora tracking-wider sora font-semibold text-[#F6CC16]">click here to resend</button>
