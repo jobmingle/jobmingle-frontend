@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React, {useRef, useState} from "react";
 import jobmingle from "../Images/jobmingle.png";
-import Googleicon from "../Images/Googleicon.png";
 import arrowback from "../Images/arrowback.png";
 // import "../globals.css";
 import Link from "next/link";

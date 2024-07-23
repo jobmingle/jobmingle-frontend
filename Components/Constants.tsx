@@ -1,13 +1,13 @@
-interface inter {
-   id: number;
-   title: string;
-}
+// interface inter {
+//    id: number;
+//    title: string;
+// }
 interface use {
    id: number;
    title: string;
 }
 
-export const UserInterest: inter[] = [
+export const UserInterest = [
    {
       id: 1,
       title: "IT support",

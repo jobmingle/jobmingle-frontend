@@ -14,7 +14,7 @@ const Timer: React.FC<Timerprops> = ({minute, secs}) => {
          setTimeLeft((prevTime) => {
             if (prevTime <= 1) {
                clearInterval(timer);
-               return 0;;
+               return 0;
             }
             return prevTime - 1;
          });
@@ -28,7 +28,6 @@ const Timer: React.FC<Timerprops> = ({minute, secs}) => {
 
    return (
       <div>
-         <h1>Countdown Timer</h1>
          <p>
             {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
          </p>

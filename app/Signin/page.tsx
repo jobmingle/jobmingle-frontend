@@ -1,9 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import signinBanner from "./Images/signinBanner.png";
 import jobmingle from "./Images/jobmingle.png";
 import Googleicon from "./Images/Googleicon.png";
-import arrowback from "./Images/arrowback.png";
 import "../globals.css";
 import Link from "next/link";
 
