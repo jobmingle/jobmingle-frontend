@@ -3,9 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import LaptopPic from "@/public/jobSearch.jpg";
-import { faqItems } from "@/lib/ImagesLink";
+import { faqItems } from "@/lib/_exportLinks";
 // Declaring type for FAQ items
-
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -15,12 +14,15 @@ const FAQSection = () => {
   };
 
   return (
-    <div  id="FAQ" className="flex justify-around items-center max-w-screen-xl mt-20 mx-auto px-5 bg-white min-h-screen">
+    <div
+      id="FAQ"
+      className="flex justify-around items-center max-w-screen-xl mt-20 mx-auto px-5 bg-white min-h-screen"
+    >
       <div className="relative group">
         <Image
           src={LaptopPic}
           alt="ImageOne"
-          className="max-md:hidden w-[500px] h-[500px] shadow rounded-2xl object-cover img1"
+          className="max-md:hidden w-[900px] h-[450px] shadow rounded-2xl object-cover img1"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl">
           <p className="text-white text-center px-4 text-2xl">
@@ -29,13 +31,11 @@ const FAQSection = () => {
         </div>
       </div>
       <div className="w-full">
-        <div className="flex flex-col items-center">
-          <h2 className="font-bold text-5xl mt-5 tracking-tight">FAQ</h2>
-          <p className="text-neutral-500 text-xl mt-3">
-            Frequently asked questions
-          </p>
-        </div>
-        <div className="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-8">
+        <div className="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-3">
+          <div className="flex flex-col">
+            <h2 className="font-bold text-5xl mt-0 tracking-tight">FAQ</h2>
+          
+          </div>
           {faqItems.map((item, index) => (
             <FAQItem
               key={index}

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import KeenSlider, { KeenSliderInstance, KeenSliderOptions } from "keen-slider";
 import "keen-slider/keen-slider.min.css";
-import { testimonials } from "@/lib/ImagesLink";
+import { testimonials } from "@/lib/_exportLinks";
 import Image from "next/image";
 
 const KeenSliderComponent: React.FC = () => {

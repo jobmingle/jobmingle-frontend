@@ -68,37 +68,3 @@ body {
 .animate-rotate {
   animation: rotate 10s linear infinite;
 }
-
-@keyframes borderAnimation {
-  0% {
-    border-image-source: conic-gradient(
-      from 45deg,
-      #ffbe0b,
-      transparent 30%,
-      transparent 70%,
-      #e9e90e
-    );
-  }
-  100% {
-    border-image-source: conic-gradient(
-      from 45deg,
-      #ffbe0b,
-      transparent 70%,
-      transparent 30%,
-      #ffbe0b
-    );
-  }
-}
-
-.border-animate {
-  border: 4px solid transparent; /* Adjust the border width if needed */
-  border-image: conic-gradient(
-      from 45deg,
-      #ffbe0b,
-      transparent 30%,
-      transparent 70%,
-      #e9b60e
-    )
-    1; /* Initial gradient effect */
-  animation: borderAnimation 2s linear infinite;
-}
