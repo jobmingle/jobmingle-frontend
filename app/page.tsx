@@ -7,6 +7,7 @@ import TeamSection from "./component/ui/TeamMember";
 import FAQSection from "./component/ui/FAQSection";
 import PartnersSponsors from "./component/ui/PartnersLogo";
 import KeenSliderComponent from "./component/ui/Testimonial";
+import FAQSections from "./component/ui/FAQSection2";
 export default function Home() {
   return (
     <main>
@@ -19,6 +20,8 @@ export default function Home() {
       <FAQSection />
       <TeamSection />
       <KeenSliderComponent />
+      <FAQSections />
+
       <Contact />
     </main>
   );

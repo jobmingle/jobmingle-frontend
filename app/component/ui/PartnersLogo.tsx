@@ -20,7 +20,7 @@ const PartnersSponsors = () => {
             <Image src={GoogleLogo} alt="Google" width={96} height={96} />
           </div>
           <div className=" text-black">
-            <Image src={BinanceLogo} alt="Binance" />
+            <Image src={BinanceLogo} alt="Binance" width={90} height={90} />
           </div>
           <div className="w-24 h-24">
             <Image

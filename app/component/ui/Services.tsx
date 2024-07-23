@@ -5,6 +5,7 @@ import { useState } from "react";
 import "@/app/globals.css";
 import bg from "@/public/hello.png";
 import Button from "../atoms/Button";
+
 type Props = {
   title: string;
   description: string;
@@ -168,7 +169,7 @@ function HowItWorks() {
             onSeeMoreClick={handleCvSeeMoreClick}
           />
 
-          {/* video card           */}
+          {/* video card */}
         </div>
       </div>
 
@@ -178,7 +179,7 @@ function HowItWorks() {
             className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
             onClick={closeRecruitmentModal}
           ></div>
-          <div className="bg-white rounded-lg p-8 z-50 w-[90%] max-w-2xl shadow-lg">
+          <div className="bg-white rounded-lg p-8 z-50 w-[90%] h-[50%] max-w-2xl shadow-lg">
             <h2 className="text-2xl font-bold mb-4">More Information</h2>
             <p className="text-lg leading-relaxed">
               <strong>What Our HR Experts Will Do For You:</strong>
@@ -213,70 +214,142 @@ function HowItWorks() {
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"
                     y="0px"
-                    width="100"
-                    height="100"
+                    width="32"
+                    height="32"
                     viewBox="0 0 48 48"
+                    className="ml-2"
+                    fill="#34A853"
                   >
                     <path
                       fill="#fff"
-                      d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6	C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19c0,0,0,0,0,0h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z"
-                    ></path>
+                      d="M4.868,44.041c-1.026,0-1.793-0.274-2.434-0.863c-0.918-0.822-1.18-2.071-0.726-3.312L7.5,30.373
+                        c-1.644-2.739-2.498-5.792-2.498-8.999c0-9.925,8.073-17.999,17.998-17.999c4.807,0,9.322,1.872,12.731,5.279
+                        c3.41,3.409,5.279,7.924,5.279,12.72c0,9.926-8.073,18.001-17.998,18.001c-3.032,0-6.017-0.777-8.654-2.249l-11.428,2.934
+                        C5.922,43.861,5.399,44.041,4.868,44.041z"
+                    />
                     <path
                       fill="#fff"
-                      d="M4.9,43.8c-0.1,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.3-0.1-0.5L7,33.5c-1.6-2.9-2.5-6.2-2.5-9.6	C4.5,13.2,13.3,4.5,24,4.5c5.2,0,10.1,2,13.8,5.7c3.7,3.7,5.7,8.6,5.7,13.8c0,10.7-8.7,19.5-19.5,19.5c-3.2,0-6.3-0.8-9.1-2.3	L5,43.8C5,43.8,4.9,43.8,4.9,43.8z"
-                    ></path>
-                    <path
-                      fill="#cfd8dc"
-                      d="M24,5c5.1,0,9.8,2,13.4,5.6C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19h0c-3.2,0-6.3-0.8-9.1-2.3	L4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5 M24,43L24,43L24,43 M24,43L24,43L24,43 M24,4L24,4C13,4,4,13,4,24	c0,3.4,0.8,6.7,2.5,9.6L3.9,43c-0.1,0.3,0,0.7,0.3,1c0.2,0.2,0.4,0.3,0.7,0.3c0.1,0,0.2,0,0.3,0l9.7-2.5c2.8,1.5,6,2.2,9.2,2.2	c11,0,20-9,20-20c0-5.3-2.1-10.4-5.8-14.1C34.4,6.1,29.4,4,24,4L24,4z"
-                    ></path>
-                    <path
-                      fill="#40c351"
-                      d="M35.2,12.8c-3-3-6.9-4.6-11.2-4.6C15.3,8.2,8.2,15.3,8.2,24c0,3,0.8,5.9,2.4,8.4L11,33l-1.6,5.8	l6-1.6l0.6,0.3c2.4,1.4,5.2,2.2,8,2.2h0c8.7,0,15.8-7.1,15.8-15.8C39.8,19.8,38.2,15.8,35.2,12.8z"
-                    ></path>
-                    <path
-                      fill="#fff"
-                      fill-rule="evenodd"
-                      d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0	s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3	c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9	c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8	c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z"
-                      clip-rule="evenodd"
-                    ></path>
+                      d="M21.002,9.501c-6.907,0-12.5,5.594-12.5,12.5c0,2.866,0.932,5.61,2.696,7.867
+                        c0.42,0.531,0.556,1.221,0.372,1.867l-1.372,4.897l4.906-1.26c0.199-0.052,0.402-0.078,0.605-0.078
+                        c0.469,0,0.926,0.146,1.303,0.419c2.456,1.826,5.353,2.796,8.39,2.796c6.906,0,12.5-5.595,12.5-12.501
+                        c0-3.34-1.301-6.476-3.662-8.838C27.478,10.801,24.342,9.501,21.002,9.501z M30.154,30.855c-0.393,1.094-2.271,2.056-3.14,2.118
+                        c-0.244,0.017-0.507,0.025-0.781,0.025c-0.666,0-1.429-0.098-2.205-0.291c-2.239-0.594-4.871-2.086-6.738-4.005
+                        c-1.866-1.918-3.267-4.527-3.813-6.758c-0.338-1.271-0.227-2.374,0.322-3.115c0.288-0.381,0.755-0.854,1.36-0.848
+                        c0.319,0.004,0.677,0.114,1.093,0.326c0.284,0.146,0.604,0.354,0.961,0.609c0.22,0.15,0.457,0.328,0.706,0.523
+                        c0.406,0.312,0.84,0.646,1.171,0.888c0.167,0.122,0.318,0.231,0.458,0.326c0.351,0.234,0.635,0.422,0.87,0.604
+                        c0.208,0.157,0.408,0.31,0.61,0.461c0.188,0.14,0.379,0.282,0.566,0.415c0.102,0.073,0.204,0.147,0.303,0.218
+                        c0.257,0.185,0.497,0.359,0.732,0.528c0.155,0.111,0.318,0.228,0.49,0.354c0.454,0.328,0.911,0.658,1.375,0.99
+                        c0.271,0.192,0.545,0.38,0.822,0.573c0.251,0.173,0.503,0.345,0.754,0.515c0.35,0.237,0.707,0.478,1.065,0.721
+                        c0.216,0.148,0.435,0.293,0.653,0.438c0.123,0.081,0.243,0.16,0.365,0.239c0.438,0.285,0.875,0.568,1.313,0.846
+                        c0.255,0.162,0.514,0.318,0.776,0.474c0.06,0.036,0.124,0.071,0.187,0.107c0.468,0.268,0.933,0.535,1.393,0.799
+                        c0.173,0.097,0.35,0.192,0.525,0.289c0.051,0.029,0.101,0.057,0.152,0.086C30.155,30.854,30.155,30.855,30.154,30.855z"
+                    />
                   </svg>
-                  07077308481
                 </a>
               </div>
+              <div className="mt-4 flex justify-center">
+                <Button
+                  onClick={closeRecruitmentModal}
+                  className="w-[100px] rounded-lg text-white border-none bg-[#f5cb1a]"
+                >
+                  Close
+                </Button>
+              </div>
             </p>
-            <button
-              onClick={closeRecruitmentModal}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
-            >
-              Close
-            </button>
           </div>
         </div>
       )}
-
       {isCvModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div
             className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
             onClick={closeCvModal}
           ></div>
-          <div className="bg-white rounded-lg p-8 z-50 w-[90%] max-w-2xl shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">More Information</h2>
-            <p className="text-lg leading-relaxed">
-              Our CV and portfolio services are designed to help you stand out
-              in the competitive job market. Our expert writers will craft a
-              personalized CV that highlights your skills and experiences in the
-              best possible way. Additionally, we can create a professional
-              portfolio website that showcases your work samples, projects, and
-              achievements, making it easier for potential employers to see your
-              capabilities and consider you for the role.
-            </p>
-            <button
-              onClick={closeCvModal}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
-            >
-              Close
-            </button>
+          <div className="bg-white rounded-lg p-4 md:p-8 z-50 w-[90%] max-w-2xl max-h-[90vh] overflow-auto shadow-lg">
+            <h2 className="text-xl md:text-2xl font-bold mb-4">Our Packages</h2>
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr>
+                  <th className="border-b py-2 text-sm md:text-base">
+                    Package
+                  </th>
+                  <th className="border-b py-2 text-sm md:text-base">
+                    Details
+                  </th>
+                  <th className="border-b py-2 text-sm md:text-base">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border-b py-2 text-sm md:text-base">
+                    Premium Package
+                  </td>
+                  <td className="border-b py-2 text-sm md:text-base">
+                    <ul className="list-disc ml-5">
+                      <li>ATS-optimized CV/Resume</li>
+                      <li>Personalized cover letter</li>
+                      <li>Keyword-optimised LinkedIn profile</li>
+                      <li>Professional portfolio website</li>
+                    </ul>
+                  </td>
+                  <td className="border-b py-2 text-sm md:text-base">
+                    NGN 40,000
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border-b py-2 text-sm md:text-base">
+                    Standard Package
+                  </td>
+                  <td className="border-b py-2 text-sm md:text-base">
+                    <ul className="list-disc ml-5">
+                      <li>ATS-optimized CV/Resume</li>
+                      <li>Personalized cover letter</li>
+                      <li>Keyword-optimised LinkedIn profile</li>
+                    </ul>
+                  </td>
+                  <td className="border-b py-2 text-sm md:text-base">
+                    NGN 20,000
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border-b py-2 text-sm md:text-base">
+                    Basic Package
+                  </td>
+                  <td className="border-b py-2 text-sm md:text-base">
+                    <ul className="list-disc ml-5">
+                      <li>ATS-optimized CV/Resume</li>
+                      <li>Personalized cover letter</li>
+                    </ul>
+                  </td>
+                  <td className="border-b py-2 text-sm md:text-base">
+                    NGN 10,000
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div className="mt-4 text-sm md:text-base">
+              <strong>Account details:</strong>
+              <p>2044112176</p>
+              <p>JobMingle Nigeria</p>
+              <p>FirstBank</p>
+            </div>
+            <div className="mt-4 text-sm md:text-base">
+              <strong>WhatsApp us with proof of payment:</strong> 07077308481
+            </div>
+            <div className="mt-4 text-sm md:text-base">
+              <strong>Want A Customized Service?</strong>
+              <p>Please reach out to us via the following:</p>
+              <p>Email: contact@jobmingle.co</p>
+              <p>WhatsApp: 07077308481</p>
+            </div>
+            <div className="mt-4 flex justify-center">
+              <Button
+                onClick={closeCvModal}
+                className="w-[100px] rounded-lg text-white border-none bg-[#f5cb1a]"
+              >
+                Close
+              </Button>
+            </div>
           </div>
         </div>
       )}
