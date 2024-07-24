@@ -1,3 +1,5 @@
+// components/ServiceCard.js
+
 "use client";
 
 import Head from "next/head";
@@ -26,22 +28,22 @@ function ServiceCard({
   onSeeMoreClick,
 }: Props) {
   return (
-    <div>
-      <div
-        data-aos={aos}
-        data-aos-duration={aostime}
-        className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[350px] text-slate-400 h-[480px] max-md:h-fit hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:shadow-lg max-md:w-[300px] max-md:hover:ml-[5px] max-md:p-[9px] group border-animate"
-      >
-        <div className="relative z-20 flex-shrink-0 w-12 h-12 rounded-full bg-[#FFBE0B] flex items-center justify-center my-5">
-          <p className="text-2xl font-bold h-5 w-5 text-black">{n}</p>
-        </div>
-        <div className="font-bold text-[16px] leading-loose mb-3 text-[black]">
-          {title}
-        </div>
-        <div className="font-medium font-sans leading-normal mr-5">
-          {description}
-        </div>
-        {hasMoreInfo && (
+    <div
+      data-aos={aos}
+      data-aos-duration={aostime}
+      className="shadow-lg max-md:mt-3 z-10 flex flex-col h-[480px] max-md:h-fit max-md:w-[300px] w-[350px] text-slate-400 hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:shadow-lg max-md:hover:ml-[5px] max-md:p-[9px] group border-animate"
+    >
+      <div className="relative z-20 flex-shrink-0 w-12 h-12 rounded-full bg-[#FFBE0B] flex items-center justify-center my-5">
+        <p className="text-2xl font-bold h-5 w-5 text-black">{n}</p>
+      </div>
+      <div className="font-bold text-[16px] leading-loose mb-3 text-[black]">
+        {title}
+      </div>
+      <div className="font-medium font-sans leading-normal mr-5 flex-grow">
+        {description}
+      </div>
+      {hasMoreInfo && (
+        <div className="mt-auto">
           <Button
             onClick={onSeeMoreClick}
             className="w-[150px] mt-3 max-md:w-[150px] rounded-lg text-[12px] text-black border-white border-solid bg-[#f5cb1a]"
@@ -62,11 +64,12 @@ function ServiceCard({
               />
             </svg>
           </Button>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
+
 
 function HowItWorks() {
   const [isRecruitmentModalOpen, setIsRecruitmentModalOpen] = useState(false);

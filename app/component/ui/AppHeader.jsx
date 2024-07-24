@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Button from "../atoms/Button";
+
 const AppHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -11,25 +12,23 @@ const AppHeader = () => {
   };
 
   return (
-    <nav className="  bg-white text-black flex justify-around  md:shrink-0  max-md:contents">
-      <div className="w-[100vw]  h-20 border-b-[0.5px] border-b-[#9a8888] bg-white  flex items-center justify-around">
-        
-        <div className="flex  items-center max-md:mr-[45%]">
+    <nav className="bg-white text-black flex justify-around md:shrink-0 max-md:contents">
+      <div className="w-[100vw] h-20 border-b-[0.5px] border-b-[#9a8888] bg-white flex items-center justify-around">
+        <div className="flex items-center max-md:mr-[45%]">
           <div className="font-sans text-[1.625rem] ml-2 font-medium leading-[1.4375rem] hover:text-[#FFBE0B]">
             <Link href="#home">
-              {" "}
               <img
                 src="https://www.jobmingle.co/_next/image?url=%2FVector.webp&w=256&q=75"
                 alt="jobmingle"
                 srcSet=""
                 width={50}
                 height={50}
-              />{" "}
+              />
             </Link>
           </div>
         </div>
 
-        <div className="inline-flex items-start gap-10  max-md:hidden">
+        <div className="inline-flex items-start gap-10 max-md:hidden">
           <div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
             <Link href="#about" onClick={toggleMenu}>
               About us
@@ -43,17 +42,17 @@ const AppHeader = () => {
             <Link href="#contact">contact</Link>
           </div>
         </div>
-        <div className="inline-flex items-start mr-6  max-md:hidden">
-          <Button className="w-[200px] max-sm:w-[130px] bg-black text-white rounded-[10px] mr-[30px] hover:text-black hover:bg-yellow-500">
-            SignUp
+        <div className="inline-flex items-start mr-6 max-md:hidden">
+          <Button className="w-[200px] max-sm:w-[130px] bg-black text-white rounded-[10px] mr-[30px] hover:text-black hover:bg-yellow-500 transition-colors duration-300">
+            Sign Up
           </Button>
-          <Button className="w-[200px] max-sm:w-[130px] bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500">
+          <Button className="w-[200px] max-sm:w-[130px] bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-300">
             Login
           </Button>
         </div>
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu} className=" focus:outline-none">
+          <button onClick={toggleMenu} className="focus:outline-none">
             {menuOpen ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +90,7 @@ const AppHeader = () => {
       {/* Mobile menu */}
       {menuOpen && (
         <div
-          className={` bg-black md:hidden max-md:absolute max-md:h-[100%] max-md:w-[100%] max-md:z-[30] max-md:justify-center max-md:gap-[50px] text-[#d9d9e8] flex flex-col items-center transition-all duration-500 ${
+          className={`bg-black md:hidden max-md:absolute max-md:h-[100%] max-md:w-[100%] max-md:z-[30] max-md:justify-center max-md:gap-[50px] text-[#d9d9e8] flex flex-col items-center transition-all duration-500 ${
             menuOpen
               ? "clip-path-[polygon(0 0, 100% 0, 100% 100%, 0 80%)]"
               : "clip-path-[polygon(0 0, 100% 0, 100% 100%, 0 0)]"
@@ -113,8 +112,8 @@ const AppHeader = () => {
               Contact Us
             </Link>
           </div>
-          <div className="inline-flex items-start mr-6  ">
-            <Button className="w-[200px] bg-[#f5cb1a]  text-black border-solid  border-10 border-white">
+          <div className="inline-flex items-start mr-6">
+            <Button className="w-[200px] bg-[#f5cb1a] text-black border-solid border-10 border-white transition-colors duration-300">
               Sign Up
             </Button>
           </div>

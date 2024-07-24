@@ -16,7 +16,7 @@ function CoreValueCard({ title, description, aos, aostimer }: Props) {
     <div
       data-aos={aos}
       data-aos-duration={aostimer}
-      className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[330px] text-slate-400 h-[320px] hover:text-white rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:bg-black hover:shadow-lg max-md:w-[300px] max-md:h-[350px] max-md:hover:ml-[5px] max-md:p-[9px] group "
+      className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[330px] text-slate-400 h-[320px] hover:text-yellow-500 rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:bg-black hover:shadow-lg max-md:w-[300px] max-md:h-[350px] max-md:hover:ml-[5px] max-md:p-[9px] group"
     >
       <div className="relative z-20 flex-shrink-0 w-12 h-12 rounded-full bg-white/[.10] flex items-center justify-center my-5">
         <svg
@@ -29,11 +29,11 @@ function CoreValueCard({ title, description, aos, aostimer }: Props) {
           {/* SVG Path Here */}
         </svg>
       </div>
-      <div className="font-bold text-[16px] leading-loose mb-3  text-[black] hover:text-yellow-400">
+      <div className="font-bold text-[16px] leading-loose mb-3 text-black group-hover:text-yellow-500">
         {title}
       </div>
-      <div className="font-medium  ">
-        <p className="">{description}</p>
+      <div className="font-medium group-hover:text-white">
+        <p>{description}</p>
       </div>
     </div>
   );
@@ -56,7 +56,7 @@ const AboutSection = () => {
           >
             <h2
               data-aos="fade-left"
-              className="text-5xl mb-3 max-md:text-1xl text- font-extrabold max-md:font-bold leading-[82px] max-md:leading-[24px] max-md:text-[29px]"
+              className="text-5xl mb-3 max-md:text-1xl text-font-extrabold max-md:font-bold leading-[82px] max-md:leading-[24px] max-md:text-[29px]"
             >
               JOBMINGLE <span className="text-yellow-400">OVERVIEW</span>
             </h2>
