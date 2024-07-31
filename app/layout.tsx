@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./App.css";
 import AppFooter from "./component/ui/Footer";
 import MyApp from "@/app/_app";
 import favicon from "./favicon.ico";

@@ -1,6 +1,6 @@
-import type { Config } from "tailwindcss";
+import type {Config} from "tailwindcss";
 
-const config: Config = {
+const config: Config = {     
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -20,8 +20,17 @@ const config: Config = {
       animation: {
         fadeIn: "fadeIn 0.2s ease-in-out forwards",
       },
-    },
-  },
-  plugins: [],
+ backgroundImage: {
+            "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+            "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+         },
+         colors: {
+            black: {
+               DEFAULT: "#000",
+               100: "#2C2A2A",
+            },
+         },
+   },
+   plugins: [],
 };
 export default config;
