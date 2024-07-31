@@ -4,6 +4,34 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg {
+   background-image: url("./Signin/Images/signinBanner.png");
+   background-repeat: no-repeat;
+   background-position: center;
+   object-fit:contain;
+   background-position: center;
+   background-size: cover;
+   filter: brightness(40%);
+ 
+}
+.bg2 {
+   background-image: url("./Signup/images/signupbanner.png");
+   background-repeat: no-repeat;
+   background-position: center;
+   object-fit:contain;
+   background-position: center;
+   background-size: cover;
+   filter: brightness(40%);
+ 
+}
+
+.montserrat {
+   font-family: "Montserrat", sans-serif;
+}
+.sora {
+   font-family: "sora", sans-serif;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 43 31 31;
