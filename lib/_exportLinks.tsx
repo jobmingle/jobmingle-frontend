@@ -119,6 +119,32 @@ export const faqItems: FAQItemType[] = [
       "Yes, you can. To advertise your brand, please send an email to contact@jobmingle.co to learn more about our advertising rates.",
   },
 ];
+
+export const faqItemss: FAQItemType[] = [
+  {
+    question: "How will my documents get to me?",
+    answer:
+      "Your documents will be sent in PDF format to the email you'll provide us with",
+  },
+  {
+    question: "How long will it take for my CV & cover letter to be ready?",
+    answer: "2-4 days.",
+  },
+  {
+    question: "How long will it take for my portfolio to be ready?",
+    answer: "7-10 days.",
+  },
+  {
+    question: " What if I'm not satisfied with the quality of your work?",
+    answer:
+      "While this is rare, with JobMingle, you receive unlimited revisions till you are satisfied.",
+  },
+  {
+    question: " How can I make payment for your services?",
+    answer:
+      "For the meantime, you can pay to our account details below and send proof of payment to our WhatsApp line below. Account details:2044112176 JobMingle Nigeria Firstbank ,WhatsApp line: 07077308481",
+  },
+];
 //Slides
 export const slides = [
   {

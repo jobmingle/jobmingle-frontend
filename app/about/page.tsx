@@ -16,7 +16,7 @@ function CoreValueCard({ title, description, aos, aostimer }: Props) {
     <div
       data-aos={aos}
       data-aos-duration={aostimer}
-      className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[330px] text-slate-400 h-[320px] hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:bg-[#f5cb1a] hover:shadow-lg max-md:w-[300px] max-md:h-[350px] max-md:hover:ml-[5px] max-md:p-[9px] group border-animate"
+      className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[330px] text-slate-400 h-[320px] hover:text-yellow-500 rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:bg-black hover:shadow-lg max-md:w-[300px] max-md:h-[350px] max-md:hover:ml-[5px] max-md:p-[9px] group"
     >
       <div className="relative z-20 flex-shrink-0 w-12 h-12 rounded-full bg-white/[.10] flex items-center justify-center my-5">
         <svg
@@ -29,11 +29,11 @@ function CoreValueCard({ title, description, aos, aostimer }: Props) {
           {/* SVG Path Here */}
         </svg>
       </div>
-      <div className="font-bold text-[16px] leading-loose mb-3 text-[black]">
+      <div className="font-bold text-[16px] leading-loose mb-3 text-black group-hover:text-yellow-500">
         {title}
       </div>
-      <div className="font-medium  ">
-        <p className="">{description}</p>
+      <div className="font-medium group-hover:text-white">
+        <p>{description}</p>
       </div>
     </div>
   );
@@ -56,13 +56,13 @@ const AboutSection = () => {
           >
             <h2
               data-aos="fade-left"
-              className="text-5xl mb-3 max-md:text-1xl font-extrabold max-md:font-bold leading-[82px] max-md:leading-[24px] max-md:text-[29px]"
+              className="text-5xl mb-3 max-md:text-1xl text-font-extrabold max-md:font-bold leading-[82px] max-md:leading-[24px] max-md:text-[29px]"
             >
-              Jobmingle <span className="text-yellow-400">overview</span>
+              JOBMINGLE <span className="text-yellow-400">OVERVIEW</span>
             </h2>
           </div>
           <div className="w-[90%] max-md:pr-[4%] max-md:text-justify max-md:w-auto text-[#4f4f53] font-[50px] font-sans leading-normal max-md:text-[15.5px] space-y-4">
-            <p >
+            <p>
               JobMingle is an ed-tech and remote job recruitment website that
               empowers individuals seeking to transition to a new career with
               high-income skills and provides access to numerous remote job
@@ -76,7 +76,7 @@ const AboutSection = () => {
               the best ed-tech and remote job recruitment company in Nigeria for
               job applicants, employers, and course creators.
             </p>
-            <p className="max-md:mt-3"> 
+            <p className="max-md:mt-3">
               JobMingle is leveraging technology to address the 'skills
               acquisition gap' and meet human resources needs in the remote
               industry in Nigeria. Join us as we turn this dream into a reality!
@@ -84,7 +84,7 @@ const AboutSection = () => {
           </div>
         </div>
 
-        <div className="flex w-[80%] h-full gap-[1rem] mt-6 max-md:gap-[1rem] max-md:mt-[20%]">
+        <div className="flex w-[80%] h-full gap-[1rem] mt-[6.5rem] max-md:gap-[1rem] max-md:mt-[20%]">
           <div className="flex flex-col gap-y-6">
             <div className="relative group">
               <Image

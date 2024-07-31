@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import LaptopPic from "@/public/jobSearch.jpg";
-import { faqItems } from "@/lib/_exportLinks";
+import { faqItemss } from "@/lib/_exportLinks";
 // Declaring type for FAQ items
 
-const FAQSection = () => {
+const FAQSections = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
@@ -34,9 +34,8 @@ const FAQSection = () => {
         <div className="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-3">
           <div className="flex flex-col">
             <h2 className="font-bold text-5xl mt-0 tracking-tight">FAQ</h2>
-          
           </div>
-          {faqItems.map((item, index) => (
+          {faqItemss.map((item, index) => (
             <FAQItem
               key={index}
               index={index}
@@ -103,4 +102,4 @@ const FAQItem = ({
   );
 };
 
-export default FAQSection;
+export default FAQSections;

@@ -4,14 +4,12 @@ import Image from "next/image";
 
 import Head from "next/head";
 import "@/app/globals.css";
-import { slides } from "@/lib/ImagesLink";
+import { slides } from "@/lib/_exportLinks";
 import Carousel from "../component/ui/Carousel";
 
 function AboutUs() {
   return (
     <div className="flex flex-col items-center mt-[72px] justify-center">
-     
-
       <div className="check relative z-20 w-full text-center max-md:w-[287px]">
         <div></div>{" "}
         <Carousel autoSlide={true}>
@@ -35,8 +33,6 @@ function AboutUs() {
         </Carousel>
         <div className="z-10 w-96 h-96 opacity-80 bg-[#f5cb1a] rounded-full blur-[190px] absolute top-[150%] max-md:hidden" />
       </div>
-
-     
     </div>
   );
 }

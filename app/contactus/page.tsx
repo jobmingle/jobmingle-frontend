@@ -28,7 +28,7 @@ export default function Contact() {
         Contact Information
       </h1>
       <div className="w-full h-1 bg-[#eab308]"></div>
-      <div className="flex flex-col  text-white w-full items-center justify-center gap-6 lg:gap-24 p-6">
+      <div className="flex flex  text-white w-full items-center justify-center gap-6 lg:gap-24 p-6">
         {/* Email and Phone */}
         <div className="flex  text-black  font-bold flex-col max-md:w-[300px] w-[800px] lg:w-auto bg-white p-6 rounded border-2 border-gray-400 shadow-lg">
           <label htmlFor="Name"> Name</label>

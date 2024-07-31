@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { teamMembers } from "@/lib/ImagesLink";
+import { teamMembers } from "@/lib/_exportLinks";
 
 export default function TeamSection() {
   return (
@@ -18,7 +18,7 @@ export default function TeamSection() {
                 </p>
               </div>
             </div>
-            <div className="flex overflow-x-auto max-md:overflow-x-hidden  max-md:flex-col space-x-6 py-4 px-6 custom-scrollbar">
+            <div className="flex overflow-x-auto max-md:overflow-x-hidden  max-md:flex-col space-x-4 py-4 pr-[4.5rem] custom-scrollbar">
               {teamMembers.map((member, index) => (
                 <div
                   key={index}
@@ -27,11 +27,11 @@ export default function TeamSection() {
                 >
                   <div className="flex flex-col items-center">
                     <Image
-                      className="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100"
+                      className="rounded-2xl h-[200px] object-cover drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100"
                       src={member.src}
                       alt={`${member.name} photo`}
                       width={200}
-                      height={200}
+                     
                     />
                     <div className="text-center mt-6">
                       <h1 className="text-gray-900 text-xl font-bold mb-1">
