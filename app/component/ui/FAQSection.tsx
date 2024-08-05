@@ -16,7 +16,7 @@ const FAQSection = () => {
 	return (
 		<div
 			id="FAQ"
-			className="flex justify-around items-center max-w-screen-xl mx-auto px-5 bg-white h-[100%] mb-16 mt-16 md:mt-20"
+			className="flex justify-around items-center max-w-screen-xl mx-auto px-5 bg-white h-[100%] mb-16 mt-16 md:mt-20 max-md:border max-md:rounded-lg max-md:mx-2"
 		>
 			<div className="relative group">
 				<Image

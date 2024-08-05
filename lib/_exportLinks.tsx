@@ -39,9 +39,9 @@ export const testimonials = [
 	{
 		IMG: Esgo,
 		name: "Sarah Epia",
-		role: " Founder,Esogo",
+		role: " Founder Esogo",
 		review:
-			"have worked with several recruitment companies in the past, but JobMingle stands out from the rest. Their team is professional, responsive, and truly cares about finding the right fit for our business. I highly recommend them for any recruitment needs.",
+			"I have worked with several recruitment companies in the past, but JobMingle stands out from the rest. Their team is professional, responsive, and truly cares about finding the right fit for our business. I highly recommend them for any recruitment needs.",
 	},
 	{
 		IMG: Benjamin,
@@ -53,6 +53,7 @@ export const testimonials = [
 	{
 		IMG: KobieBrave,
 		name: "Kobie Brave",
+		role: "Video Editor",
 		review:
 			"I'm so glad I joined the JobMingle community when I saw their invite link in a WhatsApp group I belonged to. If I hadn't, I wouldn't have landed my remote job as a video editor for an amazing company. Thank you, JobMingle",
 	},
@@ -80,7 +81,7 @@ export const testimonials = [
 		name: "Ajayi Temitayo",
 		role: "Marketing manager",
 		review:
-			"  was able to land a marketing manager position in a reputable company all thanks to JobMingle. I'm so happy about this because of the number of rejections I had before getting this job. Thank you so much JobMingle.",
+			"All thanks to JobMingle was able to land a marketing manager position in a reputable company. I'm so happy about this because of the number of rejections I had before getting this job. Thank you so much JobMingle.",
 	},
 ];
 type FAQItemType = {

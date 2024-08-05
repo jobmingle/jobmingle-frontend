@@ -18,10 +18,10 @@ const Page = () => {
 		router.push("/Signup/verify");
 	};
 	return (
-		<main className="text-black min-h-[112vh] h-auto bg-sign-up">
+		<main className="text-black min-h-[50vh] h-auto bg-sign-up  max-lg:mx-2 max-lg:my-5 ">
 			<div className=" p-0 m-0 h-full flex flex-col  sm:flex-row sm:justify-center  ">
 				<div
-					className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[112vh] bg-signup bg2"
+					className=" relative  max-lg:hidden  w-full md:w-[50%] h-[55vh] sm:h-[112vh] bg-signup bg2"
 					// className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[112vh] bg-signup"
 					// style={{ backgroundImage: `url(${jobmingle})` }}
 				>
@@ -31,8 +31,8 @@ const Page = () => {
 						className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8"
 					/>
 				</div>
-				<div className=" w-full md:w-[50%] h-auto py-4 md:py-0 bg-[#FEFEFE] sm:h-[112vh] border flex sm:justify-center flex-col items-center ">
-					<h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full px-4">
+				<div className=" w-full lg:w-[50%]  py-4 sm:py-12   bg-[#FEFEFE] sm:h-[100%] border flex  flex-col items-center ">
+					<h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full p-5">
 						Welcome To Jobmingle
 					</h2>
 					<p className="montserrat font-semibold text-[75%] sm:text-sm text-black-100 w-full text-center px-4">

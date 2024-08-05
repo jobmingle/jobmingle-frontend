@@ -112,8 +112,8 @@ const KeenSliderComponent: React.FC = () => {
 					<div ref={sliderRef} className="keen-slider">
 						{testimonials.map((testimonial, index) => (
 							<div key={index} className="keen-slider__slide">
-								<blockquote className="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8 lg:p-12">
-									<div className="flex items-center">
+								<div className="flex h-full flex-col  bg-stone-100 p-3 rounded-lg gap-3 items-start shadow-sm     sm:p-8   lg:p-12">
+									<div className="flex items-center justify-start">
 										{testimonial.IMG && (
 											<Image
 												src={testimonial.IMG}
@@ -134,10 +134,10 @@ const KeenSliderComponent: React.FC = () => {
 											)}
 										</div>
 									</div>
-									<p className="mt-4 leading-relaxed text-gray-700">
+									<p className="leading-relaxed text-gray-700 border rounded-md p-2 shadow-xl shadow-cyan-800 border-yellow-200">
 										{testimonial.review}
 									</p>
-								</blockquote>
+								</div>
 							</div>
 						))}
 					</div>

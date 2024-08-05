@@ -17,16 +17,16 @@ function Page() {
 	}
 
 	return (
-		<main className="text-black min-h-screen h-auto overflow-x-hidden ">
+		<main className="text-black min-h-screen h-auto overflow-x-hidden max-lg:border max-lg:rounded-lg max-lg:mx-2 max-lg:my-5">
 			<div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden">
-				<div className=" relative sm:hidden xsm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
+				<div className=" relative max-lg:hidden   w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
 					<Image
 						src={jobmingle}
 						alt="logo"
 						className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8"
 					/>
 				</div>
-				<div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE]  relative sm:h-[100vh] flex sm:justify-center flex-col items-center pt-4">
+				<div className=" w-full lg:w-[50%] h-auto bg-[#FEFEFE]  relative sm:h-[100vh] flex  flex-col items-center pt-6">
 					<h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-1 w-full px-4">
 						Welcome Back To Jobmingle
 					</h2>
@@ -84,7 +84,7 @@ function Page() {
 								Login
 							</button>
 
-							<p className="text-sm montserrat  font-medium float-right mt-5 mb-3 text-black-100/80">
+							<p className="text-sm montserrat  font-medium float-right mt-5 mb-3 text-black-100/80 ">
 								Don&#39;t have an Account?{" "}
 								<Link href="/Signup" className="text-[#F6CC16]">
 									Sign up now!
