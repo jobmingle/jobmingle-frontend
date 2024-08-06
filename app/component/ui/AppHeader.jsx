@@ -29,17 +29,17 @@ const AppHeader = () => {
         </div>
 
         <div className="inline-flex items-start gap-10 max-md:hidden">
-          <div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
+          <div className="text-lg font-medium  leading-6 hover:text-[#FFBE0B]">
             <Link href="#about" onClick={toggleMenu}>
-              About us
+              ABOUT US
             </Link>
           </div>
           <div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
-            <Link href="/Jobs">Jobs</Link>
+            <Link href="/Jobs">JOBS</Link>
           </div>
 
           <div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
-            <Link href="#contact">contact</Link>
+            <Link href="#contact">CONTACT</Link>
           </div>
         </div>
         <div className="inline-flex items-start mr-6 max-md:hidden">
