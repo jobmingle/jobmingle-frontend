@@ -14,7 +14,7 @@ function Page() {
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		console.log("hello");
-		router.push("/signin/confirm-email");
+		router.push("/Signin/Confirm-email");
 	};
 	const handleback = () => {
 		router.back();

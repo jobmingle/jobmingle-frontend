@@ -70,7 +70,7 @@ function Page() {
 									<p className=" montserrat text-xs font-medium">Remember me</p>
 								</div>
 								<Link
-									href={"/Signin/forgot-password"}
+									href={"/Signin/Forgot-password"}
 									className="text-xs text-[#F6CC16] montserrat font-medium"
 								>
 									Forgot Password?

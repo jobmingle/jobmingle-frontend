@@ -15,7 +15,7 @@ const Page = () => {
 		e.preventDefault();
 		// perform neccessary api requests
 		// redirect to verify
-		router.push("/Signup/verify");
+		router.push("/Signup/Verify");
 	};
 	return (
 		<main className="text-black min-h-[50vh] h-auto bg-sign-up  max-lg:mx-2 max-lg:my-5 ">
