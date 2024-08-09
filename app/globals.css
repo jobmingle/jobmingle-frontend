@@ -7,127 +7,108 @@
 @tailwind utilities;
 
 @layer components {
-	html {
-		scroll-behavior: smooth;
-	}
-	body {
-		font-family: "Poppins", sans-serif;
-		scroll-behavior: smooth;
-		color: rgb(var(--foreground-rgb));
-		background: var(--foundation-blue-darker, #ffffff);
-		overflow-x: hidden;
-	}
+   html {
+      scroll-behavior: smooth;
+   }
+   body {
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+      color: rgb(var(--foreground-rgb));
+      background: var(--foundation-blue-darker, #ffffff);
+      overflow-x: hidden;
+   }
 
-	.bg {
-		background-image: url("/image/image-forms/signinBanner.png");
-		background-repeat: no-repeat;
-		background-position: center;
-		object-fit: contain;
-		background-position: center;
-		background-size: cover;
-		filter: brightness(40%);
-	}
-	.bg2 {
-		/* background-image: url("./Signup/images/signupbanner.png"); */
-		background-image: url("/image/image-forms/signupbanner.png");
-		background-repeat: no-repeat;
-		background-position: center;
-		object-fit: contain;
-		background-position: center;
-		background-size: cover;
-		filter: brightness(40%);
-	}
+   .bg {
+      background-image: url("/image/image-forms/signinBanner.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      object-fit: contain;
+      background-position: center;
+      background-size: cover;
+      filter: brightness(40%);
+   }
+   .bg2 {
+      /* background-image: url("./Signup/images/signupbanner.png"); */
+      background-image: url("/image/image-forms/signupbanner.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      object-fit: contain;
+      background-position: center;
+      background-size: cover;
+      filter: brightness(40%);
+   }
 
-	/* Make up for the last profile card standing alone */
-	@media (max-width: 992px) {
-		.service-card:nth-child(5) {
-			/* background-color: red; */
-			width: 100%;
-		}
-	}
+   /* Make up for the last profile card standing alone */
+   @media (max-width: 992px) {
+      .service-card:nth-child(5) {
+         /* background-color: red; */
+         width: 100%;
+      }
+   }
 
-	.montserrat {
-		font-family: "Montserrat", sans-serif;
-	}
-	.sora {
-		font-family: "Sora", sans-serif;
-	}
+   .montserrat {
+      font-family: "Montserrat", sans-serif;
+   }
+   .sora {
+      font-family: "Sora", sans-serif;
+   }
 
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--foreground-rgb: 43 31, 31;
-			--background-start-rgb: 0, 0, 0;
-			--background-end-rgb: 0, 0, 0;
-			--foundation-blue-darker: #ffffff;
-		}
-	}
+   @media (prefers-color-scheme: dark) {
+      :root {
+         --foreground-rgb: 43 31, 31;
+         --background-start-rgb: 0, 0, 0;
+         --background-end-rgb: 0, 0, 0;
+         --foundation-blue-darker: #ffffff;
+      }
+   }
 
-	.custom-scrollbar {
-		overflow-x: auto;
-	}
+   .custom-scrollbar {
+      overflow-x: auto;
+   }
 
-	::-webkit-scrollbar {
-		height: 8px;
-		width: 12px;
-	}
+   ::-webkit-scrollbar {
+      height: 8px;
+      width: 12px;
+   }
 
-	::-webkit-scrollbar-track {
-		background: #f1f1f1;
-	}
+   ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+   }
 
-	::-webkit-scrollbar-thumb {
-		background: #f5cb1a;
-		border-radius: 2px;
-	}
+   ::-webkit-scrollbar-thumb {
+      background: #f5cb1a;
+      border-radius: 2px;
+   }
 
-	::-webkit-scrollbar-thumb:hover {
-		background: #e5bb0a;
-	}
+   ::-webkit-scrollbar-thumb:hover {
+      background: #e5bb0a;
+   }
 
-	.animate-rotate {
-		animation: rotate 10s linear infinite;
-	}
+   .animate-rotate {
+      animation: rotate 10s linear infinite;
+   }
 
-	@keyframes rotate {
-		0% {
-			transform: rotate(0deg) scale(10);
-		}
-		100% {
-			transform: rotate(-360deg) scale(10);
-		}
-	}
+   @keyframes rotate {
+      0% {
+         transform: rotate(0deg) scale(10);
+      }
+      100% {
+         transform: rotate(-360deg) scale(10);
+      }
+   }
 
-	@keyframes borderAnimation {
-		0% {
-			border-image-source: conic-gradient(
-				from 45deg,
-				#ffbe0b,
-				transparent 30%,
-				transparent 70%,
-				#e9e90e
-			);
-		}
-		100% {
-			border-image-source: conic-gradient(
-				from 45deg,
-				#ffbe0b,
-				transparent 70%,
-				transparent 30%,
-				#ffbe0b
-			);
-		}
-	}
+   @keyframes borderAnimation {
+      0% {
+         border-image-source: conic-gradient(from 45deg, #ffbe0b, transparent 30%, transparent 70%, #e9e90e);
+      }
+      100% {
+         border-image-source: conic-gradient(from 45deg, #ffbe0b, transparent 70%, transparent 30%, #ffbe0b);
+      }
+   }
 
-	.border-animate {
-		border: 4px solid transparent; /* Adjust the border width if needed */
-		border-image: conic-gradient(
-				from 45deg,
-				#ffbe0b,
-				transparent 30%,
-				transparent 70%,
-				#e9b60e
-			)
-			1; /* Initial gradient effect */
-		animation: borderAnimation 2s linear infinite;
-	}
+   .border-animate {
+      border: 4px solid transparent; /* Adjust the border width if needed */
+      border-image: conic-gradient(from 45deg, #ffbe0b, transparent 30%, transparent 70%, #e9b60e) 1; /* Initial gradient effect */
+      animation: borderAnimation 2s linear infinite;
+   }
 }
