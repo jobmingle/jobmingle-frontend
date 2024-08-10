@@ -1,26 +1,26 @@
-import AboutSection from "./about/page";
+"use client";
+
 import Hero from "./home/page";
 import Contact from "./contact-us/page";
-import HowItWorks from "./component/ui/Services";
-import AboutUs from "./about-us/page";
-import TeamSection from "./component/ui/TeamMember";
-import FAQSection from "./component/ui/FAQSection";
+import AboutSlider from "./component/ui/AboutSlider";
 import PartnersSponsors from "./component/ui/PartnersLogo";
-import KeenSliderComponent from "./component/ui/Testimonial";
-import FAQSections from "./component/ui/FAQSection2";
+import WhyChooseUs from "./component/ui/WhyChooseUs";
+import Steps from "./component/ui/Steps";
+import Testimonials from "@/app/component/ui/Testimonials";
+import Services from "@/app/component/ui/Services";
+import FAQSection from "./component/ui/FAQSection";
 
 export default function Home() {
 	return (
-		<main>
+		<main className="md:px-8  md:py-8 ">
 			<Hero />
+			<WhyChooseUs />
+			<Steps />
 			<PartnersSponsors />
-			<AboutSection />
-			<AboutUs />
-			<HowItWorks />
+			<Services />
+			<Testimonials />
+			<AboutSlider />
 			<FAQSection />
-			<TeamSection />
-			<KeenSliderComponent />
-			<FAQSections />
 			<Contact />
 		</main>
 	);

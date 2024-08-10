@@ -57,7 +57,7 @@ const Jobs = () => {
 					<div className="txt-3">
 						<p className="small">3 days ago</p>
 						<button className="btn" onClick={handleApplyClick}>
-							Apply
+							View Job
 						</button>
 					</div>
 				</div>
@@ -88,7 +88,7 @@ const Jobs = () => {
 					<div className="txt-3">
 						<p className="small">3 days ago</p>
 						<button className="btn" onClick={handleApplyClick}>
-							Apply
+							View Job
 						</button>
 					</div>
 				</div>
@@ -119,7 +119,7 @@ const Jobs = () => {
 					<div className="txt-3">
 						<p className="small">3 days ago</p>
 						<button className="btn" onClick={handleApplyClick}>
-							Apply
+							View Job
 						</button>
 					</div>
 				</div>
@@ -150,7 +150,7 @@ const Jobs = () => {
 					<div className="txt-3">
 						<p className="small">3 days ago</p>
 						<button className="btn" onClick={handleApplyClick}>
-							Apply
+							View Job
 						</button>
 					</div>
 				</div>
@@ -181,7 +181,7 @@ const Jobs = () => {
 					<div className="txt-3">
 						<p className="small">3 days ago</p>
 						<button className="btn" onClick={handleApplyClick}>
-							Apply
+							View Job
 						</button>
 					</div>
 				</div>
@@ -212,7 +212,7 @@ const Jobs = () => {
 					<div className="txt-3">
 						<p className="small">3 days ago</p>
 						<button className="btn" onClick={handleApplyClick}>
-							Apply
+							View Job
 						</button>
 					</div>
 				</div>

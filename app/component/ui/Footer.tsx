@@ -10,7 +10,7 @@ export default function Footer() {
 	return (
 		<footer
 			id="footer"
-			className=" border-t-4 bg-black text-white border-yellow-500 py-8"
+			className=" border-t-4 bg-stone-700 text-white border-yellow-500 py-8"
 		>
 			<div className="container mx-auto  px-4 flex flex-col lg:flex-row justify-center gap-[20%] max-md:gap-[5%] max-md:block items-center">
 				{/* Social Media and Contact Info */}

@@ -1,15 +1,15 @@
-import { JobTags } from "@/lib/_exportLinks";
+import { jobTags } from "@/lib/_exportLinks";
 import { useRef } from "react";
 
 export default function ScrollableTags() {
-	const scrollContainerRef = useRef(null);
+	const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
 	const scroll = (direction: any) => {
 		const { current } = scrollContainerRef;
 		if (direction === "left") {
-			current.scrollBy({ left: -200, behavior: "smooth" });
+			current?.scrollBy({ left: -200, behavior: "smooth" });
 		} else {
-			current.scrollBy({ left: 200, behavior: "smooth" });
+			current?.scrollBy({ left: 200, behavior: "smooth" });
 		}
 	};
 
@@ -38,7 +38,7 @@ export default function ScrollableTags() {
 				ref={scrollContainerRef}
 				className="flex space-x-2 overflow-x-hidden scrollbar-hide px-10"
 			>
-				{JobTags.map((tag, index) => (
+				{jobTags.map((tag, index) => (
 					<span
 						key={index}
 						className="whitespace-nowrap bg-white border border-gray-300 text-gray-700 px-5 py-3 rounded-full shadow-sm cursor-pointer hover:bg-yellow-200 transition"

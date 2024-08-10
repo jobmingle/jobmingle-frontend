@@ -16,7 +16,8 @@ const FAQSections = () => {
 	return (
 		<div
 			id="FAQ"
-			className="flex justify-around items-center max-w-screen-xl mb-[4rem] max-md:border max-md:rounded-lg max-md:mx-2 md:mb-[6rem] mx-auto px-5 bg-white h-[100%]"
+			// className="flex justify-around items-center max-w-screen-xl mb-[4rem] max-md:border max-md:rounded-lg max-md:mx-2 md:mb-[6rem] mx-auto px-5 bg-white h-[100%] md:mx-20"
+			className="flex justify-around items-center max-w-screen-xl mx-auto px-5 bg-white h-[100%] mb-16 mt-16 md:mt-20 max-md:border max-md:rounded-lg max-md:mx-2 "
 		>
 			<div className="relative group">
 				<Image

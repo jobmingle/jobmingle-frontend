@@ -54,7 +54,7 @@ const Hero = () => {
 					data-aos-delay="700"
 					id="animationbutton"
 				>
-					<Button className="w-[300px] max-md:w-[250px] text-[16px] border-white border-solid bg-[#f5cb1a]">
+					<Button className="w-[200px] max-md:w-[150px] text-[16px] border-white border-solid bg-[#f5cb1a]">
 						Get Started
 					</Button>
 				</div>

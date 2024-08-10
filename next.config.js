@@ -1,5 +1,14 @@
+const { hostname } = require("os");
+
 module.exports = {
 	images: {
-		domains: ["www.jobmingle.co"],
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "www.jobmingle.co",
+				port: "",
+				pathname: "/images/**",
+			},
+		],
 	},
 };

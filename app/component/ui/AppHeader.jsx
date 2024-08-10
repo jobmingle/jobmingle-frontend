@@ -40,11 +40,11 @@ const AppHeader = () => {
 		//This is the original non-sticky navbar without animation: remove the comment and delete the initial to return to original
 		// <nav className="bg-white text-black flex justify-around md:shrink-0 max-md:contents fixed top-0 left-0 right-0">
 		<nav
-			className={`bg-white  text-black flex justify-around md:shrink-0 max-md:contents  top-0 left-0 right- shadow-md transform transition-transform duration-500 ease-in-out z-50 ${
+			className={`bg-white  text-black flex justify-around  md:shrink-0 max-md:contents  top-0 left-0 right- shadow-md transform transition-transform duration-500 ease-in-out z-50 ${
 				isVisible && "fixed"
 			} ${isVisible ? "animate-bounceIn" : "translate-y-0"}`}
 		>
-			<div className="w-[100vw] h-28 border-b-[0.5px] border-b-[#9a8888] bg-white flex items-center justify-around">
+			<div className="w-[100vw] h-28 border-b-[0.5px] border-b-[#9a8888] bg-white flex items-center justify-between px-8">
 				<div className="flex items-center max-md:mr-[45%]">
 					<div className="font-sans text-[1.625rem] mx-7  font-medium leading-[1.4375rem]  hover:text-[#FFBE0B]">
 						<Link href="/">
@@ -52,18 +52,18 @@ const AppHeader = () => {
 								src={"/image/logo.png"}
 								alt="jobmingle"
 								srcSet=""
-								width={50}
-								height={50}
+								width={60}
+								height={60}
 							/>
 						</Link>
 					</div>
 				</div>
 
-				<div className="inline-flex items-start gap-10 max-md:hidden">
+				<div className="inline-flex items-end gap-16 max-md:hidden">
 					<div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
 						{/* <Link href="#about" onClick={toggleMenu}> */}
 						<Link href="/about" onClick={toggleMenu}>
-							About us
+							About Us
 						</Link>
 					</div>
 					<div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
@@ -72,7 +72,7 @@ const AppHeader = () => {
 
 					<div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
 						{/* <Link href="#contact">contact</Link> */}
-						<Link href="/contact-us">Contact</Link>
+						<Link href="/contact-us">Contact Us</Link>
 					</div>
 				</div>
 				<div className="inline-flex items-start mr-6 max-md:hidden">
@@ -96,8 +96,8 @@ const AppHeader = () => {
 						{menuOpen ? (
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								width="26"
-								height="36"
+								width="50"
+								height="50"
 								fill="currentColor"
 								className="bi bi-x"
 								viewBox="0 0 16 16"
@@ -130,29 +130,29 @@ const AppHeader = () => {
 			{/* Mobile menu */}
 			{menuOpen && (
 				<div
-					className={`bg-black md:hidden max-md:absolute max-md:h-[50%] max-md:w-[100%] max-md:z-[30] max-md:justify-center max-md:gap-[40px] text-[#d9d9e8] flex flex-col items-center transition-all duration-500 ${
+					className={`bg-stone-800 md:hidden max-md:absolute max-md:h-[50%] max-md:w-[100%] max-md:z-[30] max-md:justify-center max-md:gap-[5px] mt-28 text-[#d9d9e8] flex flex-col items-center transition-all duration-500 ${
 						menuOpen
 							? "clip-path-[polygon(0 0, 100% 0, 100% 100%, 0 80%)]"
 							: "clip-path-[polygon(0 0, 100% 0, 100% 100%, 0 0)]"
 					}`}
 				>
-					<div className="text-lg font-medium leading-6 ">
+					<div className="flex text-lg font-medium leading-6 hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20 ">
 						<Link href="/" onClick={toggleMenu}>
 							Home
 						</Link>
 					</div>
-					<div className="text-lg font-medium leading-6 ">
+					<div className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
 						<Link href="/about" onClick={toggleMenu}>
 							About us
 						</Link>
 					</div>
-					<div className="text-lg font-medium leading-6 ">
+					<div className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
 						<Link href="/jobs" onClick={toggleMenu}>
 							Jobs
 						</Link>
 					</div>
 
-					<div className="text-lg font-medium leading-6 ">
+					<div className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
 						<Link href="/contact-us" onClick={toggleMenu}>
 							Contact Us
 						</Link>

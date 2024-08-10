@@ -3,7 +3,7 @@ import { teamMembers } from "@/lib/_exportLinks";
 
 export default function TeamSection() {
 	return (
-		<div className="flex  items-center justify-center h-[100%] my-16 md:mt-32">
+		<div className="flex  items-center justify-center h-[100%] my-16 md:mt-32 ">
 			<div className="flex flex-col">
 				<div className="flex flex-col">
 					<div className="container max-w-7xl   ">

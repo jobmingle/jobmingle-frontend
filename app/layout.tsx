@@ -34,7 +34,8 @@ export default function RootLayout({
 			</body> */}
 			<body className={`${inter.className} min-h-screen flex flex-col`}>
 				<AppHeader />
-				<div className="flex-1 md:px-8  md:py-8 ">
+				{/* <div className="flex-1 md:px-8  md:py-8 "> */}
+				<div className="flex-1 ">
 					<main className="max-w-7xl mx-auto">{children}</main>
 				</div>
 				<AppFooter />
