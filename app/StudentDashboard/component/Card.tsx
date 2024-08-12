@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const Card = ({ course }: any) => {
   return (
-    <div className="border border-gray-300 p-4 rounded-lg shadow-sm w-full h-fit max-w-xs">
+    <div className="border border-gray-300 p-4 rounded-lg shadow-sm w-full h-[100%] max-w-xs">
       <Image
         src={Header}
         alt={course.title}
