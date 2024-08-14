@@ -76,14 +76,14 @@ const AppHeader = () => {
 					</div>
 				</div>
 				<div className="inline-flex items-start mr-6 max-md:hidden">
-					<Link href="/Signup">
+					<Link href="/sign-up">
 						<Button className="w-[120px]  bg-black text-white rounded-[10px] mr-[20px] hover:text-black hover:bg-yellow-500 transition-colors duration-500">
 							Sign Up
 						</Button>
 					</Link>
 
 					{/* I hid this button on large screen downward with max-lg:hidden , to fix nav items overlap */}
-					<Link href="/Signin" className="max-lg:hidden">
+					<Link href="/sign-in" className="max-lg:hidden">
 						<Button className="w-[120px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 ">
 							Login
 						</Button>

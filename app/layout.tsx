@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import "./App.css";
-import AppFooter from "./component/ui/Footer";
+import { Inter, IBM_Plex_Serif } from "next/font/google";
+import "./_styles/globals.css";
+import AppFooter from "./_components/ui/Footer";
 import MyApp from "@/app/_app";
 import favicon from "./favicon.ico";
-import AppHeader from "@/app/component/ui/AppHeader";
+import AppHeader from "@/app/_components/ui/AppHeader";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const ibmPlexSerif = IBM_Plex_Serif({
+	subsets: ["latin"],
+	weight: ["400", "700"],
+	variable: "--font-ibm-plex-serif",
+});
 
 export const metadata: Metadata = {
 	title: "JobMingle",
@@ -32,7 +36,9 @@ export default function RootLayout({
 
 				<AppFooter />
 			</body> */}
-			<body className={`${inter.className} min-h-screen flex flex-col`}>
+			<body
+				className={`${inter.className} ${ibmPlexSerif.variable} min-h-screen flex flex-col`}
+			>
 				<AppHeader />
 				{/* <div className="flex-1 md:px-8  md:py-8 "> */}
 				<div className="flex-1 ">

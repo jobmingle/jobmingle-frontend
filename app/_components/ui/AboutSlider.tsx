@@ -1,9 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
 import Head from "next/head";
-import "@/app/globals.css";
 import { slides } from "@/lib/_exportLinks";
 import Carousel from "./Carousel";
 

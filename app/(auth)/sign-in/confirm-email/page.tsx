@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-import jobmingle from "../Images/jobmingle.png";
-import arrowback from "../Images/arrowback.png";
+import jobmingle from "@/public/jobmingle.png";
+import arrowback from "@/public/arrowback.png";
 // import "../globals.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -31,7 +31,7 @@ function Page() {
 	// onsubmitfunctionalities
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
-		router.push("/Signin/reset-password");
+		router.push("/sign-in/reset-password");
 		const code = Code.join("");
 		console.log(code);
 	};

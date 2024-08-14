@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import React from "react";
-import jobmingle from "./Images/jobmingle.png";
-import Googleicon from "./Images/Googleicon.png";
-import "../globals.css";
+import jobmingle from "@/public/jobmingle.png";
+import Googleicon from "@/public/Googleicon.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -13,7 +12,7 @@ function Page() {
 
 	function handleSubmit(e: any) {
 		e.preventDefault();
-		router.push("Signin/confirm-email");
+		router.push("sign-in/confirm-email");
 	}
 
 	return (
@@ -31,7 +30,7 @@ function Page() {
 						Welcome Back To Jobmingle
 					</h2>
 					<p className="montserrat font-semibold text-[75%] sm:text-sm text-black-100 w-full text-center px-4">
-						please log in to your account to access feautures
+						Please log in to your account to access feautures
 					</p>
 					<main className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[70%] mt-7 sm:mt-4 p-2 pb-8 flex flex-col">
 						<button className="border-black-100 border-solid montserrat border-[1px] w-full h-[3rem] sm:h-[3rem] rounded-[10px] flex justify-center items-center gap-1 bg-transparent">
@@ -86,7 +85,7 @@ function Page() {
 
 							<p className="text-sm montserrat  font-medium float-right mt-5 mb-3 text-black-100/80 ">
 								Don&#39;t have an Account?{" "}
-								<Link href="/Signup" className="text-[#F6CC16]">
+								<Link href="/sign-up" className="text-[#F6CC16]">
 									Sign up now!
 								</Link>
 							</p>

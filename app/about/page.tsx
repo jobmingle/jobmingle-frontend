@@ -3,13 +3,12 @@ import LaptopPic from "@/public/jobSearch.jpg";
 import LaptopPicTwo from "@/public/african-american-business-woman-holding-laptop-standing-by-window.png";
 import LaptopPicThree from "@/public/Pexels Photo by Christina Morillo.svg";
 import LaptopPicFour from "@/public/christina.png";
-import AboutSlider from "@/app/component/ui/AboutSlider";
-import Services from "@/app/component/ui/Services";
-import Testimonials from "@/app/component/ui/Testimonials";
-import FAQ1 from "@/app/component/ui/FAQSection";
-import FAQ2 from "../component/ui/FAQSection2";
-import TeamSection from "../component/ui/TeamMember";
-import CoreValueCard from "../component/ui/CoreValueCard";
+import AboutSlider from "@/app/_components/ui/AboutSlider";
+import Services from "@/app/_components/ui/Services";
+import Testimonials from "@/app/_components/ui/Testimonials";
+import FAQ2 from "../_components/ui/FAQSection2";
+import TeamSection from "../_components/ui/TeamMember";
+import CoreValueCard from "../_components/ui/CoreValueCard";
 import Contact from "../contact-us/page";
 
 const AboutSection = () => {

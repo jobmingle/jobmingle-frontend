@@ -1,10 +1,9 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import jobmingle from "../../signin/Images/jobmingle.png";
-import "../../globals.css";
+import jobmingle from "@/public/jobmingle.png";
 import { useRouter } from "next/navigation";
-import SuccessModal from "../../../Components/SuccessModal";
+import SuccessModal from "@/Components/SuccessModal";
 import Interests from "@/Components/ProfileTabs/Interests";
 import Usage from "@/Components/ProfileTabs/Usage";
 import ProfilePic from "@/Components/ProfileTabs/ProfilePic";

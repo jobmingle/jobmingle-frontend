@@ -4,7 +4,6 @@
 
 import Head from "next/head";
 import { useState } from "react";
-import "@/app/globals.css";
 import bg from "@/public/hello.png";
 import Button from "../atoms/Button";
 

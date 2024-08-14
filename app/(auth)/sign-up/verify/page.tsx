@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import jobmingle from "../../signin/Images/jobmingle.png";
-import arrowback from "../../signin/Images/arrowback.png";
-// import "../../globals.css";
+import jobmingle from "@/public/jobmingle.png";
+import arrowback from "@/public/arrowback.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import SuccessModal from "../../../Components/SuccessModal";
+import SuccessModal from "@/Components/SuccessModal";
 //
 function Page() {
 	const router = useRouter();
@@ -21,7 +20,7 @@ function Page() {
 				<SuccessModal
 					extrastyling={"h-[110vh] sm:h-auto"}
 					Act={"Email Verified"}
-					linkto={"/Signup/generating-profile"}
+					linkto={"/sign-up/generating-profile"}
 					whereto={"Click Here To Continue The Sign Up Process"}
 				/>
 			) : null}

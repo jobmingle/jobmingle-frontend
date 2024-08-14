@@ -1,10 +1,9 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import jobmingle from "../Images/jobmingle.png";
-import arrowback from "../Images/arrowback.png";
-import "../../globals.css";
-import SuccessModal from "../../../Components/SuccessModal";
+import jobmingle from "@/public/jobmingle.png";
+import arrowback from "@/public/arrowback.png";
+import SuccessModal from "@/Components/SuccessModal";
 import Router from "next/router";
 //
 function Page() {
@@ -28,7 +27,7 @@ function Page() {
 					extrastyling={"h-screen"}
 					whereto={" Click here to go back to login"}
 					Act={"Your password has been changed successfully!"}
-					linkto={"/Signin"}
+					linkto={"/sign-in"}
 				/>
 			) : null}{" "}
 			<div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center relative overflow-x-hidden">

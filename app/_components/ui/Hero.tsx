@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "../component/atoms/Button";
+import Button from "../atoms/Button";
 
 const Hero = () => {
 	return (

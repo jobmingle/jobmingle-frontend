@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import jobmingle from "../signin/Images/jobmingle.png";
-import SignUpBanner from "../Signup/images/signupbanner.png";
-import Googleicon from "../signin/Images/Googleicon.png";
+import jobmingle from "@/public/jobmingle.png";
+import SignUpBanner from "@/public/image/image-forms/signupbanner.png";
+import Googleicon from "@/public/Googleicon.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -15,16 +15,12 @@ const Page = () => {
 		e.preventDefault();
 		// perform neccessary api requests
 		// redirect to verify
-		router.push("/Signup/verify");
+		router.push("/sign-up/verify");
 	};
 	return (
 		<main className="text-black min-h-[50vh] h-auto bg-sign-up  max-lg:mx-2 max-lg:my-5 ">
 			<div className=" p-0 m-0 h-full flex flex-col  sm:flex-row sm:justify-center  ">
-				<div
-					className=" relative  max-lg:hidden  w-full md:w-[50%] h-[55vh] sm:h-[112vh] bg-signup bg2"
-					// className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[112vh] bg-signup"
-					// style={{ backgroundImage: `url(${jobmingle})` }}
-				>
+				<div className=" relative max-lg:hidden   w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
 					<Image
 						src={jobmingle}
 						alt="logo"
@@ -118,7 +114,7 @@ const Page = () => {
 							</button>
 							<p className="text-sm montserrat  font-medium float-right mt-4 text-black-100/80">
 								Don&#39;t have an Account?{" "}
-								<Link href="/Signin" className="text-[#F6CC16]">
+								<Link href="/sign-in" className="text-[#F6CC16]">
 									Login
 								</Link>
 							</p>
