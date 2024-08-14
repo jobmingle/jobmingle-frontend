@@ -12,6 +12,20 @@ import CoFounder from "@/public/coFounder.jpeg";
 import ProductDesigner from "@/public/productDesigner.jpeg";
 import CTO from "@/public/CTO.jpeg";
 import BrandDesigner from "@/public/graphicsdesigner.jpeg";
+import TalentSync from "@/public/logo4.png";
+import ImpressionHub from "@/public/logo3.jpeg";
+import IncRemote from "@/public/LUSH.png";
+import Raiz from "@/public/logo5.jpeg";
+import Vent from "@/public/Photo from Omole.jpg";
+import WhyUsImg1 from "@/public/why-us-1.jpg";
+import WhyUsImg2 from "@/public/why-us-2.jpg";
+import WhyUsImg3 from "@/public/why-us-3.jpg";
+import WhyUsImg4 from "@/public/why-us-4.jpg";
+import WhyUsImg5 from "@/public/why-us-5.jpg";
+import WhyUsImg6 from "@/public/why-us-6.jpg";
+import WhyUsImg7 from "@/public/why-us-7.jpg";
+import WhyUsImg8 from "@/public/why-us-8.jpg";
+import WhyUsImg9 from "@/public/why-us-9.jpg";
 
 export const teamMembers = [
 	{
@@ -146,6 +160,7 @@ export const faqItemss: FAQItemType[] = [
 			"For the meantime, you can pay to our account details below and send proof of payment to our WhatsApp line below. Account details:2044112176 JobMingle Nigeria Firstbank ,WhatsApp line: 07077308481",
 	},
 ];
+
 //Slides
 export const slides = [
 	{
@@ -162,9 +177,30 @@ export const slides = [
 	},
 ];
 
-import React from "react";
+//Why Choose Us Section data | Home Page
+export const whyChooseUsData = [
+	{
+		img: WhyUsImg1,
+		title: "Commitment ",
+		description:
+			"We are Completely committed to helping you secure your dream remote job, enabling you live the life you were meant to live.",
+	},
+	{
+		img: WhyUsImg2,
+		title: "Quality Services",
+		description:
+			"We offer the finest digital courses designed to equip you with the skills of your choice, placing you among the top 1% in  the country.",
+	},
+	{
+		img: WhyUsImg3,
+		title: "You Are Our Priority",
+		description:
+			"At JobMingle, we prioritize you in every decision we make , ensuring that you receive the best possible experience when using our product.",
+	},
+];
 
-export const JobTags = [
+// Job Tags
+export const jobTags = [
 	"Sales",
 	"Fulltime",
 	"Remote",
@@ -177,4 +213,18 @@ export const JobTags = [
 	"Project manager",
 	"Designer",
 	"Graphic designer",
+];
+
+// Partners Logo
+export const partnersLogos = [
+	{ img: TalentSync },
+	{ img: ImpressionHub },
+	{ img: IncRemote },
+	{ img: Raiz },
+	{ img: Vent },
+	{ img: TalentSync },
+	{ img: ImpressionHub },
+	{ img: IncRemote },
+	{ img: Raiz },
+	{ img: Vent },
 ];

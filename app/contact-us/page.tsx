@@ -1,9 +1,9 @@
 "use client";
 
-import Button from "../component/atoms/Button";
-import Input from "../component/atoms/Input";
+import Button from "../_components/atoms/Button";
+import Input from "../_components/atoms/Input";
 import { useState } from "react";
-import Textarea from "../component/atoms/Textarea";
+import Textarea from "../_components/atoms/Textarea";
 
 export default function Contact() {
 	const [FormData, setFormData] = useState({
