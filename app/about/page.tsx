@@ -3,22 +3,18 @@ import LaptopPic from "@/public/jobSearch.jpg";
 import LaptopPicTwo from "@/public/african-american-business-woman-holding-laptop-standing-by-window.png";
 import LaptopPicThree from "@/public/Pexels Photo by Christina Morillo.svg";
 import LaptopPicFour from "@/public/christina.png";
-
-type Props = {
-	title: string;
-	description: string;
-	aos: string;
-	aostimer: string;
-};
+import AboutSlider from "@/app/_components/ui/AboutSlider";
+import Services from "@/app/_components/ui/Services";
+import Testimonials from "@/app/_components/ui/Testimonials";
+import FAQ2 from "../_components/ui/FAQSection2";
+import TeamSection from "../_components/ui/TeamMember";
+import CoreValueCard from "../_components/ui/CoreValueCard";
+import Contact from "../contact-us/page";
 
 const AboutSection = () => {
 	return (
-		<section
-			id="about"
-			// className="relative bg-[#f8f9fa]  flex items-center justify-center flex-col "
-			className="relative  md:mt-1 flex items-center justify-center flex-col "
-		>
-			<div className="w-full h-full flex flex-row justify-around items-start mt-1 max-md:mt-[10px] px-[1rem] max-md:p-[1rem] max-md:flex-col max-md:justify-center max-md:items-center md:gap-10">
+		<section id="about" className="md:px-8  md:py-">
+			<div className="w-full h-full flex flex-row justify-around items-start mt-1 max-md:mt-[10px] px-[1rem] max-md:p-[1rem] max-md:flex-col max-md:justify-center max-md:items-center md:gap-10  ">
 				<div
 					className="w-[70%] max-md:w-full  flex justify-start flex-col mt-[5rem] max-md:ml-[2px] max-md:mt-[1rem] sm:border-none border-solid border-2 border-yellow-400 sm:text-start text-center p-5 shadow-xl shadow-cyan-800"
 					data-aos="zoom-in"
@@ -139,40 +135,14 @@ const AboutSection = () => {
 					/>
 				</div>
 			</div>
+			<AboutSlider />
+			<Services />
+			<TeamSection />
+			<Testimonials />
+			<FAQ2 />
+			<Contact />
 		</section>
 	);
 };
 
 export default AboutSection;
-
-function CoreValueCard({ title, description, aos, aostimer }: Props) {
-	return (
-		<div
-			data-aos={aos}
-			data-aos-duration={aostimer}
-			className="shadow-lg max-md:mt-3 z-10 flex-shrink-0 w-[330px] text-slate-400 h-[320px] hover:text-yellow-500 rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:bg-black hover:shadow-lg max-md:w-[300px] max-md:h-[350px] max-md:hover:ml-[5px] max-md:p-[9px] group"
-		>
-			<div className="relative z-20 flex-shrink-0 w-12 h-12 rounded-full bg-white/[.10] flex items-center justify-center my-5">
-				<svg
-					width={20}
-					height={32}
-					viewBox="0 0 20 32"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					{/* SVG Path Here */}
-					<path
-						d="M10 0L0 32H20L10 0Z" // Example path data
-						fill="#e2c105" // Example fill color
-					/>
-				</svg>
-			</div>
-			<div className="font-bold text-[16px] leading-loose mb-3 text-black group-hover:text-yellow-500">
-				{title}
-			</div>
-			<div className="font-medium group-hover:text-white">
-				<p>{description}</p>
-			</div>
-		</div>
-	);
-}

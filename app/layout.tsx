@@ -1,13 +1,17 @@
 import MyApp from "@/app/_app";
-import AppHeader from "@/app/component/ui/AppHeader";
+import AppHeader from "@/app/_components/ui/AppHeader";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import AppFooter from "../app/component/ui/Footer";
-import "./App.css";
+import { IBM_Plex_Serif, Inter } from "next/font/google";
+import AppFooter from "../app/_components/ui/Footer";
 import favicon from "./favicon.ico";
-import "./globals.css";
+import "../app/_styles/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const ibmPlexSerif = IBM_Plex_Serif({
+	subsets: ["latin"],
+	weight: ["400", "700"],
+	variable: "--font-ibm-plex-serif",
+});
 
 export const metadata: Metadata = {
   title: "JobMingle",
