@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../component/atoms/Button";
-import "../globals.css";
+import Button from "../_components/atoms/Button";
+import "../_styles/globals.css";
 import Image from "next/image";
 import tired from "../../public/tiredicon.png";
 import share from "../../public/shareicon.png";
@@ -114,8 +114,7 @@ const jobs = [
 ];
 
 const Page = () => {
-   const Jobs = 0;
-
+   const Jobs = 1;
    const time = new Date().getHours();
 
    return (
