@@ -49,30 +49,6 @@ const ProfileForm = () => {
 
         <div className="space-y-6 w-[800px] max-md:w-[50%]">
           {/* Email Input */}
-          <div className="flex flex-col  max-md:w-full">
-            <label
-              htmlFor="email"
-              className="mb-1 text-sm font-medium text-gray-700"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={form.email}
-              onChange={handleInputChange}
-              placeholder="Enter Your Email here"
-              className="w-full p-3 bg-gray-100 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              style={{
-                border: "1.71px solid #D2CFCF",
-                width: "100%",
-                height: "85px",
-                borderRadius: "12px",
-              }}
-            />
-          </div>
-
           {/* Name Input */}
           <div className="flex flex-col">
             <label
@@ -88,6 +64,29 @@ const ProfileForm = () => {
               value={form.name}
               onChange={handleInputChange}
               placeholder="Enter Your Name here"
+              className="w-full p-3 bg-gray-100 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              style={{
+                border: "1.71px solid #D2CFCF",
+                width: "100%",
+                height: "85px",
+                borderRadius: "12px",
+              }}
+            />
+          </div>
+          <div className="flex flex-col  max-md:w-full">
+            <label
+              htmlFor="email"
+              className="mb-1 text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={form.email}
+              onChange={handleInputChange}
+              placeholder="Enter Your Email here"
               className="w-full p-3 bg-gray-100 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
               style={{
                 border: "1.71px solid #D2CFCF",
@@ -188,7 +187,7 @@ const ProfileForm = () => {
             type="submit"
             className="w-[800px] max-md:w-[300px]  max=-md:w-[200px] py-3 bg-yellow-500 text-white font-semibold rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
             style={{
-              height: "50px",
+              height: "70px",
               paddingLeft: "16px",
               paddingRight: "16px",
               borderRadius: "12px",
