@@ -15,7 +15,7 @@ const Page = () => {
    const username = "Prosper Williams";
    const location = "Benin City Nigeria";
    return (
-      <div className=" min-h-screen pt-4 px-2 sm:px-0">
+      <div className=" h-auto pt-4 px-2 sm:px-0">
          <section className="m-auto max-w-[22rem] flex flex-col justify-center py-2 sm:px-2">
             <main className=" flex justify-center flex-row items-center gap-3">
                <div className=" flex-2">

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Button from "../_components/atoms/Button";
 import "../_styles/globals.css";
@@ -5,15 +6,8 @@ import Image from "next/image";
 import tired from "../../public/tiredicon.png";
 import share from "../../public/shareicon.png";
 import love from "../../public/loveicon.png";
+import {useRouter} from "next/navigation";
 
-// interface Jobprops {
-//    id: number;
-//    icon: any;
-//    platform: string;
-//    jobTitle: string;
-//    location: string;
-//    pricerange: string;
-// }
 const jobs = [
    {
       id: 1,
@@ -116,10 +110,16 @@ const jobs = [
 const Page = () => {
    const Jobs = 1;
    const time = new Date().getHours();
+   const router = useRouter();
+   const handlelistjob = () => {
+      router.push("/employerdashboard/list-a-job");
+   };
 
    return (
       <div className="min-h-[70vh] sm:min-h-[85vh] md:min-h-[90vh] h-auto mx-2 md:mx-0">
-         <Button className="w-[160px] max-md:w-[160px] text-[14px] mt-3 md:mt-0 text-white sora bg-[#f5cb1a]">List a job here !</Button>
+         <Button className="w-[160px] max-md:w-[160px] text-[14px] mt-3 md:mt-0 text-white sora bg-[#f5cb1a]" onClick={handlelistjob}>
+            List a job here !
+         </Button>
          {Jobs >= 1 ? (
             <main className="border-black/50 w-full h-auto min-h-[35vh] md:min-h-[50vh] border-solid border-[0.5px] rounded-md mt-10 p-2 lg:p-4">
                <div className=" flex justify-between gap-4 items-center flex-wrap">
@@ -201,7 +201,6 @@ const Page = () => {
                </div>
                <section className="flex flex-col justify-center items-center py-4">
                   <Image src={tired} alt="tiredicon" className="w-24 h-24 md:w-28 md:h-28 m-auto" />
-
                   <p className="sora capitalize pt-2 ">you have not listed any job yet!</p>
                   <p className="sora capitalize text-md text-[#f5cb1a] underline">click here to list a job now!</p>
                </section>
