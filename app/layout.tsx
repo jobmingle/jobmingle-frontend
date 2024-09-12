@@ -24,8 +24,13 @@ export default function RootLayout({
    return (
       <html lang="en" style={{overflowX: "hidden"}} className="min-h-[100vh]">
          <head>
-            <Script async src="https://www.googletagmanager.com/gtag/js?id=G-QCE3Y88E2S"></Script>
-            <Script>{` window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QCE3Y88E2S'); `}</Script>
+            <Script async src="https://www.googletagmanager.com/gtag/js?id=G-DEPH7ESV9J"></Script>
+            <Script>
+               {`window.dataLayer = window.dataLayer || [];
+                     function gtag(){dataLayer.push(arguments);}
+                     gtag('js', new Date());
+                     gtag('config', 'G-DEPH7ESV9J');`}
+            </Script>
          </head>
 
          <MyApp />

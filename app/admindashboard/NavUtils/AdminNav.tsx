@@ -34,7 +34,7 @@ const Sidenav = () => {
    };
 
    return (
-      <div className="fixed  top-44 left-18">
+      <div className="fixed  top-40 left-[11rem]">
          <button className="bg-[#F5F5F1] rounded-full mb-1 flex justify-center items-center p-2 shadow-xl" onClick={() => setNavactive(!Navactive)}>
             <Image src={Navactive ? close : hamburger} alt="icpn" className="w-[2rem] h-[2rem]" />
          </button>
