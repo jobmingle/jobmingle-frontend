@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { Wrapper } from "./style";
 import Image from "next/image";
@@ -9,6 +10,7 @@ import JobItems from "../_components/job/Jobs";
 import { url } from "inspector";
 import JobHeader from "../_components/job/JobHeader";
 import ScrollableTags from "@/app/_components/job/ScrollableTags";
+import FAQSection from "../_components/ui/FAQJob";
 
 const page = () => {
 	return (
@@ -16,6 +18,7 @@ const page = () => {
 			<JobHeader />
 			<ScrollableTags />
 			<JobItems />
+			<FAQSection />
 		</>
 	);
 };
