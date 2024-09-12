@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Button from "../atoms/Button";
 import Image from "next/image";
+import Logo from "./Logo";
+import logo from "@/public/logo.png";
 
 const AppHeader = () => {
 	const [isVisible, setIsVisible] = useState(false);
@@ -46,15 +48,9 @@ const AppHeader = () => {
 		>
 			<div className="w-[100vw] h-28 border-b-[0.5px] border-b-[#9a8888] bg-white flex items-center justify-between px-8">
 				<div className="flex items-center max-md:mr-[45%]">
-					<div className="font-sans text-[1.625rem] mx-7  font-medium leading-[1.4375rem]  hover:text-[#FFBE0B]">
+					<div className=" font-sans text-[1.625rem] mx-7  font-medium leading-[1.4375rem]  hover:text-[#FFBE0B]">
 						<Link href="/">
-							<Image
-								src={"/image/logo.png"}
-								alt="jobmingle"
-								srcSet=""
-								width={60}
-								height={60}
-							/>
+							<Logo path={logo} />
 						</Link>
 					</div>
 				</div>
@@ -158,7 +154,7 @@ const AppHeader = () => {
 						</Link>
 					</div>
 					<div className="inline-flex items-start mr-6">
-						<Link href="/Signup" onClick={toggleMenu}>
+						<Link href="/sign-up" onClick={toggleMenu}>
 							<Button className="w-[200px] bg-[#f5cb1a] text-black border-solid border-10 border-white transition-colors duration-300">
 								Sign Up
 							</Button>

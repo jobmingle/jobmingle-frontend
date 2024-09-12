@@ -1,10 +1,11 @@
 // This is React icons https://react-icons.github.io/react-icons, it imports many icon library, I am using Heroicons2 precisely
-import { HiSearch } from "react-icons/hi";
 import {
 	HiAcademicCap,
 	HiBriefcase,
 	HiChevronDoubleRight,
 	HiKey,
+	HiMagnifyingGlass,
+	HiMiniCheckBadge,
 	HiMiniPencilSquare,
 	HiOutlineBookOpen,
 	HiRocketLaunch,
@@ -19,61 +20,67 @@ export default function Steps() {
 				<span>STEPS</span> <HiAcademicCap />
 			</div>
 
-			<div className="grid  max-md:grid-cols-3 max-md:gap-0 md:grid-cols-5  p-2 items-center justify-center text-center w-full">
-				<div className="flex justify-center items-center flex-col h-[10rem] w-full   border border-yellow-500 hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
-					<div>
-						<HiKey className="h-[2.4rem] w-[2.4rem] text-yellow-500 hover:text-white " />
+			<div className="flex max-md:flex-col justify-center w-full">
+				<div className="grid   grid-cols-3   items-center justify-center text-center md:w-[60%]">
+					<div className="flex justify-center items-center flex-col h-[10rem] w-full   border border-yellow-500 hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
+						<div>
+							<HiKey className="h-[2.4rem] w-[2.4rem] text-yellow-500 hover:text-white " />
+						</div>
+						<div className="">
+							<h3 className="font-bold text-xl">Step 1</h3>
+							<p className=" text-sm text-stone-600 p-2 mt-2 ">Sign up!</p>
+						</div>
 					</div>
-					<div className="">
-						<h3 className="font-bold text-xl">Step 1</h3>
-						<p className=" text-sm text-stone-600 p-2 mt-2 border rounded-md border-yellow-300">
-							Sign up!
-						</p>
+					<div className="flex justify-center items-center flex-col h-[10rem]  w-full   border border-yellow-500 hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
+						<div>
+							<HiMiniPencilSquare className="h-[2.4rem] w-[2.4rem] text-yellow-500" />
+						</div>
+						<div>
+							<h3 className="font-bold text-xl">Step 2</h3>
+							<p className="text-sm text-stone-600 mt-2 p-2 ">Update profile</p>
+						</div>
 					</div>
-				</div>
-				<div className="flex justify-center items-center flex-col h-[10rem]  w-full   border border-yellow-500 hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
-					<div>
-						<HiMiniPencilSquare className="h-[2.4rem] w-[2.4rem] text-yellow-500" />
-					</div>
-					<div>
-						<h3 className="font-bold text-xl">Step 2</h3>
-						<p className="text-sm text-stone-600 mt-2 p-2 border rounded-md border-yellow-300">
-							Update profile
-						</p>
-					</div>
-				</div>
-				<div className="flex justify-center items-center flex-col h-[10rem] w-full   border border-yellow-500 hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
-					<div>
-						<HiOutlineBookOpen className="h-[2.4rem] w-[2.4rem] text-yellow-500" />
-					</div>
-					<div>
-						<h3 className="font-bold text-xl">Step 3</h3>
-						<p className="text-sm text-stone-600 mt-2 p-2 border rounded-md border-yellow-300">
-							Take a course
-						</p>
+					<div className="flex justify-center items-center flex-col h-[10rem] w-full   border border-yellow-500 hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
+						<div>
+							<HiOutlineBookOpen className="h-[2.4rem] w-[2.4rem] text-yellow-500" />
+						</div>
+						<div>
+							<h3 className="font-bold text-xl">Step 3</h3>
+							<p className="text-sm text-stone-600 mt-2 p-2 ">Take a course</p>
+						</div>
 					</div>
 				</div>
-				<div className="flex justify-center items-center flex-col h-[10rem] w-full  border border-yellow-500 hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
-					<div>
-						<HiSearch className="h-[2.4rem] w-[2.4rem] text-yellow-500" />
+				<div className="grid   grid-cols-2  items-center justify-center text-center md:w-[40%]">
+					<div className="flex justify-center items-center flex-col h-[10rem] w-full  border border-yellow-500 hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
+						<div>
+							<HiMagnifyingGlass className="h-[2.4rem] w-[2.4rem] text-yellow-500" />
+						</div>
+						<div>
+							<h3 className="font-bold text-xl">Step 4</h3>
+							<p className="text-sm text-stone-600 p-2 mt-2 ">Search for job</p>
+						</div>
 					</div>
-					<div>
-						<h3 className="font-bold text-xl">Step 4</h3>
-						<p className="text-sm text-stone-600 p-2 mt-2 border rounded-md border-yellow-300">
-							Search for job
-						</p>
+
+					<div className="flex justify-center items-center flex-col h-[10rem] w-full   border border-yellow-500 md:rounded-r-2xl hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
+						<div>
+							<HiBriefcase className="h-[2.4rem] w-[2.4rem] text-yellow-500" />
+						</div>
+
+						<div>
+							<h3 className="font-bold text-xl">Step 5</h3>
+							<p className="text-sm text-stone-600 mt-2 p-2 ">Employed</p>
+						</div>
 					</div>
-				</div>
-				<div className="flex max-md:col-span-2  justify-center items-center flex-col h-[10rem] w-full   border border-yellow-500 md:rounded-r-2xl hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
-					<div>
-						<HiBriefcase className="h-[2.4rem] w-[2.4rem] text-yellow-500" />
-					</div>
-					<div>
-						<h3 className="font-bold text-xl">Step 5</h3>
-						<p className="text-sm text-stone-600 mt-2 p-2 border rounded-md  border-yellow-300 ">
-							Employed
-						</p>
-					</div>
+
+					{/* <div className="flex justify-center items-center flex-col h-[10rem] w-full   border border-yellow-500 md:rounded-r-2xl hover:bg-yellow-400 transition ease-in-out delay-100 duration-1000">
+						<div>
+							<HiMiniCheckBadge className="h-[2.4rem] w-[2.4rem] text-yellow-500" />
+						</div>
+						<div>
+							<h3 className="font-bold text-xl">Advance</h3>
+							<p className="text-sm text-stone-600 mt-2 p-2 "></p>
+						</div>
+					</div> */}
 				</div>
 			</div>
 		</div>
