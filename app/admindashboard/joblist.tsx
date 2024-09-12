@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -65,6 +65,7 @@ const initialJobs: Job[] = [
 
 const Joblist = ({ isAdmin }: { isAdmin: boolean }) => {
   const [jobs, setJobs] = useState<Job[]>(initialJobs);
+  const [deletedJobs, setDeletedJobs] = useState<Job[]>([]);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const totalTarget = 10;
@@ -80,7 +81,11 @@ const Joblist = ({ isAdmin }: { isAdmin: boolean }) => {
   };
 
   const deleteJob = (id: number) => {
-    setJobs(jobs.filter((job) => job.id !== id));
+    const jobToDelete = jobs.find((job) => job.id === id);
+    if (jobToDelete) {
+      setDeletedJobs([...deletedJobs, jobToDelete]);
+      setJobs(jobs.filter((job) => job.id !== id));
+    }
   };
 
   const approveJob = (id: number) => {
@@ -92,10 +97,10 @@ const Joblist = ({ isAdmin }: { isAdmin: boolean }) => {
   };
 
   const progressData = [
-    { name: "Approved Jobs", value: jobs.filter((job) => job.approved).length },
+    { name: "Job Listings", value: jobs.length },
     {
       name: "Remaining Target",
-      value: totalTarget - jobs.filter((job) => job.approved).length,
+      value: totalTarget - jobs.length,
     },
   ];
 
@@ -110,17 +115,6 @@ const Joblist = ({ isAdmin }: { isAdmin: boolean }) => {
           <p className="text-gray-600 mb-4">Number of Jobs: {jobs.length}</p>
         </div>
 
-        {/* Projects Count Section */}
-        <div
-          className="bg-blue-100 p-6 rounded-lg shadow-lg flex-1"
-          style={{ height: "35%", width: "50%" }}
-        >
-          <h3 className="text-xl font-semibold text-blue-700">
-            Projects Count
-          </h3>
-          <p className="text-blue-600 text-2xl">{jobs.length} Projects</p>
-        </div>
-
         {/* Approved Jobs Section */}
         <div
           className="bg-green-100 p-6 rounded-lg shadow-lg flex-1"
@@ -132,6 +126,15 @@ const Joblist = ({ isAdmin }: { isAdmin: boolean }) => {
           <p className="text-green-600 text-2xl">
             {jobs.filter((job) => job.approved).length} Approved
           </p>
+        </div>
+
+        {/* Deleted Count Section */}
+        <div
+          className="bg-blue-100 p-6 rounded-lg shadow-lg flex-1"
+          style={{ height: "35%", width: "50%" }}
+        >
+          <h3 className="text-xl font-semibold text-blue-700">Deleted Job</h3>
+          <p className="text-blue-600 text-2xl">{deletedJobs.length} Deleted</p>
         </div>
       </div>
 
@@ -194,17 +197,17 @@ const Joblist = ({ isAdmin }: { isAdmin: boolean }) => {
         ))}
       </section>
 
-      {/* Graph Section */}
+      {/* Bar Chart Section */}
       <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
         <h3 className="text-lg font-semibold mb-4">Progress Overview</h3>
         <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={progressData}>
+          <BarChart data={progressData} barSize={20}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Line type="monotone" dataKey="value" stroke="#8884d8" />
-          </LineChart>
+            <Bar dataKey="value" fill="#8884d8" />
+          </BarChart>
         </ResponsiveContainer>
       </div>
 
@@ -236,12 +239,24 @@ const Joblist = ({ isAdmin }: { isAdmin: boolean }) => {
             <p className="text-lg text-gray-700 mb-4">
               <strong>Created Time:</strong> {selectedJob.createdTime}
             </p>
-            <button
-              className="bg-blue-500 text-white font-semibold px-4 py-2 rounded-md"
-              onClick={closeModal}
-            >
-              Close
-            </button>
+            <div className="flex justify-end">
+              {isAdmin && (
+                <button
+                  className={`${
+                    selectedJob.approved ? "bg-green-500" : "bg-gray-300"
+                  } text-white font-semibold px-4 py-2 rounded-md mr-2`}
+                  onClick={() => approveJob(selectedJob.id)}
+                >
+                  {selectedJob.approved ? "Approved" : "Approve"}
+                </button>
+              )}
+              <button
+                className="bg-blue-500 text-white font-semibold px-4 py-2 rounded-md"
+                onClick={closeModal}
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
