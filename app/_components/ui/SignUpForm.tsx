@@ -12,7 +12,8 @@ import { useAuth } from "@/app/_contexts/auth/AuthState";
 import Spinner from "@/app/_components/ui/Spinner";
 
 interface FormData {
-	name: string;
+	firstName: string;
+	lastName: string;
 	phonenumber: number;
 	email: string;
 	password: string;
@@ -76,18 +77,37 @@ export default function SignUpForm() {
 			<form className=" w-full mt-4" onSubmit={handleSubmit(onSubmit, onError)}>
 				<div>
 					<label className="text-sm montserrat py-1 tracking-wider font-medium">
-						Full Name
+						First Name
 					</label>
 					<input
 						type="text"
-						id="name"
+						id="firstName"
 						className="input"
-						placeholder="Enter your full name"
-						{...register("name", {
+						placeholder="Enter your first name"
+						{...register("firstName", {
 							required: "This field is required!",
 						})}
 					/>
-					{errors?.name?.message && <Error>{errors.name.message}</Error>}
+					{errors?.firstName?.message && (
+						<Error>{errors.firstName.message}</Error>
+					)}
+				</div>
+				<div>
+					<label className="text-sm montserrat py-1 tracking-wider font-medium">
+						Last Name
+					</label>
+					<input
+						type="text"
+						id="lastName"
+						className="input"
+						placeholder="Enter your last name"
+						{...register("lastName", {
+							required: "This field is required!",
+						})}
+					/>
+					{errors?.lastName?.message && (
+						<Error>{errors.lastName.message}</Error>
+					)}
 				</div>
 
 				<div>
