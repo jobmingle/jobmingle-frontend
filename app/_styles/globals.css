@@ -6,7 +6,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,25 +22,25 @@
       overflow-x: hidden;
    }
 
-   .bg {
-      background-image: url("/image/image-forms/signinBanner.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      object-fit: contain;
-      background-position: center;
-      background-size: cover;
-      filter: brightness(40%);
-   }
-   .bg2 {
-      /* background-image: url("./Signup/images/signupbanner.png"); */
-      background-image: url("/image/image-forms/signupbanner.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      object-fit: contain;
-      background-position: center;
-      background-size: cover;
-      filter: brightness(40%);
-   }
+	.bg {
+		background-image: url("/image/image-forms/signinBanner.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		object-fit: contain;
+		background-position: center;
+		background-size: cover;
+		filter: brightness(40%);
+	}
+	.bg2 {
+		/* background-image: url("./Signup/images/signupbanner.png"); */
+		background-image: url("/image/image-forms/signupbanner.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		object-fit: contain;
+		background-position: center;
+		background-size: cover;
+		filter: brightness(40%);
+	}
 
    /* Make up for the last profile card standing alone */
    @media (max-width: 992px) {
@@ -116,10 +115,4 @@
       border-image: conic-gradient(from 45deg, #ffbe0b, transparent 30%, transparent 70%, #e9b60e) 1; /* Initial gradient effect */
       animation: borderAnimation 2s linear infinite;
    }
-}
-
-@layer utilities {
-	.input-class {
-		@apply text-16 placeholder:text-16 rounded-lg border border-gray-300 text-gray-500 placeholder:text-gray-500;
-	}
 }

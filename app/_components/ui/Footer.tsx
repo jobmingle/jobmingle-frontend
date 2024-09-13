@@ -6,13 +6,14 @@ import Facebook from "@/public/svg-icons/facebook.svg";
 import contact from "@/public/svg-icons/call-us.svg";
 import Twitter from "@/public/svg-icons/twitter.svg";
 import LinkedIn from "@/public/svg-icons/linkedin.svg";
+
 export default function Footer() {
 	return (
 		<footer
 			id="footer"
 			className=" border-t-4 bg-stone-700 text-white border-yellow-500 py-8"
 		>
-			<div className="container mx-auto  px-4 flex flex-col lg:flex-row justify-center gap-[20%] max-md:gap-[5%] max-md:block items-center">
+			<div className="container mx-auto  px-4 flex flex-col lg:flex-row justify-between gap-[2%] max-md:gap-[5%] max-md:block items-center">
 				{/* Social Media and Contact Info */}
 				<div className="flex flex-col  gap-[20%] max-md:gap-[2%] items-center lg:items-start mb-8 lg:mb-0">
 					<div className="flex space-x-4 mb-4">
@@ -57,7 +58,7 @@ export default function Footer() {
 				{/* Links Section */}
 				<div className="justify-between w-full lg:w-auto  max-md:flex contents">
 					<div className="flex flex-col items-start max-md:ml-6 justify-start lg:items-start mb-8 lg:mb-0 mr-5">
-						<h3 className="font-bold mb-2">Links</h3>
+						<h3 className="font-bold mb-2">Quick Links</h3>
 						<Link href="/jobs" className="hover:underline">
 							Jobs
 						</Link>
@@ -69,19 +70,19 @@ export default function Footer() {
 						</Link>
 					</div>
 					<div className="flex flex-col items-start lg:items-start mb-8 lg:mb-0 mx-4">
-						<h3 className="font-bold mb-2">Links</h3>
+						<h3 className="font-bold mb-2"></h3>
 						<Link href="/about" className="hover:underline">
 							Services
 						</Link>
-						<Link href="/about" className="hover:underline">
+						<Link href="/terms" className="hover:underline">
 							Terms and Conditions
 						</Link>
-						<Link href="/about" className="hover:underline">
+						<Link href="/privacy" className="hover:underline">
 							Privacy Policy
 						</Link>
 					</div>
 					<div className="flex flex-col items-start lg:items-start mb-8 lg:mb-0 mx-4">
-						<h3 className="font-bold mb-2">Links</h3>
+						<h3 className="font-bold mb-2"></h3>
 						<Link href="/about" className="hover:underline">
 							Products
 						</Link>
@@ -97,7 +98,7 @@ export default function Footer() {
 
 			{/* Copyright Section */}
 			<div className="text-center mt-8">
-				<p className="text-gray-600">
+				<p className="text-gray-400">
 					&copy; Copyright 2023 Jobmingle. All rights reserved.
 				</p>
 			</div>
