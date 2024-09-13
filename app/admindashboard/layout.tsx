@@ -19,7 +19,7 @@ export default function RootLayout({
    children: React.ReactNode;
 }>) {
    return (
-      <div className="min-h-[100vh] relative border">
+      <div className="min-h-[100vh] relative ">
          <Sidenav />
 
          <div className="min-h-[100vh]">{children}</div>
