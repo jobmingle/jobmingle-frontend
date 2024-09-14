@@ -19,16 +19,15 @@ const Hero = () => {
 				/>
 			</div>
 			{/* Left column */}
-			<div className="relative   flex items-start   flex-col h-full">
+			<div className="relative   flex items-center md:items-start   flex-col h-full max-md:border-2 max-md:py-6 max-md:mb-6 px-2 ">
 				<div
-					className="flex w-full items-center   justify-start flex-col"
+					className="flex w-full items-center justify-center  md:justify-start flex-col"
 					data-aos="zoom-in"
 					style={{ fontFamily: "Ubuntu" }}
 				>
-					<div className="w-full  text-balance text-[2rem] font-bold font-sans  max-md:text-[1.9rem] max-md:leading-normal text-black">
-						Your
+					<div className="w-full max-md:text-center text-balance text-[2rem] font-bold font-sans  max-md:text-[1.9rem] max-md:leading-normal text-black">
+						Your{" "}
 						<span className="text-[#f5cb1a] font-extrabold max-md:ml-2">
-							{" "}
 							Dream Remote Job
 						</span>
 						<p> Awaits - Let Us Skill You Up and Guide You There</p>
@@ -36,7 +35,7 @@ const Hero = () => {
 				</div>
 
 				<div
-					className="  text-start  text-balance md:justify-center font-revert text-[#545454] mb-3 mt-5 text-lg font-medium max-md:w-[300px]"
+					className="text-center  md:text-start  text-balance md:justify-center font-revert text-[#545454] mb-3 mt-5 text-lg font-medium max-md:w-[300px]"
 					data-aos="zoom-in"
 					data-aos-duration="1000"
 					data-aos-delay="500"
@@ -48,7 +47,7 @@ const Hero = () => {
 				</div>
 
 				<div
-					className="flex justify-center items-center  my-6"
+					className="flex justify-center max-md:m-auto max-md:items-center  my-6"
 					data-aos="zoom-in"
 					data-aos-duration="1200"
 					data-aos-delay="700"

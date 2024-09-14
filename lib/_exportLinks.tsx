@@ -19,15 +19,9 @@ import ImpressionHub from "@/public/logo3.jpeg";
 import IncRemote from "@/public/LUSH.png";
 import Raiz from "@/public/logo5.jpeg";
 import Vent from "@/public/Photo from Omole.jpg";
-import WhyUsImg1 from "@/public/why-us-1.jpg";
-import WhyUsImg2 from "@/public/why-us-2.jpg";
-import WhyUsImg3 from "@/public/why-us-3.jpg";
-import WhyUsImg4 from "@/public/why-us-4.jpg";
-import WhyUsImg5 from "@/public/why-us-5.jpg";
-import WhyUsImg6 from "@/public/why-us-6.jpg";
-import WhyUsImg7 from "@/public/why-us-7.jpg";
-import WhyUsImg8 from "@/public/why-us-8.jpg";
-import WhyUsImg9 from "@/public/why-us-9.jpg";
+import WhyUsImg1 from "@/public/why-us6.jpg";
+import WhyUsImg2 from "@/public/why-us4.jpg";
+import WhyUsImg3 from "@/public/why-us5.jpg";
 
 export const teamMembers = [
 	{
@@ -213,6 +207,75 @@ export const faqItemss: FAQItemType[] = [
 	},
 ];
 
+export const faqJob: FAQItemType[] = [
+	{
+		question: "What happens when I apply for jobs posted on JobMingle?",
+		answer:
+			"You just have to wait for the employer to go through your application. Most times, employers go through over 100 applications, so it is only normal to experience some delays before getting feedback from them.",
+	},
+	{
+		question: " Is it only remote jobs that are listed on JobMingle?",
+		answer:
+			"Yes. However, we also list hybrid jobs that require you to go to work a few times a week.",
+	},
+	{
+		question: "Must I take a course on JobMingle before applying for any job? ",
+		answer:
+			"No. As long as you have the required skills for a particular remote job, please go ahead and apply for it.",
+	},
+	{
+		question: " Are foreign jobs allowed on JobMingle?",
+		answer:
+			"Yes. Even though JobMingle focuses on remote jobs available in Nigeria, openings outside Nigeria are welcomed as well. In fact, most of the courses will also teach you how to earn in dollars working with foreign clients. Which means you don't have to rely on JobMingle alone to get jobs.",
+	},
+	{
+		question: "Do I need a laptop to become a freelancer?",
+		answer:
+			"No. Most freelancers in Nigeria never started with a laptop. If you are in the writing niche, you don't need a laptop before you start applying for jobs. However, you may need a laptop if you are in the tech space.",
+	},
+];
+
+export const faqCourses: FAQItemType[] = [
+	{
+		question: " Are the courses on JobMingle free?",
+		answer:
+			"No. They are not free but the prices are very affordable. We know that price is a big factor when it comes to investing in digital courses online",
+	},
+	{
+		question:
+			" Are there any free trials available before purchasing a course?",
+		answer:
+			"No. There are no free trials available. There are no subscription or part payment options as well. You can only access a course after paying the required amount in full.",
+	},
+	{
+		question: "How do I access the course after purchasing?",
+		answer:
+			"You can always access the course on your JobMingle account using any device. All you need is your login details. That's all.",
+	},
+	{
+		question:
+			" If I purchase a course today, how long will it take me to finish it before I start applying for remote jobs on JobMingle?",
+		answer:
+			"Well, the answer to this question is totally dependent on you. Every course on JobMingle is unique. They all have different time durations, but most of them take just a few weeks to finish if you are a fast learner.",
+	},
+	{
+		question:
+			" Do the courses on JobMingle also teach how to earn in foreign currencies like dollars?",
+		answer:
+			"Yes, most of the courses on JobMingle also teach you how to earn in dollars working with foreign clients. Which means you don't have to rely on JobMingle alone when you start applying for jobs.",
+	},
+	{
+		question:
+			"  Can I interact with the course creator anytime I have a question?",
+		answer:
+			"Yes, you can. Taking a course on JobMingle connects you to a supportive community led by the creator, answering your questions and motivating your success.",
+	},
+	{
+		question: " Are certificates provided for courses on JobMingle?",
+		answer: "Yes. After the completion of your course.",
+	},
+];
+
 //Slides
 export const slides = [
 	{
@@ -233,21 +296,21 @@ export const slides = [
 export const whyChooseUsData = [
 	{
 		img: WhyUsImg1,
-		title: "Commitment ",
+		title: "Learn From Experts",
 		description:
-			"We are Completely committed to helping you secure your dream remote job, enabling you live the life you were meant to live.",
+			"We offer the finest digital courses, taught by industry experts, and provide access to numerous remote job opportunities across the country.",
 	},
 	{
 		img: WhyUsImg2,
-		title: "Quality Services",
+		title: "Grow With Community",
 		description:
-			"We offer the finest digital courses designed to equip you with the skills of your choice, placing you among the top 1% in  the country.",
+			"Taking a course connects you to a supportive community led by the creator, answering your questions and motivating your success.",
 	},
 	{
 		img: WhyUsImg3,
-		title: "You Are Our Priority",
+		title: "You Come First!",
 		description:
-			"At JobMingle, we prioritize you in every decision we make , ensuring that you receive the best possible experience when using our product.",
+			"At JobMingle, we prioritize you in every decision we make, ensuring that you receive the best possible experience when using our platform",
 	},
 ];
 

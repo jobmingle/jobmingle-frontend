@@ -19,7 +19,7 @@ export default function WhyChooseUs() {
 	);
 }
 
-function WhyChooseUsCard({ slide, index }) {
+function WhyChooseUsCard({ slide, index }: any) {
 	return (
 		<div className=" border  mb-5  max-w-screen mx-auto p- rounded-lg  border-yellow-  ">
 			<div className=" w-">
@@ -34,7 +34,7 @@ function WhyChooseUsCard({ slide, index }) {
 					<div className="h-1 rounded-lg ml-3 w-16 mt- bg-yellow-500"></div>
 
 					<div className="f p-3">
-						<h3 className="text-3xl font-bold">{slide.title}</h3>
+						<h3 className="text-2xl font-bold">{slide.title}</h3>
 						<p className="text-sm text-start ">{slide.description}</p>
 					</div>
 					{/* <div className="h-1 rounded-lg ml-3 w-16 mt- bg-yellow-500"></div> */}

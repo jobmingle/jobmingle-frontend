@@ -6,7 +6,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -41,6 +40,34 @@
 		background-position: center;
 		background-size: cover;
 		filter: brightness(40%);
+	}
+
+	.input {
+		@apply h-[3rem] mt-2 bg-transparent border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[3rem] pl-4 transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-yellow-400;
+	}
+
+	.loader {
+		width: 45px;
+		aspect-ratio: 0.75;
+		--c: no-repeat linear-gradient(theme(colors.stone.800) 0 0); /*theme: used to set tailwind styles in css stylesheet*/
+		background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
+		background-size: 20% 50%;
+		animation: loading 1s infinite linear;
+	}
+
+	@keyframes loading {
+		20% {
+			background-position: 0% 0%, 50% 50%, 100% 50%;
+		}
+		40% {
+			background-position: 0% 100%, 50% 0%, 100% 50%;
+		}
+		60% {
+			background-position: 0% 50%, 50% 100%, 100% 0%;
+		}
+		80% {
+			background-position: 0% 50%, 50% 50%, 100% 100%;
+		}
 	}
 
 	/* Make up for the last profile card standing alone */
@@ -134,11 +161,5 @@
 			)
 			1; /* Initial gradient effect */
 		animation: borderAnimation 2s linear infinite;
-	}
-}
-
-@layer utilities {
-	.input-class {
-		@apply text-16 placeholder:text-16 rounded-lg border border-gray-300 text-gray-500 placeholder:text-gray-500;
 	}
 }

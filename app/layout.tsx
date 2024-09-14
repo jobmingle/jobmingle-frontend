@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   icons: `${favicon}`,
 };
 
+// if (localStorage.token) {
+// 	setAuthToken(localStorage.token);
+// }
+
 export default function RootLayout({
   children,
 }: Readonly<{
