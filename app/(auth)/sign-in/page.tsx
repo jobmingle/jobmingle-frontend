@@ -8,6 +8,7 @@ import Logo from "@/app/_components/ui/Logo";
 import logo from "@/public/logo.png";
 
 function Page() {
+
 	return (
 		<main className="text-black min-h-screen h-auto overflow-x-hidden max-lg:border max-lg:rounded-lg max-lg:mx-2 max-lg:my-5 mt-5">
 			<div className="h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden">
@@ -26,7 +27,7 @@ function Page() {
 					<p className="montserrat font-semibold text-[75%] sm:text-sm text-black-100 w-full text-center px-4">
 						Please log in to your account to access feautures
 					</p>
-					<div className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[70%] mt-7 sm:mt-4 p-2 pb-8 flex flex-col">
+					<main className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[70%] mt-7 sm:mt-4 p-2 pb-8 flex flex-col">
 						<button className="border-black-100 border-solid montserrat border-[1px] w-full h-[3rem] sm:h-[3rem] rounded-[10px] flex justify-center items-center gap-1 bg-transparent">
 							<Image src={Googleicon} alt="google icon" className="w-4 h-4" />
 							<p className="text-xs font-bold">Login With Google</p>
@@ -35,7 +36,7 @@ function Page() {
 							<span className="text-[75%] text-center px-3 py-0.5 text-black-100 bg-[#FEFEFE]">
 								Or enter details below
 							</span>
-						</section>
+						</div>
 						<form action="" className=" w-full mt-4">
 							<p className="text-sm montserrat py-1 tracking-wider font-medium">
 								Email
@@ -71,7 +72,6 @@ function Page() {
 							</section>
 
 							<button
-								onClick={(e) => handleSubmit(e)}
 								className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[3rem] pl-4 mt-[4.5rem] sm:mt-6 bg-[#F6CC16] text-center"
 							>
 								Login

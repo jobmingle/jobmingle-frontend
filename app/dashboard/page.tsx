@@ -2,7 +2,7 @@ import UserDashboard from "../_components/ui/UserDashboard";
 
 const page = () => {
 	return (
-		<section>
+		<section style={{border:"1px solid red"}}>
 			<UserDashboard />
 		</section>
 	);

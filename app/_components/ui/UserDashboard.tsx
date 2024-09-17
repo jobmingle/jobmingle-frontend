@@ -12,9 +12,9 @@ const UserDashboard = () => {
 	}
 
 	return (
-		<div className="flex h-screen">
+		<div className="flex h-screen" style={{border:"1px solid orange"}}>
 			{/* Sidebar */}
-			<aside className="w-64 bg-gray-800 text-white flex flex-col">
+			<aside className="w-64 bg-gray-800 text-white flex flex-col border">
 				<div className="p-6">
 					<h1 className="text-2xl font-bold">Dashboard</h1>
 				</div>
