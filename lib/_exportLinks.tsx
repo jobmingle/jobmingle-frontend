@@ -131,55 +131,55 @@ export const faqItems: FAQItemType[] = [
 	},
 ];
 export const courses = [
-  {
-    image: bb,
-    title: "UI/UX Design Crash Course",
-    instructor: "Kelvin User",
-    price: "$20",
-  },
-  {
-    image: bb,
-    title: "Email Marketing",
-    instructor: "Meck Zin",
-    price: "$120",
-  },
-  // Add more course objects (total of 8)
-  {
-    image: bb,
-    title: "JavaScript Basics",
-    instructor: "Alex Doe",
-    price: "$30",
-  },
-  {
-    image: bb,
-    title: "React for Beginners",
-    instructor: "Jane Smith",
-    price: "$45",
-  },
-  {
-    image: bb,
-    title: "Python Programming",
-    instructor: "Sam Wilson",
-    price: "$50",
-  },
-  {
-    image: bb,
-    title: "Data Analysis with Python",
-    instructor: "Emily Davis",
-    price: "$60",
-  },
-  {
-    image: bb,
-    title: "Machine Learning 101",
-    instructor: "Michael Brown",
-    price: "$70",
-  },
-  {
-    image: bb,
-    title: "Web Development Bootcamp",
-    instructor: "Sarah Johnson",
-    price: "$80",
-  },
+	{
+		image: bb,
+		title: "UI/UX Design Crash Course",
+		instructor: "Kelvin User",
+		price: "$20",
+	},
+	{
+		image: bb,
+		title: "Email Marketing",
+		instructor: "Meck Zin",
+		price: "$120",
+	},
+	// Add more course objects (total of 8)
+	{
+		image: bb,
+		title: "JavaScript Basics",
+		instructor: "Alex Doe",
+		price: "$30",
+	},
+	{
+		image: bb,
+		title: "React for Beginners",
+		instructor: "Jane Smith",
+		price: "$45",
+	},
+	{
+		image: bb,
+		title: "Python Programming",
+		instructor: "Sam Wilson",
+		price: "$50",
+	},
+	{
+		image: bb,
+		title: "Data Analysis with Python",
+		instructor: "Emily Davis",
+		price: "$60",
+	},
+	{
+		image: bb,
+		title: "Machine Learning 101",
+		instructor: "Michael Brown",
+		price: "$70",
+	},
+	{
+		image: bb,
+		title: "Web Development Bootcamp",
+		instructor: "Sarah Johnson",
+		price: "$80",
+	},
 ];
 export const faqItemss: FAQItemType[] = [
 	{
@@ -343,3 +343,18 @@ export const partnersLogos = [
 	{ img: Raiz },
 	{ img: Vent },
 ];
+
+export const userPreferences = {
+	usage: ["apply for a job/ take a course", "Post a job", "List a course"],
+	interests: [
+		"IT support",
+		"Marketing",
+		"designs",
+		"Development",
+		"data science",
+		"writing",
+		"video editing",
+		"others",
+	],
+	image: [],
+};

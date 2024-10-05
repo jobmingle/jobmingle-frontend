@@ -1,9 +1,9 @@
 "use client";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
-import Button from "./Button";
+import Button from "../../_components/ui/Button";
 import { useRouter } from "next/navigation";
 
-const UserDashboard = () => {
+const SideNav = () => {
 	const router = useRouter();
 	const { logout } = useAuth();
 
@@ -35,32 +35,8 @@ const UserDashboard = () => {
 					</Button>
 				</nav>
 			</aside>
-
-			{/* Main Content */}
-			<main className="flex-1 p-8 bg-gray-100">
-				<h2 className="text-3xl font-semibold mb-6">
-					Welcome to Your Dashboard
-				</h2>
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-					{/* Example Card */}
-					<div className="bg-white p-6 rounded-lg shadow-md">
-						<h3 className="text-xl font-bold mb-4">Recent Activity</h3>
-						<p>Your recent activities will appear here.</p>
-					</div>
-
-					<div className="bg-white p-6 rounded-lg shadow-md">
-						<h3 className="text-xl font-bold mb-4">Statistics</h3>
-						<p>Overview of your account statistics.</p>
-					</div>
-
-					<div className="bg-white p-6 rounded-lg shadow-md">
-						<h3 className="text-xl font-bold mb-4">Messages</h3>
-						<p>You have no new messages.</p>
-					</div>
-				</div>
-			</main>
 		</div>
 	);
 };
 
-export default UserDashboard;
+export default SideNav;

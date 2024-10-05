@@ -41,7 +41,7 @@ export default function authReducer(state, action) {
 				...action.payload,
 				isAuthenticated: true,
 				isLoading: false,
-				user: action.payload?.user,
+				// user: action.payload?.data,
 			};
 
 		case RESET_SUCCESS:

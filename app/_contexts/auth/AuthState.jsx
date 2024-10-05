@@ -6,7 +6,7 @@ import axios from "axios";
 import AuthContext from "./authContext";
 import authReducer from "./authReducer";
 import toast from "react-hot-toast";
-import setAuthToken from "@/lib/setAuthToken";
+
 import {
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
@@ -23,12 +23,11 @@ import {
 	LOADING,
 } from "@/app/_contexts/types";
 
-const BASE_URL = "http://jobmingle.co/api";
-const API_URL = "https://react-fast-pizza-api.onrender.com/api";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 function AuthProvider({ children }) {
 	const initialState = {
-		token: localStorage.getItem("token"),
+		token: localStorage.getItem("token") || null,
 		isAuthenticated: null,
 		resetOk: null,
 		isLoading: false,
@@ -43,38 +42,30 @@ function AuthProvider({ children }) {
 
 	const router = useRouter();
 
-	useEffect(() => {
-		const token = localStorage.getItem("token");
-		console.log(token);
-		if (token) {
-			// fetchUser(token);
-		} else {
-			dispatch({ type: "loading", payload: false });
-		}
-	}, []);
-
 	// LOAD USER
-	async function fetchUser(token) {
-		// if (localStorage.token) {
-		// 	setAuthToken(localStorage.token);
-		// }
+	useEffect(() => {
+		async function fetchUser() {
+			dispatch({ type: LOADING });
 
-		dispatch({ type: LOADING });
+			try {
+				const token = localStorage.getItem("token") || null;
 
-		try {
-			const res = await axios.get(`${BASE_URL}/auth`, {
-				token,
-			});
+				const res = await axios.get(`${BASE_URL}/me`, {
+					headers: { Authorization: `Bearer ${token}` },
+					"Content-Type": "application/json",
+				});
 
-			dispatch({ type: USER_LOADED, payload: res.data });
-
-			console.log(res);
-		} catch (err) {
-			console.log(err);
-			console.log(err.response);
-			dispatch({ type: AUTH_ERROR });
+				dispatch({ type: USER_LOADED, payload: res.data });
+				console.log(res);
+				console.log(res.data);
+			} catch (err) {
+				console.log(err);
+				console.log(err.response);
+				dispatch({ type: AUTH_ERROR });
+			}
 		}
-	}
+		if (token) fetchUser();
+	}, [token]);
 
 	// REGISTER USER
 	async function register(formData) {
@@ -89,8 +80,8 @@ function AuthProvider({ children }) {
 			const res = await axios.post(`${BASE_URL}/register`, formData, config);
 
 			dispatch({ type: REGISTER_SUCCESS, payload: res?.data });
-			router.push("/sign-up/confirm-email");
 
+			await router.push("/sign-up/confirm-email");
 			console.log(res);
 			toast.success(res?.data.message);
 
@@ -121,7 +112,7 @@ function AuthProvider({ children }) {
 			const res = await axios.post(`${BASE_URL}/verify-email`, code, config);
 			dispatch({ type: CONFIRMATION_SUCCESS });
 
-			router.push("/sign-in"); //
+			await router.push("/sign-up/generating-profile"); //
 
 			console.log(res);
 
@@ -172,11 +163,10 @@ function AuthProvider({ children }) {
 			// localStorage.setItem('token', res.data.token);
 
 			console.log(res);
+			console.log(res.data);
 			toast.success(res?.data.message);
 
-			// fetchUser();
-
-			// router.push("/sign-up/confirm-email");
+			await router.push("/student-dashboard");
 		} catch (err) {
 			dispatch({
 				type: LOGIN_FAIL,
@@ -197,13 +187,11 @@ function AuthProvider({ children }) {
 
 			dispatch({ type: RESET_SUCCESS });
 
-			router.push("/sign-in/reset-password");
-
 			console.log(res);
 			toast.success(
 				"Password reset link sent successfully. Please check your email."
 			);
-			// router.push("/sign-in/reset-password");
+			await router.push("/sign-in/reset-password");
 		} catch (err) {
 			const errorMessage =
 				err.response?.data?.message || "Failed to send reset link.";
@@ -225,8 +213,8 @@ function AuthProvider({ children }) {
 
 			dispatch({ type: RESET_SUCCESS });
 
-			// router.push("/sign-in");
 			toast.success("Password has been reset successfully.");
+			await router.push("/sign-in");
 		} catch (err) {
 			const errorMessage =
 				err.response?.data?.message || "Failed to reset password.";
@@ -257,6 +245,7 @@ function AuthProvider({ children }) {
 				register,
 				verify,
 				login,
+				// fetchUser,
 				forgotPassword,
 				resetPassword,
 				logout,
