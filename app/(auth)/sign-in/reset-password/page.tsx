@@ -31,29 +31,22 @@ function Page() {
 	const { resetPassword, error, clearErrors, isLoading, resetOk } = useAuth();
 
 	useEffect(() => {
-		if (resetOk) {
-			router.push("/sign-in");
-		}
-
 		if (error === "Network Error") {
 			toast.error(error);
 			clearErrors();
 		}
-
-		// setResetSuccessful(true);
 		// eslint-disable-next-line
 	}, [error]);
 
 	function onSubmit(data: FormData) {
-		console.log(data);
 		resetPassword(data);
-		toast.success("Wow!.... Form submitted successfully.");
+		toast.success("Form submitted successfully.");
 	}
 
 	const password = watch("password", "");
 
 	function onError(errors: any) {
-		console.log(errors);
+		console.error(errors);
 	}
 
 	const handleback = () => {

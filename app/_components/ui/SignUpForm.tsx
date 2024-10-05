@@ -14,7 +14,7 @@ import Spinner from "@/app/_components/ui/Spinner";
 interface FormData {
 	firstName: string;
 	lastName: string;
-	phonenumber: number;
+	phoneNumber: number;
 	email: string;
 	password: string;
 	password_confirmation: string;
@@ -35,10 +35,6 @@ export default function SignUpForm() {
 	} = useAuth();
 
 	useEffect(() => {
-		// if (isAuthenticated) {
-		// 	router.push("/sign-up/confirm-email");
-		// }
-
 		if (error === "User already exists with this email address.") {
 			toast.error(error);
 			clearErrors();
@@ -55,17 +51,14 @@ export default function SignUpForm() {
 	}, [error, isAuthenticated]);
 
 	function onSubmit(data: FormData) {
-		console.log(data);
-		console.log(error);
-
 		registerUser(data);
-		toast.success("Wow!.... Form was submitted successfully.");
+		toast.success("Form submitted successfully.");
 	}
 
 	const password = watch("password", "");
 
 	function onError(errors: any) {
-		console.log(errors);
+		console.error(errors);
 	}
 
 	function handdleAgreement(e: any) {
@@ -135,12 +128,12 @@ export default function SignUpForm() {
 						id="phonenumber"
 						className="input"
 						placeholder="Enter your phone number"
-						{...register("phonenumber", {
+						{...register("phoneNumber", {
 							required: "This field is required!",
 						})}
 					/>
-					{errors?.phonenumber?.message && (
-						<Error>{errors.phonenumber.message}</Error>
+					{errors?.phoneNumber?.message && (
+						<Error>{errors.phoneNumber.message}</Error>
 					)}
 				</div>
 

@@ -10,7 +10,6 @@ import { useAuth } from "@/app/_contexts/auth/AuthState";
 import arrowback from "@/public/arrowback.png";
 import jobmingle from "@/public/jobmingle.png";
 import Button from "@/app/_components/ui/Button";
-import Loader from "@/app/_components/ui/Loader";
 import Error from "@/app/_components/ui/Error";
 import Spinner from "@/app/_components/ui/Spinner";
 
@@ -21,11 +20,26 @@ interface FormData {
 function Page() {
 	const router = useRouter();
 
-	const handleSubmit = (e: any) => {
-		e.preventDefault();
-		console.log("hello");
-		router.push("/signin/confirm-email");
-	};
+	const { register, handleSubmit, formState } = useForm<FormData>();
+	const { errors } = formState;
+	const { forgotPassword, error, clearErrors, isLoading } = useAuth();
+
+	useEffect(() => {
+		if (error === "Network Error") {
+			toast.error(error);
+			clearErrors();
+		}
+		// eslint-disable-next-line
+	}, [error]);
+
+	function onSubmit(data: FormData) {
+		forgotPassword(data);
+		toast.success("Form was submitted successfully.");
+	}
+
+	function onError(errors: any) {
+		console.error(errors);
+	}
 	const handleback = () => {
 		router.back();
 	};
@@ -83,6 +97,7 @@ function Page() {
 								Reset Password
 								<span>{isLoading && <Spinner />} </span>
 							</Button>
+
 							<Link
 								href={"/sign-in"}
 								className="text-sm montserrat  font-medium float-right mt-4 text-black-100/80"

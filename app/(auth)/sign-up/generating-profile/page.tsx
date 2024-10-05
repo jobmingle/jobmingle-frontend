@@ -1,110 +1,128 @@
 "use client";
-import Image from "next/image";
-import React, { useState } from "react";
-import jobmingle from "@/public/jobmingle.png";
-import { useRouter } from "next/navigation";
-import SuccessModal from "@/Components/SuccessModal";
-import Interests from "@/Components/ProfileTabs/Interests";
-import Usage from "@/Components/ProfileTabs/Usage";
-import ProfilePic from "@/Components/ProfileTabs/ProfilePic";
-//
+import { useState } from "react";
+import { userPreferences } from "@/lib/_exportLinks";
 
-function Page() {
-	const router = useRouter();
-	const [ModalActive, setModalActive] = useState(false);
-	const [ModalActive2, setModalActive2] = useState(false);
-	const [CurrentTab, setCurrentTab] = useState(0);
-	const tabs = [
-		<Interests key="interests" />,
-		<Usage key="usage" />,
-		<ProfilePic key="profile" />,
-	];
+export default function PreferencesForm() {
+	const [step, setStep] = useState(0);
+	const [selectedPreferences, setSelectedPreferences] = useState({
+		usage: [] as string[],
+		interests: [] as string[],
+		image: [] as string[],
+	});
 
-	const handlenext = () => {
-		setCurrentTab(CurrentTab + 1);
+	// console.log(selectedPreferences);
+
+	const handleSelected = (category: string, option: string): void => {
+		setSelectedPreferences((prev) => {
+			const alreadySelected =
+				prev[category as keyof typeof prev].includes(option);
+			return {
+				...prev,
+				[category]: alreadySelected
+					? prev[category as keyof typeof prev].filter(
+							(item) => item !== option
+					  )
+					: [...prev[category as keyof typeof prev], option],
+			};
+		});
 	};
 
-	const handlefinish = (e: any) => {
-		setModalActive2(true);
-		e.preventDefault();
+	const handlePrev = () => {
+		setStep((i) => {
+			if (i <= 0) return i;
+			return i - 1;
+		});
 	};
-	// const handleback = () => {
-	//    router.back();
-	// };
+	const handleNext = () => {
+		if (step < Object.keys(userPreferences).length - 1) {
+			setStep(step + 1);
+		} else {
+			// Handle the final submission (e.g., send to backend)
+			console.log("Submitted Preferences: ", selectedPreferences);
+		}
+	};
 
 	return (
-		<main
-			className={`text-black min-h-[110vh] h-auto lg:min-h-[120vh] overflow-x-hidden ${
-				ModalActive2 ? "overflow-y-hidden max-h-[100vh] h-[100vh]" : null
-			}`}
-		>
-			{ModalActive ? (
-				<SuccessModal
-					extrastyling={"h-[110vh] sm:h-auto"}
-					Act={"Email Verified"}
-					linkto={"/signup/generatingprofile"}
-					whereto={"Click Here To Continue The Sign Up Process"}
-				/>
-			) : null}
-			{ModalActive2 ? (
-				<SuccessModal
-					extrastyling={" min-h-[123vh] sm:min-h-[110vh] lg:min-h-[120vh] "}
-					Act={"Account Created Successfully"}
-					linkto={"/"}
-					whereto={"Click Here To Continue"}
-				/>
-			) : null}
-			<div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden">
-				<div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[110vh] bg2 lg:min-h-[120vh] ">
-					<Image
-						src={jobmingle}
-						alt="logo"
-						className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8"
-					/>
-				</div>
-				<div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE] sm:h-[110vh] flex sm:justify-center relative flex-col items-center pb-6 sm:pb-3 lg:min-h-[120vh] ">
-					{/* <div className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2 " onClick={handleback}>
-                  <Image src={arrowback} alt="arrowback" className="" />
-               </div> */}
-					<div className=" w-full h-3 py-5 rounded-full max-w-[95%] sm:max-w-[70%] md:max-w-[90%] lg:max-w-[70%] flex justify-start items-center">
-						<div
-							className={`bg-[#F6CC16] ${
-								CurrentTab === 0 ? "w-[33.3%]" : null
-							} min-h-3 m-0 rounded-full  ${
-								CurrentTab === 1 ? "w-[66.6%]" : null
-							}  ${CurrentTab === 2 ? "w-[100%]" : null}`}
-						></div>
-					</div>
-
-					<h2 className="font-bold text-2xl sm:text-3xl text-black-100 sora text-center mt-3 sm:mt-1 w-full px-4">
-						Generating Profile
+		<div className="w-[80%] flex flex-col gap-5 py-10 my-10 px-20 m-auto justify-center border border-stone-950 rounded-md">
+			{step === 0 && (
+				<div>
+					<h2 className="text-xl text-stone-800 text-center font-bold mb-5">
+						Select your Interests
 					</h2>
 
-					{/*  */}
-					<main className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[70%] p-1 pb-8 sm:pb-2 flex flex-col justify-center items-center">
-						{tabs[CurrentTab]}
-						{CurrentTab < 2 ? (
-							<button
-								type="submit"
-								onClick={handlenext}
-								className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.8rem] pl-4 mt-[1.5rem] bg-[#F6CC16] text-center"
-							>
-								Next
-							</button>
-						) : (
-							<button
-								type="submit"
-								onClick={handlefinish}
-								className="border-none border-[1px] text-sm text-white tracking-wider font-semibold montserrat w-full rounded-[10px] h-[3rem] sm:h-[2.8rem] pl-4 mt-[2rem] bg-[#F6CC16] text-center"
-							>
-								Finish
-							</button>
-						)}
-					</main>
+					<div className="flex flex-col space-y-6 justify-center">
+						{userPreferences.interests.map((option) => (
+							<input
+								type="button"
+								className={`w-full list-none py-3 cursor-pointer pl-2 border-black-100 border-solid border-[1px] sora rounded-[10px] capitalize ${
+									selectedPreferences.interests.includes(option)
+										? "text-yellow-500 border-yellow-500"
+										: ""
+								} `}
+								key={option}
+								onClick={() => handleSelected("interests", option)}
+								value={option}
+							/>
+						))}
+					</div>
 				</div>
+			)}
+
+			{step === 1 && (
+				<div>
+					<h2 className="text-xl text-stone-800 text-center font-bold mb-5">
+						Select your usage
+					</h2>
+					<div className="flex flex-col space-y-6 justify-center">
+						{userPreferences.usage.map((option) => (
+							<input
+								type="button"
+								className={`w-full list-none py-3 cursor-pointer pl-2 border-black-100 border-solid border-[1px] sora rounded-[10px] capitalize ${
+									selectedPreferences.usage.includes(option)
+										? "text-yellow-500 border-yellow-500"
+										: ""
+								} `}
+								key={option}
+								onClick={() => handleSelected("usage", option)}
+								value={option}
+							/>
+						))}
+					</div>
+				</div>
+			)}
+
+			{step === 2 && (
+				<div>
+					<h2 className="text-xl text-stone-800 text-center font-bold mb-5">
+						Upload your profile image
+					</h2>
+					<div className="flex flex-col space-y-6 justify-center">
+						{/* {userPreferences.usage.map((option) => ( */}
+						<input
+							type="file"
+							className={`w-full list-none py-10 cursor-pointer px-5 border-black-100 border-solid border-[1px] sora rounded-[10px] capitalize file:py-[0.8rem] file:px-[1.2rem] file:rounded-sm file:mr-[1.2rem] file:font-bold file:border-none file:cursor-pointer file:bg-yellow-600 file:hover:bg-yellow-500 file:hover:scale-110 file:transition file:ease-in-out file:delay-150 file:hover:-translate-y-1  file:duration-300  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 `}
+							onChange={(e) => handleSelected("image", e.target.value)}
+						/>
+						{/* ))} */}
+					</div>
+				</div>
+			)}
+			<div className="flex justify-end gap-5">
+				{step > 0 && (
+					<button
+						className="w-[100px] bg-yellow-400 hover:bg-yellow-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300  rounded-sm px-5 py-2 "
+						onClick={handlePrev}
+					>
+						Back
+					</button>
+				)}
+				<button
+					className="w-[100px] bg-yellow-400 hover:bg-yellow-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300   rounded-sm px-5 py-2"
+					onClick={handleNext}
+				>
+					{step < Object.keys(userPreferences).length - 1 ? "Next" : "Finish"}
+				</button>
 			</div>
-		</main>
+		</div>
 	);
 }
-
-export default Page;

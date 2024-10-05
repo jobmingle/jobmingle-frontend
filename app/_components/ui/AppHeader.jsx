@@ -6,10 +6,14 @@ import Button from "../atoms/Button";
 import Image from "next/image";
 import Logo from "./Logo";
 import logo from "@/public/logo.png";
+import { useAuth } from "@/app/_contexts/auth/AuthState";
+import { useRouter } from "next/navigation";
 
 const AppHeader = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [menuOpen, setMenuOpen] = useState(false);
+	const { isAuthenticated, logout } = useAuth();
+	const router = useRouter();
 
 	// Effect for sticky navbar after scrolling pass the viewport height
 	useEffect(() => {
@@ -24,7 +28,6 @@ const AppHeader = () => {
 				setIsVisible(false);
 			}
 		};
-
 		// Add scroll event listener
 		window.addEventListener("scroll", handleScroll);
 
@@ -38,53 +41,71 @@ const AppHeader = () => {
 		setMenuOpen(!menuOpen);
 	};
 
+	function handleLogout() {
+		logout();
+		router.push("/sign-in");
+	}
+
 	return (
-		//This is the original non-sticky navbar without animation: remove the comment and delete the initial to return to original
-		// <nav className="bg-white text-black flex justify-around md:shrink-0 max-md:contents fixed top-0 left-0 right-0">
 		<nav
 			className={`bg-white  text-black flex justify-around  md:shrink-0 max-md:contents  top-0 left-0 right- shadow-md transform transition-transform duration-500 ease-in-out z-50 ${
 				isVisible && "fixed"
 			} ${isVisible ? "animate-bounceIn" : "translate-y-0"}`}
 		>
-			<div className="w-[100vw] h-28 border-b-[0.5px] border-b-[#9a8888] bg-white flex items-center justify-between px-8">
-				<div className="flex items-center max-md:mr-[45%]">
-					<div className=" font-sans text-[1.625rem] mx-7  font-medium leading-[1.4375rem]  hover:text-[#FFBE0B]">
+			<div className="w-[100vw] h-24 border-b-[0.5px] border-b-[#9a8888] bg-white flex items-center justify-between px-8">
+				{/* <div className="flex items-center max-md:mr-[45%]"> */}
+				<div className="flex items-center ">
+					{/* <div className=" font-sans text-[1.625rem] mx-7  font-medium leading-[1.4375rem]  hover:text-[#FFBE0B]"> */}
+					<div className="m-auto">
 						<Link href="/">
 							<Logo path={logo} />
 						</Link>
 					</div>
 				</div>
 
-				<div className="inline-flex items-end gap-16 max-md:hidden">
-					<div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
-						{/* <Link href="#about" onClick={toggleMenu}> */}
-						<Link href="/about" onClick={toggleMenu}>
-							About Us
-						</Link>
+				<div className="inline-flex items-end gap-8 lg:gap-16 max-md:hidden">
+					{!isAuthenticated && (
+						<div className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
+							<Link href="/about" onClick={toggleMenu}>
+								About Us
+							</Link>
+						</div>
+					)}
+					<div className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
+						<Link href="/courses">Courses</Link>
 					</div>
-					<div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
+					<div className="text-sm lg:text-lg font-medium leading-6 hover:text-[#FFBE0B]">
 						<Link href="/jobs">Jobs</Link>
 					</div>
 
-					<div className="text-lg font-medium leading-6 hover:text-[#FFBE0B]">
+					<div className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
 						{/* <Link href="#contact">contact</Link> */}
 						<Link href="/contact-us">Contact Us</Link>
 					</div>
 				</div>
-				<div className="inline-flex items-start mr-6 max-md:hidden">
-					<Link href="/sign-up">
-						<Button className="w-[120px]  bg-black text-white rounded-[10px] mr-[20px] hover:text-black hover:bg-yellow-500 transition-colors duration-500">
-							Sign Up
+				{isAuthenticated ? (
+					<div className="inline-flex gap-3 items-start  max-md:hidden">
+						<Button type="logout">Profile</Button>
+						<Button onClick={handleLogout} type="logout">
+							Logout
 						</Button>
-					</Link>
+					</div>
+				) : (
+					<div className="inline-flex items-start gap-3 max-md:hidden">
+						<Link href="/sign-up">
+							<Button className="w-[100px]  bg-black text-white rounded-[10px]  hover:text-black hover:bg-yellow-500 transition-colors duration-500">
+								Sign Up
+							</Button>
+						</Link>
 
-					{/* I hid this button on large screen downward with max-lg:hidden , to fix nav items overlap */}
-					<Link href="/sign-in" className="max-lg:hidden">
-						<Button className="w-[120px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 ">
-							Login
-						</Button>
-					</Link>
-				</div>
+						{/* I hid this button on large screen downward with max-lg:hidden , to fix nav items overlap */}
+						<Link href="/sign-in" className="max-lg:hidden">
+							<Button className="w-[100px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 ">
+								Login
+							</Button>
+						</Link>
+					</div>
+				)}
 
 				{/* Mobile Menu Toggle */}
 				<div className="md:hidden flex items-center">
@@ -140,6 +161,11 @@ const AppHeader = () => {
 					<div className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
 						<Link href="/about" onClick={toggleMenu}>
 							About us
+						</Link>
+					</div>
+					<div className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
+						<Link href="/courses" onClick={toggleMenu}>
+							Courses
 						</Link>
 					</div>
 					<div className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
