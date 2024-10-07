@@ -6,7 +6,7 @@ import Share from "@/public/Icon.png";
 
 const Card = ({ course }: any) => {
   return (
-    <div className="border border-gray-300 p-4 rounded-lg shadow-sm max-w-xs">
+    <div className="border border-gray-300 p-4 rounded-lg shadow-sm w-full">
       <div className="relative">
         <Image
           src={Header}

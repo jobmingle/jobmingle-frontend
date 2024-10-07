@@ -34,40 +34,23 @@ const Sidenav = () => {
    };
 
    return (
-      <div className="fixed  sm:top-40 sm:left-[11rem] left-0 right-0">
-         <button className=" rounded-full mb-1 flex justify-center items-center p-2 shadow-xl" onClick={() => setNavactive(!Navactive)}>
-            <Image src={Navactive ? close : hamburger} alt="icpn" className="w-[2rem] h-[2rem]" />
-         </button>
-         {Navactive && (
-            <main className="bg-[#F5F5F1] shadow-2xl py-1 w-[8rem] min-h-[8rem] rounded-md flex flex-col items-center justify-center space-y-3 text-left px-2 sora">
-               <div className="py-1 w-full tracking-wider">
-                  <Link href="/admindashboard" className={`text-black ${pathname === "/admindashboard" ? "text-yellow-400 font-semibold" : ""}`} onClick={handlelinkclick}>
-                     {" "}
-                     Dashboard{" "}
-                  </Link>
-               </div>
-               <div className="py-1 w-full tracking-wider">
-                  <Link
-                     href="/admindashboard/courses"
-                     className={`text-black ${pathname === "/admindashboard/courses" ? "text-yellow-400 font-semibold" : ""}`}
-                     onClick={handlelinkclick}
-                  >
-                     Courses{" "}
-                  </Link>
-               </div>
-               <div className="py-1 w-full tracking-wider">
-                  <Link
-                     href="/admindashboard/jobs"
-                     className={`text-black ${pathname === "/admindashboard/jobs" ? "text-yellow-400 font-semibold" : ""}`}
-                     onClick={handlelinkclick}
-                  >
-                     {" "}
-                     Jobs{" "}
-                  </Link>
-               </div>
-               <ul className=" w-full text-red-600 tracking-wider text-bold text-lg">Logout</ul>
-            </main>
-         )}
+      <div className="flex h-screen">
+         {/* Sidebar */}
+         <aside className="w-64 bg-[#2e2d33] text-black flex flex-col border-r-[1px] border-solid border-white">
+            <div className="p-6">
+               <h1 className="text-2xl font-bold text-white">Dashboard</h1>
+            </div>
+            <nav className="flex-1 px-4 space-y-4">
+               <a href="#" className="block py-2 px-3 rounded hover:bg-white  text-white hover:text-gray-800">
+                  Dashboard
+               </a>
+               <a href="#" className="block py-2 px-3 rounded hover:bg-white text-white hover:text-gray-800">
+                  Jobs
+               </a>
+            </nav>
+         </aside>
+
+         {/* Main Content */}
       </div>
    );
 };

@@ -62,7 +62,7 @@ export default function RootLayout({
             {/* <div className="flex-1 md:px-8  md:py-8 "> */}
             <div className="flex-1">
                <AuthProvider>
-                  <main className="max-w-7xl mx-auto " style={{border: "2px solid orange"}}>
+                  <main className=" max-w-7xl lg:max-w-full mx-auto ">
                      {children}
                   </main>
                </AuthProvider>

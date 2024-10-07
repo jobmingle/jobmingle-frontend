@@ -2,51 +2,222 @@
 import React, {useState} from "react";
 import tiredicon from "../../public/tiredicon.png";
 import editicon from "../../public/editicon.png";
+import share from "../../public/shareicon.png";
+import tired from "../../public/tiredicon.png";
+import love from "../../public/loveicon.png";
 import Image from "next/image";
-import Courses from "./_Tabs/Courses";
-import Jobs from "./_Tabs/Jobs";
-import Password from "./_Tabs/Password";
 
 //
 const Page = () => {
-   const [Tabs, setTabs] = useState(0);
-   let MyTabs = [<Jobs />, <Courses />, <Password />];
-
+   const jobs = [
+      {
+         id: 1,
+         icon: tired,
+         platform: "Upwork",
+         jobTitle: "Virtual Assitance",
+         location: "Remote",
+         pricerange: "$15-$25",
+         stat: "Applied",
+      },
+      {
+         id: 2,
+         icon: tired,
+         platform: "figma",
+         jobTitle: "Virtual Assitance",
+         location: "Remote",
+         pricerange: "$40-$85",
+         stat: "expires soon",
+      },
+      {
+         id: 3,
+         icon: tired,
+         platform: "Discord",
+         jobTitle: "moderator",
+         location: "Uyo Nigeria",
+         pricerange: "$15-$25",
+         stat: "Applied",
+      },
+      {
+         id: 4,
+         icon: tired,
+         platform: "Upwork",
+         jobTitle: "Virtual Assitance",
+         location: "Remote",
+         pricerange: "$15-$25",
+         stat: "Applied",
+      },
+      {
+         id: 5,
+         icon: tired,
+         platform: "Upwork",
+         jobTitle: "Virtual Assitance",
+         location: "Remote",
+         pricerange: "$15-$25",
+         stat: "expires soon",
+      },
+      {
+         id: 6,
+         icon: tired,
+         platform: "figma",
+         jobTitle: "Virtual Assitance",
+         location: "Remote",
+         pricerange: "$40-$85",
+         stat: "expires soon",
+      },
+      {
+         id: 7,
+         icon: tired,
+         platform: "Discord",
+         jobTitle: "moderator",
+         location: "Rivers state",
+         pricerange: "$15-$25",
+         stat: "Applied",
+      },
+      {
+         id: 8,
+         icon: tired,
+         platform: "Upwork",
+         jobTitle: "Virtual Assitance",
+         location: "Lagos Nigeria",
+         pricerange: "$15-$25",
+         stat: "expires soon",
+      },
+      {
+         id: 9,
+         icon: tired,
+         platform: "Upwork",
+         jobTitle: "Virtual Assitance",
+         location: "Remote",
+         pricerange: "$15-$25",
+         stat: "Applied",
+      },
+      {
+         id: 10,
+         icon: tired,
+         platform: "figma",
+         jobTitle: "Virtual Assitance",
+         location: "Remote",
+         pricerange: "$40-$85",
+         stat: "Applied",
+      },
+      {
+         id: 11,
+         icon: tired,
+         platform: "Discord",
+         jobTitle: "moderator",
+         location: "Rivers state",
+         pricerange: "$15-$25",
+         stat: "expires soon",
+      },
+      {
+         id: 12,
+         icon: tired,
+         platform: "Upwork",
+         jobTitle: "Virtual Assitance",
+         location: "Lagos Nigeria",
+         pricerange: "$15-$25",
+         stat: "expires soon",
+      },
+      {
+         id: 13,
+         icon: tired,
+         platform: "Discord",
+         jobTitle: "moderator",
+         location: "Rivers state",
+         pricerange: "$15-$25",
+         stat: "Applied",
+      },
+      {
+         id: 14,
+         icon: tired,
+         platform: "Upwork",
+         jobTitle: "Virtual Assitance",
+         location: "Lagos Nigeria",
+         pricerange: "$15-$25",
+         stat: "expires soon",
+      },
+      {
+         id: 15,
+         icon: tired,
+         platform: "Upwork",
+         jobTitle: "Virtual Assitance",
+         location: "Remote",
+         pricerange: "$15-$25",
+         stat: "Applied",
+      },
+      {
+         id: 16,
+         icon: tired,
+         platform: "figma",
+         jobTitle: "Virtual Assitance",
+         location: "Remote",
+         pricerange: "$40-$85",
+         stat: "Applied",
+      },
+      {
+         id: 17,
+         icon: tired,
+         platform: "Discord",
+         jobTitle: "moderator",
+         location: "Rivers state",
+         pricerange: "$15-$25",
+         stat: "expires soon",
+      },
+      {
+         id: 18,
+         icon: tired,
+         platform: "Upwork",
+         jobTitle: "Virtual Assitance",
+         location: "Lagos Nigeria",
+         pricerange: "$15-$25",
+         stat: "expires soon",
+      },
+   ];
    const username = "Prosper Williams";
    const location = "Benin City Nigeria";
+   let MyJobs = 1;
+
    return (
-      <div className=" h-auto pt-4 px-2 sm:px-0">
-         <section className="m-auto max-w-[22rem] flex flex-col justify-center py-2 sm:px-2">
-            <main className=" flex justify-center flex-row items-center gap-3">
-               <div className=" flex-2">
-                  {" "}
-                  <Image src={tiredicon} alt="profile image" className="max-w-[5.6rem] sm:max-w-[6rem] object-cover" />
-               </div>
-               <div className="flex-grow text-center">
-                  {" "}
-                  <h3 className="font-bold text-xl montserrat">{username}</h3>
-                  <p className="sora text-sm">{location}</p>
-               </div>
-            </main>
-            <button className=" border mt-3 max-w-[8rem] m-auto items-center capitalize flex justify-center gap-1 rounded-sm text-sm px-3 py-2 sora text-semibold ">
-               <p>Edit Profile</p>
-               <Image src={editicon} alt="editicon" className="w-4 h-4 " />
-            </button>
-         </section>
-         <div className=" mt-4 sm:px-2 md:px-0">
-            <section className="flex justify-between">
-               <button className={` py-2 px-4 sora text-sm text-[#021C5F] rounded-md ${Tabs === 0 ? "border bg-[#F5F5F1]" : null}`} onClick={() => setTabs(0)}>
-                  All jobs
-               </button>
-               <button className={` py-2 px-4 sora text-sm text-[#021C5F] rounded-md ${Tabs === 1 ? "border bg-[#F5F5F1]" : null}`} onClick={() => setTabs(1)}>
-                  Courses
-               </button>
-               <button className={` py-2 px-4 sora text-sm text-[#021C5F] rounded-md ${Tabs === 2 ? "border bg-[#F5F5F1]" : null}`} onClick={() => setTabs(2)}>
-                  Password
-               </button>
-            </section>
-            <br />
-            {MyTabs[Tabs]}
+      <div className=" h-auto pt-4 px-2 sm:px-0 w-full flex-grow">
+         <div className="pb-8">
+            {MyJobs >= 1 ? (
+               <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4  mt-4 gap-4 ">
+                  {jobs.map((job) => (
+                     <div key={job.id} className="border p-2 md:p-3 rounded-md">
+                        <section className=" flex flex-row gap-2 items-center relative">
+                           <Image src={job.icon} alt="company-icon" className="w-8 h-8" /> <p className="text-sm font-semibold capitalize">{job.platform}</p>
+                           <section className={`absolute right-1 text-white text-xs px-1 py-0.5 rounded-sm capitalize ${job.stat === "Applied" ? "bg-green-700" : "bg-red-700"}`}>
+                              {job.stat ? job.stat : null}
+                           </section>
+                        </section>
+                        <p className=" font-semibold text-md montserrat capitalize">{job.jobTitle}</p>
+                        <p className=" text-xs sm:text-[85%] montserrat capitalize">{job.location}</p>
+                        <p className=" border-b-[2px] border-solid border-x-black-100 text-xl sm:text-[120%] montserrat capitalize text-[#f5cb1a] font-semibold tracking-wide">
+                           {job.pricerange}
+                        </p>
+                        <section className="flex flex-row justify-between m-1 py-1 ">
+                           <button className="w-6 h-6">
+                              <Image src={love} alt="loveicon" />
+                           </button>
+                           <button className="w-6 h-6">
+                              <Image src={share} alt="shareicon" />
+                           </button>
+                        </section>
+                     </div>
+                  ))}
+                  <br />
+               </section>
+            ) : (
+               <main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] border-solid mt-10 p-2">
+                  <section className="flex flex-col justify-center items-center py-4">
+                     <Image src={tiredicon} alt="tiredicon" className="w-24 h-24 md:w-28 md:h-28 m-auto" />
+
+                     <p className="sora capitalize pt-2 ">you have not apllied for any jobs yet!</p>
+                     <p className="sora capitalize text-md text-[#f5cb1a] underline">click here to apply for a job now!</p>
+                  </section>
+                  <br />
+               </main>
+            )}
          </div>
       </div>
    );

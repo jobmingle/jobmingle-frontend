@@ -2,15 +2,15 @@ import React from "react";
 import changepassbg from "../../../public/changepassimg.png";
 import Image from "next/image";
 
-const Password = () => {
+const Page = () => {
    return (
-      <div className=" grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-6 h-auto">
-         <section className=" hidden md:flex items-center justify-center ">
-            <Image src={changepassbg} alt="illustration" className=" lg:w-[100%] lg:h-[90%]" />
-         </section>
-         <section className=" flex-grow px-2 sm:px-20 md:px-0 lg:ml-10">
+      <div className=" flex flex-col items-center gap-3 h-auto">
+         {/* <section className=" hidden lg:flex items-center justify-center ">
+            <Image src={changepassbg} alt="illustration" className=" w- full aspect-square" />
+         </section> */}
+         <section className=" w-full lg:max-w-[30rem] px-2 sm:px-20 md:px-0">
             <h2 className="font-bold text-xl montserrat text-center capitalize tracking-wide py-2">Create new password</h2>
-            <form action="" className=" flex flex-col mt-4 py-6">
+            <form action="" className=" flex flex-col mt-4 pb-4">
                <label htmlFor="currentpass " className="text-[100%] font-semibold">
                   Current Password
                </label>
@@ -43,7 +43,7 @@ const Password = () => {
                   placeholder="Enter password again"
                />
 
-               <button className="focus:outline-none mt-6 mb-5 h-[2.9rem] border-[1.2px] border-solid bg-[#f5cb1a] w-full rounded-[8px] pl-4 sora text-[100%] text-white">
+               <button className="focus:outline-none mt-6 h-[2.9rem] border-[1.2px] border-solid bg-[#f5cb1a] w-full rounded-[8px] pl-4 sora text-[100%] text-white">
                   change password
                </button>
             </form>
@@ -52,4 +52,4 @@ const Password = () => {
    );
 };
 
-export default Password;
+export default Page;

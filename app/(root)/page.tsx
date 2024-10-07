@@ -11,11 +11,10 @@ import Services from "@/app/_components/ui/Services";
 import FAQSection from "../_components/ui/FAQSection";
 import Head from "next/head";
 
-// 
+//
 export default function Home() {
    return (
       <main className="md:px-8  md:py-8 ">
-        
          <Hero />
          <WhyChooseUs />
          <Steps />

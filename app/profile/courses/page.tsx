@@ -104,7 +104,7 @@ const courses = [
       pricerange: "$15-$25",
    },
 ];
-const Courses = () => {
+const Page = () => {
    let Courses = 1;
 
    return (
@@ -160,4 +160,4 @@ const Courses = () => {
    );
 };
 
-export default Courses;
+export default Page;

@@ -117,11 +117,11 @@ const Page = () => {
 
    return (
       <div className="min-h-[70vh] sm:min-h-[85vh] md:min-h-[90vh] h-auto mx-2 md:mx-0">
-         <Button className="w-[160px] max-md:w-[160px] text-[14px] mt-3 md:mt-0 text-white sora bg-[#f5cb1a]" onClick={handlelistjob}>
+         <Button className="w-[160px] max-md:w-[160px] text-[14px] mt-3 md:my-4 text-white sora bg-[#f5cb1a]" onClick={handlelistjob}>
             List a job here !
          </Button>
          {Jobs >= 1 ? (
-            <main className="border-black/50 w-full h-auto min-h-[35vh] md:min-h-[50vh] border-solid border-[0.5px] rounded-md mt-10 p-2 lg:p-4">
+            <main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] rounded-md mt-10 p-2 lg:p-4">
                <div className=" flex justify-between gap-4 items-center flex-wrap">
                   <section>
                      <h2 className="text-[18px] lg:text-[24px] montserrat font-semibold text-[#f5cb1a]">{time >= 12 ? "Good Evening" : "Good Morning"} Nneji! </h2>
@@ -220,6 +220,7 @@ const Page = () => {
                <Button className="w-[140px] max-md:w-[160px] h-12 text-[12px] text-white sora bg-[#f5cb1a] text-center">Subscribe Now</Button>
             </section>
          </div>
+         <br />
       </div>
    );
 };
