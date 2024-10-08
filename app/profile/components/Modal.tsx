@@ -24,6 +24,6 @@ const Modal = ({setActive}) => {
          </div>
       </div>
    );
-};
+}; 
 
 export default Modal;
