@@ -140,7 +140,7 @@ const Page = () => {
                      />
                   </section>
                </div>
-               <div className="flex justify-between mt-10">
+               <div className="flex justify-left mt-10">
                   <div className=" bg-[#1648C7] w-[8rem] sm:w-[10rem] h-[4rem] sm:h-[5rem] py-2">
                      <section className="sora text-white text-sm text-center flex flex-col justify-between h-full">
                         <div className=" text-xs sm:text-[100%]">Total course listed</div>
@@ -148,13 +148,13 @@ const Page = () => {
                         <div className=" text-[25px] font-semibold">28</div>
                      </section>
                   </div>
-                  <div className=" bg-[#1648C7] w-[8rem] sm:w-[10rem] h-[4rem] sm:h-[5rem] py-2">
+                  {/* <div className=" bg-[#1648C7] w-[8rem] sm:w-[10rem] h-[4rem] sm:h-[5rem] py-2">
                      <section className="sora text-white text-sm text-center flex flex-col justify-between h-full">
                         <div className=" text-xs sm:text-[100%]">Available Course</div>
-                        {/* <button className="border w-7 h-7 float-right">-</button> */}
+                     
                         <div className="text-[25px] font-semibold">16</div>
                      </section>
-                  </div>
+                  </div> */}
                </div>
                <div className=" mt-3 flex flex-row justify-between">
                   <p className="montserrat font-bold capitalize text-black-100 text-[90%] sm:text-[120%]">Listed Courses</p>

@@ -30,7 +30,7 @@ const UserDashboard = () => {
                   <p className=" md:hidden" title="Courses"> C</p>
                </Link>
 
-               <Link href="/profile/password" className="block py-2 px-3 rounded hover:bg-gray-700">
+               <Link href="/profile/Settings" className="block py-2 px-3 rounded hover:bg-gray-700">
                   <p className="hidden md:flex">Settings</p>
                   <p className=" md:hidden" title="Settings"> S</p>
                </Link>
