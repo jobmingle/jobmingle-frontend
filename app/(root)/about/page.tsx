@@ -6,9 +6,9 @@ import LaptopPicFour from "@/public/christina.png";
 import AboutSlider from "@/app/_components/ui/AboutSlider";
 import Services from "@/app/_components/ui/Services";
 import Testimonials from "@/app/_components/ui/Testimonials";
-import FAQ2 from "../_components/ui/FAQSection2";
-import TeamSection from "../_components/ui/TeamMember";
-import CoreValueCard from "../_components/ui/CoreValueCard";
+import FAQ2 from "../../_components/ui/FAQSection2";
+import TeamSection from "../../_components/ui/TeamMember";
+import CoreValueCard from "../../_components/ui/CoreValueCard";
 import Contact from "../contact-us/page";
 
 const AboutSection = () => {

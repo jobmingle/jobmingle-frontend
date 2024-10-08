@@ -45,7 +45,6 @@ export default function RootLayout({
 				className={`${inter.className} ${ibmPlexSerif.variable} min-h-screen flex flex-col`}
 			>
 				<AuthProvider>
-					<AppHeader />
 					{/* <div className="flex-1 md:px-8  md:py-8 "> */}
 					<div className="flex-1 ">
 						<main className="max-w-7xl  mx-auto">{children}</main>
@@ -67,7 +66,6 @@ export default function RootLayout({
 						},
 					}}
 				/>
-				<AppFooter />
 			</body>
 		</html>
 	);

@@ -1,4 +1,4 @@
-import UserDashboard from "../_components/ui/UserDashboard";
+import UserDashboard from "../../_components/ui/UserDashboard";
 
 const page = () => {
 	return (

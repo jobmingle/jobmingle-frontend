@@ -51,6 +51,7 @@ export default function SignUpForm() {
 	}, [error, isAuthenticated]);
 
 	function onSubmit(data: FormData) {
+		// console.log(data);
 		registerUser(data);
 		toast.success("Form submitted successfully.");
 	}

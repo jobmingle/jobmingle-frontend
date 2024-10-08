@@ -3,7 +3,7 @@ import Button from "../_components/atoms/Button";
 import "../globals.css";
 import Image from "next/image";
 import tireds from "../../public/tiredicon.png";
-import Card from "../student-dashboard/component/Card";
+import Card from "../(dashboards)/student-dashboard/component/Card";
 import { courses } from "@/lib/_exportLinks";
 
 const Page = () => {

@@ -4,10 +4,10 @@ import React, { useEffect } from "react";
 import Card from "./component/Card";
 import { courses } from "@/lib/_exportLinks";
 import Joblist from "./component/joblist";
-import Button from "../_components/ui/Button";
+import Button from "../../_components/ui/Button";
 import { useRouter } from "next/navigation";
 
-import { useAuth } from "../_contexts/auth/AuthState";
+import { useAuth } from "../../_contexts/auth/AuthState";
 
 const HomePage = () => {
 	const { token, user, isAuthenticated, logout } = useAuth();

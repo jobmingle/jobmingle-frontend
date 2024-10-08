@@ -27,6 +27,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 function AuthProvider({ children }) {
 	const initialState = {
+		// token: null,
 		token: localStorage.getItem("token") || null,
 		isAuthenticated: null,
 		resetOk: null,
@@ -153,7 +154,7 @@ function AuthProvider({ children }) {
 			const res = await axios.post(`${BASE_URL}/login`, formData, config);
 
 			dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-			// localStorage.setItem('token', res.data.token);
+			localStorage.setItem("token", res.data.token);
 
 			toast.success(res?.data.message);
 

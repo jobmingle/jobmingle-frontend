@@ -35,13 +35,12 @@ export default function RootLayout({
 				className={`${inter.className} ${ibmPlexSerif.variable} min-h-screen flex flex-col`}
 			>
 				<AuthProvider>
-					<header>
-						<AppHeader />
-					</header>
+					{/* <div className="flex-1 md:px-8  md:py-8 "> */}
 					<div className="flex-1 ">
 						<main className="max-w-7xl  mx-auto">{children}</main>
 					</div>
 				</AuthProvider>
+				{/* <AppFooter /> */}
 				<Toaster
 					position="top-center"
 					gutter={12}
@@ -58,9 +57,6 @@ export default function RootLayout({
 						},
 					}}
 				/>
-				<footer>
-					<AppFooter />
-				</footer>
 			</body>
 		</html>
 	);
