@@ -19,7 +19,7 @@ export default function RootLayout({
             {Active ? <Modal setActive={setActive} /> : null}
             <Nav />
             <div className="sm:px-2 w-full max-h-[100vh] overflow-auto">
-               <section className="m-auto max-w-[22rem] flex flex-col justify-center py-2 sm:px-2 my-4 border">
+               <section className="m-auto max-w-[22rem] flex flex-col justify-center py-2 sm:px-2 my-4 ">
                   <main className=" flex justify-center flex-row items-center gap-3">
                      <div className=" flex-2">
                         {" "}

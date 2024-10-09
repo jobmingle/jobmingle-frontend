@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/app/_components/atoms/Button";
 import React, {useState} from "react";
+
 const Modal = ({setActive}) => {
    const handleclose = () => {
       setActive(false);
