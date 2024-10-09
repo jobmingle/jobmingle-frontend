@@ -42,7 +42,7 @@ export default function LoginForm() {
 			toast.error(error);
 			clearErrors();
 		}
-	}, [error, isAuthenticated]);
+	}, [error, isAuthenticated, clearErrors, router]);
 
 	function onSubmit(data: FormData): void {
 		login(data);

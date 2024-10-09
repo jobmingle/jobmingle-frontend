@@ -1,6 +1,6 @@
 "use client";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
-import Button from "../../_components/ui/Button";
+import Button from "@/app/_components/ui/Button";
 import { useRouter } from "next/navigation";
 
 const SideNav = () => {

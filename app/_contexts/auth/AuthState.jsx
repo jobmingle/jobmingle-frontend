@@ -28,7 +28,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 function AuthProvider({ children }) {
 	const initialState = {
 		// token: null,
-		token: localStorage.getItem("token") || null,
+		token: localStorage?.getItem("token") || null,
 		isAuthenticated: null,
 		resetOk: null,
 		isLoading: false,
@@ -84,8 +84,6 @@ function AuthProvider({ children }) {
 
 			await router.push("/sign-up/confirm-email");
 			toast.success(res?.data.message);
-
-			// fetchUser(res.data.token);
 
 			// router.push("/sign-up/confirm-email");
 		} catch (err) {
@@ -155,7 +153,7 @@ function AuthProvider({ children }) {
 
 			dispatch({ type: LOGIN_SUCCESS, payload: res.data });
 			localStorage.setItem("token", res.data.token);
-
+			console.log(res);
 			toast.success(res?.data.message);
 
 			await router.push("/student-dashboard");

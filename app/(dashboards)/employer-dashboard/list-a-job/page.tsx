@@ -5,8 +5,7 @@ import jobmingle from "@/public/jobmingle.png";
 import arrowback from "@/public/arrowback.png";
 import { useRouter } from "next/navigation";
 import SuccessModal from "@/Components/SuccessModal";
-//
-//
+
 const Page = () => {
 	const router = useRouter();
 	const [Alert, setAlert] = useState(false);

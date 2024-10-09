@@ -38,7 +38,7 @@ export default function Contact() {
 				{/* Email and Phone */}
 				<div className="flex  text-black  font-bold flex-col max-md:w-[350px] w-[800px] lg:w-auto bg-white p-6 rounded border-2 border-gray-400 shadow-lg md:items-center">
 					<div>
-						<label htmlFor="Name"> Name</label>
+						<label htmlFor="name"> Name</label>
 						<Input
 							type="text"
 							name="Name"

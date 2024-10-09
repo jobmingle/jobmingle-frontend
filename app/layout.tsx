@@ -5,8 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 import favicon from "./favicon.ico";
 import MyApp from "@/app/_app";
-import AppHeader from "@/app/_components/ui/AppHeader";
-import AppFooter from "./_components/ui/Footer";
+
 import "./_styles/globals.css";
 import "../app/_styles/globals.css";
 // import setAuthToken from "@/lib/setAuthToken";
@@ -26,29 +25,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
-}: Readonly<{
+}: {
 	children: React.ReactNode;
-}>) {
+}) {
 	return (
 		<html lang="en" style={{ overflowX: "hidden" }}>
-			<MyApp />
+			{/* <MyApp /> */}
 			<link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-			{/* <body className={`${inter.className} `}>
-				<AppHeader />
-
-				{children}
-
-				<AppFooter />
-			</body> */}
-			<body
-				className={`${inter.className} ${ibmPlexSerif.variable} min-h-screen flex flex-col`}
-			>
+			<body className={`${inter.className} ${ibmPlexSerif.variable} `}>
 				<AuthProvider>
 					{/* <div className="flex-1 md:px-8  md:py-8 "> */}
-					<div className="flex-1 ">
-						<main className="max-w-7xl  mx-auto">{children}</main>
-					</div>
+
+					<main>{children}</main>
 				</AuthProvider>
 				<Toaster
 					position="top-center"
