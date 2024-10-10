@@ -1,8 +1,8 @@
 // pages/index.js
 import React from "react";
-import Card from "./component/Card";
+import Card from "../(dashboards)/student-dashboard/component/Card";
 import { courses } from "@/lib/_exportLinks";
-import Joblist from "./component/joblist";
+import Joblist from "../(dashboards)/student-dashboard/component/joblist";
 
 const HomePage = () => {
   return (
