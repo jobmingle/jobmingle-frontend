@@ -9,6 +9,7 @@ const UserDashboard = () => {
 
 	function handleLogout() {
 		logout();
+		router.push("/sign-in");
 	}
 
 	return (

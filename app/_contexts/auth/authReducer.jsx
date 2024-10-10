@@ -26,7 +26,6 @@ export default function authReducer(state, action) {
 
 		case REGISTER_SUCCESS:
 		case CONFIRMATION_SUCCESS:
-			localStorage.setItem("token", action?.payload?.token);
 			return {
 				...state,
 				...action.payload,
@@ -35,13 +34,13 @@ export default function authReducer(state, action) {
 			};
 
 		case LOGIN_SUCCESS:
-			localStorage.setItem("token", action?.payload?.token);
 			return {
 				...state,
 				...action.payload,
-				isAuthenticated: true,
 				isLoading: false,
-				user: action.payload?.user,
+				token: localStorage.getItem("token"),
+				// isAuthenticated: state.token ? true : null,
+				isAuthenticated: true,
 			};
 
 		case RESET_SUCCESS:

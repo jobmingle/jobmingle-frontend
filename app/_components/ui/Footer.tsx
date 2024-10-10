@@ -8,6 +8,9 @@ import Twitter from "@/public/svg-icons/twitter.svg";
 import LinkedIn from "@/public/svg-icons/linkedin.svg";
 
 export default function Footer() {
+	const date = new Date();
+	const year = date.getFullYear();
+
 	return (
 		<footer
 			id="footer"
@@ -99,7 +102,7 @@ export default function Footer() {
 			{/* Copyright Section */}
 			<div className="text-center mt-8">
 				<p className="text-gray-400">
-					&copy; Copyright 2023 Jobmingle. All rights reserved.
+					&copy; Copyright {year} Jobmingle. All rights reserved.
 				</p>
 			</div>
 		</footer>

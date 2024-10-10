@@ -3,12 +3,11 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Button from "./Button";
 import Error from "./Error";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
-import Loader from "./Loader";
 import Spinner from "@/app/_components/ui/Spinner";
 
 interface FormData {
@@ -18,15 +17,12 @@ interface FormData {
 
 export default function LoginForm() {
 	const { register, handleSubmit, formState } = useForm<FormData>();
-	const { errors } = formState;
-	const { login, error, isAuthenticated, clearErrors, isLoading } = useAuth();
-
 	const router = useRouter();
+	const { errors } = formState;
+	const { login, token, error, isAuthenticated, clearErrors, isLoading } =
+		useAuth();
 
 	useEffect(() => {
-		if (isAuthenticated) {
-			router.push("/dashboard");
-		}
 		if (!isAuthenticated) {
 			router.push("/sign-in");
 		}
@@ -46,17 +42,15 @@ export default function LoginForm() {
 			toast.error(error);
 			clearErrors();
 		}
-
-		// eslint-disable-next-line
-	}, [error, isAuthenticated]);
+	}, [error, isAuthenticated, clearErrors, router]);
 
 	function onSubmit(data: FormData): void {
 		login(data);
-		// router.push("sign-in/confirm-email");
+		toast.success("Form submitted successfully.");
 	}
 
 	function onError(errors: any) {
-		console.log(errors);
+		console.error(errors);
 	}
 
 	return (

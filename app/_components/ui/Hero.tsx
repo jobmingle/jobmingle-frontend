@@ -1,8 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Button from "../atoms/Button";
+import HomeImg from "@/public/home-hero-final-5.png";
 
 const Hero = () => {
+	// const path =
+	// 	"https://www.netcraft.com/wp-content/uploads/2023/04/home-hero-final-5.png";
+
 	return (
 		<div
 			id="home"
@@ -10,11 +15,15 @@ const Hero = () => {
 		>
 			{/* Right column */}
 			<div className="w-full md:hidden lg:hidden  h-full flex items-center justify-center mb-10 mt-2 ">
-				<img
-					src="https://www.netcraft.com/wp-content/uploads/2023/04/home-hero-final-5.png"
+				<Image
+					src={HomeImg}
 					alt="Background"
 					data-aos="zoom-in"
 					style={{ objectFit: "cover" }}
+					width={400}
+					height={300}
+					priority
+					// className="h-auto w-auto"
 					className=" max-md:w-[400px] max-md:h-[300px]"
 				/>
 			</div>
@@ -61,12 +70,16 @@ const Hero = () => {
 
 			{/* Right column */}
 			<div className="w-full max-md:hidden h-full flex items-center justify-center">
-				<img
-					src="https://www.netcraft.com/wp-content/uploads/2023/04/home-hero-final-5.png"
+				<Image
+					src={HomeImg}
 					alt="Background"
 					data-aos="zoom-in"
 					style={{ objectFit: "cover" }}
+					width={400}
+					height={300}
 					className=" max-md:w-[400px] max-md:h-[300px]"
+					// className="h-auto w-auto"
+					priority
 				/>
 			</div>
 		</div>

@@ -1,7 +1,7 @@
 // "use client";
 
 import Hero from "@/app/_components/ui/Hero";
-import Contact from "../contact-us/page";
+import Contact from "./contact-us/page";
 import AboutSlider from "../_components/ui/AboutSlider";
 import PartnersSponsors from "../_components/ui/PartnersLogo";
 import WhyChooseUs from "../_components/ui/WhyChooseUs";
@@ -15,6 +15,7 @@ import Head from "next/head";
 export default function Home() {
    return (
       <main className="md:px-8  md:py-8 ">
+        
          <Hero />
          <WhyChooseUs />
          <Steps />
