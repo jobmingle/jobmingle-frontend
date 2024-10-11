@@ -20,7 +20,6 @@ export default function RootLayout({
 }>) {
 	return (
 		<div className="flex h-screen relative ">
-			<Sidenav />
 			<div className="flex-grow">{children}</div>
 		</div>
 	);

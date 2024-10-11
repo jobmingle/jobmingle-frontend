@@ -11,7 +11,7 @@ export default function RootLayout({
 		// <section>
 		<section className={` min-h-screen flex flex-col`}>
 			<div className="flex-1 ">
-				<main className="max-w-7xl  mx-auto">{children}</main>
+				<main className="  mx-auto">{children}</main>
 			</div>
 			{/* <AppFooter /> */}
 		</section>
