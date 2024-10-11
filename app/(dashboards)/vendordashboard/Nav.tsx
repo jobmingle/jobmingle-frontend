@@ -1,7 +1,7 @@
 "use client";
 import {useAuth} from "@/app/_contexts/auth/AuthState";
 import {useRouter} from "next/navigation";
-import Button from "../_components/ui/Button";
+import Button from '../../_components/ui/Button'
 import {useState} from "react";
 import Link from "next/link";
 

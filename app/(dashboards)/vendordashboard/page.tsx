@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "../../_components/atoms/Button";
-import "../_styles/globals.css";
+import Button from '../../_components/atoms/Button'
+import "../../_styles/globals.css";
 import Image from "next/image";
-import courseplaceholder from "../../public/courseplaceholder.png";
-import tiredicon from "../../public/tiredicon.png";
-import share from "../../public/shareicon.png";
-import love from "../../public/loveicon.png";
+import courseplaceholder from "../../../public/courseplaceholder.png";
+import tiredicon from "../../../public/tiredicon.png";
+import share from "../../../public/shareicon.png";
+import love from "../../../public/loveicon.png";
 
 // interface Jobprops {
 //    id: number;

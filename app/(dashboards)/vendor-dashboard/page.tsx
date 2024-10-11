@@ -1,9 +1,10 @@
 import React from "react";
 // import Button from "../_components/atoms/Button";
 import Button from '../../_components/atoms/Button'
-import "../globals.css";
+// import "../../globals.css";
+import "../../_styles/globals.css"
 import Image from "next/image";
-import tireds from "../../public/tiredicon.png";
+import tireds from "../../../public/tiredicon.png";
 import Card from '../student-dashboard/component/Card'
 import { courses } from "@/lib/_exportLinks";
 
