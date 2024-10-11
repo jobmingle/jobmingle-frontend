@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Nav from "./Nav"
+import Nav from "./Nav";
 import tiredicon from "../../public/tiredicon.png";
 import editicon from "../../public/editicon.png";
 export default function RootLayout({

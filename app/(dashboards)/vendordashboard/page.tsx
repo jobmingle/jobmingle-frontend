@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../_components/atoms/Button";
+import Button from "../../_components/atoms/Button";
 import "../_styles/globals.css";
 import Image from "next/image";
 import courseplaceholder from "../../public/courseplaceholder.png";

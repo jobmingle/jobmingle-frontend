@@ -1,7 +1,7 @@
 "use client";
 import {useAuth} from "@/app/_contexts/auth/AuthState";
 import {useRouter} from "next/navigation";
-import Button from "../_components/ui/Button";
+import Button from "../../_components/ui/Button";
 import {useState} from "react";
 import Link from "next/link";
 
@@ -21,18 +21,26 @@ const UserDashboard = () => {
                <h1 className="text-2xl font-bold hidden md:flex">Dashboard</h1>
             </div>
             <nav className="flex-1 px-4 space-y-4">
-               <Link  href="/employerdashboard" className="block py-2 px-3 rounded hover:bg-gray-700">
+               <Link href="/employerdashboard" className="block py-2 px-3 rounded hover:bg-gray-700">
                   <p className="hidden md:flex"> Jobs</p>
-                  <p className=" md:hidden" title="Jobs"> J</p>
+                  <p className=" md:hidden" title="Jobs">
+                     {" "}
+                     J
+                  </p>
                </Link>
                <Link href="/employerdashboard/list-a-job" className="block py-2 px-3 rounded hover:bg-gray-700">
                   <p className="hidden md:flex">List a Job</p>
-                  <p className=" md:hidden" title="Settings"> S</p>
+                  <p className=" md:hidden" title="Settings">
+                     {" "}
+                     S
+                  </p>
                </Link>
 
                <Button onClick={handleLogout} type="logout">
                   <p className="hidden md:flex"> Logout</p>
-                  <span className="md:hidden" title="Logout">L</span>
+                  <span className="md:hidden" title="Logout">
+                     L
+                  </span>
                </Button>
             </nav>
          </aside>
