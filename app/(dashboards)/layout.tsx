@@ -8,12 +8,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		// <section>
-		<section className={` min-h-screen flex flex-col`}>
-			<div className="flex-1 ">
-				<main className="  mx-auto">{children}</main>
-			</div>
-			{/* <AppFooter /> */}
+		<section className={`h-screen w-full flex flex-col`}>
+			<main>{children}</main>
+			<AppFooter />
 		</section>
 	);
 }

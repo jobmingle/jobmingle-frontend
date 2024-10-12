@@ -53,9 +53,7 @@ const AppHeader = () => {
 			} ${isVisible ? "animate-bounceIn" : "translate-y-0"}`}
 		>
 			<div className="w-[100vw] h-24 border-b-[0.5px] border-b-[#9a8888] bg-white flex items-center justify-between px-8">
-				{/* <div className="flex items-center max-md:mr-[45%]"> */}
 				<div className="flex items-center ">
-					{/* <div className=" font-sans text-[1.625rem] mx-7  font-medium leading-[1.4375rem]  hover:text-[#FFBE0B]"> */}
 					<div className="m-auto">
 						<Link href="/">
 							<Logo path={logo} />
@@ -146,39 +144,39 @@ const AppHeader = () => {
 
 			{/* Mobile menu */}
 			{menuOpen && (
-				<div
-					className={`bg-stone-800 md:hidden max-md:absolute max-md:h-[50%] max-md:w-[100%] max-md:z-[30] max-md:justify-center max-md:gap-[5px] mt-28 text-[#d9d9e8] flex flex-col items-center transition-all duration-500 ${
+				<ul
+					className={`bg-stone-800 md:hidden pb-10 absolute h-[50%] w-[100%] z-[30] justify-center gap-[5px]  text-[#d9d9e8] flex flex-col items-center transition-all duration-500 ${
 						menuOpen
 							? "clip-path-[polygon(0 0, 100% 0, 100% 100%, 0 80%)]"
 							: "clip-path-[polygon(0 0, 100% 0, 100% 100%, 0 0)]"
 					}`}
 				>
-					<div className="flex text-lg font-medium leading-6 hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20 ">
+					<li className="flex text-lg font-medium leading-6 hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20 ">
 						<Link href="/" onClick={toggleMenu}>
 							Home
 						</Link>
-					</div>
-					<div className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
+					</li>
+					<li className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
 						<Link href="/about" onClick={toggleMenu}>
 							About us
 						</Link>
-					</div>
-					<div className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
+					</li>
+					<li className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
 						<Link href="/courses" onClick={toggleMenu}>
 							Courses
 						</Link>
-					</div>
-					<div className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
+					</li>
+					<li className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
 						<Link href="/jobs" onClick={toggleMenu}>
 							Jobs
 						</Link>
-					</div>
+					</li>
 
-					<div className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
+					<li className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
 						<Link href="/contact-us" onClick={toggleMenu}>
 							Contact Us
 						</Link>
-					</div>
+					</li>
 					<div className="inline-flex items-start mr-6">
 						<Link href="/sign-up" onClick={toggleMenu}>
 							<Button className="w-[200px] bg-[#f5cb1a] text-black border-solid border-10 border-white transition-colors duration-300">
@@ -186,7 +184,7 @@ const AppHeader = () => {
 							</Button>
 						</Link>
 					</div>
-				</div>
+				</ul>
 			)}
 		</nav>
 	);

@@ -14,8 +14,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			<header>
 				<AppHeader />
 			</header>
-			<div className="flex-1 px-8 py-12 ">
-				<main className="max-w-7xl  mx-auto">{children}</main>
+			<div className="flex-1  ">
+				<main className=" mx-auto">{children}</main>
 			</div>
 			<footer>
 				<AppFooter />

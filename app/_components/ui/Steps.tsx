@@ -15,7 +15,7 @@ import {
 
 export default function Steps() {
 	return (
-		<div className="flex max-md:flex-col justify-center md:gap-5 mb-5 lg:my-16">
+		<div className="flex max-md:flex-col justify-center md:gap-5 mb-5 lg:my-16 max-md:p-2">
 			<div className="flex gap-3 text-xl md:text-4xl font-sans items-center justify-center h-[4rem] md:h-[10rem] w-full md:w-[10rem] lg:w-[20rem] bg-yellow-400 hover:bg-yellow-500 hover:translate-x-2 rounded-l-2xl max-md:rounded-none ">
 				<span>STEPS</span> <HiAcademicCap />
 			</div>
