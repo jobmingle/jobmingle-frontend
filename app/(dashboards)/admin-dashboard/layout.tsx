@@ -6,6 +6,9 @@ import MyApp from "@/app/_app";
 import favicon from "./favicon.ico";
 import AppHeader from "@/app/_components/ui/AppHeader";
 import Sidenav from "./NavUtils/AdminNav";
+import Logo from "@/app/_components/ui/Logo";
+import SideNav from "./NavUtils/AdminNav";
+import Jmlogo from "@/public/jobmingle.png";
 
 // export const metadata: Metadata = {
 //    title: "JobMingle",
@@ -18,9 +21,9 @@ export default function RootLayout({
 }: Readonly<{
    children: React.ReactNode;
 }>) {
-   return (
-      <div className="flex h-screen relative ">
-         <div className="flex-grow">{children}</div>
-      </div>
-   );
+	return (
+		<div className="flex h-screen relative ">
+			<div className="flex-grow">{children}</div>
+		</div>
+	);
 }
