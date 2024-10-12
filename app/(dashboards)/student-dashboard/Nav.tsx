@@ -1,16 +1,13 @@
 "use client";
 import {useAuth} from "@/app/_contexts/auth/AuthState";
-import {useRouter} from "next/navigation";
-import Button from "@/app/_components/ui/Button";
 import {useState} from "react";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
 import { useRouter } from "next/navigation";
 import Button from "@/app/_components/ui/Button";
-import { useState } from "react";
+// import { useState } from "react";
+useState
 import Link from "next/link";
 
 const UserDashboard = () => {
-	const router = useRouter();
 	const { logout } = useAuth();
 	const [Active, setActive] = useState(false);
 	function handleLogout() {
