@@ -10,7 +10,7 @@ export default function WhyChooseUs() {
 					Why <span className="text-stone-800">Choose Us?</span>
 				</h2>
 			</div>
-			<div className=" mb-[3rem] flex p-2 max-lg:flex-col  lg:gap-10 items-center justify-center">
+			<div className=" mb-[2rem] md:mb-[3rem] flex p-2 max-lg:flex-col  lg:gap-10 items-center justify-center">
 				{slides.map((slide, index) => (
 					<WhyChooseUsCard slide={slide} index={index} key={index} />
 				))}

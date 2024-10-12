@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Button from "../atoms/Button";
 import HomeImg from "@/public/home-hero-final-5.png";
+import Link from "next/link";
 
 const Hero = () => {
 	// const path =
@@ -11,17 +12,15 @@ const Hero = () => {
 	return (
 		<div
 			id="home"
-			className=" ml-5  max-md:ml-3 flex justify-center items-start p-10 max-md:p-3  md:items-center  mt-[1rem] max-md:mt-4 md-justify-center flex-col md:flex-row  "
+			className="  flex justify-center items-start md:mb-[5rem]  md:items-center  md-justify-center flex-col md:flex-row  "
 		>
 			{/* Right column */}
-			<div className="w-full md:hidden lg:hidden  h-full flex items-center justify-center mb-10 mt-2 ">
+			<div className="w-full  md:hidden lg:hidden  h-full flex items-center justify-center my-10  ">
 				<Image
 					src={HomeImg}
 					alt="Background"
 					data-aos="zoom-in"
 					style={{ objectFit: "cover" }}
-					width={400}
-					height={300}
 					priority
 					// className="h-auto w-auto"
 					className=" max-md:w-[400px] max-md:h-[300px]"
@@ -62,23 +61,22 @@ const Hero = () => {
 					data-aos-delay="700"
 					id="animationbutton"
 				>
-					<Button className="w-[200px] max-md:w-[150px] text-[16px] border-white border-solid bg-[#f5cb1a]">
-						Get Started
-					</Button>
+					<Link href="/sign-up">
+						<Button className="w-[200px] max-md:w-[150px] text-[16px] border-white border-solid bg-[#f5cb1a]">
+							Get Started
+						</Button>
+					</Link>
 				</div>
 			</div>
 
 			{/* Right column */}
-			<div className="w-full max-md:hidden h-full flex items-center justify-center">
+			<div className="w-full max-lg:hidden h-full flex items-center justify-center">
 				<Image
 					src={HomeImg}
 					alt="Background"
 					data-aos="zoom-in"
 					style={{ objectFit: "cover" }}
-					width={400}
-					height={300}
 					className=" max-md:w-[400px] max-md:h-[300px]"
-					// className="h-auto w-auto"
 					priority
 				/>
 			</div>

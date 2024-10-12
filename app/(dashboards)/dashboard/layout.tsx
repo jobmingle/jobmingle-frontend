@@ -1,6 +1,8 @@
+"use client";
+import Nav from "./Nav";
+
 import Logo from "@/app/_components/ui/Logo";
 import Jmlogo from "@/public/jobmingle.png";
-import Nav from "./Nav";
 
 export default function RootLayout({
 	children,

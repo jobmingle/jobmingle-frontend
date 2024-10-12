@@ -2,26 +2,39 @@
 import { useAuth } from "@/app/_contexts/auth/AuthState";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "../../_components/ui/Button";
+import { useState } from "react";
 import Link from "next/link";
-import { HiMiniBriefcase, HiOutlineCog, HiPencilSquare } from "react-icons/hi2";
+import Logo from "../../_components/ui/Logo";
+import Jmlogo from "@/public/jobmingle.png";
+import {
+	HiAcademicCap,
+	HiMiniBriefcase,
+	HiOutlineBookOpen,
+	HiOutlineCog,
+} from "react-icons/hi2";
 
-const UserDashboard = () => {
-	const pathname = usePathname();
+const MainNav = () => {
+	const router = useRouter();
 	const { logout } = useAuth();
+	const [Active, setActive] = useState(false);
 	function handleLogout() {
 		logout();
 	}
+	const pathname = usePathname();
 
 	const isActive = (path: string): boolean => pathname === path;
 
 	return (
-		<nav className={` flex flex-col items-center md:items-start w-full`}>
-			<ul className="flex-1 px-4 space-y-4">
+		<nav
+			className={` flex flex-col items-center md:items-start w-full`}
+			// className={` bg-gray-800 text-white flex flex-col items-center md:items-start border min-h-screen`}
+		>
+			<ul className=" flex flex-col gap-[0.8rem] w-full">
 				<li>
 					<Link
-						href="/employer-dashboard"
+						href="/dashboard"
 						className={`flex gap-2 transition-all 0.3s text-lg py-3 px-[2.4rem] hover:bg-gray-50 rounded-l ${
-							isActive("/employer-dashboard") ? "bg-gray-50" : ""
+							isActive("/dashboard") ? "bg-gray-50" : ""
 						}`}
 					>
 						<HiMiniBriefcase className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
@@ -32,27 +45,27 @@ const UserDashboard = () => {
 						</p>
 					</Link>
 				</li>
-
 				<li>
 					<Link
-						href="/employer-dashboard/list-a-job"
-						className={`flex gap-1 transition-all 0.3s text-[1rem] py-3 pl-[2.4rem] hover:bg-gray-50 rounded-l ${
-							isActive("/") ? "bg-gray-50" : ""
+						href={"/dashboard/courses"}
+						className={`flex gap-2 transition-all 0.3s text-lg py-3 px-[2.4rem]  hover:bg-gray-50 rounded-l ${
+							isActive("/dashboard/courses") ? "bg-gray-50" : ""
 						}`}
 					>
-						<HiPencilSquare className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
-						<p className="hidden md:flex">List a Job</p>
-						<p className=" md:hidden" title="Jobs">
+						<HiOutlineBookOpen className="w-[1.8rem] h-[1.8rem] hover:text-yellow-500 text-stone-950 " />
+
+						<p className="hidden md:flex"> Courses</p>
+						<p className=" md:hidden" title="Courses">
 							{" "}
-							S
+							C
 						</p>
 					</Link>
 				</li>
 				<li>
 					<Link
-						href="/employer-dashboard/settings"
+						href="/dashboard/settings"
 						className={`flex gap-2 transition-all 0.3s text-lg py-3 px-[2.4rem] hover:bg-gray-50 rounded-l ${
-							isActive("/employer-dashboard/settings") ? "bg-gray-50" : ""
+							isActive("/dashboard/settings") ? "bg-gray-50" : ""
 						}`}
 					>
 						<HiOutlineCog className="w-[1.8rem] h-[1.8rem] hover:text-yellow-500 text-stone-950" />
@@ -64,7 +77,6 @@ const UserDashboard = () => {
 						</p>
 					</Link>
 				</li>
-
 				<li>
 					<Button onClick={handleLogout} type="logout">
 						<p className="hidden md:flex"> Logout</p>
@@ -78,4 +90,4 @@ const UserDashboard = () => {
 	);
 };
 
-export default UserDashboard;
+export default MainNav;

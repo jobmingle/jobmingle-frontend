@@ -39,7 +39,7 @@ function HowItWorks() {
 
 	return (
 		<div
-			className={`flex flex-col items-center mt-[72px] justify-center ${
+			className={`flex flex-col items-center mt-[2rem] md:mt-[72px] justify-center ${
 				isRecruitmentModalOpen || isCvModalOpen ? "blur-background" : ""
 			}`}
 			style={{
@@ -59,12 +59,11 @@ function HowItWorks() {
 				data-aos="zoom-in"
 			/>
 
-			<h3 className="mt-[3%] text-4xl font-bold max-md:text-4xl max-md:text-left">
+			<h3 className="mt-[3%] text-3xl md:mb-10 font-bold max-md:text-2xl max-md:text-left">
 				OUR SERVICES
 			</h3>
-
-			<div className="h-full my-[1%] max-md:h-fit max-md:mt-[10px]">
-				<div className="flex flex-wrap justify-center items-center mt-8 gap-5">
+			<div className="h-full my-[1%] max-md:h-fit mt-[5px] md:mt-[10px]">
+				<div className="flex flex-wrap justify-center items-center  gap-5">
 					<ServiceCard
 						title="RE-SKILLING"
 						aostime="3000"
