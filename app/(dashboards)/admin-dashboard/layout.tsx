@@ -14,13 +14,13 @@ import Sidenav from "./NavUtils/AdminNav";
 // };
 
 export default function RootLayout({
-	children,
+   children,
 }: Readonly<{
-	children: React.ReactNode;
+   children: React.ReactNode;
 }>) {
-	return (
-		<div className="flex h-screen relative ">
-			<div className="flex-grow">{children}</div>
-		</div>
-	);
+   return (
+      <div className="flex h-screen relative ">
+         <div className="flex-grow">{children}</div>
+      </div>
+   );
 }
