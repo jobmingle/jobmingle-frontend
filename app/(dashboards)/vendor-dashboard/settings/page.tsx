@@ -5,7 +5,7 @@ import changepassbg from "@/public/changepassimg.png";
 import Image from "next/image";
 import tiredicon from "@/public/tiredicon.png";
 import editicon from "@/public/editicon.png";
-import Modal from "../components/Modal";
+// import Modal from "../components/Modal";
 
 const Page = () => {
 	const username = "Prosper Williams";
@@ -16,7 +16,7 @@ const Page = () => {
 		<div className=" flex flex-col items-center gap-3 h-auto">
 			{/* Edit profile */}
 			<div className="flex relative">
-				{Active ? <Modal setActive={setActive} /> : null}
+				{/* {Active ? <Modal setActive={setActive} /> : null} */}
 				<div className="sm:px-2 w-full max-h-[100vh] overflow-auto">
 					<section className="m-auto max-w-[22rem] flex flex-col justify-center py-2 sm:px-2 my-4 ">
 						<main className=" flex justify-center flex-row items-center gap-3">
