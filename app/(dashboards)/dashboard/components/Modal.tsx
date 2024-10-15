@@ -9,7 +9,7 @@ const Modal = ({setActive}) => {
 
    const style = "border-[#e5bb0a] border-[1px] border-solid h-[2rem] w-full text-xs rounded-sm sora pl-2 bg-transparent text-white focus:outline-none";
    return (
-      <div className={"absolute top-0 bottom-0 right-0 left-0 h-screen bg-black-100/10 px-5 sm:px-0 flex flex-col items-center z-40"}>
+      <div className={"absolute top-0 bottom-0 right-0 left-0 h-screen bg-black-100/10 px-5 sm:px-0 flex flex-col items-center z-40 border"}>
          <div className="relative h-auto md:h-[15rem] min-w-[25rem] w-auto  max-w-[32rem] rounded-md  bg-gray-800 m-auto ">
             <button className=" absolute sora text-xs right-1 pr-2 pt-2 text-white p-1" onClick={handleclose}>
                close
