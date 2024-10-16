@@ -11,9 +11,9 @@ import {
 	Tooltip,
 	ResponsiveContainer,
 } from "recharts";
-import love from "@/public/Heart.png";
-import share from "@/public/Icon.png";
-import tired from "@/public/discord.png";
+import love from "@/public/image/Heart.png";
+import share from "@/public/image/Icon.png";
+import tired from "@/public/image/discord.png";
 
 // Define the type for a job
 type Job = {

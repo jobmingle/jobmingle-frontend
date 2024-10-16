@@ -1,4 +1,4 @@
-import spinner from "@/public/Spinner.gif";
+import spinner from "@/public/image/Spinner.gif";
 import Image from "next/image";
 
 export default function Spinner() {

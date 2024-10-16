@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import jobmingle from "@/public/jobmingle.png";
-import Googleicon from "@/public/Googleicon.png";
+import jobmingle from "@/public/image/jobmingle.png";
+import Googleicon from "@/public/image/Googleicon.png";
 import Link from "next/link";
 import LoginForm from "@/app/_components/ui/LoginForm";
 import Logo from "@/app/_components/ui/Logo";
-import logo from "@/public/logo.png";
+import logo from "@/public/image/logo.png";
 
 function Page() {
 	return (

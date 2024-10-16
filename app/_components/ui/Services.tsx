@@ -4,7 +4,7 @@
 
 import Head from "next/head";
 import { useState } from "react";
-import bg from "@/public/hello.png";
+import bg from "@/public/image/hello.png";
 import Button from "../atoms/Button";
 
 type Props = {

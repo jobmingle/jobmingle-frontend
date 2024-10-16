@@ -1,9 +1,9 @@
 import Image from "next/image";
-import GoogleLogo from "@/public/logo4.png";
-import BinanceLogo from "@/public/logo3.jpeg";
-import PlaceholderLogo from "@/public/LUSH.png";
-import PlaceholderLogos from "@/public/logo5.jpeg";
-import Lush from "@/public/Photo from Omole.jpg";
+import GoogleLogo from "@/public/image/logo4.png";
+import BinanceLogo from "@/public/image/logo3.jpeg";
+import PlaceholderLogo from "@/public/image/LUSH.png";
+import PlaceholderLogos from "@/public/image/logo5.jpeg";
+import Lush from "@/public/image/Photo from Omole.jpg";
 
 const PartnersSponsors = () => {
 	return (

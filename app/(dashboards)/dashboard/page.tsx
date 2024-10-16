@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
-import tiredicon from "@/public/tiredicon.png";
-import share from "@/public/shareicon.png";
-import love from "@/public/loveicon.png";
+import tiredicon from "@/public/image/tiredicon.png";
+import share from "@/public/image/shareicon.png";
+import love from "@/public/image/loveicon.png";
 import Image from "next/image";
 import { Jobs } from "@/lib/_exportLinks";
 

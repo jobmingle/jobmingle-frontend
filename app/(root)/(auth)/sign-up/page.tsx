@@ -1,14 +1,14 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import jobmingle from "@/public/jobmingle.png";
-import SignUpBanner from "@/public/image/image-forms/signupbanner.png";
-import Googleicon from "@/public/Googleicon.png";
+import jobmingle from "@/public/image/jobmingle.png";
+import SignUpBanner from "@/public/image/image/image-forms/signupbanner.png";
+import Googleicon from "@/public/image/Googleicon.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import SignUpForm from "@/app/_components/ui/SignUpForm";
 import Logo from "@/app/_components/ui/Logo";
-import logo from "@/public/logo.png";
+import logo from "@/public/image/logo.png";
 
 //
 const Page = () => {

@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-import jobmingle from "@/public/jobmingle.png";
-import arrowback from "@/public/arrowback.png";
+import jobmingle from "@/public/image/jobmingle.png";
+import arrowback from "@/public/image/arrowback.png";
 // import "../globals.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -168,8 +168,8 @@ export default Page;
 // import React, { useRef, useState } from "react";
 // import { useForm, Controller } from "react-hook-form";
 
-// import jobmingle from "@/public/jobmingle.png";
-// import arrowback from "@/public/arrowback.png";
+// import jobmingle from "@/public/image/jobmingle.png";
+// import arrowback from "@/public/image/arrowback.png";
 // import Link from "next/link";
 // import { useRouter } from "next/navigation";
 // import Timer from "@/Components/Timer";

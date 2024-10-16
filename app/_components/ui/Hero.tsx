@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Button from "../atoms/Button";
-import HomeImg from "@/public/home-hero-final-5.png";
+import HomeImg from "@/public/image/home-hero-final-5.png";
 import Link from "next/link";
 
 const Hero = () => {

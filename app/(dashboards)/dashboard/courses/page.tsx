@@ -1,7 +1,7 @@
 import React from "react";
-import tiredicon from "@/public/tiredicon.png";
-import love from "@/public/loveicon.png";
-import share from "@/public/shareicon.png";
+import tiredicon from "@/public/image/tiredicon.png";
+import love from "@/public/image/loveicon.png";
+import share from "@/public/image/shareicon.png";
 import Image from "next/image";
 import { CoursesList } from "@/lib/_exportLinks";
 
