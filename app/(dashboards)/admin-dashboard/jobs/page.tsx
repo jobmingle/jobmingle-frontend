@@ -65,12 +65,14 @@ const initialJobs: Job[] = [
 	},
 ];
 
-const Joblist = ({ isAdmin }: { isAdmin: boolean }) => {
+const Joblist = () => {
 	const [jobs, setJobs] = useState<Job[]>(initialJobs);
 	const [deletedJobs, setDeletedJobs] = useState<Job[]>([]);
 	const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const totalTarget = 10;
+
+	const isAdmin = true;
 
 	const openModal = (job: Job) => {
 		setSelectedJob(job);

@@ -27,8 +27,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 function AuthProvider({ children }) {
 	const initialState = {
-		// token: null,
-		token: localStorage?.getItem("token") || null,
+		token: typeof window !== "undefined" ? localStorage.getItem("token") : null,
 		isAuthenticated: null,
 		resetOk: null,
 		isLoading: false,

@@ -14,6 +14,8 @@ function Carousel({
 		if (!autoSlide) return;
 		const slideInterval = setInterval(next, autoSlideInterval);
 		return () => clearInterval(slideInterval);
+
+		//eslint-disable-next-line
 	}, [autoSlide, autoSlideInterval]);
 
 	return (

@@ -13,8 +13,8 @@ export default function TeamSection() {
 									Meet the Team
 								</h1>
 								<p className="text-gray-700 text-lg font-light px-5 text-center">
-									With years of combined experience, we've got a well-seasoned
-									team at the helm.
+									With years of combined experience, we&#39;ve got a
+									well-seasoned team at the helm.
 								</p>
 							</div>
 						</div>
