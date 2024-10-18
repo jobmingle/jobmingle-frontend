@@ -45,6 +45,17 @@ const SideNav = () => {
 					</Link>
 				</li>
 				<li>
+					<Link
+						href="/admin-dashboard/users"
+						className={`flex gap-2 transition-all 0.3s text-lg py-3 px-[2.4rem] hover:bg-gray-50 rounded-l ${
+							isActive("/admin-dashboard/users") ? "bg-gray-50" : ""
+						}`}
+					>
+						<HiMiniBriefcase className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
+						<p className="hidden md:flex"> user</p>
+					</Link>
+				</li>
+				<li>
 					<Button onClick={handleLogout} type="logout">
 						Logout
 					</Button>
