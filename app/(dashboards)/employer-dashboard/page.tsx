@@ -2,19 +2,24 @@
 import React, { useState } from "react";
 import Button from "../../_components/atoms/Button";
 import Image from "next/image";
-import tired from "@/public/tiredicon.png";
-import share from "@/public/shareicon.png";
-import love from "@/public/loveicon.png";
+import tired from "@/public/image/tiredicon.png";
+import share from "@/public/image/shareicon.png";
+import love from "@/public/image/loveicon.png";
 import { useRouter } from "next/navigation";
 import { Jobs } from "@/lib/_exportLinks";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
+import Loader from "@/app/_components/ui/Loader";
 
 const Page = () => {
 	const MyJobs = 1;
 	const router = useRouter();
-	const { user } = useAuth();
+	const { user, isLoading } = useAuth();
 	const today = new Date().toISOString().split("T")[0];
 	const [selectedDate, setSelectedDate] = useState(today);
+
+	if (isLoading || !user) {
+		return <Loader />;
+	}
 
 	const time = new Date().getHours();
 	const timeOfTheDay = time >= 12 ? "Evening" : "Morning";
@@ -47,7 +52,7 @@ const Page = () => {
 							<input
 								type="date"
 								defaultValue={selectedDate}
-                        onChange={handleDateChange}
+								onChange={handleDateChange}
 								name=""
 								id=""
 								className="border-[#f5cb1a] mr-4 w-[7.5rem] md:w-36 border-solid border-[1px] px-2 py-2 sora text-[75%] md:text-sm rounded-sm focus:outline-none "

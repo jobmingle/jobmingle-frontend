@@ -1,7 +1,7 @@
 import React from "react";
-import tiredicon from "@/public/tiredicon.png";
-import love from "@/public/loveicon.png";
-import share from "@/public/shareicon.png";
+import tiredicon from "@/public/image/tiredicon.png";
+import love from "@/public/image/loveicon.png";
+import share from "@/public/image/shareicon.png";
 import Image from "next/image";
 import { CoursesList } from "@/lib/_exportLinks";
 
@@ -15,7 +15,7 @@ const Page = () => {
 			{Courses >= 1 ? (
 				<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] p-2 lg:p-4">
 					<div className="py-4">
-						<h1 className="text-4xl mb-0  max-md:text-center max-md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center">
+						<h1 className="text-2xl mb-0  max-md:text-center max-md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center">
 							View list of courses!
 						</h1>
 					</div>

@@ -1,23 +1,30 @@
 "use client";
 import React, { useState } from "react";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
-import tiredicon from "@/public/tiredicon.png";
-import share from "@/public/shareicon.png";
-import love from "@/public/loveicon.png";
+import tiredicon from "@/public/image/tiredicon.png";
+import share from "@/public/image/shareicon.png";
+import love from "@/public/image/loveicon.png";
 import Image from "next/image";
 import { Jobs } from "@/lib/_exportLinks";
+import { useRouter } from "next/navigation";
+import Loader from "@/app/_components/ui/Loader";
 
 //
 const Page = () => {
-	const { user } = useAuth();
+	const { user, isLoading } = useAuth();
+	const router = useRouter();
 
 	let MyJobs = 1;
 	const time = new Date().getHours();
 	const timeOfTheDay = time >= 12 ? "Evening" : "Morning";
 
+	if (isLoading || !user) {
+		return <Loader />;
+	}
+
 	return (
 		<div className=" h-auto pt-4 px-2 sm:px-0 w-full flex-grow md:p-4 my-10">
-			<div>
+			<div className="border p-5 rounded">
 				<h1 className="text-2xl font-bold">
 					Good {timeOfTheDay}, {user?.firstName || "Champ"}!
 				</h1>

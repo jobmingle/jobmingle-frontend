@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-import jobmingle from "@/public/jobmingle.png";
-import arrowback from "@/public/arrowback.png";
+import jobmingle from "@/public/image/jobmingle.png";
+import arrowback from "@/public/image/arrowback.png";
 import SuccessModal from "@/Components/SuccessModal";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
 import Loader from "@/app/_components/ui/Loader";

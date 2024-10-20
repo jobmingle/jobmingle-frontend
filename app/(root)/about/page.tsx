@@ -1,8 +1,8 @@
 import Image from "next/image";
-import LaptopPic from "@/public/jobSearch.jpg";
-import LaptopPicTwo from "@/public/african-american-business-woman-holding-laptop-standing-by-window.png";
-import LaptopPicThree from "@/public/Pexels Photo by Christina Morillo.svg";
-import LaptopPicFour from "@/public/christina.png";
+import LaptopPic from "@/public/image/jobSearch.jpg";
+import LaptopPicTwo from "@/public/image/african-american-business-woman-holding-laptop-standing-by-window.png";
+import LaptopPicThree from "@/public/image/Pexels Photo by Christina Morillo.svg";
+import LaptopPicFour from "@/public/image/christina.png";
 import AboutSlider from "@/app/_components/ui/AboutSlider";
 import Services from "@/app/_components/ui/Services";
 import Testimonials from "@/app/_components/ui/Testimonials";
