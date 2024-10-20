@@ -8,13 +8,18 @@ import love from "@/public/image/loveicon.png";
 import { useRouter } from "next/navigation";
 import { Jobs } from "@/lib/_exportLinks";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
+import Loader from "@/app/_components/ui/Loader";
 
 const Page = () => {
 	const MyJobs = 1;
 	const router = useRouter();
-	const { user } = useAuth();
+	const { user, isLoading } = useAuth();
 	const today = new Date().toISOString().split("T")[0];
 	const [selectedDate, setSelectedDate] = useState(today);
+
+	if (isLoading || !user) {
+		return <Loader />;
+	}
 
 	const time = new Date().getHours();
 	const timeOfTheDay = time >= 12 ? "Evening" : "Morning";

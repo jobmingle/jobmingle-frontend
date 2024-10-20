@@ -4,10 +4,15 @@ export default function page() {
 	return (
 		<section
 			id="about"
-			className="px-5 md:px-32  flex flex-col gap-5  max-md:text-center justify-center my-10"
+			className="px-5 md:px-32  flex flex-col gap-5   justify-center my-10"
 		>
-			<h1 className="text-3xl font-extrabold ">Terms</h1>
+			<h1 className="text-3xl font-extrabold text-center uppercase  ">
+				Terms & Conditions
+			</h1>
 			<div>
+				<h2 className="text-2xl font-bold text-stone-700 p-[1rem]">
+					Introduction
+				</h2>
 				<p>
 					Welcome to JobMingle! We&#39;re thrilled to have you as part of our
 					community. Before you dive into our platform, please take a moment to

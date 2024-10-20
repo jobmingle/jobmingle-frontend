@@ -9,9 +9,10 @@ import share from "@/public/image/shareicon.png";
 import love from "@/public/image/loveicon.png";
 import { CoursesList } from "@/lib/_exportLinks";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
+import Loader from "@/app/_components/ui/Loader";
 
 const Page = () => {
-	const { user } = useAuth();
+	const { user, isLoading } = useAuth();
 	const today = new Date().toISOString().split("T")[0];
 	const [selectedDate, setSelectedDate] = useState(today);
 
@@ -22,6 +23,9 @@ const Page = () => {
 	const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSelectedDate(event.target.value);
 	};
+	if (isLoading || !user) {
+		return <Loader />;
+	}
 
 	return (
 		<div className="min-h-[70vh] sm:min-h-[85vh] md:min-h-[90vh] h-auto mx-2 md:mx-0">

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import jobmingle from "@/public/image/jobmingle.png";
 import arrowback from "@/public/image/arrowback.png";
@@ -22,7 +22,14 @@ interface FormData {
 function Page() {
 	const [timeLeft, setTimeLeft] = useState(1 * 60);
 	const [isVisible, setIsVisible] = useState(true);
-	const { control, handleSubmit } = useForm<FormData>();
+	const { control, handleSubmit } = useForm<FormData>({
+		defaultValues: {
+			digit1: "",
+			digit2: "",
+			digit3: "",
+			digit4: "",
+		},
+	});
 	const router = useRouter();
 	const inputs = useRef<(HTMLInputElement | null)[]>([]);
 	const {
@@ -34,10 +41,12 @@ function Page() {
 		clearErrors,
 	} = useAuth();
 
-	if (error) {
-		toast.error(error);
-		clearErrors();
-	}
+	useEffect(() => {
+		if (error) {
+			toast.error(error);
+			clearErrors();
+		}
+	}, [error, clearErrors]);
 
 	const onSubmit = (data: FormData) => {
 		const code = `${data.digit1}${data.digit2}${data.digit3}${data.digit4}`;
@@ -129,16 +138,35 @@ function Page() {
 									/>
 								))}
 							</div>
+							<div className="mt-3">
+								{isVisible ? (
+									<div className="montserrat font-bold text-lg text-[#021C5F] text-center">
+										<Timer
+											minute={1}
+											secs={60}
+											timeLeft={timeLeft}
+											setTimeLeft={setTimeLeft}
+											isVisible={isVisible}
+											setIsVisible={setIsVisible}
+										/>
+									</div>
+								) : (
+									<div className="mt-6 w-full text-center">
+										<p className="text-black-100 text-xs sora">
+											Didn&#39;t get the email ?
+										</p>
+										<button
+											onClick={handleResendCode}
+											className="border-none text-sm sora tracking-wider sora font-semibold text-[#F6CC16]"
+										>
+											click here to resend
+										</button>
+									</div>
+								)}
+							</div>
 							<Button type="login">
-								Submit pin {isLoading && <Spinner />}
+								Submit pin <span>{isLoading && <Spinner />}</span>
 							</Button>
-							<Link
-								href="/Signin"
-								className="text-sm font-medium float-right mt-4 text-black-100/80"
-							>
-								Remember Password?{" "}
-								<span className="text-[#F6CC16]">Login!</span>
-							</Link>
 						</form>
 					</main>
 				</div>

@@ -56,11 +56,11 @@ function AuthProvider({ children }) {
 				});
 
 				dispatch({ type: USER_LOADED, payload: res.data });
+				// await router.push("/dashboard");
+
 				// console.log(res);
 				// console.log(res.data);
 			} catch (err) {
-				// console.log(err);
-				// console.log(err.response);
 				dispatch({ type: AUTH_ERROR });
 			}
 		}
@@ -107,9 +107,8 @@ function AuthProvider({ children }) {
 			const res = await axios.post(`${BASE_URL}/verify-email`, code, config);
 			dispatch({ type: CONFIRMATION_SUCCESS });
 
-			await router.push("/sign-up/generating-profile"); //
-
 			toast.success(res?.data?.message);
+			await router.push("/sign-up/generating-profile"); //
 		} catch (err) {
 			dispatch({
 				type: CONFIRMATION_FAIL,
@@ -138,6 +137,24 @@ function AuthProvider({ children }) {
 		}
 	}
 
+	// UPDATE USER INTEREST USAGE & IMAGE
+	async function updateUser(userId, userData) {
+		dispatch({ type: LOADING });
+
+		try {
+			const res = await axios.get(`${BASE_URL}/me/${userId}`, {
+				headers: { Authorization: `Bearer ${token}` },
+				"Content-Type": "application/json",
+			});
+			dispatch({ type: USER_LOADED, payload: res.data });
+		} catch (error) {
+			dispatch({
+				type: AUTH_ERROR,
+				payload: err?.response.data.message || err.message,
+			});
+		}
+	}
+
 	// LOGIN USER
 	async function login(formData) {
 		const config = {
@@ -155,7 +172,7 @@ function AuthProvider({ children }) {
 			console.log(res);
 			toast.success(res?.data.message);
 
-			await router.push("/student-dashboard");
+			await router.push("/dashboard");
 		} catch (err) {
 			dispatch({
 				type: LOGIN_FAIL,
@@ -231,6 +248,7 @@ function AuthProvider({ children }) {
 				error,
 				register,
 				verify,
+				updateUser,
 				login,
 				// fetchUser,
 				forgotPassword,
