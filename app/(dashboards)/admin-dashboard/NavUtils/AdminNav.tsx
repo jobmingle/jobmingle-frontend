@@ -3,7 +3,7 @@ import { useAuth } from "@/app/_contexts/auth/AuthState";
 import Button from "@/app/_components/ui/Button";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { HiChartBar, HiMiniBriefcase } from "react-icons/hi2";
+import { HiChartBar, HiMiniBriefcase,HiHome } from "react-icons/hi2";
 
 const SideNav = () => {
 	const router = useRouter();
@@ -21,6 +21,17 @@ const SideNav = () => {
 	return (
 		<nav className={` flex flex-col items-center md:items-start w-full`}>
 			<ul className=" flex flex-col gap-[0.8rem] w-full">
+				<li>
+					<Link
+						href="/admin-dashboard/Home"
+						className={`flex gap-2 transition-all 0.3s text-lg py-3 px-[2.4rem] hover:bg-gray-50 rounded-l ${
+							isActive("/admin-dashboard/Home") ? "bg-gray-50" : ""
+						}`}
+					>
+						<HiHome className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
+						<p className="hidden md:flex"> Home</p>
+					</Link>
+				</li>
 				<li>
 					<Link
 						href="/admin-dashboard"

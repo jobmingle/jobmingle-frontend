@@ -82,7 +82,7 @@ const AccountSearch = () => {
         <select
           value={filterType}
           onChange={handleFilterChange}
-          className="w-fit ml-4 p-2 border border-gray-300 rounded-md bg-yellow-500 text-black"
+          className="w-fit ml-4 p-2  pl-2 border border-gray-300 rounded-md bg-yellow-500 text-black"
         >
           <option value="All">All</option>
           <option value="Vendor">Vendor</option>
