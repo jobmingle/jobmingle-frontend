@@ -3,7 +3,13 @@ import { useAuth } from "@/app/_contexts/auth/AuthState";
 import Button from "@/app/_components/ui/Button";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { HiChartBar, HiMiniBriefcase,HiHome } from "react-icons/hi2";
+import {
+	HiChartBar,
+	HiMiniBriefcase,
+	HiHome,
+	HiHomeModern,
+	HiUserGroup,
+} from "react-icons/hi2";
 
 const SideNav = () => {
 	const router = useRouter();
@@ -23,20 +29,20 @@ const SideNav = () => {
 			<ul className=" flex flex-col gap-[0.8rem] w-full">
 				<li>
 					<Link
-						href="/admin-dashboard/Home"
+						href="/admin-dashboard/"
 						className={`flex gap-2 transition-all 0.3s text-lg py-3 px-[2.4rem] hover:bg-gray-50 rounded-l ${
-							isActive("/admin-dashboard/Home") ? "bg-gray-50" : ""
+							isActive("/admin-dashboard") ? "bg-gray-50" : ""
 						}`}
 					>
 						<HiHome className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
-						<p className="hidden md:flex"> Home</p>
+						<p className="hidden md:flex"> Dashboard</p>
 					</Link>
 				</li>
 				<li>
 					<Link
-						href="/admin-dashboard"
+						href="/admin-dashboard/analytics"
 						className={`flex gap-2 transition-all 0.3s text-lg py-3 px-[2.4rem] hover:bg-gray-50 rounded-l ${
-							isActive("/admin-dashboard") ? "bg-gray-50" : ""
+							isActive("/admin-dashboard/analytics") ? "bg-gray-50" : ""
 						}`}
 					>
 						<HiChartBar className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
@@ -62,8 +68,8 @@ const SideNav = () => {
 							isActive("/admin-dashboard/users") ? "bg-gray-50" : ""
 						}`}
 					>
-						<HiMiniBriefcase className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
-						<p className="hidden md:flex"> user</p>
+						<HiUserGroup className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
+						<p className="hidden md:flex"> Users</p>
 					</Link>
 				</li>
 				<li>

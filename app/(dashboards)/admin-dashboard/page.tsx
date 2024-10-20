@@ -1,22 +1,115 @@
-import React from "react";
-import AdminNav from "./NavUtils/AdminNav";
+"use client";
 
-const page = () => {
+import React, { useState } from "react";
+import {
+	BarChart,
+	Bar,
+	XAxis,
+	YAxis,
+	CartesianGrid,
+	Tooltip,
+	ResponsiveContainer,
+} from "recharts";
+
+type Account = {
+	id: number;
+	username: string;
+	media_impression_count: number;
+	total_followers: number;
+	total_following: number;
+	type: "Vendor" | "Employee" | "Student";
+};
+
+// Dummy accounts data
+const initialAccounts: Account[] = [
+	{
+		id: 1,
+		username: "john_doe",
+		media_impression_count: 120,
+		total_followers: 5400,
+		total_following: 150,
+		type: "Vendor",
+	},
+	{
+		id: 2,
+		username: "jane_smith",
+		media_impression_count: 95,
+		total_followers: 3200,
+		total_following: 200,
+		type: "Employee",
+	},
+	{
+		id: 3,
+		username: "alex_jones",
+		media_impression_count: 450,
+		total_followers: 10200,
+		total_following: 300,
+		type: "Student",
+	},
+	// Add more dummy accounts as needed
+];
+
+const AccountDashboard = () => {
+	const [accounts, setAccounts] = useState<Account[]>(initialAccounts);
+
+	// Compute totals for the cards
+	const totalVendors = accounts.filter(
+		(account) => account.type === "Vendor"
+	).length;
+	const totalEmployees = accounts.filter(
+		(account) => account.type === "Employee"
+	).length;
+	const totalStudents = accounts.filter(
+		(account) => account.type === "Student"
+	).length;
+	const totalUsers = accounts.length;
+
+	// Chart data (example data showing trends over time)
+	const chartData = [
+		{ name: "Jan", Vendors: 3, Employees: 5, Students: 2 },
+		{ name: "Feb", Vendors: 2, Employees: 4, Students: 3 },
+		{ name: "Mar", Vendors: 5, Employees: 6, Students: 4 },
+		// Add more monthly data as needed
+	];
+
 	return (
-		<div className="flex justify-normal w-full">
-			{/* Main Content */}
-			<main className="flex-grow">
-				<iframe
-					src="https://lookerstudio.google.com/embed/reporting/fe6ac380-9e5f-42ce-950d-3bc8a0d11b9a/page/nxdBE"
-					// frameBorder={0}
-					className="overflow-hidden h-[128vh] md:h-screen"
-					style={{ border: "0", width: "100%" }}
-					allowFullScreen
-					sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-				></iframe>
-			</main>
+		<div className="container mx-auto p-9">
+			{/* Cards for Total Numbers */}
+			<div className="flex justify-between gap-6 mb-6">
+				<div className="w-1/4 p-4 bg-blue-500 text-white rounded-lg">
+					<h3 className="text-xl font-bold">Total Users</h3>
+					<p className="text-3xl">{totalUsers}</p>
+				</div>
+				<div className="w-1/4 p-4 bg-green-500 text-white rounded-lg">
+					<h3 className="text-xl font-bold">Total Vendors</h3>
+					<p className="text-3xl">{totalVendors}</p>
+				</div>
+				<div className="w-1/4 p-4 bg-yellow-500 text-white rounded-lg">
+					<h3 className="text-xl font-bold">Total Employees</h3>
+					<p className="text-3xl">{totalEmployees}</p>
+				</div>
+				<div className="w-1/4 p-4 bg-red-500 text-white rounded-lg">
+					<h3 className="text-xl font-bold">Total Students</h3>
+					<p className="text-3xl">{totalStudents}</p>
+				</div>
+			</div>
+
+			{/* Bar Chart */}
+			<div className="w-full h-96 mt-[10%] ">
+				<ResponsiveContainer width="100%" height="100%">
+					<BarChart data={chartData}>
+						<CartesianGrid strokeDasharray="3 3" />
+						<XAxis dataKey="name" />
+						<YAxis />
+						<Tooltip />
+						<Bar dataKey="Vendors" fill="#8884d8" />
+						<Bar dataKey="Employees" fill="#82ca9d" />
+						<Bar dataKey="Students" fill="#ffc658" />
+					</BarChart>
+				</ResponsiveContainer>
+			</div>
 		</div>
 	);
 };
 
-export default page;
+export default AccountDashboard;
