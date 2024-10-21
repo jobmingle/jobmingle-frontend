@@ -37,7 +37,9 @@ const SideNav = () => {
             <li className=" md:w-full">
                <Link
                   href="/admin-dashboard/jobs"
-                  className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-8 md:px-4 ${isActive("/admin-dashboard/jobs") ? "bg-gray-50" : ""}`}
+                  className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-8 md:px-4 ${
+                     isActive("/admin-dashboard/jobs") ? "bg-gray-50" : ""
+                  }`}
                >
                   <HiMiniBriefcase className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
                   <p className="hidden md:flex"> Jobs</p>
