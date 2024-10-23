@@ -1,9 +1,16 @@
 "use client";
 import Image from "next/image";
-import React, {useState} from "react";
+<<<<<<< HEAD
+import React, { useState } from "react";
 import jobmingle from "@/public/image/jobmingle.png";
 import arrowback from "@/public/image/arrowback.png";
+import { useRouter } from "next/navigation";
+=======
+import React, {useState} from "react";
+import jobmingle from "@/public/jobmingle.png";
+import arrowback from "@/public/arrowback.png";
 import {useRouter} from "next/navigation";
+>>>>>>> 70d1b13248e54f494c64c1c58309c9d62fda7df0
 import SuccessModal from "@/Components/SuccessModal";
 
 const Page = () => {

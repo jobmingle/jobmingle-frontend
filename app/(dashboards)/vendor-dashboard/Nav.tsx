@@ -2,27 +2,20 @@
 import { useAuth } from "@/app/_contexts/auth/AuthState";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "../../_components/ui/Button";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
+	HiArrowLeft,
+	HiHome,
+	HiMiniArrowLeftStartOnRectangle,
+	HiMiniBriefcase,
 	HiOutlineBookOpen,
 	HiOutlineCog,
 	HiPencilSquare,
 } from "react-icons/hi2";
 
 const UserDashboard = () => {
-	const router = useRouter();
 	const pathname = usePathname();
-	const { logout, isAuthenticated } = useAuth();
-
-	useEffect(() => {
-		if (!isAuthenticated) {
-			router.push("/sign-in");
-		}
-
-		//eslint-disable-next-line
-	}, [isAuthenticated]);
-
+	const { logout } = useAuth();
 	function handleLogout() {
 		logout();
 	}
@@ -30,59 +23,58 @@ const UserDashboard = () => {
 	const isActive = (path: string): boolean => pathname === path;
 
 	return (
-		<nav className={` flex flex-col items-center md:items-start w-full`}>
-			<ul className=" flex flex-col gap-[0.8rem] w-full">
-				<li>
+		<nav
+			className={`flex-col items-center md:items-start w-full mx-2 h-auto min-h-8`}
+			// className={` bg-gray-800 text-white flex flex-col items-center md:items-start border min-h-screen`}
+		>
+			<ul className=" flex flex-row md:flex-col gap-[0.2rem] w-full justify-between md:justify-between items-center md:items-start">
+				<li className=" md:w-full">
 					<Link
-						href={"/vendor-dashboard"}
-						className={`flex gap-2  transition-all 0.3s text-lg py-3 px-[2.4rem] hover:bg-gray-50 rounded-l ${
+						href="/vendor-dashboard"
+						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/vendor-dashboard") ? "bg-gray-50" : ""
 						}`}
 					>
-						<HiOutlineBookOpen className="w-[1.8rem] h-[1.8rem] hover:text-yellow-500 text-stone-950 " />
-
-						<p className="hidden md:flex"> Courses</p>
-						<p className=" md:hidden" title="Courses">
-							{" "}
-							C
-						</p>
+						<HiHome className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
+						<p className="hidden md:flex"> Home</p>
 					</Link>
 				</li>
-				<li>
+				<li className=" md:w-full">
 					<Link
-						href="#"
-						className={`flex gap-1 transition-all 0.3s text-[1rem] py-3 pl-[2.4rem] hover:bg-gray-50 rounded-l ${
-							isActive("#") ? "bg-gray-50" : ""
+						href="/vendor-dashboard/jobs"
+						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/vendor-dashboard/jobs") ? "bg-gray-50" : ""
 						}`}
 					>
-						<HiPencilSquare className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
-						<p className="hidden md:flex">Add Course</p>
-						<p className=" md:hidden" title="Settings">
-							{" "}
-							S
-						</p>
+						<HiOutlineBookOpen className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
+						<p className="hidden md:flex"> Courses</p>
 					</Link>
 				</li>
+
 				<li>
 					<Link
 						href="/vendor-dashboard/settings"
-						className={`flex gap-2 transition-all 0.3s text-lg py-3 px-[2.4rem] hover:bg-gray-50 rounded-l ${
+						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/vendor-dashboard/settings") ? "bg-gray-50" : ""
 						}`}
 					>
 						<HiOutlineCog className="w-[1.8rem] h-[1.8rem] hover:text-yellow-500 text-stone-950" />
 
 						<p className="hidden md:flex">Settings</p>
-						<p className=" md:hidden" title="Settings">
-							{" "}
-							S
-						</p>
 					</Link>
 				</li>
-				<li>
-					<Button onClick={handleLogout} type="logout">
-						<p className="hidden md:flex"> Logout</p>
-					</Button>
+
+				<li className=" md:w-full">
+					<button
+						onClick={handleLogout}
+						className=" flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-[1.2rem] md:px-4"
+					>
+						<HiMiniArrowLeftStartOnRectangle
+							title="Logout"
+							className=" hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem]"
+						/>
+						<p className="hidden md:flex text-center "> Logout</p>
+					</button>
 				</li>
 			</ul>
 		</nav>

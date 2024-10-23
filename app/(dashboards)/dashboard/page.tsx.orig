@@ -1,18 +1,4 @@
 "use client";
-<<<<<<< HEAD
-import React, {useState} from "react";
-import {useAuth} from "@/app/_contexts/auth/AuthState";
-import tiredicon from "@/public/tiredicon.png";
-import userprofilepic from "@/public/ceo.jpeg";
-import share from "@/public/shareicon.png";
-import love from "@/public/loveicon.png";
-import Image from "next/image";
-import {Jobs} from "@/lib/_exportLinks";
-
-//
-const Page = () => {
-   const {user} = useAuth();
-=======
 import React, { useState } from "react";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
 import tiredicon from "@/public/image/tiredicon.png";
@@ -27,23 +13,11 @@ import Loader from "@/app/_components/ui/Loader";
 const Page = () => {
 	const { user, isLoading } = useAuth();
 	const router = useRouter();
->>>>>>> 46a68383c7bda99fffb14104f41c4209c53020f4
 
    let MyJobs = 1;
    const time = new Date().getHours();
    const timeOfTheDay = time >= 12 ? "Evening" : "Morning";
 
-<<<<<<< HEAD
-   return (
-      <div className=" h-auto pt-4 px-2 sm:px-0 w-full flex-grow md:p-4 my-10">
-         <div className=" flex flex-row py-1 items-center justify-between">
-            <div>
-               <h1 className="text-2xl font-bold">
-                  Good {timeOfTheDay}, {user?.firstName || "Champ"}!
-               </h1>
-               <p>Welcome to your dashboard</p>
-            </div>
-=======
 	// if (isLoading || !user) {
 	// 	return <Loader />;
 	// }
@@ -56,7 +30,6 @@ const Page = () => {
 				</h1>
 				<p>Welcome to your dashboard</p>
 			</div>
->>>>>>> 46a68383c7bda99fffb14104f41c4209c53020f4
 
             <div className="w-14 h-14 rounded-full overflow-hidden">
                <Image src={userprofilepic} alt="user_profile_pic" className="w-full h-full object-fill object-center " />
