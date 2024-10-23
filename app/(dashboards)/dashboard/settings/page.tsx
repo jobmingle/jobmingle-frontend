@@ -15,7 +15,7 @@ const Page = () => {
    return (
       <div className=" flex flex-col items-center gap-3 h-auto relative">
          {/* Edit profile */}
-	    <main className="border w-full relative">{Active ? <Modal setActive={setActive} /> : null}</main>
+	    <main className=" w-full relative">{Active ? <Modal setActive={setActive} /> : null}</main>
          <div className="flex relative">
             <div className="sm:px-2 w-full max-h-[100vh] overflow-auto">
                <section className="m-auto max-w-[22rem] flex flex-col justify-center py-2 sm:px-2 my-4 ">
