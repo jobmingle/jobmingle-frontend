@@ -245,9 +245,17 @@ export default function page() {
 				</h2>
 				<p>
 					For questions, concerns, or requests related to this Privacy Policy or
-					our data practices, contact us at contact@jobmingle.co <br></br> We
-					are committed to promptly addressing your inquiries and maintaining
-					transparency in our privacy practices.
+					our data practices, contact us at{" "}
+					<span>
+						<Link
+							href="mailto:contact@jobmingle.co"
+							className="text-yellow-500"
+						>
+							contact@jobmingle.co
+						</Link>
+					</span>{" "}
+					<br></br> We are committed to promptly addressing your inquiries and
+					maintaining transparency in our privacy practices.
 				</p>
 			</div>
 		</section>

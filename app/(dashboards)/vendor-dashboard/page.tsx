@@ -23,6 +23,7 @@ const Page = () => {
 	const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSelectedDate(event.target.value);
 	};
+
 	if (isLoading || !user) {
 		return <Loader />;
 	}

@@ -25,10 +25,9 @@ const MainNav = () => {
 	const isActive = (path: string): boolean => pathname === path;
 
 	useEffect(() => {
-		if (!isAuthenticated) {
-			router.push("/sign-in");
-		}
-
+		// if (!isAuthenticated) {
+		// 	router.push("/sign-in");
+		// }
 		//eslint-disable-next-line
 	}, [isAuthenticated]);
 

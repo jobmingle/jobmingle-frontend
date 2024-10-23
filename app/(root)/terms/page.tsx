@@ -127,14 +127,20 @@ export default function page() {
 				<p>
 					While most features on JobMingle are currently free, for our premium
 					digital courses, a one-time payment is required. We understand that
-					circumstances may change, and JobMingle offers a 90-day refund policy
-					specifically for these courses. If, within this period, users have
-					completed the course, followed instructions, and actively implemented
-					the content for 90 consecutive days without achieving the desired
-					results, they are eligible for a refund. To initiate a refund, please
-					send a request to contact@jobmingle.co within the 90-day timeframe. We
-					strive to make our courses valuable, and this refund policy reflects
-					our commitment to your satisfaction.
+					circumstances may change, and JobMingle offers a 7-day refund policy
+					specifically for these courses, provided you have not downloaded any
+					content or exceeded three video views. To initiate a refund, please
+					send a request to{" "}
+					<span>
+						<Link
+							href="mailto:contact@jobmingle.co"
+							className="text-yellow-500"
+						>
+							contact@jobmingle.co
+						</Link>
+					</span>{" "}
+					within the 7-day timeframe. We strive to make our courses valuable,
+					and this refund policy reflects our commitment to your satisfaction.
 				</p>
 			</div>
 
@@ -257,7 +263,16 @@ export default function page() {
 				</h2>
 				<p>
 					If you have questions or concerns about this Agreement, please contact
-					us at contact@jobmingle.co <br></br>
+					us at{" "}
+					<span>
+						<Link
+							href="mailto:contact@jobmingle.co"
+							className="text-yellow-500"
+						>
+							contact@jobmingle.co
+						</Link>
+					</span>{" "}
+					<br></br>
 					By using JobMingle, you agree to these terms and conditions.
 				</p>
 				<p>

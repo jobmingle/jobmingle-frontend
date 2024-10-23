@@ -39,6 +39,7 @@ function HowItWorks() {
 
 	return (
 		<div
+			id="services"
 			className={`flex flex-col items-center mt-[2rem] md:mt-[72px] justify-center ${
 				isRecruitmentModalOpen || isCvModalOpen ? "blur-background" : ""
 			}`}
