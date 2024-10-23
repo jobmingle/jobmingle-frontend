@@ -1,0 +1,37 @@
+import Logo from "@/app/_components/ui/Logo";
+import Jmlogo from "@/public/image/jobmingle.png";
+import Nav from "./Nav";
+
+export default function RootLayout({
+   children,
+}: Readonly<{
+   children: React.ReactNode;
+}>) {
+<<<<<<< HEAD
+   return (
+      <main className="grid grid-cols-12 h-screen relative">
+         <aside className=" absolute md:static bottom-0 h-20 md:min-h-screen w-full md:w-auto md:bottom-auto md:col-span-2 bg-gray-300  flex md:flex-col text-center items-center  md:gap-14 md:pl-[1rem] py-[0.7rem] md:py-[3.2rem] z-40 md:z-auto">
+            <div className="mx-auto hidden md:flex">
+               <Logo path={Jmlogo} width={120} height={120} />
+            </div>
+            <Nav />
+         </aside>
+         <div className="col-span-12 md:col-span-10 sm:px-2 w-full max-h-[100vh] overflow-auto">{children}</div>
+      </main>
+   );
+=======
+	return (
+		<main className="grid grid-cols-12 min-h-screen relative">
+			<aside className="col-span-12  md:col-span-2  bg-gray-300  flex flex-col text-center items-center md:items-start border min-h-screen gap-14 pl-[1rem] py-[3.2rem] ">
+				<div className="mx-auto">
+					<Logo path={Jmlogo} width={120} height={120} />
+				</div>
+				<Nav />
+			</aside>
+			<div className="col-span-12 md:col-span-10 sm:px-2 w-full max-h-[100vh] overflow-auto">
+				{children}
+			</div>
+		</main>
+	);
+>>>>>>> 46a68383c7bda99fffb14104f41c4209c53020f4
+}

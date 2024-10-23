@@ -14,6 +14,9 @@ const KeenSliderComponent: React.FC = () => {
 	useEffect(() => {
 		if (!sliderRef.current) return;
 
+		const prevRefs = prevRef.current;
+		const nextRefs = prevRef.current;
+
 		const options: KeenSliderOptions = {
 			loop: true,
 			slides: {
@@ -50,10 +53,8 @@ const KeenSliderComponent: React.FC = () => {
 			nextRef.current.addEventListener("click", handleNextClick);
 
 		return () => {
-			if (prevRef.current)
-				prevRef.current.removeEventListener("click", handlePrevClick);
-			if (nextRef.current)
-				nextRef.current.removeEventListener("click", handleNextClick);
+			if (prevRefs) prevRefs.removeEventListener("click", handlePrevClick);
+			if (nextRefs) nextRefs.removeEventListener("click", handleNextClick);
 			keenSliderInstance.destroy();
 		};
 	}, []);

@@ -6,6 +6,7 @@ type Props = {
 	onchange: any;
 	className: string;
 	name: string;
+	id: string;
 	type: string;
 };
 export default function Input({
@@ -14,6 +15,7 @@ export default function Input({
 	onchange,
 	type,
 	name,
+	id,
 	className,
 }: Props) {
 	const defaultClassName =
@@ -28,6 +30,7 @@ export default function Input({
 				type={type}
 				value={value}
 				name={name}
+				id={id}
 				placeholder={placeholder}
 				onChange={onchange}
 				className={finalClassName}

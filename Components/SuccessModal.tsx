@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import success from "@/public/IconSuccess.png";
+import success from "@/public/image/IconSuccess.png";
 import Image from "next/image";
 import Link from "next/link";
 

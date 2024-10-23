@@ -41,6 +41,7 @@ export default function Contact() {
 						<label htmlFor="name"> Name</label>
 						<Input
 							type="text"
+							id="name"
 							name="Name"
 							placeholder="Name"
 							value={FormData.Name}
@@ -52,6 +53,7 @@ export default function Contact() {
 						<label htmlFor="email"> Email</label>
 						<Input
 							type="email"
+							id="email"
 							name="Email"
 							placeholder="Email"
 							value={FormData.Email}
@@ -64,6 +66,7 @@ export default function Contact() {
 						<Input
 							placeholder="Message/Comment"
 							type="text"
+							id="message"
 							name="Message"
 							value={FormData.Message}
 							onchange={handleChange}
@@ -100,6 +103,7 @@ export default function Contact() {
 				<div className="flex flex-col lg:flex-row items-center justify-center gap-1 lg:gap-4 mb-5">
 					<Input
 						type="text"
+						id="newsletter"
 						name="NewsLetter"
 						value={FormData.NewsLetter}
 						placeholder="Email"

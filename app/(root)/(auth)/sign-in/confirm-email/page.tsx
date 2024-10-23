@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-import jobmingle from "@/public/jobmingle.png";
-import arrowback from "@/public/arrowback.png";
+import jobmingle from "@/public/image/jobmingle.png";
+import arrowback from "@/public/image/arrowback.png";
 // import "../globals.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -85,8 +85,14 @@ function Page() {
 							</div>
 							<div className="mt-3">
 								<section className="montserrat font-bold text-lg text-[#021C5F] text-center">
-									<Timer minute={10} secs={60} timeLeft={10} setTimeLeft={""} isVisible={true} setIsVisible={""} />	
-									
+									<Timer
+										minute={10}
+										secs={60}
+										timeLeft={10}
+										setTimeLeft={""}
+										isVisible={true}
+										setIsVisible={""}
+									/>
 								</section>
 								<div className="mt-6 w-full text-center">
 									<p className="text-black-100 text-xs sora">

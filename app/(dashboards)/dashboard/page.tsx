@@ -10,11 +10,16 @@ import {Jobs} from "@/lib/_exportLinks";
 
 //
 const Page = () => {
-   const {user} = useAuth();
+	const { user, isLoading } = useAuth();
+	const router = useRouter();
 
    let MyJobs = 1;
    const time = new Date().getHours();
    const timeOfTheDay = time >= 12 ? "Evening" : "Morning";
+
+	// if (isLoading || !user) {
+	// 	return <Loader />;
+	// }
 
    return (
       <div className=" h-auto pt-4 px-2 sm:px-0 w-full flex-grow md:p-4 my-10">

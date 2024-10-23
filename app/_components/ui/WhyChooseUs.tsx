@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Girl from "@/public/2.jpg";
+import Girl from "@/public/image/2.jpg";
 import { whyChooseUsData as slides } from "@/lib/_exportLinks";
 
 export default function WhyChooseUs() {

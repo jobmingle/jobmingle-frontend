@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import jobmingle from "@/public/jobmingle.png";
-import arrowback from "@/public/arrowback.png";
+import jobmingle from "@/public/image/jobmingle.png";
+import arrowback from "@/public/image/arrowback.png";
 import { useRouter } from "next/navigation";
 import SuccessModal from "@/Components/SuccessModal";
 

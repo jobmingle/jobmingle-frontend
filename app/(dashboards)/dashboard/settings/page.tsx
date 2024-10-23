@@ -1,10 +1,10 @@
 "use client";
 
 import React, {useState} from "react";
-import changepassbg from "@/public/changepassimg.png";
+import changepassbg from "@/public/image/changepassimg.png";
 import Image from "next/image";
-import tiredicon from "@/public/tiredicon.png";
-import editicon from "@/public/editicon.png";
+import tiredicon from "@/public/image/tiredicon.png";
+import editicon from "@/public/image/editicon.png";
 import Modal from "../components/Modal";
 
 const Page = () => {

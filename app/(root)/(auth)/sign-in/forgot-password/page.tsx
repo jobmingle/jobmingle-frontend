@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 import { useAuth } from "@/app/_contexts/auth/AuthState";
-import arrowback from "@/public/arrowback.png";
-import jobmingle from "@/public/jobmingle.png";
+import arrowback from "@/public/image/arrowback.png";
+import jobmingle from "@/public/image/jobmingle.png";
 import Button from "@/app/_components/ui/Button";
 import Error from "@/app/_components/ui/Error";
 import Spinner from "@/app/_components/ui/Spinner";

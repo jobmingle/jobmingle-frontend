@@ -8,7 +8,7 @@ export default function RootLayout({
    children: React.ReactNode;
 }>) {
    return (
-      <main className="grid grid-cols-12 h-screen relative">
+      <main className="grid grid-cols-12 min-h-screen relative">
          <aside className=" absolute md:static bottom-0 h-20 md:min-h-screen w-full md:w-auto md:bottom-auto md:col-span-2 bg-gray-300  flex md:flex-col text-center items-center  md:gap-14 md:pl-[1rem] py-[0.7rem] md:py-[3.2rem] z-40 md:z-auto">
             <div className="mx-auto hidden md:flex">
                <Logo path={Jmlogo} width={120} height={120} />

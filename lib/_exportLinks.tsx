@@ -1,29 +1,29 @@
-import SlideImage1 from "@/public/scott-graham-OQMZwNd3ThU-unsplash.jpg";
-import SlideImage2 from "@/public/scott-graham-5fNmWej4tAA-unsplash.jpg";
-import SlideImage3 from "@/public/Pexels Photo by Christina Morillo.svg";
-import Esgo from "@/public/founder,esgo.jpeg";
-import Flolog from "@/public/flogog.jpeg";
-import Marketer from "@/public/marketer.jpeg";
-import AA from "@/public/Image2.jpeg";
-import Benjamin from "@/public/video Editor.jpeg";
-import KobieBrave from "@/public/kobi brave.jpeg";
-import CEO from "@/public/ceo.jpeg";
-import bb from "@/public/course image.png";
-import tired from "@/public/tiredicon.png";
-import courseplaceholder from "@/public/courseplaceholder.png";
+import SlideImage1 from "@/public/image/scott-graham-OQMZwNd3ThU-unsplash.jpg";
+import SlideImage2 from "@/public/image/scott-graham-5fNmWej4tAA-unsplash.jpg";
+import SlideImage3 from "@/public/image/Pexels Photo by Christina Morillo.svg";
+import Esgo from "@/public/image/founder,esgo.jpeg";
+import Flolog from "@/public/image/flogog.jpeg";
+import Marketer from "@/public/image/marketer.jpeg";
+import AA from "@/public/image/Image2.jpeg";
+import Benjamin from "@/public/image/video Editor.jpeg";
+import KobieBrave from "@/public/image/kobi brave.jpeg";
+import CEO from "@/public/image/ceo.jpeg";
+import bb from "@/public/image/course image.png";
+import tired from "@/public/image/tiredicon.png";
+import courseplaceholder from "@/public/image/courseplaceholder.png";
 
-import CoFounder from "@/public/coFounder.jpeg";
-import ProductDesigner from "@/public/productDesigner.jpeg";
-import CTO from "@/public/CTO.jpeg";
-import BrandDesigner from "@/public/graphicsdesigner.jpeg";
-import TalentSync from "@/public/logo4.png";
-import ImpressionHub from "@/public/logo3.jpeg";
-import IncRemote from "@/public/LUSH.png";
-import Raiz from "@/public/logo5.jpeg";
-import Vent from "@/public/Photo from Omole.jpg";
-import WhyUsImg1 from "@/public/why-us6.jpg";
-import WhyUsImg2 from "@/public/why-us4.jpg";
-import WhyUsImg3 from "@/public/why-us5.jpg";
+import CoFounder from "@/public/image/coFounder.jpeg";
+import ProductDesigner from "@/public/image/productDesigner.jpeg";
+import CTO from "@/public/image/CTO.jpeg";
+import BrandDesigner from "@/public/image/graphicsdesigner.jpeg";
+import TalentSync from "@/public/image/logo4.png";
+import ImpressionHub from "@/public/image/logo3.jpeg";
+import IncRemote from "@/public/image/LUSH.png";
+import Raiz from "@/public/image/logo5.jpeg";
+import Vent from "@/public/image/Photo from Omole.jpg";
+import WhyUsImg1 from "@/public/image/why-us6.jpg";
+import WhyUsImg2 from "@/public/image/why-us4.jpg";
+import WhyUsImg3 from "@/public/image/why-us5.jpg";
 
 export const teamMembers = [
 	{
@@ -96,6 +96,7 @@ export const testimonials = [
 			"All thanks to JobMingle was able to land a marketing manager position in a reputable company. I'm so happy about this because of the number of rejections I had before getting this job. Thank you so much JobMingle.",
 	},
 ];
+
 type FAQItemType = {
 	question: string;
 	answer: string;
@@ -317,15 +318,16 @@ export const whyChooseUsData = [
 ];
 
 // Job Tags
-export const jobTags = [
+export const jobTags: string[] = [
 	"Sales",
 	"Fulltime",
 	"Remote",
 	"Product designer",
 	"Senior level",
 	"Illustrator",
-	"Co-Founder",
 	"Senior Dev",
+	"Marketing",
+	"Moderator",
 	"Researcher",
 	"Project manager",
 	"Designer",
@@ -531,16 +533,16 @@ export const CoursesList = [
 		id: 1,
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
-		coursetitle: "Virtual Assitance",
-		category: "UI/UX for beginers",
+		coursetitle: "Design Principles",
+		category: "Design",
 		pricerange: "$15-$25",
 	},
 	{
 		id: 2,
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
-		coursetitle: "Email Marketing",
-		category: "Remote",
+		coursetitle: "Email Marketing Basics",
+		category: "Digital Marketing",
 		pricerange: "$40-$85",
 	},
 	{
@@ -548,7 +550,7 @@ export const CoursesList = [
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
 		coursetitle: "Introduction to SEO",
-		category: "Design",
+		category: "Marketing",
 		pricerange: "$15-$25",
 	},
 	{
@@ -556,7 +558,7 @@ export const CoursesList = [
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
 		coursetitle: "Introduction to backend Dev.",
-		category: "Marketing",
+		category: "Development",
 		pricerange: "$15-$25",
 	},
 	{
@@ -564,15 +566,15 @@ export const CoursesList = [
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
 		coursetitle: "Virtual Assitance course",
-		category: "Design",
+		category: "Management",
 		pricerange: "$15-$25",
 	},
 	{
 		id: 6,
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
-		coursetitle: "Project Management tutorial",
-		category: "Cyber security",
+		coursetitle: "Project Management Fundamentals",
+		category: "Management",
 		pricerange: "$40-$85",
 	},
 	{
@@ -604,7 +606,7 @@ export const CoursesList = [
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
 		coursetitle: "Email Marketing",
-		category: "Design",
+		category: "Sales",
 		pricerange: "$40-$85",
 	},
 	{
@@ -620,7 +622,7 @@ export const CoursesList = [
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
 		coursetitle: "Email Marketing",
-		category: "Design",
+		category: "Marketing",
 		pricerange: "$15-$25",
 	},
 ];

@@ -4,7 +4,7 @@
 
 import Head from "next/head";
 import { useState } from "react";
-import bg from "@/public/hello.png";
+import bg from "@/public/image/hello.png";
 import Button from "../atoms/Button";
 
 type Props = {
@@ -39,6 +39,7 @@ function HowItWorks() {
 
 	return (
 		<div
+			id="services"
 			className={`flex flex-col items-center mt-[2rem] md:mt-[72px] justify-center ${
 				isRecruitmentModalOpen || isCvModalOpen ? "blur-background" : ""
 			}`}
