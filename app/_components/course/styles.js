@@ -1,23 +1,21 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-	padding: 2rem 3rem 3rem 3rem;
+	padding: 3rem 3rem 3rem 3rem;
 
-	@media (max-width: 568px) {
-		padding: 0 1rem 1rem 1rem;
-	}
 	.head {
+		color: black;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		gap: 0.6rem;
 
 		&__big {
-			font-size: 1.8rem;
+			font-size: 3rem;
 			font-weight: bold;
 		}
 		&__small {
 			font-size: 1.2rem;
-			color: black;
 		}
 	}
 
@@ -134,7 +132,7 @@ export const Content = styled.div`
 		/* Smaller screens */
 		@media (max-width: 568px) {
 			grid-template-columns: 1fr;
-			padding-top: 1rem;
+			padding-top: 2rem;
 			justify-content: center;
 			align-items: center;
 		}

@@ -2,7 +2,7 @@
 import { useAuth } from "@/app/_contexts/auth/AuthState";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "../../_components/ui/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
 	HiOutlineBookOpen,
@@ -13,7 +13,16 @@ import {
 const UserDashboard = () => {
 	const router = useRouter();
 	const pathname = usePathname();
-	const { logout } = useAuth();
+	const { logout, isAuthenticated } = useAuth();
+
+	useEffect(() => {
+		if (!isAuthenticated) {
+			router.push("/sign-in");
+		}
+
+		//eslint-disable-next-line
+	}, [isAuthenticated]);
+
 	function handleLogout() {
 		logout();
 	}
@@ -41,9 +50,9 @@ const UserDashboard = () => {
 				</li>
 				<li>
 					<Link
-						href="/"
+						href="#"
 						className={`flex gap-1 transition-all 0.3s text-[1rem] py-3 pl-[2.4rem] hover:bg-gray-50 rounded-l ${
-							isActive("/") ? "bg-gray-50" : ""
+							isActive("#") ? "bg-gray-50" : ""
 						}`}
 					>
 						<HiPencilSquare className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />

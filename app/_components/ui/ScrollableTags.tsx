@@ -1,10 +1,19 @@
 import { jobTags } from "@/lib/_exportLinks";
 import { useRef } from "react";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 
-export default function ScrollableTags() {
+type ComponentProps = {
+	tags: string[];
+	setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export default function ScrollableTags({
+	setSearchQuery,
+	tags,
+}: ComponentProps) {
 	const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
-	const scroll = (direction: any) => {
+	const scroll = (direction: "left" | "right") => {
 		const { current } = scrollContainerRef;
 		if (direction === "left") {
 			current?.scrollBy({ left: -200, behavior: "smooth" });
@@ -13,58 +22,36 @@ export default function ScrollableTags() {
 		}
 	};
 
+	function handleClickTag(query: any) {
+		setSearchQuery(query);
+	}
 	return (
 		<div className="relative py-4 h-[100px] items-center flex">
 			<button
 				onClick={() => scroll("left")}
-				className="absolute left-0 z-10 bg-white border border-gray-300 text-yellow-500 px-3 py-1 rounded-full shadow-sm hover:bg-gray-100 transition"
+				className="absolute left-0 z-10 text-2xl bg-white border border-gray-300 text-yellow-500 px-3 py-1 rounded-full shadow-sm hover:bg-gray-100 transition"
 			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-					className="w-7 h-6"
-				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth={2}
-						d="M15 19l-7-7 7-7"
-					/>
-				</svg>
+				<HiChevronLeft />
 			</button>
 			<div
 				ref={scrollContainerRef}
 				className="flex space-x-2 overflow-x-hidden scrollbar-hide px-10"
 			>
-				{jobTags.map((tag, index) => (
-					<span
-						key={index}
+				{tags.map((tag, index) => (
+					<input
 						className="whitespace-nowrap bg-white border border-gray-300 text-gray-700 px-5 py-3 rounded-full shadow-sm cursor-pointer hover:bg-yellow-200 transition"
-					>
-						{tag}
-					</span>
+						key={index}
+						type="button"
+						value={tag}
+						onClick={() => handleClickTag(tag)}
+					/>
 				))}
 			</div>
 			<button
 				onClick={() => scroll("right")}
-				className="absolute right-0 z-10 bg-white border border-gray-300 text-yellow-500 px-3 py-1 rounded-full shadow-sm hover:bg-gray-100 transition"
+				className="absolute right-0 z-10 text-2xl bg-white border border-gray-300 text-yellow-500 px-3 py-1 rounded-full shadow-sm hover:bg-gray-100 transition"
 			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-					className="w-7 h-6"
-				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth={2}
-						d="M9 5l7 7-7 7"
-					/>
-				</svg>
+				<HiChevronRight />
 			</button>
 		</div>
 	);

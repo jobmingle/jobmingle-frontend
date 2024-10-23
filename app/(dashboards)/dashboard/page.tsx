@@ -18,9 +18,9 @@ const Page = () => {
 	const time = new Date().getHours();
 	const timeOfTheDay = time >= 12 ? "Evening" : "Morning";
 
-	if (isLoading || !user) {
-		return <Loader />;
-	}
+	// if (isLoading || !user) {
+	// 	return <Loader />;
+	// }
 
 	return (
 		<div className=" h-auto pt-4 px-2 sm:px-0 w-full flex-grow md:p-4 my-10">

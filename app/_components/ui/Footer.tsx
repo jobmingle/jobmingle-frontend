@@ -46,7 +46,12 @@ export default function Footer() {
 							<Image src={LinkedIn} alt="LinkedIn" width={16} height={16} />
 						</Link>
 					</div>
-					<p className="text-white">Call us @:09048744395</p>
+					<p className="text-white">
+						Call us
+						<Link href="tel:+2348074071356" className="text-yellow-500">
+							+2348074071356
+						</Link>
+					</p>
 					<p className="text-white">
 						Email us @:
 						<Link
@@ -60,39 +65,66 @@ export default function Footer() {
 
 				{/* Links Section */}
 				<div className="justify-between w-full lg:w-auto  max-md:flex contents">
-					<div className="flex flex-col items-start max-md:ml-6 justify-start lg:items-start mb-8 lg:mb-0 mr-5">
+					<div className="flex flex-col gap-2 items-start max-md:ml-6 justify-start lg:items-start mb-8 lg:mb-0 mr-5">
 						<h3 className="font-bold mb-2">Quick Links</h3>
-						<Link href="/jobs" className="hover:underline">
+						<Link
+							href="/jobs"
+							className="hover:underline hover:text-yellow-400"
+						>
 							Jobs
 						</Link>
-						<Link href="/about" className="hover:underline">
+						<Link
+							href="/courses"
+							className="hover:underline hover:text-yellow-400"
+						>
 							Courses
 						</Link>
-						<Link href="/about" className="hover:underline">
+						<Link
+							href="/about"
+							className="hover:underline hover:text-yellow-400"
+						>
 							About Us
 						</Link>
 					</div>
-					<div className="flex flex-col items-start lg:items-start mb-8 lg:mb-0 mx-4">
+					<div className="flex flex-col gap-2 items-start lg:items-start  mb-8 lg:mb-0 ">
 						<h3 className="font-bold mb-2"></h3>
-						<Link href="/about" className="hover:underline">
+						<Link
+							href="/about/#services"
+							className="hover:underline hover:text-yellow-400"
+						>
 							Services
 						</Link>
-						<Link href="/terms" className="hover:underline">
+						<Link
+							href="/terms"
+							className="hover:underline hover:text-yellow-400"
+						>
 							Terms and Conditions
 						</Link>
-						<Link href="/privacy" className="hover:underline">
+						<Link
+							href="/privacy"
+							className="hover:underline hover:text-yellow-400"
+						>
 							Privacy Policy
 						</Link>
 					</div>
-					<div className="flex flex-col items-start lg:items-start mb-8 lg:mb-0 mx-4">
+					<div className="flex flex-col gap-2  items-start lg:items-start mb-8 lg:mb-0 mx-4">
 						<h3 className="font-bold mb-2"></h3>
-						<Link href="/about" className="hover:underline">
+						<Link
+							href="/about"
+							className="hover:underline hover:text-yellow-400"
+						>
 							Products
 						</Link>
-						<Link href="/contact" className="hover:underline">
+						<Link
+							href="/contact"
+							className="hover:underline hover:text-yellow-400"
+						>
 							Support
 						</Link>
-						<Link href="/about" className="hover:underline">
+						<Link
+							href="/about/#FAQ"
+							className="hover:underline hover:text-yellow-400"
+						>
 							FAQ
 						</Link>
 					</div>

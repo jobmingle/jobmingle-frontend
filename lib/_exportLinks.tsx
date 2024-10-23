@@ -96,6 +96,7 @@ export const testimonials = [
 			"All thanks to JobMingle was able to land a marketing manager position in a reputable company. I'm so happy about this because of the number of rejections I had before getting this job. Thank you so much JobMingle.",
 	},
 ];
+
 type FAQItemType = {
 	question: string;
 	answer: string;
@@ -317,15 +318,16 @@ export const whyChooseUsData = [
 ];
 
 // Job Tags
-export const jobTags = [
+export const jobTags: string[] = [
 	"Sales",
 	"Fulltime",
 	"Remote",
 	"Product designer",
 	"Senior level",
 	"Illustrator",
-	"Co-Founder",
 	"Senior Dev",
+	"Marketing",
+	"Moderator",
 	"Researcher",
 	"Project manager",
 	"Designer",
@@ -531,16 +533,16 @@ export const CoursesList = [
 		id: 1,
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
-		coursetitle: "Virtual Assitance",
-		category: "UI/UX for beginers",
+		coursetitle: "Design Principles",
+		category: "Design",
 		pricerange: "$15-$25",
 	},
 	{
 		id: 2,
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
-		coursetitle: "Email Marketing",
-		category: "Remote",
+		coursetitle: "Email Marketing Basics",
+		category: "Digital Marketing",
 		pricerange: "$40-$85",
 	},
 	{
@@ -548,7 +550,7 @@ export const CoursesList = [
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
 		coursetitle: "Introduction to SEO",
-		category: "Design",
+		category: "Marketing",
 		pricerange: "$15-$25",
 	},
 	{
@@ -556,7 +558,7 @@ export const CoursesList = [
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
 		coursetitle: "Introduction to backend Dev.",
-		category: "Marketing",
+		category: "Development",
 		pricerange: "$15-$25",
 	},
 	{
@@ -564,15 +566,15 @@ export const CoursesList = [
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
 		coursetitle: "Virtual Assitance course",
-		category: "Design",
+		category: "Management",
 		pricerange: "$15-$25",
 	},
 	{
 		id: 6,
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
-		coursetitle: "Project Management tutorial",
-		category: "Cyber security",
+		coursetitle: "Project Management Fundamentals",
+		category: "Management",
 		pricerange: "$40-$85",
 	},
 	{
@@ -604,7 +606,7 @@ export const CoursesList = [
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
 		coursetitle: "Email Marketing",
-		category: "Design",
+		category: "Sales",
 		pricerange: "$40-$85",
 	},
 	{
@@ -620,7 +622,7 @@ export const CoursesList = [
 		icon: courseplaceholder,
 		des: "course description in few words course description in few words",
 		coursetitle: "Email Marketing",
-		category: "Design",
+		category: "Marketing",
 		pricerange: "$15-$25",
 	},
 ];
