@@ -15,7 +15,6 @@ const Page = () => {
 	let MyJobs = 1;
 
 	const jobs = Jobs.slice(from, to);
-
 	return (
 		<div className="py-8 px-4">
 			<div className="py-4">
@@ -28,7 +27,7 @@ const Page = () => {
 					{jobs.map((job) => (
 						<div
 							key={job.id}
-							className="border p-2 md:p-3 rounded-md flex flex-col gap-5"
+							className="border p-2 md:p-3 rounded-md flex flex-col gap-5 "
 						>
 							<section className=" flex flex-row gap-2 items-center relative">
 								<Image src={job.icon} alt="company-icon" className="w-8 h-8" />{" "}

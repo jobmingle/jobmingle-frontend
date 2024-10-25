@@ -372,6 +372,7 @@ export const Jobs = [
 		location: "Remote",
 		pricerange: "$15-$25",
 		stat: "Applied",
+		website: "www.google.com",
 	},
 	{
 		id: 2,
@@ -381,6 +382,7 @@ export const Jobs = [
 		location: "Remote",
 		pricerange: "$40-$85",
 		stat: "expires soon",
+		website: "www.google.com",
 	},
 	{
 		id: 3,
@@ -390,6 +392,7 @@ export const Jobs = [
 		location: "Uyo Nigeria",
 		pricerange: "$15-$25",
 		stat: "Applied",
+		website: "www.google.com",
 	},
 	{
 		id: 4,
@@ -399,6 +402,7 @@ export const Jobs = [
 		location: "Remote",
 		pricerange: "$15-$25",
 		stat: "Applied",
+		website: "www.google.com",
 	},
 	{
 		id: 5,
@@ -408,6 +412,7 @@ export const Jobs = [
 		location: "Remote",
 		pricerange: "$15-$25",
 		stat: "expires soon",
+		website: "www.google.com",
 	},
 	{
 		id: 6,
@@ -417,6 +422,7 @@ export const Jobs = [
 		location: "Remote",
 		pricerange: "$40-$85",
 		stat: "expires soon",
+		website: "www.google.com",
 	},
 	{
 		id: 7,
@@ -426,6 +432,7 @@ export const Jobs = [
 		location: "Rivers state",
 		pricerange: "$15-$25",
 		stat: "Applied",
+		website: "www.google.com",
 	},
 	{
 		id: 8,
@@ -435,6 +442,7 @@ export const Jobs = [
 		location: "Lagos Nigeria",
 		pricerange: "$15-$25",
 		stat: "expires soon",
+		website: "www.google.com",
 	},
 	{
 		id: 9,
@@ -444,6 +452,7 @@ export const Jobs = [
 		location: "Remote",
 		pricerange: "$15-$25",
 		stat: "Applied",
+		website: "www.google.com",
 	},
 	{
 		id: 10,
@@ -453,6 +462,7 @@ export const Jobs = [
 		location: "Remote",
 		pricerange: "$40-$85",
 		stat: "Applied",
+		website: "www.google.com",
 	},
 	{
 		id: 11,
@@ -462,6 +472,7 @@ export const Jobs = [
 		location: "Rivers state",
 		pricerange: "$15-$25",
 		stat: "expires soon",
+		website: "www.google.com",
 	},
 	{
 		id: 12,
@@ -471,6 +482,7 @@ export const Jobs = [
 		location: "Lagos Nigeria",
 		pricerange: "$15-$25",
 		stat: "expires soon",
+		website: "www.google.com",
 	},
 	{
 		id: 13,
@@ -480,6 +492,7 @@ export const Jobs = [
 		location: "Rivers state",
 		pricerange: "$15-$25",
 		stat: "Applied",
+		website: "www.google.com",
 	},
 	{
 		id: 14,
@@ -489,6 +502,7 @@ export const Jobs = [
 		location: "Lagos Nigeria",
 		pricerange: "$15-$25",
 		stat: "expires soon",
+		website: "www.google.com",
 	},
 	{
 		id: 15,
@@ -498,6 +512,7 @@ export const Jobs = [
 		location: "Remote",
 		pricerange: "$15-$25",
 		stat: "Applied",
+		website: "www.google.com",
 	},
 	{
 		id: 16,
@@ -507,6 +522,7 @@ export const Jobs = [
 		location: "Remote",
 		pricerange: "$40-$85",
 		stat: "Applied",
+		website: "www.google.com",
 	},
 	{
 		id: 17,
@@ -516,6 +532,7 @@ export const Jobs = [
 		location: "Rivers state",
 		pricerange: "$15-$25",
 		stat: "expires soon",
+		website: "www.google.com",
 	},
 	{
 		id: 18,
@@ -525,6 +542,7 @@ export const Jobs = [
 		location: "Lagos Nigeria",
 		pricerange: "$15-$25",
 		stat: "expires soon",
+		website: "www.google.com",
 	},
 ];
 

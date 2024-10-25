@@ -5,8 +5,12 @@ import share from "@/public/image/shareicon.png";
 import Image from "next/image";
 import { CoursesList } from "@/lib/_exportLinks";
 import NoResult from "../ui/NoResult";
+import Pagination from "../ui/Pagination";
+import { usePagination } from "@/app/_hooks/usePagination";
 
 const CoursesPage = ({ searchQuery }: any) => {
+	const { from, to } = usePagination();
+	let Courses = 1;
 	//   const { isLoggedIn } = useAuth();
 	const [showPopup, setShowPopup] = useState(false);
 
@@ -19,6 +23,7 @@ const CoursesPage = ({ searchQuery }: any) => {
 			  )
 			: CoursesList;
 
+	const courses = searchedCourses.slice(from, to);
 	//   const handleApplyClick = () => {
 	//     if (isLoggedIn) {
 	//       setShowPopup(true);
@@ -26,13 +31,13 @@ const CoursesPage = ({ searchQuery }: any) => {
 	//       alert("Please log in to apply.");
 	//     }
 	//   };
+
 	const handleApplyClick = () => {
 		setShowPopup(true);
 	};
 	const handleClosePopup = () => {
 		setShowPopup(false);
 	};
-	let Courses = 1;
 
 	return (
 		<div>
@@ -46,7 +51,7 @@ const CoursesPage = ({ searchQuery }: any) => {
 						</div>
 					)}
 					<section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 ">
-						{searchedCourses.map((course) => (
+						{courses.map((course) => (
 							<div key={course.id} className="border p-2 md:p-3 rounded-md">
 								<section className="items-center">
 									<Image
@@ -102,6 +107,7 @@ const CoursesPage = ({ searchQuery }: any) => {
 					</section>
 					<br />
 					{searchedCourses.length === 0 && <NoResult />}
+					<Pagination count={searchedCourses.length} />
 				</main>
 			) : (
 				<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] border-solid mt-10 p-2">

@@ -7,9 +7,12 @@ import share from "@/public/image/shareicon.png";
 import { Jobs } from "@/lib/_exportLinks";
 import { Content, PopupContainer, Overlay } from "./styles";
 import NoResult from "../ui/NoResult";
+import { usePagination } from "@/app/_hooks/usePagination";
+import Pagination from "../ui/Pagination";
 
 const JobsPage = ({ searchQuery }: any) => {
 	//   const { isLoggedIn } = useAuth();
+	const { from, to } = usePagination();
 	const [showPopup, setShowPopup] = useState(false);
 
 	const searchedJobs =
@@ -21,6 +24,7 @@ const JobsPage = ({ searchQuery }: any) => {
 			  )
 			: Jobs;
 
+	const jobs = searchedJobs.slice(from, to);
 	//   const handleApplyClick = () => {
 	//     if (isLoggedIn) {
 	//       setShowPopup(true);
@@ -45,7 +49,7 @@ const JobsPage = ({ searchQuery }: any) => {
 			)}
 
 			<div className="box">
-				{searchedJobs.map((job) => (
+				{jobs.map((job) => (
 					<div key={job.id}>
 						<div className="card relative">
 							<div className="head">
@@ -120,6 +124,7 @@ const JobsPage = ({ searchQuery }: any) => {
 				))}
 			</div>
 			{searchedJobs.length === 0 && <NoResult />}
+			<Pagination count={searchedJobs.length} />
 		</Content>
 	);
 };

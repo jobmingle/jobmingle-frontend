@@ -7,8 +7,8 @@ export default function RootLayout({
 }) {
 	return (
 		<section className={`h-screen w-full flex flex-col`}>
-			<main>{children}</main>
-			<AppFooter />
+			<main className="max-md:scroll-">{children}</main>
+			{/* <AppFooter /> */}
 		</section>
 	);
 }

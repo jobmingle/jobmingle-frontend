@@ -28,7 +28,8 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		"Components/SuccessModal.tsx",
-		"app/_contexts/auth/AuthState.jsx"
+		"app/_contexts/auth/AuthState.jsx",
+		"app/_components/ui/Pagination.jsx"
 	],
 	"exclude": ["node_modules"]
 }

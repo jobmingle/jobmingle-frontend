@@ -24,9 +24,9 @@ const Page = () => {
 		setSelectedDate(event.target.value);
 	};
 
-	if (isLoading || !user) {
-		return <Loader />;
-	}
+	// if (isLoading || !user) {
+	// 	return <Loader />;
+	// }
 
 	return (
 		<div className="min-h-[70vh] sm:min-h-[85vh] md:min-h-[90vh] h-auto mx-2 md:mx-0">

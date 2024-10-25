@@ -1,7 +1,12 @@
 "use client";
 
+<<<<<<< HEAD
 import React, {useState} from "react";
+import changepassbg from "@/public/changepassimg.png";
+=======
+import React, { useState } from "react";
 import changepassbg from "@/public/image/changepassimg.png";
+>>>>>>> 46a68383c7bda99fffb14104f41c4209c53020f4
 import Image from "next/image";
 import tiredicon from "@/public/image/tiredicon.png";
 import editicon from "@/public/image/editicon.png";
@@ -15,7 +20,7 @@ const Page = () => {
    return (
       <div className=" flex flex-col items-center gap-3 h-auto relative">
          {/* Edit profile */}
-	    <main className=" w-full relative">{Active ? <Modal setActive={setActive} /> : null}</main>
+	    <main className="border w-full relative">{Active ? <Modal setActive={setActive} /> : null}</main>
          <div className="flex relative">
             <div className="sm:px-2 w-full max-h-[100vh] overflow-auto">
                <section className="m-auto max-w-[22rem] flex flex-col justify-center py-2 sm:px-2 my-4 ">

@@ -4,6 +4,7 @@ import { useAuth } from "@/app/_contexts/auth/AuthState";
 import tiredicon from "@/public/image/tiredicon.png";
 import share from "@/public/image/shareicon.png";
 import love from "@/public/image/loveicon.png";
+import userProfilePic from "@/public/image/profile-image.png";
 import Image from "next/image";
 import { Jobs } from "@/lib/_exportLinks";
 import { useRouter } from "next/navigation";
@@ -24,18 +25,35 @@ const Page = () => {
 
 	return (
 		<div className=" h-auto pt-4 px-2 sm:px-0 w-full flex-grow md:p-4 my-10">
-			<div className="border p-5 rounded">
-				<h1 className="text-2xl font-bold">
-					Good {timeOfTheDay}, {user?.firstName || "Champ"}!
-				</h1>
-				<p>Welcome to your dashboard</p>
+			<div className=" flex flex-row py-1 items-center justify-between">
+				<div>
+					<h1 className="text-2xl font-bold">
+						Good {timeOfTheDay}, {user?.firstName || "Champ"}!
+					</h1>
+					<p>Welcome to your dashboard</p>
+				</div>
+
+				<div className="w-14 h-14 rounded-full overflow-hidden">
+					<Image
+						src={userProfilePic}
+						alt="user_profile_pic"
+						className="w-full h-full object-fill object-center "
+					/>
+				</div>
 			</div>
 
 			<div className="pb-8">
 				<div className="py-4">
-					<h1 className="text-2xl mb-0  max-md:text-center max-md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center">
+					<h1 className="text-2xl mb-0  max-md:text-center max-md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center ">
 						Browse your favorite jobs!
 					</h1>
+				</div>
+				<div className="w-full p-1 flex row justify-center">
+					<input
+						type="text"
+						className="border-[1px] border-solid border-yellow-400 pl-4 sora w-[23rem] h-[2.6rem] text-sm rounded-md focus:outline-none"
+						placeholder="Browse jobs..."
+					/>
 				</div>
 				{MyJobs >= 1 ? (
 					<section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4  mt-4 gap-4 ">

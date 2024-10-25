@@ -7,19 +7,19 @@ import share from "@/public/image/shareicon.png";
 import Image from "next/image";
 import { CoursesList } from "@/lib/_exportLinks";
 import Pagination from "@/app/_components/ui/Pagination";
+import { useSearchParams } from "next/navigation";
 import { usePagination } from "@/app/_hooks/usePagination";
-
-//
 
 const Page = () => {
 	const { from, to } = usePagination();
 	let Courses = 1;
-	const courses = CoursesList.slice(from, to);
+	console.log(from, to);
+	const entries = CoursesList.slice(from, to);
 
 	return (
-		<div>
+		<main>
 			{Courses >= 1 ? (
-				<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] p-2 lg:p-4">
+				<div className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] p-2 lg:p-4">
 					<div className="flex flex-row py-4 items-center justify-between ">
 						<h1 className="text-4xl mb-0  max-md:text-center max-md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center">
 							View list of courses!
@@ -41,7 +41,7 @@ const Page = () => {
 					</div>
 
 					<section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 ">
-						{courses.map((course) => (
+						{entries.map((course) => (
 							<div key={course.id} className="border p-2 md:p-3 rounded-md">
 								<section className="items-center">
 									<Image
@@ -97,7 +97,7 @@ const Page = () => {
 					</section>
 					<br />
 					<Pagination count={CoursesList.length} />
-				</main>
+				</div>
 			) : (
 				<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] border-solid mt-10 p-2">
 					<section className="flex flex-col justify-center items-center py-4">
@@ -116,7 +116,7 @@ const Page = () => {
 					<br />
 				</main>
 			)}
-		</div>
+		</main>
 	);
 };
 

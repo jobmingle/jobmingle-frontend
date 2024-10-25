@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/app/_components/atoms/Button";
-import React, { useState } from "react";
-import { BsX, BsXLg } from "react-icons/bs";
+import React from "react";
+import { BsXLg } from "react-icons/bs";
 
 const Modal = ({ setActive }: any) => {
 	const handleclose = () => {

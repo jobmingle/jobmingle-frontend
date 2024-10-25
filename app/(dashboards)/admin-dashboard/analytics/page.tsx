@@ -1,5 +1,4 @@
 import React from "react";
-import AdminNav from "./NavUtils/AdminNav";
 
 const page = () => {
 	return (
