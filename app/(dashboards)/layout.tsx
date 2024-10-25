@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-
 import AppFooter from "../_components/ui/Footer";
 
 export default function RootLayout({
@@ -9,7 +7,7 @@ export default function RootLayout({
 }) {
 	return (
 		<section className={`h-screen w-full flex flex-col`}>
-			<main>{children}</main>
+			<main className="max-md:scroll-">{children}</main>
 			{/* <AppFooter /> */}
 		</section>
 	);

@@ -1,26 +1,47 @@
+"use client";
 import React from "react";
-import tiredicon from "@/public/tiredicon.png";
-import love from "@/public/loveicon.png";
-import share from "@/public/shareicon.png";
+import tiredicon from "@/public/image/tiredicon.png";
+import profilepic from "@/public/image/ceo.jpeg";
+import love from "@/public/image/loveicon.png";
+import share from "@/public/image/shareicon.png";
 import Image from "next/image";
 import { CoursesList } from "@/lib/_exportLinks";
+import Pagination from "@/app/_components/ui/Pagination";
+import { usePagination } from "@/app/_hooks/usePagination";
 
 //
 
 const Page = () => {
+	const { from, to } = usePagination();
 	let Courses = 1;
+	const courses = CoursesList.slice(from, to);
 
 	return (
 		<div>
 			{Courses >= 1 ? (
 				<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] p-2 lg:p-4">
-					<div className="py-4">
+					<div className="flex flex-row py-4 items-center justify-between ">
 						<h1 className="text-4xl mb-0  max-md:text-center max-md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center">
 							View list of courses!
 						</h1>
+						<div className="w-14 h-14 rounded-full overflow-hidden">
+							<Image
+								src={profilepic}
+								alt="user_profile_pic"
+								className="w-full h-full object-fill object-center "
+							/>
+						</div>
 					</div>
+					<div className="w-full py-4 flex row justify-center">
+						<input
+							type="text"
+							className="border-[1px] border-solid border-yellow-400 pl-4 sora w-[23rem] h-[2.6rem] text-sm rounded-md focus:outline-none"
+							placeholder="Browse Courses..."
+						/>
+					</div>
+
 					<section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 ">
-						{CoursesList.map((course) => (
+						{courses.map((course) => (
 							<div key={course.id} className="border p-2 md:p-3 rounded-md">
 								<section className="items-center">
 									<Image
@@ -75,6 +96,7 @@ const Page = () => {
 						))}
 					</section>
 					<br />
+					<Pagination count={CoursesList.length} />
 				</main>
 			) : (
 				<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] border-solid mt-10 p-2">

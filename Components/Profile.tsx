@@ -12,14 +12,9 @@ type ProfileData = {
 type ProfileProps = {
 	options: Option[];
 	heading: string;
-	updateFields: (fields: Partial<ProfileData>) => void;
 };
 
-const Profile: React.FC<ProfileProps> = ({
-	options,
-	heading,
-	updateFields,
-}) => {
+const Profile: React.FC<ProfileProps> = ({ options, heading }) => {
 	const [selected, setSelected] = useState<string[]>([]);
 
 	const handleSelected = (title: string): void => {
@@ -49,7 +44,6 @@ const Profile: React.FC<ProfileProps> = ({
 						key={item.id}
 						id={item.title}
 						onClick={() => handleSelected(item.title)}
-						onChange={(e) => updateFields({ interests: [...e.target.value] })}
 						value={item.title}
 					/>
 				))}

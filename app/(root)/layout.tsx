@@ -7,6 +7,7 @@ import MyApp from "@/app/_app";
 import AppHeader from "@/app/_components/ui/AppHeader";
 import AppFooter from "../_components/ui/Footer";
 import "../_styles/globals.css";
+import ScrollToTopButton from "../_components/ui/ScrollToTop";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
@@ -17,6 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			<div className="flex-1  ">
 				<main className=" mx-auto">{children}</main>
 			</div>
+			{/* <ScrollToTopButton /> */}
 			<footer>
 				<AppFooter />
 			</footer>

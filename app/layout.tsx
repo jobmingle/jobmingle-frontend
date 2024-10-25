@@ -8,6 +8,7 @@ import MyApp from "@/app/_app";
 
 import "./_styles/globals.css";
 import "../app/_styles/globals.css";
+import ScrollToTopButton from "./_components/ui/ScrollToTop";
 // import setAuthToken from "@/lib/setAuthToken";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -36,8 +37,8 @@ export default function RootLayout({
 			<body className={`${inter.className} ${ibmPlexSerif.variable} `}>
 				<AuthProvider>
 					{/* <div className="flex-1 md:px-8  md:py-8 "> */}
-
 					<main>{children}</main>
+					<ScrollToTopButton />
 				</AuthProvider>
 				<Toaster
 					position="top-center"

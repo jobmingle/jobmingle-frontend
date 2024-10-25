@@ -1,20 +1,10 @@
-// import type {Metadata} from "next";
-// import {Inter} from "next/font/google";
-// import "./_styles/globals.css";
-// import "./App.css";
 import MyApp from "@/app/_app";
 import favicon from "./favicon.ico";
 import AppHeader from "@/app/_components/ui/AppHeader";
 import Sidenav from "./NavUtils/AdminNav";
 import Logo from "@/app/_components/ui/Logo";
 import SideNav from "./NavUtils/AdminNav";
-import Jmlogo from "@/public/jobmingle.png";
-
-// export const metadata: Metadata = {
-//    title: "JobMingle",
-//    description: "JobMingle LandingPage",
-//    icons: `${favicon}`,
-// };
+import Jmlogo from "@/public/image/jobmingle.png";
 
 export default function RootLayout({
 	children,
@@ -23,8 +13,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<main className="grid grid-cols-12 h-screen relative">
-			<aside className="col-span-12  md:col-span-2  bg-gray-300  flex flex-col text-center items-center md:items-start border min-h-screen gap-14 pl-[1rem] py-[3.2rem] ">
-				<div className="mx-auto">
+			<aside className=" absolute md:static bottom-0 h-20 md:min-h-screen w-full md:w-auto md:bottom-auto md:col-span-2 bg-gray-300  flex md:flex-col text-center items-center  md:gap-14 md:pl-[1rem] py-[0.7rem] md:py-[3.2rem] z-40 md:z-auto">
+				<div className="mx-auto hidden md:flex">
 					<Logo path={Jmlogo} width={120} height={120} />
 				</div>
 				<SideNav />

@@ -1,16 +1,18 @@
 "use client";
 import { useState } from "react";
 import { userPreferences } from "@/lib/_exportLinks";
+import { useAuth } from "@/app/_contexts/auth/AuthState";
 
 export default function PreferencesForm() {
 	const [step, setStep] = useState(0);
+	const { error, updateUser, user } = useAuth();
 	const [selectedPreferences, setSelectedPreferences] = useState({
 		usage: "" as string,
 		interests: [] as string[],
 		image: "" as string,
 	});
 
-	console.log(selectedPreferences);
+	// console.log(selectedPreferences);
 
 	const handleSelected = (category: string, option: string): void => {
 		setSelectedPreferences((prev) => {
@@ -48,6 +50,12 @@ export default function PreferencesForm() {
 			console.log("Submitted Preferences: ", selectedPreferences);
 		}
 	};
+
+	// Submit User Preferences
+	function handleSubmit(e: any) {
+		e.preventDefault();
+		updateUser(user?.id, selectedPreferences);
+	}
 
 	return (
 		<div className="w-[80%] flex flex-col gap-5 py-10 my-10 px-20 m-auto justify-center border border-stone-950 rounded-md">
@@ -128,7 +136,11 @@ export default function PreferencesForm() {
 				)}
 				<button
 					className="w-[100px] bg-yellow-400 hover:bg-yellow-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 rounded-sm px-5 py-2"
-					onClick={handleNext}
+					onClick={
+						step < Object.keys(userPreferences).length - 1
+							? handleNext
+							: handleSubmit
+					}
 				>
 					{step < Object.keys(userPreferences).length - 1 ? "Next" : "Finish"}
 				</button>

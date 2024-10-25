@@ -2,7 +2,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import LaptopPic from "@/public/jobSearch.jpg";
+import LaptopPic from "@/public/image/jobSearch.jpg";
 import { faqJob } from "@/lib/_exportLinks";
 // Declaring type for FAQ items
 

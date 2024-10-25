@@ -3,13 +3,15 @@ import Link from "next/link";
 export default function page() {
 	return (
 		<section
-			id="about"
-			className="px-5 md:px-32  flex flex-col gap-5 max-md:text-center justify-center my-10"
+			id="privacy"
+			className="px-5 md:px-32  flex flex-col gap-5 max-md:text-cente justify-center my-10"
 		>
-			<h1 className="text-3xl font-extrabold ">Privacy Policy</h1>
+			<h1 className="text-3xl font-extrabold text-center uppercase ">
+				Privacy Policy
+			</h1>
 			<div>
 				<h2 className="text-2xl font-bold text-stone-700 p-[1rem]">
-					Introduction:
+					Introduction
 				</h2>
 				<p>
 					JobMingle assists you in transitioning to a new career fast or
@@ -243,9 +245,17 @@ export default function page() {
 				</h2>
 				<p>
 					For questions, concerns, or requests related to this Privacy Policy or
-					our data practices, contact us at contact@jobmingle.co <br></br> We
-					are committed to promptly addressing your inquiries and maintaining
-					transparency in our privacy practices.
+					our data practices, contact us at{" "}
+					<span>
+						<Link
+							href="mailto:contact@jobmingle.co"
+							className="text-yellow-500"
+						>
+							contact@jobmingle.co
+						</Link>
+					</span>{" "}
+					<br></br> We are committed to promptly addressing your inquiries and
+					maintaining transparency in our privacy practices.
 				</p>
 			</div>
 		</section>

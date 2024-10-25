@@ -1,42 +1,42 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-	display: flex;
-	padding: 1rem 4rem 4rem 3rem;
-	flex-direction: column;
-	align-items: center;
+	padding: 2rem 3rem 3rem 3rem;
 
+	@media (max-width: 568px) {
+		padding: 0 1rem 1rem 1rem;
+	}
 	.head {
-		color: black;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 0.6rem;
 
 		&__big {
-			font-size: 3rem;
+			font-size: 1.8rem;
 			font-weight: bold;
 		}
 		&__small {
 			font-size: 1.2rem;
+			color: black;
 		}
 	}
 
 	.box {
-		padding-top: 2rem;
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		/* grid-template-rows: repeat(2, 1fr); */
-		grid-row-gap: 2rem;
-		grid-column-gap: 2rem;
+		grid-row-gap: 1rem;
+		grid-column-gap: 1rem;
+		padding-top: 2rem;
 
 		.card {
 			border: 1px solid grey;
-			width: 18rem;
-			height: 22rem;
+			width: 100%;
+			/* width: 18rem; */
+			height: auto;
 			border-radius: 1rem;
 			padding: 1rem;
-			align-items: center;
+			/* align-items: center; */
 			justify-content: space-between;
 			display: flex;
 			flex-direction: column;
@@ -98,9 +98,9 @@ export const Content = styled.div`
 			.txt-3 {
 				padding: 1.2rem 0;
 				display: flex;
-				align-self: flex-start;
+				align-self: center;
 				padding: 0 1rem;
-				justify-content: space-between;
+				justify-content: center;
 				width: 100%;
 
 				.big-1 {
@@ -112,9 +112,10 @@ export const Content = styled.div`
 				}
 
 				.btn {
-					border: 1px solid black;
 					color: black;
-					padding: 0.3rem 2rem;
+					border: 1px solid black;
+					border-radius: 5px;
+					padding: 0.4rem 1rem;
 					transition: all 0.2s;
 
 					&:hover {
@@ -133,7 +134,7 @@ export const Content = styled.div`
 		/* Smaller screens */
 		@media (max-width: 568px) {
 			grid-template-columns: 1fr;
-			padding-top: 2rem;
+			padding-top: 1rem;
 			justify-content: center;
 			align-items: center;
 		}

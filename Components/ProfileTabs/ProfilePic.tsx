@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import upload from "@/public/Upload.png";
+import upload from "@/public/image/Upload.png";
 
 const ProfilePic = ({}) => {
 	return (
