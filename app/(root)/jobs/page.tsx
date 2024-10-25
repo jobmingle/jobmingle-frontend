@@ -15,7 +15,7 @@ import SearchBar from "@/app/_components/ui/SearchBar";
 import { HiBriefcase } from "react-icons/hi2";
 import { jobTags } from "@/lib/_exportLinks";
 
-const page = () => {
+function Page()  {
 	const [searchQuery, setSearchQuery] = useState("");
 
 	return (
@@ -34,4 +34,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Page;
