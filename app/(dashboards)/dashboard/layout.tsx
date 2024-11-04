@@ -11,20 +11,18 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<main className="flex flex-col md:grid md:grid-cols-[15rem_1fr]  md:grid-rows-[auto_1fr]   h-[100vh] overflow-hidden">
+		<main className="flex flex-col  md:grid md:grid-cols-[15rem_1fr] h-screen md:grid-rows-[auto_1fr]    overflow-hidden">
 			<HeaderDash />
 			<aside className="hidden md:flex md:flex-col  gap-[3.2rem] md:row-span-full py-[3.2rem]  bg-gray-400">
 				<Logo path={Jmlogo} width={120} height={120} />
 				<Nav />
 			</aside>
-			<div className="p-[1rem] overflow-auto">
-				<div className="flex flex-col mx-auto max-w-[120rem] overflow-auto">
-					{children}
-				</div>
+			<div className="p-[1rem] max-md:flex-1 overflow-y-auto">
+				<div className="flex flex-col mx-auto max-w-[120rem] ">{children}</div>
 			</div>
-			<footer className="md:hidden">
+			<section className="md:hidden">
 				<Nav />
-			</footer>
+			</section>
 		</main>
 		// <main className="grid grid-cols-12 min-h-screen relative">
 		// 	<aside className=" absolute md:static bottom-0 h-20 md:min-h-screen w-full md:w-auto md:bottom-auto md:col-span-2 bg-gray-300  flex md:flex-col text-center items-center  md:gap-14 md:pl-[1rem] py-[0.7rem] md:py-[3.2rem] z-40 md:z-auto">

@@ -19,8 +19,8 @@ export default function RootLayout({
 				<Nav />
 			</aside>
 			<JobProvider>
-				<div className="p-[1rem] overflow-auto">
-					<div className="flex flex-col mx-auto max-w-[120rem] overflow-auto">
+				<div className="p-[1rem] max-md:flex-1 overflow-y-auto">
+					<div className="flex flex-col mx-auto max-w-[120rem] ">
 						{children}
 					</div>
 				</div>

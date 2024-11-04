@@ -16,10 +16,8 @@ export default function RootLayout({
 				<Logo path={Jmlogo} width={120} height={120} />
 				<Nav />
 			</aside>
-			<div className="p-[1rem] overflow-auto">
-				<div className="flex flex-col mx-auto max-w-[120rem] overflow-auto">
-					{children}
-				</div>
+			<div className="p-[1rem] max-md:flex-1 overflow-y-auto">
+				<div className="flex flex-col mx-auto max-w-[120rem] ">{children}</div>
 			</div>
 			<footer className="md:hidden">
 				<Nav />

@@ -25,7 +25,7 @@ const UserDashboard = () => {
 
 	return (
 		<nav
-			className={`flex flex-col justify-center md:justify-center w-full   py-6 md:pl-[2.5rem]`}
+			className={`flex flex-col justify-center  w-full   py-3 md:pl-[2.5rem]`}
 		>
 			<ul className=" flex flex-row md:flex-col gap-[0.2rem] w-full justify-between  items-center md:items-start">
 				<li className={` md:w-full `}>
