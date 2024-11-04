@@ -7,7 +7,7 @@ export function usePagination() {
 	// const count = CoursesList.length;
 
 	const page = searchParams.get("page") ? Number(searchParams.get("page")) : 1;
-	console.log(PAGE_SIZE);
+	// console.log(PAGE_SIZE);
 	// const pageCount = Math.ceil(count / PAGE_SIZE);
 	const from = Number(page - 1) * Number(PAGE_SIZE);
 	const to = from + Number(PAGE_SIZE);

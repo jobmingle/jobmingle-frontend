@@ -73,22 +73,22 @@ const AccountDashboard = () => {
 	];
 
 	return (
-		<div className="container mx-auto p-9">
+		<div className="container mx-auto md:p-9">
 			{/* Cards for Total Numbers */}
-			<div className="flex justify-between gap-6 mb-6">
-				<div className="w-1/4 p-4 bg-blue-500 text-white rounded-lg">
+			<div className="grid grid-cols-2 gap-3 md:flex  md:justify-between md:gap-6 mb-6">
+				<div className="w-full p-4 bg-blue-500 text-white rounded-lg">
 					<h3 className="text-xl font-bold">Total Users</h3>
 					<p className="text-3xl">{totalUsers}</p>
 				</div>
-				<div className="w-1/4 p-4 bg-green-500 text-white rounded-lg">
+				<div className="w-full p-4 bg-green-500 text-white rounded-lg">
 					<h3 className="text-xl font-bold">Total Vendors</h3>
 					<p className="text-3xl">{totalVendors}</p>
 				</div>
-				<div className="w-1/4 p-4 bg-yellow-500 text-white rounded-lg">
+				<div className="w-full p-4 bg-yellow-500 text-white rounded-lg">
 					<h3 className="text-xl font-bold">Total Employees</h3>
 					<p className="text-3xl">{totalEmployees}</p>
 				</div>
-				<div className="w-1/4 p-4 bg-red-500 text-white rounded-lg">
+				<div className="w-full p-4 bg-red-500 text-white rounded-lg">
 					<h3 className="text-xl font-bold">Total Students</h3>
 					<p className="text-3xl">{totalStudents}</p>
 				</div>

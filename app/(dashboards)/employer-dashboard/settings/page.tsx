@@ -14,7 +14,7 @@ const Page = () => {
 	const [Active, setActive] = useState(false);
 
 	return (
-		<div className=" flex flex-col items-center gap-3 h-auto">
+		<div className=" flex flex-col items-center gap-3 min-h-screen">
 			{/* Edit profile */}
 			<div className="flex relative">
 				{/* {Active ? <Modal setActive={setActive} /> : null} */}

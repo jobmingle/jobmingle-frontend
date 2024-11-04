@@ -13,6 +13,7 @@ import {
 	CONFIRMATION_SUCCESS,
 	CONFIRMATION_FAIL,
 	USER_LOADED,
+	USER_UPDATED,
 	AUTH_ERROR,
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
@@ -21,6 +22,7 @@ import {
 	LOGOUT,
 	CLEAR_ERRORS,
 	LOADING,
+	UPDATE_ERROR,
 } from "@/app/_contexts/types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -80,7 +82,9 @@ function AuthProvider({ children }) {
 			const res = await axios.post(`${BASE_URL}/register`, formData, config);
 
 			dispatch({ type: REGISTER_SUCCESS, payload: res?.data });
+			localStorage.setItem("userId", res?.data?.user?.id);
 
+			console.log(res.data);
 			await router.push("/sign-up/confirm-email");
 			toast.success(res?.data.message);
 
@@ -90,7 +94,7 @@ function AuthProvider({ children }) {
 				type: REGISTER_FAIL,
 				payload: err?.response?.data?.message || err.message,
 			});
-			throw Error("Failed creating your account");
+			throw Error(err?.response?.data.message || err.message);
 		}
 	}
 
@@ -137,21 +141,43 @@ function AuthProvider({ children }) {
 		}
 	}
 
+	//   IMAGE   CONVERTER
+	const convertFileToBase64 = (file) => {
+		return new Promise((resolve, reject) => {
+			const reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = () => resolve(reader.result);
+			reader.onerror = (error) => reject(error);
+		});
+	};
+
 	// UPDATE USER INTEREST USAGE & IMAGE
-	async function updateUser(userId, userData) {
+	async function updateUser(userData) {
 		dispatch({ type: LOADING });
 
 		try {
-			const res = await axios.get(`${BASE_URL}/me/${userId}`, {
-				headers: { Authorization: `Bearer ${token}` },
-				"Content-Type": "application/json",
-			});
-			dispatch({ type: USER_LOADED, payload: res.data });
-		} catch (error) {
+			// const res = await axios.put(`${BASE_URL}/users/${userId}`, formData, {
+			const userId = localStorage.getItem("userId");
+			console.log(userId);
+			const res = await axios.put(
+				`${BASE_URL}/users/${userId}/update-profile`,
+				userData,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						// "Content-Type": "multipart/form-data",
+					},
+				}
+			);
+			console.log(res);
+			dispatch({ type: USER_UPDATED, payload: res?.data });
+			await router.push("/sign-in");
+		} catch (err) {
 			dispatch({
-				type: AUTH_ERROR,
-				payload: err?.response.data.message || err.message,
+				type: UPDATE_ERROR,
+				payload: err?.response?.data.message || err.message,
 			});
+			throw Error(err?.response?.data.message);
 		}
 	}
 

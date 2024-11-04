@@ -26,10 +26,8 @@ const SideNav = () => {
 	}
 
 	return (
-		<nav
-			className={`flex-col items-center md:items-start w-full mx-2 h-auto min-h-8`}
-		>
-			<ul className=" flex flex-row md:flex-col gap-[0.8rem] w-full justify-between md:justify-between items-center md:items-start sora">
+		<nav className={`flex flex-col justify-center w-full  py-6 md:pl-[2.5rem]`}>
+			<ul className=" flex flex-row md:flex-col gap-[0.2rem] w-full justify-between  items-center md:items-start">
 				<li className="md:w-full">
 					<Link
 						href="/admin-dashboard/"

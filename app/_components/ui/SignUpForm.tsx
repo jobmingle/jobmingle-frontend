@@ -35,7 +35,7 @@ export default function SignUpForm() {
 	} = useAuth();
 
 	useEffect(() => {
-		if (error === "User already exists with this email address.") {
+		if (error === "The email has already been taken.") {
 			toast.error(error);
 			clearErrors();
 		}
@@ -51,7 +51,7 @@ export default function SignUpForm() {
 	}, [error, isAuthenticated]);
 
 	function onSubmit(data: FormData) {
-		// console.log(data);
+		console.log(data);
 		registerUser(data);
 		toast.success("Form submitted successfully.");
 	}
@@ -126,7 +126,7 @@ export default function SignUpForm() {
 					</label>
 					<input
 						type="text"
-						id="phonenumber"
+						id="phoneNumber"
 						className="input"
 						placeholder="Enter your phone number"
 						{...register("phoneNumber", {
@@ -214,7 +214,7 @@ export default function SignUpForm() {
 				</Button>
 			</form>
 			<p className="text-sm montserrat  font-medium float-right mt-4 text-black-100/80">
-				Don&#39;t have an Account?{" "}
+				Already have an Account?{" "}
 				<Link href="/sign-in" className="text-[#F6CC16]">
 					Login
 				</Link>

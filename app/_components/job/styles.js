@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-	padding: 2rem 3rem 3rem 3rem;
+	/* padding: 2rem 3rem 3rem 3rem; */
 
 	@media (max-width: 568px) {
-		padding: 0 1rem 1rem 1rem;
+		padding: 0 0.5rem 0.5rem 0.5rem;
 	}
 	.head {
 		display: flex;
@@ -23,23 +23,21 @@ export const Content = styled.div`
 
 	.box {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		/* grid-template-rows: repeat(2, 1fr); */
 		grid-row-gap: 1rem;
 		grid-column-gap: 1rem;
 		padding-top: 2rem;
 
 		.card {
+			display: flex;
+			flex-direction: column;
 			border: 1px solid grey;
 			width: 100%;
-			/* width: 18rem; */
 			height: auto;
 			border-radius: 1rem;
 			padding: 1rem;
-			/* align-items: center; */
-			justify-content: space-between;
-			display: flex;
-			flex-direction: column;
+
 			cursor: pointer;
 
 			.head {
@@ -72,7 +70,7 @@ export const Content = styled.div`
 				}
 			}
 			.txt-1 {
-				padding: 1rem 0;
+				padding: 0.5rem 0;
 
 				.big-1 {
 					font-size: 1.1rem;
@@ -83,8 +81,8 @@ export const Content = styled.div`
 				/* padding: 1rem 0; */
 				display: flex;
 				align-self: flex-start;
-				padding: 1rem;
-				gap: 2rem;
+				padding: 0.5rem;
+				/* gap: 2rem; */
 				width: 100%;
 
 				.big-1 {
@@ -99,7 +97,7 @@ export const Content = styled.div`
 				padding: 1.2rem 0;
 				display: flex;
 				align-self: center;
-				padding: 0 1rem;
+				padding: 0 0.5rem;
 				justify-content: center;
 				width: 100%;
 
@@ -144,15 +142,18 @@ export const PopupContainer = styled.div`
 	position: fixed;
 	top: 50%;
 	left: 50%;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	justify-content: center;
 	transform: translate(-50%, -50%);
 	background-color: white;
 	padding: 1.5rem;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 	border-radius: 8px;
 	z-index: 1000;
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
+	height: 50%;
+	width: 50%;
 
 	.close {
 		align-self: flex-end;

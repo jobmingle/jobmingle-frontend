@@ -4,7 +4,7 @@ import logo from "@/public/image/logo.png";
 
 export default function Logo({ path, width = 60, height = 60 }: any) {
 	return (
-		<div className=" items-center ">
+		<div className="flex  justify-center ">
 			<Image src={path} alt="jobmingle" width={width} height={height} />
 		</div>
 	);

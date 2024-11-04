@@ -4,6 +4,8 @@ import {
 	CONFIRMATION_SUCCESS,
 	CONFIRMATION_FAIL,
 	USER_LOADED,
+	USER_UPDATED,
+	UPDATE_ERROR,
 	AUTH_ERROR,
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
@@ -20,6 +22,12 @@ export default function authReducer(state, action) {
 			return {
 				...state,
 				isAuthenticated: true,
+				isLoading: false,
+				user: action.payload,
+			};
+		case USER_UPDATED:
+			return {
+				...state,
 				isLoading: false,
 				user: action.payload,
 			};
@@ -66,7 +74,11 @@ export default function authReducer(state, action) {
 				user: null,
 				error: action.payload,
 			};
-
+		case UPDATE_ERROR:
+			return {
+				...state,
+				error: action.payload,
+			};
 		case LOADING:
 			return {
 				...state,

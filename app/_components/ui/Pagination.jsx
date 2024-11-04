@@ -7,6 +7,10 @@ const StyledPagination = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	@media (max-width: 568px) {
+		flex-direction: column;
+	}
 `;
 
 const P = styled.p`
@@ -20,6 +24,8 @@ const P = styled.p`
 
 const Buttons = styled.div`
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	gap: 0.6rem;
 `;
 
@@ -60,7 +66,7 @@ const PaginationButton = styled.button`
 
 const PAGE_SIZE = process.env.NEXT_PUBLIC_PAGE_SIZE;
 
-function Pagination({ count }) {
+function Pagination({ count, assets = "results" }) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 
@@ -89,21 +95,20 @@ function Pagination({ count }) {
 	if (pageCount <= 1) return null;
 
 	return (
-		<div className="flex justify-center p-[1.2rem] font-bold text-[1rem] ">
-			<StyledPagination>
-				<p>
-					Showing <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> to{" "}
-					<span>
-						{currentPage === pageCount ? count : currentPage * PAGE_SIZE}
-					</span>{" "}
-					of <span>{count}</span> results
-				</p>
-
+		<div className=" md:flex md:justify-center md:p-[1.2rem] font-bold text-[1rem] max-md:text-[.75rem] ">
+			<div>
 				<Buttons>
 					<PaginationButton onClick={prevPage} disabled={currentPage === 1}>
 						<HiChevronLeft />
-						<span>Previous</span>
+						<span>Prev</span>
 					</PaginationButton>
+					<p className="">
+						<span>{(currentPage - 1) * PAGE_SIZE + 1}</span> to{" "}
+						<span>
+							{currentPage === pageCount ? count : currentPage * PAGE_SIZE}
+						</span>{" "}
+						of <span>{count}</span> {assets}
+					</p>
 					<PaginationButton
 						onClick={nextPage}
 						disabled={currentPage === pageCount}
@@ -112,9 +117,37 @@ function Pagination({ count }) {
 						<HiChevronRight />
 					</PaginationButton>
 				</Buttons>
-			</StyledPagination>
+			</div>
 		</div>
 	);
 }
 
 export default Pagination;
+
+// return (
+// 	<div className="flex justify-center p-[1.2rem] font-bold text-[1rem] ">
+// 		<StyledPagination>
+// 			<p>
+// 				Showing <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> to{" "}
+// 				<span>
+// 					{currentPage === pageCount ? count : currentPage * PAGE_SIZE}
+// 				</span>{" "}
+// 				of <span>{count}</span> results
+// 			</p>
+
+// 			<Buttons>
+// 				<PaginationButton onClick={prevPage} disabled={currentPage === 1}>
+// 					<HiChevronLeft />
+// 					<span>Prev</span>
+// 				</PaginationButton>
+// 				<PaginationButton
+// 					onClick={nextPage}
+// 					disabled={currentPage === pageCount}
+// 				>
+// 					<span>Next</span>
+// 					<HiChevronRight />
+// 				</PaginationButton>
+// 			</Buttons>
+// 		</StyledPagination>
+// 	</div>
+// );

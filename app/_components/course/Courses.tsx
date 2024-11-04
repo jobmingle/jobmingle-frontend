@@ -50,7 +50,7 @@ const CoursesPage = ({ searchQuery }: any) => {
 							</h1>
 						</div>
 					)}
-					<section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 ">
+					<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
 						{courses.map((course) => (
 							<div key={course.id} className="border p-2 md:p-3 rounded-md">
 								<section className="items-center">
@@ -107,7 +107,7 @@ const CoursesPage = ({ searchQuery }: any) => {
 					</section>
 					<br />
 					{searchedCourses.length === 0 && <NoResult />}
-					<Pagination count={searchedCourses.length} />
+					<Pagination count={searchedCourses.length} assets="courses" />
 				</main>
 			) : (
 				<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] border-solid mt-10 p-2">

@@ -92,9 +92,9 @@ const AccountSearch = () => {
 	});
 
 	return (
-		<div className="container flex flex-col mx-auto p-6">
+		<div className="container flex flex-col mx-auto md:p-6">
 			{/* Search box and filter dropdown */}
-			<div className="flex w-full justify-between items-center mb-4">
+			<div className="flex w-full gap-3 justify-between items-center mb-4">
 				<input
 					type="text"
 					className="w-full max-w-lg p-2 border border-gray-300 rounded-md"
@@ -106,7 +106,7 @@ const AccountSearch = () => {
 				<select
 					value={filterType}
 					onChange={handleFilterChange}
-					className="w-fit ml-4 p-2  px-2 border cursor-pointer border-gray-300 rounded-md bg-yellow-500 text-black"
+					className="w-fit  p-2  px-2 border cursor-pointer border-gray-300 rounded-md bg-yellow-500 text-black"
 				>
 					<option value="All">All</option>
 					<option value="Vendor">Vendor</option>
@@ -117,7 +117,7 @@ const AccountSearch = () => {
 
 			{/* Accounts list */}
 			{/* <div className="mt-8 flex flex-1 lg:flex-row flex-col gap-4"> */}
-			<div className="grid grid-cols-3 mt-8 gap-4 ">
+			<div className="grid grid-cols-1 md:grid-cols-3 mt-8 gap-4 ">
 				{filteredAccounts.length > 0 ? (
 					filteredAccounts.map((account) => (
 						<div

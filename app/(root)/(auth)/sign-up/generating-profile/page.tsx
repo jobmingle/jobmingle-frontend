@@ -1,23 +1,38 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { userPreferences } from "@/lib/_exportLinks";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
+import toast from "react-hot-toast";
+import Spinner from "@/app/_components/ui/Spinner";
 
 export default function PreferencesForm() {
 	const [step, setStep] = useState(0);
-	const { error, updateUser, user } = useAuth();
+	const { error, updateUser, user, clearErrors, isLoading } = useAuth();
 	const [selectedPreferences, setSelectedPreferences] = useState({
-		usage: "" as string,
+		goals: "" as string,
 		interests: [] as string[],
-		image: "" as string,
 	});
 
-	// console.log(selectedPreferences);
+	useEffect(() => {
+		if (error === "User not found.") {
+			toast.error(error);
+			clearErrors();
+		}
 
-	const handleSelected = (category: string, option: string): void => {
+		if (error === "Network Error") {
+			toast.error(error);
+			clearErrors();
+		}
+		{
+			isLoading && <Spinner />;
+		}
+		// eslint-disable-next-line
+	}, [error]);
+
+	const handleSelected = (category: string, option: any): void => {
 		setSelectedPreferences((prev) => {
-			if (category === "usage" || category === "image") {
-				// Only one selectable option for 'usage' and 'image'
+			if (category === "goals") {
+				// Only one selectable option for 'goals' and 'image'
 				return {
 					...prev,
 					[category]: option,
@@ -45,16 +60,23 @@ export default function PreferencesForm() {
 	const handleNext = () => {
 		if (step < Object.keys(userPreferences).length - 1) {
 			setStep(step + 1);
-		} else {
-			// Handle the final submission (e.g., send to backend)
-			console.log("Submitted Preferences: ", selectedPreferences);
 		}
+		// } else {
+		// 	// Handle the final submission (e.g., send to backend)
+		// 	console.log("Submitted Preferences: ", selectedPreferences);
+		// }
 	};
 
 	// Submit User Preferences
+
 	function handleSubmit(e: any) {
 		e.preventDefault();
-		updateUser(user?.id, selectedPreferences);
+		const formattedPreferences = {
+			...selectedPreferences,
+			interests: selectedPreferences.interests.join(", "), // Converts array to comma-separated string
+		};
+		updateUser(formattedPreferences);
+		console.log(formattedPreferences);
 	}
 
 	return (
@@ -85,19 +107,19 @@ export default function PreferencesForm() {
 			{step === 1 && (
 				<div>
 					<h2 className="text-xl text-stone-800 text-center font-bold mb-5">
-						Select your usage
+						Select your goals
 					</h2>
 					<div className="flex flex-col space-y-6 justify-center">
 						{userPreferences.usage.map((option) => (
 							<input
 								type="button"
 								className={`w-full list-none py-3 cursor-pointer pl-2 border-black-100 border-solid border-[1px] sora rounded-[10px] capitalize ${
-									selectedPreferences.usage === option
+									selectedPreferences.goals === option
 										? "text-yellow-500 border-yellow-500"
 										: ""
 								}`}
 								key={option}
-								onClick={() => handleSelected("usage", option)}
+								onClick={() => handleSelected("goals", option)}
 								value={option}
 							/>
 						))}
@@ -105,7 +127,7 @@ export default function PreferencesForm() {
 				</div>
 			)}
 
-			{step === 2 && (
+			{/* {step === 2 && (
 				<div>
 					<h2 className="text-xl text-stone-800 text-center font-bold mb-5">
 						Upload your profile image
@@ -115,15 +137,12 @@ export default function PreferencesForm() {
 							type="file"
 							className={`w-full list-none py-10 cursor-pointer px-5 border-black-100 border-solid border-[1px] sora rounded-[10px] capitalize file:py-[0.8rem] file:px-[1.2rem] file:rounded-sm file:mr-[1.2rem] file:font-bold file:border-none file:cursor-pointer file:bg-yellow-600 file:hover:bg-yellow-500 file:hover:scale-110 file:transition file:ease-in-out file:delay-150 file:hover:-translate-y-1  file:duration-300  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 `}
 							onChange={(e) =>
-								handleSelected(
-									"image",
-									e.target.files ? e.target.files[0].name : ""
-								)
+								handleSelected("image", e.target.files ? e.target.files[0] : "")
 							}
 						/>
 					</div>
 				</div>
-			)}
+			)} */}
 
 			<div className="flex justify-end gap-5">
 				{step > 0 && (
@@ -137,12 +156,12 @@ export default function PreferencesForm() {
 				<button
 					className="w-[100px] bg-yellow-400 hover:bg-yellow-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 rounded-sm px-5 py-2"
 					onClick={
-						step < Object.keys(userPreferences).length - 1
+						step < Object.keys(userPreferences).length - 2
 							? handleNext
 							: handleSubmit
 					}
 				>
-					{step < Object.keys(userPreferences).length - 1 ? "Next" : "Finish"}
+					{step < Object.keys(userPreferences).length - 2 ? "Next" : "Finish"}
 				</button>
 			</div>
 		</div>

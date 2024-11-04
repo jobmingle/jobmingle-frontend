@@ -2,9 +2,7 @@
 
 import React, { useState } from "react";
 import { Wrapper } from "./style";
-import Image from "next/image";
-import { CiSearch } from "react-icons/ci";
-import { IoLocationOutline } from "react-icons/io5";
+
 // import Feature from "../../Components/job/index";
 import JobItems from "../../_components/job/Jobs";
 import { url } from "inspector";
@@ -28,7 +26,9 @@ const Page = () => {
 				icon={<HiBriefcase />}
 			/>
 			<ScrollableTags setSearchQuery={setSearchQuery} tags={jobTags} />
-			<JobItems searchQuery={searchQuery} />
+			<div className="px-[1rem] md:px-[4rem]">
+				<JobItems searchQuery={searchQuery} />
+			</div>
 			<FAQSection />
 		</>
 	);

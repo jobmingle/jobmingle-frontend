@@ -322,16 +322,39 @@ export const jobTags: string[] = [
 	"Sales",
 	"Fulltime",
 	"Remote",
-	"Product designer",
-	"Senior level",
+	"Product Designer",
+	"Software Engineer",
+	"DevOPs",
 	"Illustrator",
-	"Senior Dev",
+	"Development",
+	"UI/UX",
+	"Virtual Assistant",
 	"Marketing",
+	"Cyber Security",
 	"Moderator",
 	"Researcher",
-	"Project manager",
+	"Project Manager",
 	"Designer",
-	"Graphic designer",
+	"Graphic Designer",
+];
+// Courses Tags
+export const courseTags: string[] = [
+	"Sales",
+	"Product Designer",
+	"Illustrator",
+	"Video Editing",
+	"Development",
+	"UI/UX",
+	"Marketing",
+	"Web Development",
+	"Moderator",
+	"Seo (Search Engine Optimization)",
+	"Digital Marketing",
+	"Researcher",
+	"Project Manager",
+	"Cyber Security",
+	"Email Marketing",
+	"Graphic Designer",
 ];
 
 // Partners Logo
@@ -349,7 +372,8 @@ export const partnersLogos = [
 ];
 
 export const userPreferences = {
-	usage: ["apply for a job/ take a course", "Post a job", "List a course"],
+	// usage: ["apply for a job/ take a course", "Post a job", "List a course"],
+	usage: ["Student", "Employer", "Vendor"],
 	interests: [
 		"IT support",
 		"Marketing",
@@ -368,7 +392,7 @@ export const Jobs = [
 		id: 1,
 		icon: tired,
 		platform: "Upwork",
-		jobTitle: "Virtual Assitance",
+		jobTitle: "Virtual Assistant",
 		location: "Remote",
 		pricerange: "$15-$25",
 		stat: "Applied",
@@ -381,7 +405,7 @@ export const Jobs = [
 		jobTitle: "Virtual Assitance",
 		location: "Remote",
 		pricerange: "$40-$85",
-		stat: "expires soon",
+		stat: "Available",
 		website: "www.google.com",
 	},
 	{
@@ -411,7 +435,7 @@ export const Jobs = [
 		jobTitle: "Virtual Assitance",
 		location: "Remote",
 		pricerange: "$15-$25",
-		stat: "expires soon",
+		stat: "Available",
 		website: "www.google.com",
 	},
 	{
@@ -421,7 +445,7 @@ export const Jobs = [
 		jobTitle: "Virtual Assitance",
 		location: "Remote",
 		pricerange: "$40-$85",
-		stat: "expires soon",
+		stat: "Available",
 		website: "www.google.com",
 	},
 	{
@@ -441,7 +465,7 @@ export const Jobs = [
 		jobTitle: "Virtual Assitance",
 		location: "Lagos Nigeria",
 		pricerange: "$15-$25",
-		stat: "expires soon",
+		stat: "Available",
 		website: "www.google.com",
 	},
 	{
@@ -471,7 +495,7 @@ export const Jobs = [
 		jobTitle: "moderator",
 		location: "Rivers state",
 		pricerange: "$15-$25",
-		stat: "expires soon",
+		stat: "Available",
 		website: "www.google.com",
 	},
 	{
@@ -481,7 +505,7 @@ export const Jobs = [
 		jobTitle: "Virtual Assitance",
 		location: "Lagos Nigeria",
 		pricerange: "$15-$25",
-		stat: "expires soon",
+		stat: "Available",
 		website: "www.google.com",
 	},
 	{
@@ -501,7 +525,7 @@ export const Jobs = [
 		jobTitle: "Virtual Assitance",
 		location: "Lagos Nigeria",
 		pricerange: "$15-$25",
-		stat: "expires soon",
+		stat: "Available",
 		website: "www.google.com",
 	},
 	{
@@ -531,7 +555,7 @@ export const Jobs = [
 		jobTitle: "moderator",
 		location: "Rivers state",
 		pricerange: "$15-$25",
-		stat: "expires soon",
+		stat: "Available",
 		website: "www.google.com",
 	},
 	{
@@ -541,7 +565,7 @@ export const Jobs = [
 		jobTitle: "Virtual Assitance",
 		location: "Lagos Nigeria",
 		pricerange: "$15-$25",
-		stat: "expires soon",
+		stat: "Available",
 		website: "www.google.com",
 	},
 ];
@@ -554,6 +578,7 @@ export const CoursesList = [
 		coursetitle: "Design Principles",
 		category: "Design",
 		pricerange: "$15-$25",
+		stat: "Enrolled",
 	},
 	{
 		id: 2,
@@ -562,6 +587,7 @@ export const CoursesList = [
 		coursetitle: "Email Marketing Basics",
 		category: "Digital Marketing",
 		pricerange: "$40-$85",
+		stat: "Open",
 	},
 	{
 		id: 3,
@@ -570,6 +596,7 @@ export const CoursesList = [
 		coursetitle: "Introduction to SEO",
 		category: "Marketing",
 		pricerange: "$15-$25",
+		stat: "Enrolled",
 	},
 	{
 		id: 4,
@@ -578,6 +605,7 @@ export const CoursesList = [
 		coursetitle: "Introduction to backend Dev.",
 		category: "Development",
 		pricerange: "$15-$25",
+		stat: "Open",
 	},
 	{
 		id: 5,
@@ -586,6 +614,7 @@ export const CoursesList = [
 		coursetitle: "Virtual Assitance course",
 		category: "Management",
 		pricerange: "$15-$25",
+		stat: "Open",
 	},
 	{
 		id: 6,
@@ -594,6 +623,7 @@ export const CoursesList = [
 		coursetitle: "Project Management Fundamentals",
 		category: "Management",
 		pricerange: "$40-$85",
+		stat: "Open",
 	},
 	{
 		id: 7,
@@ -602,6 +632,7 @@ export const CoursesList = [
 		coursetitle: "UI/UX for beginers",
 		category: "Design",
 		pricerange: "$15-$25",
+		stat: "Enrolled",
 	},
 	{
 		id: 8,
@@ -610,6 +641,7 @@ export const CoursesList = [
 		coursetitle: "introduction to Web. Dev.",
 		category: "Development",
 		pricerange: "$15-$25",
+		stat: "Open",
 	},
 	{
 		id: 9,
@@ -618,6 +650,7 @@ export const CoursesList = [
 		coursetitle: "Virtual Assitance crash course",
 		category: "Marketing",
 		pricerange: "$15-$25",
+		stat: "Open",
 	},
 	{
 		id: 10,
@@ -626,6 +659,7 @@ export const CoursesList = [
 		coursetitle: "Email Marketing",
 		category: "Sales",
 		pricerange: "$40-$85",
+		stat: "Open",
 	},
 	{
 		id: 11,
@@ -634,6 +668,7 @@ export const CoursesList = [
 		coursetitle: "UI/UX Design crash course",
 		category: "development",
 		pricerange: "$15-$25",
+		stat: "Open",
 	},
 	{
 		id: 12,
@@ -642,5 +677,6 @@ export const CoursesList = [
 		coursetitle: "Email Marketing",
 		category: "Marketing",
 		pricerange: "$15-$25",
+		stat: "Open",
 	},
 ];

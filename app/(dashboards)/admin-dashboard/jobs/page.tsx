@@ -109,11 +109,11 @@ const Joblist = () => {
 	];
 
 	return (
-		<div className="container mx-auto p-6">
+		<div className="container mx-auto md:p-6">
 			<div className="flex flex-col lg:flex-row gap-6 mb-12">
 				{/* Overview Section */}
-				<div className="bg-gray-100 rounded-lg p-6 shadow-lg flex-1 lg:h-[7rem]">
-					<h3 className="text-2xl font-semibold text-gray-700 mb-2">
+				<div className="bg-gray-100 rounded-lg p-6 shadow-lg flex-1 ">
+					<h3 className="text-xl font-semibold text-gray-700 mb-2">
 						Job Listings Overview
 					</h3>
 					<p className="text-gray-600 mb-4">Number of Jobs: {jobs.length}</p>
@@ -122,12 +122,12 @@ const Joblist = () => {
 				{/* Approved Jobs Section */}
 				<div
 					className="bg-green-100 p-6 rounded-lg shadow-lg flex-1"
-					style={{ height: "35%", width: "70%" }}
+					// style={{ height: "35%", width: "70%" }}
 				>
-					<h3 className="text-xl font-semibold text-green-700">
+					<h3 className="text-xl font-semibold text-green-700 mb-2">
 						Approved Jobs
 					</h3>
-					<p className="text-green-600 text-2xl">
+					<p className="text-green-600 ">
 						{jobs.filter((job) => job.approved).length} Approved
 					</p>
 				</div>
@@ -135,10 +135,12 @@ const Joblist = () => {
 				{/* Deleted Count Section */}
 				<div
 					className="bg-blue-100 p-6 rounded-lg shadow-lg flex-1"
-					style={{ height: "35%", width: "50%" }}
+					// style={{ height: "35%", width: "50%" }}
 				>
-					<h3 className="text-xl font-semibold text-blue-700">Deleted Job</h3>
-					<p className="text-blue-600 text-2xl">{deletedJobs.length} Deleted</p>
+					<h3 className="text-xl font-semibold text-blue-700 mb-2">
+						Deleted Job
+					</h3>
+					<p className="text-blue-600 ">{deletedJobs.length} Deleted</p>
 				</div>
 			</div>
 
