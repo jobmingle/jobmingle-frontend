@@ -14,18 +14,18 @@ export default function RootLayout({
 	return (
 		<main className="flex flex-col md:grid md:grid-cols-[16rem_1fr] md:grid-rows-[auto_1fr]   h-[100vh] overflow-hidden">
 			<HeaderDash />
-			<aside className="hidden md:flex md:flex-col  gap-[3.2rem] md:row-span-full py-[3.2rem]  bg-gray-400">
+			<aside className="hidden md:flex md:flex-col  gap-[3.2rem] md:row-span-full py-[3.2rem]  bg-gray-300">
 				<Logo path={Jmlogo} width={120} height={120} />
 				<Nav />
 			</aside>
 			<JobProvider>
-				<div className="p-[1rem] max-md:flex-1 overflow-y-auto">
-					<div className="flex flex-col mx-auto max-w-[120rem] ">
+				<div className=" max-md:flex-1 overflow-y-auto pb-[5rem]">
+					<div className="p-[1rem] flex flex-col mx-auto max-w-[120rem] ">
 						{children}
 					</div>
 				</div>
 			</JobProvider>
-			<footer className="md:hidden">
+			<footer className="md:hidden bg-gray-300 h-[80px]  fixed right-0 left-0 bottom-0 z-[2]">
 				<Nav />
 			</footer>
 		</main>

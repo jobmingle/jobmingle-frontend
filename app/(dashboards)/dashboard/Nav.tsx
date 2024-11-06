@@ -31,8 +31,8 @@ const UserDashboard = () => {
 				<li className={` md:w-full `}>
 					<Link
 						href="/dashboard"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
-							isActive("/dashboard") ? " md:bg-gray-50" : ""
+						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/dashboard") ? "text-yellow-500 md:bg-gray-50" : ""
 						}`}
 					>
 						<HiHome
@@ -46,8 +46,10 @@ const UserDashboard = () => {
 				<li className=" md:w-full">
 					<Link
 						href="/dashboard/courses"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
-							isActive("/dashboard/courses") ? " md:bg-gray-50" : ""
+						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/dashboard/courses")
+								? "text-yellow-500 md:bg-gray-50"
+								: ""
 						}`}
 					>
 						<HiOutlineBookOpen
@@ -62,8 +64,8 @@ const UserDashboard = () => {
 				<li className=" md:w-full">
 					<Link
 						href="/dashboard/jobs"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
-							isActive("/dashboard/jobs") ? " md:bg-gray-50" : ""
+						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/dashboard/jobs") ? "text-yellow-500 md:bg-gray-50" : ""
 						}`}
 					>
 						<HiMiniBriefcase
@@ -78,8 +80,10 @@ const UserDashboard = () => {
 				<li className="md:w-full">
 					<Link
 						href="/dashboard/settings"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
-							isActive("/dashboard/settings") ? " md:bg-gray-50" : ""
+						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/dashboard/settings")
+								? "text-yellow-500 md:bg-gray-50"
+								: ""
 						}`}
 					>
 						<HiOutlineCog
@@ -95,7 +99,7 @@ const UserDashboard = () => {
 				<li className=" md:w-full">
 					<button
 						onClick={handleLogout}
-						className=" flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded md:rounded-l px-[1.2rem] md:px-4"
+						className=" flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 md:hover:bg-gray-50 rounded md:rounded-l px-[1.2rem] md:px-4"
 					>
 						<HiMiniArrowLeftStartOnRectangle
 							title="Logout"

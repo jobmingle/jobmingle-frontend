@@ -11,6 +11,7 @@ import "../app/_styles/globals.css";
 import ScrollToTopButton from "./_components/ui/ScrollToTop";
 import { Suspense } from "react";
 import Spinner from "./_components/ui/Spinner";
+import Loader from "./_components/ui/Loader";
 // import setAuthToken from "@/lib/setAuthToken";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -39,7 +40,7 @@ export default function RootLayout({
 			<body className={`${inter.className} ${ibmPlexSerif.variable} `}>
 				<AuthProvider>
 					{/* <div className="flex-1 md:px-8  md:py-8 "> */}
-					<Suspense fallback={<Spinner />}>
+					<Suspense fallback={<Loader />}>
 						<main>{children}</main>
 					</Suspense>
 					<ScrollToTopButton />

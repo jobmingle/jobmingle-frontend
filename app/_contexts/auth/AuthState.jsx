@@ -82,9 +82,10 @@ function AuthProvider({ children }) {
 			const res = await axios.post(`${BASE_URL}/register`, formData, config);
 
 			dispatch({ type: REGISTER_SUCCESS, payload: res?.data });
-			localStorage.setItem("userId", res?.data?.user?.id);
+			localStorage.setItem("userId", res?.data?.data?.user_id);
 
 			console.log(res.data);
+			console.log(res.data.data.user_id);
 			await router.push("/sign-up/confirm-email");
 			toast.success(res?.data.message);
 
@@ -156,12 +157,19 @@ function AuthProvider({ children }) {
 		dispatch({ type: LOADING });
 
 		try {
+			const base64Image = await convertFileToBase64(userData.image);
+			const formData = {
+				...userData,
+				image: base64Image,
+			};
+			console.log(formData);
+
 			// const res = await axios.put(`${BASE_URL}/users/${userId}`, formData, {
 			const userId = localStorage.getItem("userId");
 			console.log(userId);
 			const res = await axios.put(
 				`${BASE_URL}/users/${userId}/update-profile`,
-				userData,
+				formData,
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -170,6 +178,7 @@ function AuthProvider({ children }) {
 				}
 			);
 			console.log(res);
+			console.log(res.data);
 			dispatch({ type: USER_UPDATED, payload: res?.data });
 			await router.push("/sign-in");
 		} catch (err) {
@@ -198,7 +207,8 @@ function AuthProvider({ children }) {
 			console.log(res);
 			toast.success(res?.data.message);
 
-			await router.push("/dashboard");
+			// await router.push("/dashboard");
+			console.log(user?.goals);
 		} catch (err) {
 			dispatch({
 				type: LOGIN_FAIL,
@@ -282,6 +292,7 @@ function AuthProvider({ children }) {
 				logout,
 				clearErrors,
 				resendVerificationCode,
+				convertFileToBase64,
 			}}
 		>
 			{children}

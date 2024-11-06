@@ -33,8 +33,13 @@ function Header() {
 				<div className="flex justify-center border-2 border-yellow-600 items-center w-16 h-16 rounded-full overflow-hidden">
 					<div className="w-14 h-14 rounded-full overflow-hidden">
 						<Image
-							src={defaultProfilePic || user?.avatar}
-							alt="user profile pic"
+							src={
+								`https:www.rosybrown-spider-442940.hostingersite.com/storage/${user?.image}` ||
+								defaultProfilePic
+							}
+							alt="User profile pic"
+							width={300}
+							height={300}
 							className="w-full h-full object-fill object-center "
 						/>
 					</div>

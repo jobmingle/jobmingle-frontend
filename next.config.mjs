@@ -16,6 +16,12 @@ const nextConfig = {
 			},
 			{
 				protocol: "https",
+				hostname: "www.rosybrown-spider-442940.hostingersite.com",
+				port: "",
+				pathname: "/storage/**",
+			},
+			{
+				protocol: "https",
 				hostname: "www.netcraft.com",
 				port: "",
 				pathname: "/wp-content/uploads/2023/04/**",

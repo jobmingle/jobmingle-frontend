@@ -11,18 +11,20 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<main className="flex flex-col  md:grid md:grid-cols-[15rem_1fr] h-screen md:grid-rows-[auto_1fr]    overflow-hidden">
+		<main className="flex flex-col  md:grid md:grid-cols-[15rem_1fr] min-h-screen h-screen md:grid-rows-[auto_1fr]  overflow-hidden">
 			<HeaderDash />
 			<aside className="hidden md:flex md:flex-col  gap-[3.2rem] md:row-span-full py-[3.2rem]  bg-gray-400">
 				<Logo path={Jmlogo} width={120} height={120} />
 				<Nav />
 			</aside>
-			<div className="p-[1rem] max-md:flex-1 overflow-y-auto">
-				<div className="flex flex-col mx-auto max-w-[120rem] ">{children}</div>
+			<div className=" max-md:flex-1 overflow-y-auto pb-[5rem]">
+				<div className="p-[1rem] flex flex-col mx-auto max-w-[120rem] ">
+					{children}
+				</div>
 			</div>
-			<section className="md:hidden">
+			<footer className="md:hidden bg-gray-300 h-[80px]  fixed right-0 left-0 bottom-0 z-[2]">
 				<Nav />
-			</section>
+			</footer>
 		</main>
 		// <main className="grid grid-cols-12 min-h-screen relative">
 		// 	<aside className=" absolute md:static bottom-0 h-20 md:min-h-screen w-full md:w-auto md:bottom-auto md:col-span-2 bg-gray-300  flex md:flex-col text-center items-center  md:gap-14 md:pl-[1rem] py-[0.7rem] md:py-[3.2rem] z-40 md:z-auto">

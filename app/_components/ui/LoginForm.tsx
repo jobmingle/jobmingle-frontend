@@ -9,6 +9,7 @@ import Button from "./Button";
 import Error from "./Error";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
 import Spinner from "@/app/_components/ui/Spinner";
+import Loader from "./Loader";
 
 interface FormData {
 	email: string;
@@ -19,14 +20,19 @@ export default function LoginForm() {
 	const { register, handleSubmit, formState } = useForm<FormData>();
 	const router = useRouter();
 	const { errors } = formState;
-	const { login, token, error, isAuthenticated, clearErrors, isLoading } =
+	const { login, token, error, isAuthenticated, clearErrors, isLoading, user } =
 		useAuth();
 
-	useEffect(() => {
-		if (!isAuthenticated) {
-			router.push("/sign-in");
-		}
+	if (user) {
+		if (user.goals === "Vendor") router.push("/vendor-dashboard");
 
+		if (user.goals === "Employer") router.push("/employer-dashboard");
+
+		if (user.goals === "Student") router.push("/dashboard");
+		if (user.goals === "Admin" || user.role === "Admin")
+			router.push("/admin-dashboard");
+	}
+	useEffect(() => {
 		if (error === "Bad credentials") {
 			toast.error(error);
 			clearErrors();
@@ -42,7 +48,7 @@ export default function LoginForm() {
 			toast.error(error);
 			clearErrors();
 		}
-	}, [error, isAuthenticated, clearErrors, router]);
+	}, [error, isAuthenticated, clearErrors, router, user]);
 
 	function onSubmit(data: FormData): void {
 		login(data);
@@ -64,6 +70,7 @@ export default function LoginForm() {
 						type="text"
 						id="email"
 						className="input"
+						// defaultValue={"creator.prjt@gmail.com"}
 						placeholder="Enter Your Email Here"
 						{...register("email", {
 							required: "This field is required!",
@@ -80,6 +87,7 @@ export default function LoginForm() {
 						type="password"
 						id="password"
 						className="input"
+						// defaultValue={"Pa$$w0rd!"}
 						placeholder="Your Password"
 						{...register("password", {
 							required: "This field is required!",

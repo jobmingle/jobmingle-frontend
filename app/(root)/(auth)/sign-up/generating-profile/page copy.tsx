@@ -4,37 +4,24 @@ import { userPreferences } from "@/lib/_exportLinks";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
 import toast from "react-hot-toast";
 import Spinner from "@/app/_components/ui/Spinner";
+import Loader from "@/app/_components/ui/Loader";
 
 export default function PreferencesForm() {
 	const [step, setStep] = useState(0);
-	const {
-		error,
-		updateUser,
-		user,
-		clearErrors,
-		isLoading,
-		convertFileToBase64,
-	} = useAuth();
+	const { error, updateUser, user, clearErrors, isLoading } = useAuth();
 	const [selectedPreferences, setSelectedPreferences] = useState({
 		goals: "" as string,
 		interests: [] as string[],
-		image: File,
 	});
-
-	console.log(selectedPreferences);
 
 	useEffect(() => {
 		if (error === "User not found.") {
-			toast.error(`Error: ${error}`);
-			clearErrors();
-		}
-		if (error === "The image field must be a string.") {
-			toast.error(`Error: ${error}`);
+			toast.error(error);
 			clearErrors();
 		}
 
 		if (error === "Network Error") {
-			toast.error(`Error: ${error}`);
+			toast.error(error);
 			clearErrors();
 		}
 
@@ -43,7 +30,7 @@ export default function PreferencesForm() {
 
 	const handleSelected = (category: string, option: any): void => {
 		setSelectedPreferences((prev) => {
-			if (category === "goals" || category === "image") {
+			if (category === "goals") {
 				// Only one selectable option for 'goals' and 'image'
 				return {
 					...prev,
@@ -73,30 +60,20 @@ export default function PreferencesForm() {
 		if (step < Object.keys(userPreferences).length - 1) {
 			setStep(step + 1);
 		}
-		// else {
+		// } else {
 		// 	// Handle the final submission (e.g., send to backend)
 		// 	console.log("Submitted Preferences: ", selectedPreferences);
 		// }
 	};
 
-	// 	submitData.append("image", JSON.stringify(base64Image));
-
-	// async function handleConvertToBase64(data: any) {
-	// 	const base64Image = await convertFileToBase64(data);
-	// 	const image = base64Image;
-	// 	// const image = JSON.stringify(base64Image);
-	// 	return image;
-	// }
+	// Submit User Preferences
 
 	function handleSubmit(e: any) {
-		// const data = await handleConvertToBase64(selectedPreferences.image);
-
 		e.preventDefault();
 		const formattedPreferences = {
 			...selectedPreferences,
 			interests: selectedPreferences.interests.join(", "), // Converts array to comma-separated string
 		};
-		// image: data,
 		updateUser(formattedPreferences);
 		console.log(formattedPreferences);
 	}
@@ -149,7 +126,7 @@ export default function PreferencesForm() {
 				</div>
 			)}
 
-			{step === 2 && (
+			{/* {step === 2 && (
 				<div>
 					<h2 className="text-xl text-stone-800 text-center font-bold mb-5">
 						Upload your profile image
@@ -164,7 +141,7 @@ export default function PreferencesForm() {
 						/>
 					</div>
 				</div>
-			)}
+			)} */}
 
 			<div className="flex justify-end gap-5">
 				{step > 0 && (
@@ -178,13 +155,14 @@ export default function PreferencesForm() {
 				<button
 					className="w-[100px] bg-yellow-400 hover:bg-yellow-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 rounded-sm px-5 py-2"
 					onClick={
-						step < Object.keys(userPreferences).length - 1
+						step < Object.keys(userPreferences).length - 2
 							? handleNext
 							: handleSubmit
 					}
 				>
-					{step < Object.keys(userPreferences).length - 1 ? "Next" : "Finish"}
+					{step < Object.keys(userPreferences).length - 2 ? "Next" : "Finish"}
 				</button>
+				{isLoading && <Loader />}
 			</div>
 		</div>
 	);
