@@ -123,31 +123,3 @@ function Pagination({ count, assets = "results" }) {
 }
 
 export default Pagination;
-
-// return (
-// 	<div className="flex justify-center p-[1.2rem] font-bold text-[1rem] ">
-// 		<StyledPagination>
-// 			<p>
-// 				Showing <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> to{" "}
-// 				<span>
-// 					{currentPage === pageCount ? count : currentPage * PAGE_SIZE}
-// 				</span>{" "}
-// 				of <span>{count}</span> results
-// 			</p>
-
-// 			<Buttons>
-// 				<PaginationButton onClick={prevPage} disabled={currentPage === 1}>
-// 					<HiChevronLeft />
-// 					<span>Prev</span>
-// 				</PaginationButton>
-// 				<PaginationButton
-// 					onClick={nextPage}
-// 					disabled={currentPage === pageCount}
-// 				>
-// 					<span>Next</span>
-// 					<HiChevronRight />
-// 				</PaginationButton>
-// 			</Buttons>
-// 		</StyledPagination>
-// 	</div>
-// );

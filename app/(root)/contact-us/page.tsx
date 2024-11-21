@@ -4,6 +4,7 @@ import Button from "../../_components/atoms/Button";
 import Input from "../../_components/atoms/Input";
 import { useState } from "react";
 import Textarea from "../../_components/atoms/Textarea";
+import ContactForm from "@/app/_components/ui/ContactForm";
 
 export default function Contact() {
 	const [FormData, setFormData] = useState({
@@ -35,49 +36,9 @@ export default function Contact() {
 			<div className="w-full h-1 bg-[#eab308] sm:mb-15"></div>
 
 			<div className="flex flex-col lg:flex-row text-white w-full items-center justify-center gap-6 lg:gap-24 p-6  xsm:p-3 mt-7">
-				{/* Email and Phone */}
 				<div className="flex  text-black  font-bold flex-col max-md:w-[350px] w-[800px] lg:w-auto bg-white p-6 rounded border-2 border-gray-400 shadow-lg md:items-center">
-					<div>
-						<label htmlFor="name"> Name</label>
-						<Input
-							type="text"
-							id="name"
-							name="Name"
-							placeholder="Name"
-							value={FormData.Name}
-							onchange={handleChange}
-							className=""
-						/>
-					</div>
-					<div>
-						<label htmlFor="email"> Email</label>
-						<Input
-							type="email"
-							id="email"
-							name="Email"
-							placeholder="Email"
-							value={FormData.Email}
-							onchange={handleChange}
-							className=""
-						/>
-					</div>
-					<div>
-						<label htmlFor="message">Message</label>
-						<Input
-							placeholder="Message/Comment"
-							type="text"
-							id="message"
-							name="Message"
-							value={FormData.Message}
-							onchange={handleChange}
-							className=""
-						/>
-					</div>
-					<Button className="w-full md:w-[65%] lg:w-full bg-yellow-400 text-white py-2 rounded-[10px] hover:bg-yellow-500">
-						Send Message Now
-					</Button>
+					<ContactForm />
 				</div>
-
 				<div className="flex flex-col items-start justify-center  max-md:w-auto  h-[200px] w-[800px] lg:w-auto bg-white text-black p-10 rounded border-2 border-gray-400 shadow-lg md:items-center">
 					<p className="flex items-center mb-4">
 						<span className="font-bold mr-2">Location:</span> Ajah, Lagos,

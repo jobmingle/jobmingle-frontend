@@ -34,7 +34,6 @@ function Page() {
 
 	function onSubmit(data: FormData) {
 		forgotPassword(data);
-		toast.success("Form was submitted successfully.");
 	}
 
 	function onError(errors: any) {

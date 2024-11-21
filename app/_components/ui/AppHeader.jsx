@@ -62,13 +62,11 @@ const AppHeader = () => {
 				</div>
 
 				<div className="inline-flex items-end gap-8 lg:gap-16 max-md:hidden">
-					{!isAuthenticated && (
-						<div className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
-							<Link href="/about" onClick={toggleMenu}>
-								About Us
-							</Link>
-						</div>
-					)}
+					<div className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
+						<Link href="/about" onClick={toggleMenu}>
+							About Us
+						</Link>
+					</div>
 					<div className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
 						<Link href="/courses">Courses</Link>
 					</div>
@@ -81,29 +79,28 @@ const AppHeader = () => {
 						<Link href="/contact-us">Contact Us</Link>
 					</div>
 				</div>
-				{isAuthenticated ? (
+				{/* {isAuthenticated ? (
 					<div className="inline-flex gap-3 items-start  max-md:hidden">
 						<Button type="logout">Profile</Button>
 						<Button onClick={handleLogout} type="logout">
 							Logout
 						</Button>
 					</div>
-				) : (
-					<div className="inline-flex items-start gap-3 max-md:hidden">
-						<Link href="/sign-up">
-							<Button className="w-[100px]  bg-black text-white rounded-[10px]  hover:text-black hover:bg-yellow-500 transition-colors duration-500">
-								Sign Up
-							</Button>
-						</Link>
+				) : ( */}
+				<div className="inline-flex items-start gap-3 max-md:hidden">
+					<Link href="/sign-up">
+						<Button className="w-[100px]  bg-black text-white rounded-[10px]  hover:text-black hover:bg-yellow-500 transition-colors duration-500">
+							Sign Up
+						</Button>
+					</Link>
 
-						{/* I hid this button on large screen downward with max-lg:hidden , to fix nav items overlap */}
-						<Link href="/sign-in" className="max-lg:hidden">
-							<Button className="w-[100px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 ">
-								Login
-							</Button>
-						</Link>
-					</div>
-				)}
+					{/* I hid this button on large screen downward with max-lg:hidden , to fix nav items overlap */}
+					<Link href="/sign-in" className="max-lg:hidden">
+						<Button className="w-[100px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 ">
+							Login
+						</Button>
+					</Link>
+				</div>
 
 				{/* Mobile Menu Toggle */}
 				<div className="md:hidden flex items-center">

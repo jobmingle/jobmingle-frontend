@@ -1,8 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
-import { CoursesList } from "@/lib/_exportLinks";
-import { Jobs } from "@/lib/_exportLinks";
 import {
 	BarChart,
 	Bar,
@@ -13,14 +10,19 @@ import {
 	ResponsiveContainer,
 	Legend,
 } from "recharts";
+import { useJobCourse } from "@/app/_contexts/apis/ApiState";
 
 const AccountDashboard = () => {
-	const totalAppliedJobs = Jobs.filter((job) => job.stat === "Applied").length;
-	const totalJObs = Jobs.length;
-	const totalEnrolledCourses = CoursesList.filter(
-		(course) => course.stat === "Enrolled"
+	const { jobs } = useJobCourse();
+	const rejectedJobs = jobs.filter(
+		(job: any) => job.status !== "approved" && job.status !== "draft"
 	).length;
-	const totalCourses = CoursesList.length;
+
+	const pendingJobs = jobs.filter((job: any) => job.status === "draft").length;
+	const approvedJobs = jobs.filter(
+		(job: any) => job.status === "approved"
+	).length;
+	const totalJobs = jobs.length;
 
 	// Chart data (example data showing trends over time)
 	const chartData = [
@@ -43,32 +45,45 @@ const AccountDashboard = () => {
 
 		// Add more monthly data as needed
 	];
-	// const chartData = [
-	// 	{ name: "Jan", Vendors: 3, Employees: 5, Students: 2 },
-	// 	{ name: "Feb", Vendors: 2, Employees: 4, Students: 3 },
-	// 	{ name: "Mar", Vendors: 5, Employees: 6, Students: 4 },
-	// 	// Add more monthly data as needed
-	// ];
+	
 
 	return (
 		<div className="container mx-auto md:p-9">
 			{/* Cards for Total Numbers */}
-			<div className="grid grid-cols-2 gap-3 md:flex  md:justify-between md:gap-6 mb-6">
-				<div className="w-full p-4 bg-blue-500 text-white rounded-lg">
-					<h3 className="text-xl font-bold"> Enrolled Courses</h3>
-					<p className="text-3xl">{totalEnrolledCourses}</p>
+			<div className="grid grid-cols-2 gap-3 md:flex  md:justify-between md:gap-6 mb-6 text-stone-200">
+				<div className="w-full  h-28  border-l-4 border-t border-green-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-green-500 ">
+					<div className=" w-full h-full flex flex-col justify-center pl-5 bg-green-500  rounded-lg  ">
+						<p className="text-2xl">{approvedJobs}</p>
+						<h3 className="text-l font-bold  translate-x-6 ">
+							Approved <br /> Jobs
+						</h3>
+					</div>
 				</div>
-				<div className="w-full p-4 bg-green-500 text-white rounded-lg">
-					<h3 className="text-xl font-bold">Total Courses</h3>
-					<p className="text-3xl">{totalCourses}</p>
+				<div className="w-full  h-28  border-l-4 border-t border-red-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-red-500 ">
+					<div className="w-full h-full flex flex-col justify-center pl-5 bg-red-500  rounded-lg ">
+						<p className="text-2xl">{rejectedJobs}</p>
+						<h3 className="text-l font-bold translate-x-6 ">
+							Rejected <br /> Job
+						</h3>
+					</div>
 				</div>
-				<div className="w-full p-4 bg-yellow-500 text-white rounded-lg">
-					<h3 className="text-xl font-bold"> Applied Jobs</h3>
-					<p className="text-3xl">{totalAppliedJobs}</p>
+				<div className="w-full  h-28  border-l-4 border-t border-blue-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-blue-500 ">
+					<div className="w-full h-full flex flex-col justify-center pl-5 bg-blue-500  rounded-lg  ">
+						<p className="text-2xl">{totalJobs}</p>
+						<h3 className="text-l font-bold translate-x-6 ">
+							{" "}
+							Total <br/> Jobs
+						</h3>
+					</div>
 				</div>
-				<div className="w-full p-4 bg-red-500 text-white rounded-lg">
-					<h3 className="text-xl font-bold">Total Jobs</h3>
-					<p className="text-3xl">{totalJObs}</p>
+				<div className="w-full  h-28  border-l-4 border-t border-yellow-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-yellow-500 ">
+					<div className="w-full h-full flex flex-col justify-center pl-5 bg-yellow-500  rounded-lg  ">
+						<p className="text-2xl">{pendingJobs}</p>
+						<h3 className="text-l font-bold translate-x-6 ">
+							{" "}
+							Pending <br /> Approval
+						</h3>
+					</div>
 				</div>
 			</div>
 

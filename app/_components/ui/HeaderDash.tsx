@@ -3,6 +3,10 @@ import { useAuth } from "@/app/_contexts/auth/AuthState";
 import userProfilePic from "@/public/image/profile-image.png";
 import defaultProfilePic from "@/public/image/default-user.jpg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import Loader from "./Loader";
+import { useEffect } from "react";
+import { getGreeting } from "@/lib/helpers";
 
 const StyledHeader = styled.header`
 	background-color: var(--color-grey-0);
@@ -15,17 +19,19 @@ const StyledHeader = styled.header`
 `;
 
 function Header() {
-	const { user, isLoading } = useAuth();
+	const { user, isLoading, isAuthenticated } = useAuth();
 
-	let MyJobs = 1;
 	const time = new Date().getHours();
-	const timeOfTheDay = time >= 12 ? "Evening" : "Morning";
+	let greeting = getGreeting(time);
+
+	// if (isLoading && !isAuthenticated) return <Loader />;
+
 	return (
 		<StyledHeader>
 			<div className=" flex flex-row py-1 items-center justify-between">
 				<div className="text-sm md:text-xl ">
 					<h1 className="font-bold">
-						Good {timeOfTheDay}, {user?.firstName || "Champ"}!
+						Good {greeting}, {user?.firstName || "Champ"}!
 					</h1>
 					<p>Welcome back!</p>
 				</div>

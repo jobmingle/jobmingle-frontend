@@ -23,12 +23,14 @@ const Nav = () => {
 	const isActive = (path: string): boolean => pathname === path;
 
 	return (
-		<nav className={`flex flex-col justify-center w-full py-3 md:pl-[2.5rem]`}>
-			<ul className=" flex flex-row md:flex-col gap-[0.2rem] md:gap-[1.2rem] w-full justify-between md:justify-between items-center md:items-start">
-				<li className=" md:w-full">
+		<nav
+			className={`flex flex-col justify-center w-full py-3 px-0 max-lg:px-2 lg:pl-[2.5rem]  overflow-y-auto`}
+		>
+			<ul className=" flex flex-row lg:flex-col gap-[0.2rem] w-full justify-between lg:justify-between items-center lg:items-start overflow-y-auto h-full">
+				<li className=" lg:w-full">
 					<Link
 						href="/vendor-dashboard"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/vendor-dashboard")
 								? "text-yellow-500 md:bg-gray-50"
 								: ""
@@ -42,10 +44,29 @@ const Nav = () => {
 						<p className="hidden md:flex"> Home</p>
 					</Link>
 				</li>
-				<li className=" md:w-full">
+				<li className="lg:w-full">
+					<Link
+						href="/vendor-dashboard/list-course"
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/vendor-dashboard/list-course")
+								? "text-yellow-500 md:bg-gray-50"
+								: ""
+						}`}
+					>
+						<HiPencilSquare
+							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
+								isActive("/vendor-dashboard/list-course")
+									? "text-yellow-500"
+									: ""
+							}`}
+						/>
+						<p className="hidden md:flex">List Course</p>
+					</Link>
+				</li>
+				<li className=" lg:w-full">
 					<Link
 						href="/vendor-dashboard/courses"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/vendor-dashboard/courses")
 								? "text-yellow-500 md:bg-gray-50"
 								: ""
@@ -60,10 +81,10 @@ const Nav = () => {
 					</Link>
 				</li>
 
-				<li className="md:w-full">
+				<li className="lg:w-full">
 					<Link
 						href="/vendor-dashboard/settings"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/vendor-dashboard/settings")
 								? "text-yellow-500 md:bg-gray-50"
 								: ""
@@ -79,10 +100,10 @@ const Nav = () => {
 					</Link>
 				</li>
 
-				<li className=" md:w-full">
+				<li className=" lg:w-full">
 					<button
 						onClick={handleLogout}
-						className=" flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 md:hover:bg-gray-50 rounded-l px-[1.2rem] md:px-4"
+						className=" flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 md:hover:bg-gray-50 rounded px-[1.2rem] md:px-4"
 					>
 						<HiMiniArrowLeftStartOnRectangle
 							title="Logout"

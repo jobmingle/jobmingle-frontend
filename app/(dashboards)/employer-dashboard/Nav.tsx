@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "../../_components/ui/Button";
@@ -11,23 +11,28 @@ import {
 	HiOutlineCog,
 	HiPencilSquare,
 } from "react-icons/hi2";
+import Loader from "@/app/_components/ui/Loader";
 
 const UserDashboard = () => {
 	const pathname = usePathname();
-	const { logout } = useAuth();
+	const { logout, isAuthenticated } = useAuth();
 	function handleLogout() {
 		logout();
 	}
 
 	const isActive = (path: string): boolean => pathname === path;
 
+	// if (isAuthenticated === null) return <Loader />;
+
 	return (
-		<nav className={`flex flex-col justify-center w-full  py-3 md:pl-[2.5rem]`}>
-			<ul className=" flex flex-row md:flex-col gap-[0.2rem] w-full justify-between md:justify-between items-center md:items-start">
-				<li className=" md:w-full">
+		<nav
+			className={`flex flex-col justify-center w-full  py-3 px-0 max-lg:px-2 lg:pl-[2.5rem]  overflow-y-auto`}
+		>
+			<ul className=" flex flex-row lg:flex-col gap-[0.2rem] w-full  justify-between items-center lg:items-start overflow-y-auto h-full">
+				<li className=" lg:w-full">
 					<Link
 						href="/employer-dashboard"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/employer-dashboard")
 								? "text-yellow-500 md:bg-gray-50"
 								: ""
@@ -41,10 +46,10 @@ const UserDashboard = () => {
 						<p className="hidden md:flex"> Home</p>
 					</Link>
 				</li>
-				<li className=" md:w-full">
+				<li className=" lg:w-full">
 					<Link
 						href="/employer-dashboard/jobs"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/employer-dashboard/jobs")
 								? "text-yellow-500 md:bg-gray-50"
 								: ""
@@ -59,29 +64,29 @@ const UserDashboard = () => {
 					</Link>
 				</li>
 
-				<li className="md:w-full">
+				<li className="lg:w-full">
 					<Link
-						href="/employer-dashboard/list-a-job"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
-							isActive("/employer-dashboard/list-a-job")
+						href="/employer-dashboard/list-job"
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/employer-dashboard/list-job")
 								? "text-yellow-500 md:bg-gray-50"
 								: ""
 						}`}
 					>
 						<HiPencilSquare
 							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/employer-dashboard/list-a-job")
+								isActive("/employer-dashboard/list-job")
 									? "text-yellow-500"
 									: ""
 							}`}
 						/>
-						<p className="hidden md:flex">List a Job</p>
+						<p className="hidden md:flex">List Job</p>
 					</Link>
 				</li>
-				<li className="md:w-full">
+				<li className="lg:w-full">
 					<Link
 						href="/employer-dashboard/settings"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/employer-dashboard/settings")
 								? "text-yellow-500 md:bg-gray-50"
 								: ""
@@ -99,10 +104,10 @@ const UserDashboard = () => {
 					</Link>
 				</li>
 
-				<li className=" md:w-full">
+				<li className=" lg:w-full">
 					<button
 						onClick={handleLogout}
-						className=" flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 md:hover:bg-gray-50 rounded-l px-[1.2rem] md:px-4"
+						className=" flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 md:hover:bg-gray-50 rounded px-[1.2rem] md:px-4"
 					>
 						<HiMiniArrowLeftStartOnRectangle
 							title="Logout"

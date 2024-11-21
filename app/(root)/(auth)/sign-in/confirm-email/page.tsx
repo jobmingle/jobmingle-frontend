@@ -27,14 +27,14 @@ function Page() {
 				inputs.current[index + 1]?.focus();
 			}
 		}
-		console.log(Code);
+		// console.log(Code);
 	};
 	// onsubmitfunctionalities
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		router.push("/sign-in/reset-password");
 		const code = Code.join("");
-		console.log(code);
+		// console.log(code);
 	};
 	const handleback = () => {
 		router.back();

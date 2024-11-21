@@ -34,9 +34,9 @@ export default function SearchBar({
 						)}
 					</div>
 
-					<button className="bg-yellow-500 max-md:hidden text-white rounded-full py-2 px-6 m-2 hover:bg-yellow-700">
+					{/* <button className="bg-yellow-500 max-md:hidden text-white rounded-full py-2 px-6 m-2 hover:bg-yellow-700">
 						Search
-					</button>
+					</button> */}
 				</div>
 			</div>
 		</div>

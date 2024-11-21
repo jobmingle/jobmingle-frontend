@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import { Wrapper } from "./style";
 
 // import Feature from "../../Components/job/index";
-import JobItems from "../../_components/job/Jobs";
+// import JobItems from "@/ /_components/job/Jobs";
+import JobItems from "@/app/_components/job/Jobs";
 import { url } from "inspector";
 
 import ScrollableTags from "@/app/_components/ui/ScrollableTags";
@@ -27,7 +28,7 @@ const Page = () => {
 			/>
 			<ScrollableTags setSearchQuery={setSearchQuery} tags={jobTags} />
 			<div className="px-[1rem] md:px-[4rem]">
-				<JobItems searchQuery={searchQuery} />
+				<JobItems searchQuery={searchQuery} link="jobs" />
 			</div>
 			<FAQSection />
 		</>

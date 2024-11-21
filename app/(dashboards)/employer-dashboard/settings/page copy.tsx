@@ -3,23 +3,19 @@
 import React, { useState } from "react";
 import changepassbg from "@/public/image/changepassimg.png";
 import Image from "next/image";
-<<<<<<< HEAD
-import tiredicon from "@/public/tiredicon.png";
-import editicon from "@/public/editicon.png";
-// import Modal from "../components/Modal";
-=======
 import tiredicon from "@/public/image/tiredicon.png";
 import editicon from "@/public/image/editicon.png";
-import Modal from "../components/Modal";
->>>>>>> 46a68383c7bda99fffb14104f41c4209c53020f4
+import Modal from "../../../_components/ui/Modal";
+import { useAuth } from "@/app/_contexts/auth/AuthState";
 
 const Page = () => {
-	const username = "Prosper Williams";
+	const username = "Prosper Williamsssss";
 	const location = "Benin City Nigeria";
+	const { user } = useAuth();
 	const [Active, setActive] = useState(false);
 
 	return (
-		<div className=" flex flex-col items-center gap-3 h-auto px-4">
+		<div className=" flex flex-col items-center gap-3 min-h-screen">
 			{/* Edit profile */}
 			<div className="flex relative">
 				{/* {Active ? <Modal setActive={setActive} /> : null} */}
@@ -29,14 +25,17 @@ const Page = () => {
 							<div className=" flex-2">
 								{" "}
 								<Image
-									src={tiredicon}
+									src={user?.image || tiredicon}
 									alt="profile image"
 									className="max-w-[5.6rem] sm:max-w-[6rem] object-cover"
 								/>
 							</div>
 							<div className="flex-grow text-center">
 								{" "}
-								<h3 className="font-bold text-xl montserrat">{username}</h3>
+								<h3 className="font-bold text-xl montserrat">
+									{user?.firstName}
+									{user?.lastName}
+								</h3>
 								<p className="sora text-sm">{location}</p>
 								<button
 									className="text-xs border rounded-md px-2 py-1 sora mt-1"
@@ -49,6 +48,7 @@ const Page = () => {
 					</section>
 				</div>
 			</div>
+
 			<section className=" w-full lg:max-w-[30rem] px-2 sm:px-20 md:px-0">
 				<h2 className="font-bold text-xl montserrat text-center capitalize tracking-wide py-2">
 					Create new password

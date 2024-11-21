@@ -70,22 +70,40 @@ function AccountDashboard() {
 	return (
 		<div className="container mx-auto md:p-9">
 			{/* Cards for Total Numbers */}
-			<div className="grid grid-cols-2 gap-3 md:flex  md:justify-between md:gap-6 mb-6">
-				<div className="w-full p-4 bg-green-600 text-white rounded-lg">
-					<h3 className="text-l font-bold">Total Courses</h3>
-					<p className="text-2xl">{totalCourses}</p>
+
+			<div className="grid grid-cols-2 gap-3 md:flex  md:justify-between md:gap-6 mb-6 text-stone-200">
+				<div className="w-full  h-28  border-l-4 border-t border-yellow-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-yellow-500 ">
+					<div className="w-full h-full  flex flex-col justify-center pl-5 bg-yellow-500  rounded-lg  ">
+						<p className="text-2xl ">{totalCourses}</p>
+						<h3 className="text-l font-bold translate-x-6">
+							Total <br /> Courses
+						</h3>
+					</div>
 				</div>
-				<div className="w-full p-4 bg-red-600 text-white rounded-lg">
-					<h3 className="text-l font-bold">Approved Courses</h3>
-					<p className="text-2xl">{totalApprovedCourses}</p>
+				<div className="w-full  h-28  border-l-4 border-t border-green-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-green-500 ">
+					<div className=" w-full h-full flex flex-col justify-center pl-5 bg-green-500  rounded-lg  ">
+						<p className="text-2xl">{totalApprovedCourses}</p>
+						<h3 className="text-l font-bold translate-x-6 ">
+							Approved Courses
+						</h3>
+					</div>
 				</div>
-				<div className="w-full p-4 bg-yellow-600 text-white rounded-lg">
-					<h3 className="text-l font-bold"> Rejected Courses</h3>
-					<p className="text-2xl">{totalRejectedCourses}</p>
+				<div className="w-full  h-28  border-l-4 border-t border-red-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-red-500 ">
+					<div className="w-full h-full flex flex-col justify-center pl-5 bg-red-500  rounded-lg ">
+						<p className="text-2xl">{totalRejectedCourses}</p>
+						<h3 className="text-l font-bold translate-x-6">
+							{" "}
+							Rejected Courses
+						</h3>
+					</div>
 				</div>
-				<div className="w-full p-4 bg-blue-600 text-white rounded-lg">
-					<h3 className="text-l font-bold">Total Students</h3>
-					<p className="text-2xl">{totalStudents}</p>
+				<div className="w-full  h-28  border-l-4 border-t border-blue-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-blue-500 ">
+					<div className="w-full h-full flex flex-col justify-center pl-5 bg-blue-500  rounded-lg  ">
+						<p className="text-2xl">{totalStudents}</p>
+						<h3 className="text-l font-bold translate-x-6">
+							Total <br /> Students
+						</h3>
+					</div>
 				</div>
 			</div>
 

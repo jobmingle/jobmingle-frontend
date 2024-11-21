@@ -10,6 +10,7 @@ import {
 	HiHomeModern,
 	HiUserGroup,
 	HiMiniArrowLeftStartOnRectangle,
+	HiOutlineCog,
 } from "react-icons/hi2";
 
 const SideNav = () => {
@@ -26,57 +27,100 @@ const SideNav = () => {
 	}
 
 	return (
-		<nav className={`flex flex-col justify-center w-full  py-6 md:pl-[2.5rem]`}>
-			<ul className=" flex flex-row md:flex-col gap-[0.2rem] w-full justify-between  items-center md:items-start">
-				<li className="md:w-full">
+		<nav
+			className={`flex flex-col justify-center w-full py-3 px-0 max-lg:px-2 lg:pl-[2.5rem]  overflow-y-auto`}
+		>
+			<ul className=" flex flex-row lg:flex-col gap-[0.2rem] w-full justify-between lg:justify-between items-center lg:items-start overflow-y-auto h-full">
+				<li className={`lg:w-full `}>
 					<Link
 						href="/admin-dashboard/"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-[1.2rem] md:px-4 ${
-							isActive("/admin-dashboard") ? "bg-gray-50" : ""
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/admin-dashboard")
+								? "text-yellow-500 md:bg-gray-50"
+								: ""
 						}`}
 					>
-						<HiHome className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
-						<p className="hidden md:flex"> Dashboard</p>
+						<HiHome
+							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
+								isActive("/admin-dashboard") ? "text-yellow-500 " : ""
+							}`}
+						/>
+						<p className="hidden md:flex"> Home</p>
 					</Link>
 				</li>
-				<li className="md:w-full">
+				<li className="lg:w-full">
 					<Link
 						href="/admin-dashboard/analytics"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-[1.2rem] md:px-4 ${
-							isActive("/admin-dashboard/analytics") ? "bg-gray-50" : ""
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/admin-dashboard/analytics")
+								? "text-yellow-500 md:bg-gray-50"
+								: ""
 						}`}
 					>
-						<HiChartBar className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
+						<HiChartBar
+							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem]  ${
+								isActive("/admin-dashboard/analytics") ? "text-yellow-500" : ""
+							}`}
+						/>
 						<p className="hidden md:flex"> Analytics</p>
 					</Link>
 				</li>
-
-				<li className="md:w-full">
+				<li className="lg:w-full">
 					<Link
 						href="/admin-dashboard/jobs"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-[1.2rem] md:px-4 ${
-							isActive("/admin-dashboard/jobs") ? "bg-gray-50" : ""
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/admin-dashboard/jobs")
+								? "text-yellow-500 md:bg-gray-50"
+								: ""
 						}`}
 					>
-						<HiMiniBriefcase className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
+						<HiMiniBriefcase
+							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem]  ${
+								isActive("/admin-dashboard/jobs") ? "text-yellow-500 " : ""
+							}`}
+						/>
 						<p className="hidden md:flex"> Jobs</p>
 					</Link>
 				</li>
-				<li className="md:w-full">
+				<li className="lg:w-full">
 					<Link
 						href="/admin-dashboard/users"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-[1.2rem] md:px-4 ${
-							isActive("/admin-dashboard/users") ? "bg-gray-50" : ""
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/admin-dashboard/users")
+								? "text-yellow-500 md:bg-gray-50"
+								: ""
 						}`}
 					>
-						<HiUserGroup className="hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] " />
+						<HiUserGroup
+							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem]  ${
+								isActive("/admin-dashboard/users") ? "text-yellow-500" : ""
+							}`}
+						/>
 						<p className="hidden md:flex"> Users</p>
 					</Link>
 				</li>
-				<li className=" md:w-full">
+				<li className="lg:w-full">
+					<Link
+						href="/admin-dashboard/settings"
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/admin-dashboard/settings")
+								? "text-yellow-500 md:bg-gray-50"
+								: ""
+						}`}
+					>
+						<HiOutlineCog
+							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
+								isActive("/admin-dashboard/settings") ? "text-yellow-500" : ""
+							}`}
+						/>
+
+						<p className="hidden md:flex">Settings</p>
+					</Link>
+				</li>
+				<li className=" lg:w-full">
 					<button
 						onClick={handleLogout}
-						className=" flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-8 md:px-4"
+						className=" flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-8 md:px-4"
 					>
 						<HiMiniArrowLeftStartOnRectangle
 							title="Logout"

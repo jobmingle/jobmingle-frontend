@@ -43,7 +43,7 @@ function Page() {
 
 	function onSubmit(e: any) {
 		e.preventDefault();
-		console.log(`pin: ${otp.join("")}`);
+		// console.log(`pin: ${otp.join("")}`);
 		verify({ pin: otp.join("") });
 		// toast.success("Form submitted successfully.");
 	}
@@ -97,7 +97,7 @@ function Page() {
 					</h2>
 					<p className="montserrat font-semibold text-sm text-black-100 text-center px-4">
 						Please enter the verification pin sent to ***doe@example.com to
-						reset password
+						confirm your email.
 					</p>
 					<main className="relative min-w-[95%] sm:min-w-[70%] mt-7 sm:mt-4 pb-6 flex items-center flex-col">
 						<form className="w-full mt-4 mx-2" onSubmit={onSubmit}>
