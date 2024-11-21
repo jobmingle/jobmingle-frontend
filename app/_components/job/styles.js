@@ -65,7 +65,7 @@ export const Content = styled.div`
 				gap: 0.1rem;
 
 				.big {
-					font-size: 1.6rem;
+					font-size: 1rem;
 					font-weight: bold;
 				}
 			}
@@ -73,8 +73,13 @@ export const Content = styled.div`
 				padding: 0.5rem 0;
 
 				.big-1 {
-					font-size: 1.1rem;
+					font-size: 0.8rem;
 					font-weight: bold;
+				}
+
+				.small {
+					font-size: 0.8rem;
+					font-weight: 500;
 				}
 			}
 			.txt-2 {
@@ -86,11 +91,12 @@ export const Content = styled.div`
 				width: 100%;
 
 				.big-1 {
-					font-size: 1.1rem;
+					font-size: 0.8rem;
 					font-weight: bold;
 				}
 				.small {
-					font-weight: 500;
+					font-weight: 300;
+					font-size: 0.8rem;
 				}
 			}
 			.txt-3 {

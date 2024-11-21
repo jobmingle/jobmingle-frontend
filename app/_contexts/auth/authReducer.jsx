@@ -5,6 +5,9 @@ import {
 	CONFIRMATION_FAIL,
 	USER_LOADED,
 	USER_UPDATED,
+	USERNAME_UPDATED,
+	USERIMAGE_UPDATED,
+	USERPASSWORD_UPDATED,
 	UPDATE_ERROR,
 	AUTH_ERROR,
 	LOGIN_SUCCESS,
@@ -23,13 +26,23 @@ export default function authReducer(state, action) {
 				...state,
 				isAuthenticated: true,
 				isLoading: false,
+				// user: JSON.parse(localStorage.getItem("user")),
 				user: action.payload,
 			};
 		case USER_UPDATED:
 			return {
 				...state,
 				isLoading: false,
+				isAuthenticated: true,
 				user: action.payload,
+			};
+
+		case USERNAME_UPDATED:
+		case USERIMAGE_UPDATED:
+		case USERPASSWORD_UPDATED:
+			return {
+				...state,
+				isLoading: false,
 			};
 
 		case REGISTER_SUCCESS:
@@ -47,6 +60,8 @@ export default function authReducer(state, action) {
 				...state,
 				...action.payload,
 				isLoading: false,
+				token: action.payload.token,
+				user: action.payload.data,
 				// isAuthenticated: state.token ? true : null,
 				isAuthenticated: true,
 			};
@@ -65,7 +80,6 @@ export default function authReducer(state, action) {
 		case LOGIN_FAIL:
 		case RESET_FAIL:
 		case LOGOUT:
-			localStorage.removeItem("token");
 			return {
 				...state,
 				token: null,

@@ -25,13 +25,13 @@ const UserDashboard = () => {
 
 	return (
 		<nav
-			className={`flex flex-col justify-center  w-full   py-3 md:pl-[2.5rem]`}
+			className={`flex flex-col justify-center  w-full   py-3 px-0 max-lg:px-2  lg:pl-[2.5rem]  overflow-y-auto`}
 		>
-			<ul className=" flex flex-row md:flex-col gap-[0.2rem] w-full justify-between  items-center md:items-start">
-				<li className={` md:w-full `}>
+			<ul className=" flex flex-row lg:flex-col gap-[0.2rem] w-full justify-between lg:justify-between items-center lg:items-start overflow-y-auto h-full">
+				<li className="lg:w-full">
 					<Link
 						href="/dashboard"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/dashboard") ? "text-yellow-500 md:bg-gray-50" : ""
 						}`}
 					>
@@ -43,10 +43,10 @@ const UserDashboard = () => {
 						<p className="hidden md:flex"> Home</p>
 					</Link>
 				</li>
-				<li className=" md:w-full">
+				<li className=" lg:w-full">
 					<Link
 						href="/dashboard/courses"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/dashboard/courses")
 								? "text-yellow-500 md:bg-gray-50"
 								: ""
@@ -61,10 +61,10 @@ const UserDashboard = () => {
 					</Link>
 				</li>
 
-				<li className=" md:w-full">
+				<li className=" lg:w-full">
 					<Link
 						href="/dashboard/jobs"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/dashboard/jobs") ? "text-yellow-500 md:bg-gray-50" : ""
 						}`}
 					>
@@ -77,10 +77,10 @@ const UserDashboard = () => {
 					</Link>
 				</li>
 
-				<li className="md:w-full">
+				<li className="lg:w-full">
 					<Link
 						href="/dashboard/settings"
-						className={`flex gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 md:hover:bg-gray-50 max-md:rounded md:rounded-l px-[1.2rem] md:px-4 ${
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
 							isActive("/dashboard/settings")
 								? "text-yellow-500 md:bg-gray-50"
 								: ""
@@ -96,7 +96,7 @@ const UserDashboard = () => {
 					</Link>
 				</li>
 
-				<li className=" md:w-full">
+				<li className=" lg:w-full">
 					<button
 						onClick={handleLogout}
 						className=" flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 md:hover:bg-gray-50 rounded md:rounded-l px-[1.2rem] md:px-4"

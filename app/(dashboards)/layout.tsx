@@ -1,4 +1,5 @@
 import AppFooter from "../_components/ui/Footer";
+// import ProtectedRoute from "@/app/_hooks/ProtectedRoute";
 
 export default function RootLayout({
 	children,
@@ -6,8 +7,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<section className={` `}>
-			<main className="">{children}</main>
-		</section>
+		// <ProtectedRoute>
+		<main>{children}</main>
+		// </ProtectedRoute>
 	);
 }

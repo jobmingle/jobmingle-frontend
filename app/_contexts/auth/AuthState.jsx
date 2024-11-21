@@ -6,6 +6,7 @@ import axios from "axios";
 import AuthContext from "./authContext";
 import authReducer from "./authReducer";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
 import {
 	REGISTER_SUCCESS,
@@ -14,6 +15,9 @@ import {
 	CONFIRMATION_FAIL,
 	USER_LOADED,
 	USER_UPDATED,
+	USERNAME_UPDATED,
+	USERIMAGE_UPDATED,
+	USERPASSWORD_UPDATED,
 	AUTH_ERROR,
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
@@ -24,15 +28,22 @@ import {
 	LOADING,
 	UPDATE_ERROR,
 } from "@/app/_contexts/types";
+import { type } from "os";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 function AuthProvider({ children }) {
 	const initialState = {
-		token: typeof window !== "undefined" ? localStorage.getItem("token") : null,
-		isAuthenticated: null,
+		token:
+			typeof window !== "undefined" ? sessionStorage.getItem("token") : null,
+		isAuthenticated:
+			typeof window !== "undefined" ? sessionStorage.getItem("token") : null,
 		resetOk: null,
 		isLoading: false,
+		// user:
+		// 	typeof window !== "undefined"
+		// 		? JSON.parse(sessionStorage?.getItem("user"))
+		// 		: null,
 		user: null,
 		error: null,
 	};
@@ -50,7 +61,8 @@ function AuthProvider({ children }) {
 			dispatch({ type: LOADING });
 
 			try {
-				const token = localStorage.getItem("token") || null;
+				const token = sessionStorage.getItem("token");
+				if (!token) throw new Error("No token found");
 
 				const res = await axios.get(`${BASE_URL}/me`, {
 					headers: { Authorization: `Bearer ${token}` },
@@ -58,16 +70,127 @@ function AuthProvider({ children }) {
 				});
 
 				dispatch({ type: USER_LOADED, payload: res.data });
-				// await router.push("/dashboard");
+				sessionStorage.setItem("user", JSON.stringify(res.data));
 
 				// console.log(res);
-				// console.log(res.data);
 			} catch (err) {
 				dispatch({ type: AUTH_ERROR });
+				sessionStorage.removeItem("token");
+				sessionStorage.removeItem("user");
 			}
 		}
 		if (token) fetchUser();
-	}, [token]);
+		// eslint-disable-next-line
+	}, []);
+
+	// CHECK SESSION EXPIRATION
+	const checkSessionExpiration = () => {
+		const expiresAt = sessionStorage.getItem("expiresAt");
+
+		if (expiresAt && Date.now() >= parseInt(expiresAt, 10)) {
+			// Session expired
+			logout();
+			toast("Session expired. Please log in again.", { icon: "🔏" });
+		}
+	};
+
+	// RESTORE SESSION ON APP LOAD
+	useEffect(() => {
+		const token = sessionStorage.getItem("token");
+		const user = sessionStorage.getItem("user");
+		const expiresAt = sessionStorage.getItem("expiresAt");
+
+		if (token && user && expiresAt && Date.now() < parseInt(expiresAt, 10)) {
+			dispatch({
+				type: "LOGIN_SUCCESS",
+				payload: { token, user: JSON.parse(user) },
+			});
+
+			// Timer for session expiration
+			const timeout = parseInt(expiresAt, 10) - Date.now();
+
+			const timer = setTimeout(checkSessionExpiration, timeout);
+
+			return () => clearTimeout(timer);
+		}
+
+		// const timeout = parseInt(expiresAt, 10) - Date.now();
+		// if (timeout > 0) {
+		// 	const timer = setTimeout(() => {
+		// 		logout();
+		// 		toast("Session expired. Please log in again.", { icon: "🔏" });
+		// 	}, timeout);
+
+		// 	return () => clearTimeout(timer); // Cleanup on unmount
+		// } else {
+		// 	logout(); // If already expired
+		// }
+		// eslint-disable-next-line
+	}, []);
+
+	/*
+	// CHECK SESSION EXPIRATION
+	useEffect(() => {
+		const checkSessionExpiration = () => {
+			const expiresAt = sessionStorage.getItem("expiresAt");
+			if (expiresAt && Date.now() > parseInt(expiresAt, 10)) {
+				// Session expired
+				logout();
+			}
+		};
+
+		// if (initialState.token) {
+		checkSessionExpiration();
+		// }
+	}, []);
+
+	// LOAD USER
+	useEffect(() => {
+		async function fetchUser() {
+			dispatch({ type: LOADING });
+
+			try {
+				const token = sessionStorage.getItem("token");
+				if (!token) throw new Error("No token found");
+
+				const res = await axios.get(`${BASE_URL}/me`, {
+					headers: { Authorization: `Bearer ${token}` },
+					"Content-Type": "application/json",
+				});
+
+				dispatch({ type: USER_LOADED, payload: res.data });
+				sessionStorage.setItem("user", JSON.stringify(res.data));
+			} catch (err) {
+				dispatch({ type: AUTH_ERROR });
+				sessionStorage.removeItem("token");
+				sessionStorage.removeItem("user");
+			}
+		}
+		if (initialState.token) fetchUser();
+		// eslint-disable-next-line
+	}, []);
+
+	// AUTOMATIC EXPIRATION
+	useEffect(() => {
+		const expiresAt = sessionStorage.getItem("expiresAt");
+		if (expiresAt) {
+			const timeout = parseInt(expiresAt, 10) - Date.now();
+
+			if (timeout > 0) {
+				const timer = setTimeout(() => {
+					logout();
+					toast("Session expired. Please log in again.", {
+						icon: "🔏",
+					});
+				}, timeout);
+
+				return () => clearTimeout(timer); // Cleanup on unmount
+			} else {
+				logout(); // If already expired
+			}
+		}
+	}, []);
+*/
 
 	// REGISTER USER
 	async function register(formData) {
@@ -82,14 +205,12 @@ function AuthProvider({ children }) {
 			const res = await axios.post(`${BASE_URL}/register`, formData, config);
 
 			dispatch({ type: REGISTER_SUCCESS, payload: res?.data });
-			localStorage.setItem("userId", res?.data?.data?.user_id);
+			sessionStorage.setItem("userId", res?.data?.data?.user_id);
 
-			console.log(res.data);
-			console.log(res.data.data.user_id);
+			// console.log(res.data);
+			// console.log(res.data.data.user_id);
 			await router.push("/sign-up/confirm-email");
 			toast.success(res?.data.message);
-
-			// router.push("/sign-up/confirm-email");
 		} catch (err) {
 			dispatch({
 				type: REGISTER_FAIL,
@@ -139,6 +260,7 @@ function AuthProvider({ children }) {
 			toast.success(res?.data.message);
 		} catch (err) {
 			// console.log(err.message);
+			throw Error(err?.response?.data.message || err.message);
 		}
 	}
 
@@ -162,11 +284,10 @@ function AuthProvider({ children }) {
 				...userData,
 				image: base64Image,
 			};
-			console.log(formData);
+			// console.log(formData);
 
-			// const res = await axios.put(`${BASE_URL}/users/${userId}`, formData, {
-			const userId = localStorage.getItem("userId");
-			console.log(userId);
+			const userId = sessionStorage.getItem("userId");
+			// console.log(userId);
 			const res = await axios.put(
 				`${BASE_URL}/users/${userId}/update-profile`,
 				formData,
@@ -177,16 +298,101 @@ function AuthProvider({ children }) {
 					},
 				}
 			);
-			console.log(res);
-			console.log(res.data);
+			// console.log(res);
+			// console.log(res.data);
 			dispatch({ type: USER_UPDATED, payload: res?.data });
-			await router.push("/sign-in");
+			toast.success(`${res?.data?.message}`);
 		} catch (err) {
 			dispatch({
 				type: UPDATE_ERROR,
 				payload: err?.response?.data.message || err.message,
 			});
 			throw Error(err?.response?.data.message);
+		}
+	}
+
+	//  UPDATE PASSWORD
+	async function updatePassword(id, formData) {
+		dispatch({ type: LOADING });
+
+		try {
+			const res = await axios.put(
+				`${BASE_URL}/users/${id}/update-password`,
+				formData,
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			);
+
+			dispatch({ type: USERPASSWORD_UPDATED });
+			toast.success(res?.data?.message);
+			// console.log(res);
+			// console.log(res?.data);
+		} catch (err) {
+			dispatch({
+				type: UPDATE_ERROR,
+				payload: err?.response?.data.message || err.message,
+			});
+		}
+	}
+
+	//  UPDATE USER NAME
+	async function updateUserName(id, formData) {
+		dispatch({ type: LOADING });
+
+		try {
+			const res = await axios.put(
+				`${BASE_URL}/users/${id}/update-name`,
+				formData,
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			);
+
+			dispatch({ type: USERNAME_UPDATED });
+			toast.success(res?.data?.message);
+			// console.log(res);
+			// console.log(res?.data);
+		} catch (err) {
+			dispatch({
+				type: UPDATE_ERROR,
+				payload: err?.response?.data.message || err.message,
+			});
+		}
+	}
+	//  UPDATE PROFILE IMAGE
+	async function updateProfileImage(userId, Image) {
+		dispatch({ type: LOADING });
+
+		try {
+			const base64Image = await convertFileToBase64(Image);
+			const imageData = {
+				image: base64Image,
+			};
+
+			const res = await axios.put(
+				`${BASE_URL}/users/${userId}/update-image`,
+				imageData,
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			);
+
+			dispatch({ type: USERIMAGE_UPDATED });
+			toast.success(res?.data?.message);
+			// console.log(res);
+			// console.log(res?.data);
+		} catch (err) {
+			dispatch({
+				type: UPDATE_ERROR,
+				payload: err?.response?.data.message || err.message,
+			});
 		}
 	}
 
@@ -202,20 +408,40 @@ function AuthProvider({ children }) {
 		try {
 			const res = await axios.post(`${BASE_URL}/login`, formData, config);
 
-			dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-			localStorage.setItem("token", res.data.token);
-			console.log(res);
-			toast.success(res?.data.message);
+			// const { token } = res.data;
 
-			// await router.push("/dashboard");
-			console.log(user?.goals);
+			// const userRes = await axios.get(`${BASE_URL}/me`, {
+			// 	headers: { Authorization: `Bearer ${token}` },
+			// 	"Content-Type": "application/json",
+			// });
+			// sessionStorage.setItem("user", JSON.stringify(userRes?.data));
+
+			sessionStorage.setItem("token", res?.data?.token);
+			sessionStorage.setItem("user", JSON.stringify(res?.data?.data));
+			// document.cookie = `auth_token=${res?.data?.token}; path=/; secure; httponly; samesite=strict`;
+			Cookies.set("auth_token", res?.data.token, {
+				path: "/",
+				expires: 24 * 60 * 60,
+				secure: process.env.NODE_ENV === "production",
+				sameSite: "Strict",
+			});
+
+			// Store the expiration time
+			// const expirationTime = Date.now() + 60 * 1000; // 1 min
+			const expirationTime = Date.now() + 60 * 60 * 1000; // 1 hour
+			sessionStorage.setItem("expiresAt", expirationTime);
+
+			dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+
+			// console.log(res);
+			// console.log(res?.data?.data);
+			toast.success(`${res?.data?.message} Redirecting to dashboard!`);
 		} catch (err) {
 			dispatch({
 				type: LOGIN_FAIL,
-				payload: err?.response.data.message || err.message,
+				payload: err?.response?.data.message || err.message,
 			});
-
-			throw Error("Failed signing into account");
+			throw Error(err?.response?.data.message || err.message);
 		}
 	}
 
@@ -263,9 +489,31 @@ function AuthProvider({ children }) {
 	}
 
 	// LOGOUT USER
-	function logout() {
-		dispatch({ type: LOGOUT });
-		// router.push("/");
+	async function logout() {
+		try {
+			const token = sessionStorage.getItem("token");
+			if (!token) throw new Error("No token found");
+
+			const res = await axios.post(
+				`${BASE_URL}/logout`,
+				{},
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			);
+			// console.log(res);
+			dispatch({ type: "LOGOUT" });
+			sessionStorage.removeItem("token");
+			sessionStorage.removeItem("user");
+			sessionStorage.removeItem("expiresAt");
+			router.push("/sign-in");
+			Cookies.remove("auth_token", { path: "/" });
+			toast("Successfully logged out!", { icon: "🔏" });
+		} catch (err) {
+			throw Error(err);
+		}
 	}
 
 	// CLEAR ERRORS
@@ -285,8 +533,12 @@ function AuthProvider({ children }) {
 				register,
 				verify,
 				updateUser,
+				updatePassword,
+				updateUserName,
+				updateProfileImage,
 				login,
 				// fetchUser,
+
 				forgotPassword,
 				resetPassword,
 				logout,

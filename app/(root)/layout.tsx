@@ -11,7 +11,7 @@ import ScrollToTopButton from "../_components/ui/ScrollToTop";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
-		<section className="flex flex-col min-h-screen">
+		<main className="flex flex-col min-h-screen">
 			<header>
 				<AppHeader />
 			</header>
@@ -22,6 +22,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			<footer>
 				<AppFooter />
 			</footer>
-		</section>
+		</main>
 	);
 }

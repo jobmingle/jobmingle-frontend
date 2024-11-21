@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Serif } from "next/font/google";
 import { AuthProvider } from "./_contexts/auth/AuthState";
+import { ApiProvider } from "./_contexts/apis/ApiState";
 import { Toaster } from "react-hot-toast";
 
 import favicon from "./favicon.ico";
@@ -38,13 +39,15 @@ export default function RootLayout({
 			<link rel="icon" href="favicon.ico" type="image/x-icon" />
 
 			<body className={`${inter.className} ${ibmPlexSerif.variable} `}>
-				<AuthProvider>
-					{/* <div className="flex-1 md:px-8  md:py-8 "> */}
-					<Suspense fallback={<Loader />}>
-						<main>{children}</main>
-					</Suspense>
-					<ScrollToTopButton />
-				</AuthProvider>
+				<ApiProvider>
+					<AuthProvider>
+						{/* <div className="flex-1 md:px-8  md:py-8 "> */}
+						<Suspense fallback={<Loader />}>
+							<main>{children}</main>
+						</Suspense>
+						<ScrollToTopButton />
+					</AuthProvider>
+				</ApiProvider>
 				<Toaster
 					position="top-center"
 					gutter={12}

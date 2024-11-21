@@ -1,14 +1,14 @@
 "use client";
-import Image from "next/image";
-import React, { useState } from "react";
-import jobmingle from "@/public/image/jobmingle.png";
-import arrowback from "@/public/image/arrowback.png";
+import React, { useEffect, useState } from "react";
+
 import { useRouter } from "next/navigation";
 import SuccessModal from "@/Components/SuccessModal";
 import { HiArrowLeft } from "react-icons/hi2";
 import { useForm } from "react-hook-form";
 import Button from "@/app/_components/ui/Button";
-import { useJob } from "@/app/_contexts/jobs/JobsState";
+import { useJobCourse } from "@/app/_contexts/apis/ApiState";
+import Spinner from "@/app/_components/ui/Spinner";
+import toast from "react-hot-toast";
 
 interface FormData {
 	company_name: string;
@@ -24,12 +24,25 @@ interface FormData {
 function Page() {
 	const router = useRouter();
 	const [Alert, setAlert] = useState(false);
-	const { postJob } = useJob();
+	const { postJob, isLoading, error, clearErrors } = useJobCourse();
+
+	useEffect(() => {
+		if (error === "The company site must be a valid URL (e.g., .com, .net).") {
+			toast.error(error);
+			clearErrors();
+		}
+		if (error === "The company site field is required.") {
+			// toast.error(error);
+			toast.error(`Please fill all inputs`);
+			clearErrors();
+		}
+	}, [error, clearErrors]);
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm<FormData>();
 
 	const handleback = () => {
@@ -37,15 +50,17 @@ function Page() {
 	};
 
 	function onSubmit(data: FormData) {
-		console.log(data);
+		// console.log(data);
 		postJob(data);
+		setAlert(true);
+		reset();
 	}
 
 	function onError(errors: any) {
 		console.error(errors);
 	}
 	return (
-		<div className="flex flex-col  min-h-screen  relative overflow-x-hidden md:py-[2rem]">
+		<div className="flex flex-col  min-h-screen lg:w-[55%] pb-20 md:pl-10- mx-auto relative overflow-x-hidden md:py-[2rem]">
 			{Alert ? (
 				<SuccessModal
 					extrastyling={"min-h-[110vh]  sm:h-[110vh] lg:h-[120vh] xl:h-[110vh]"}
@@ -54,7 +69,7 @@ function Page() {
 						"" +
 						" it will take a while for the verification process to be completed"
 					}
-					linkto={"/"}
+					linkto={"/employer-dashboard"}
 					whereto={"Click Here To Go Back To Home"}
 				/>
 			) : null}
@@ -62,7 +77,7 @@ function Page() {
 				{/* <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden "> */}
 
 				<div
-					className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2 "
+					className="w-full cursor-pointer flex pl-4 items-center py-4 flex-row sm:absolute top-2 md:top-0 left-2 md:left-[-15px] "
 					onClick={handleback}
 				>
 					<HiArrowLeft className="text-2xl" />
@@ -105,10 +120,10 @@ function Page() {
 						<label className="text-sm montserrat py-1 tracking-wider font-medium">
 							Job Role
 						</label>
-						<textarea
+						<input
 							id="job_role"
-							className="focus:outline-none mb-3 h-[6rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] p-4"
-							placeholder="Enter job responsibilities"
+							className="focus:outline-none mb-3 h-[2.5rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[2.5rem] pl-4"
+							placeholder="Enter job role"
 							{...register("job_role", { required: false })}
 						/>
 						<label className="text-sm montserrat py-1 tracking-wider font-medium">
@@ -157,7 +172,7 @@ function Page() {
 							id="job_email"
 							className="focus:outline-none mb-3 h-[2.5rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[2.5rem] pl-4"
 							placeholder="Email/ Link to reach out to"
-							{...register("job_email", { required: false })}
+							{...register("job_email", { required: true })}
 						/>
 						{/* <button
 							type="submit"
@@ -165,12 +180,9 @@ function Page() {
 						>
 							Submit{" "}
 						</button> */}
-						<Button
-							type="login"
-							// onClick={(e) => handleSubmit(e)}
-						>
+						<Button type="login">
 							Submit
-							{/* <span>{isLoading && <Spinner />}</span> */}
+							<span>{isLoading && <Spinner />}</span>
 						</Button>
 					</form>
 				</main>

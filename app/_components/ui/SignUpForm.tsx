@@ -51,9 +51,8 @@ export default function SignUpForm() {
 	}, [error, isAuthenticated]);
 
 	function onSubmit(data: FormData) {
-		console.log(data);
+		// console.log(data);
 		registerUser(data);
-		toast.success("Form submitted successfully.");
 	}
 
 	const password = watch("password", "");
@@ -206,7 +205,7 @@ export default function SignUpForm() {
 
 				<Button
 					type="login"
-					disabled={!agreedToTerms}
+					disabled={!agreedToTerms && isLoading}
 					// onClick={(e) => handleSubmit(e)}
 				>
 					Sign Up

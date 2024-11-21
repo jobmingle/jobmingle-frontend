@@ -18,7 +18,7 @@ const Page = () => {
 				placeholder="Job title"
 				icon={<HiBriefcase />}
 			/>
-			<JobItems searchQuery={searchQuery} />
+			<JobItems searchQuery={searchQuery} link="employer-dashboard/jobs" />
 		</>
 	);
 };

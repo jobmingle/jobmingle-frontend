@@ -18,23 +18,19 @@ interface FormData {
 
 export default function LoginForm() {
 	const { register, handleSubmit, formState } = useForm<FormData>();
-	const router = useRouter();
 	const { errors } = formState;
+	const router = useRouter();
 	const { login, token, error, isAuthenticated, clearErrors, isLoading, user } =
 		useAuth();
 
-	if (user) {
-		if (user.goals === "Vendor") router.push("/vendor-dashboard");
+	// console.log(user);
+	// console.log(user?.firstName);
 
-		if (user.goals === "Employer") router.push("/employer-dashboard");
-
-		if (user.goals === "Student") router.push("/dashboard");
-		if (user.goals === "Admin" || user.role === "Admin")
-			router.push("/admin-dashboard");
-	}
 	useEffect(() => {
 		if (error === "Bad credentials") {
-			toast.error(error);
+			toast.error(
+				`${error}: Please enter correct details! || reset your password or sign up to continue if you do not have an account yet!.`
+			);
 			clearErrors();
 		}
 		if (error === "The provided credentials are incorrect.") {
@@ -45,14 +41,22 @@ export default function LoginForm() {
 		}
 
 		if (error === "Network Error") {
-			toast.error(error);
+			toast.error(`${error}: Please check your internet connection!`);
 			clearErrors();
+		}
+
+		if (user) {
+			if (user.goals === "Vendor") router.push("/vendor-dashboard");
+			if (user.goals === "Employer") router.push("/employer-dashboard");
+			if (user.goals === "Student") router.push("/dashboard");
+			if (user.goals === "Admin" || user.role === "Admin")
+				router.push("/admin-dashboard");
 		}
 	}, [error, isAuthenticated, clearErrors, router, user]);
 
 	function onSubmit(data: FormData): void {
 		login(data);
-		toast.success("Form submitted successfully.");
+		// toast.success("Form submitted successfully.");
 	}
 
 	function onError(errors: any) {
@@ -114,6 +118,7 @@ export default function LoginForm() {
 
 				<Button
 					type="login"
+					disabled={isLoading}
 					// onClick={(e) => handleSubmit(e)}
 				>
 					Login<span>{isLoading && <Spinner />} </span>
