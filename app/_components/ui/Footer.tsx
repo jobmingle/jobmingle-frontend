@@ -25,36 +25,42 @@ export default function Footer() {
 				<div className="flex flex-col  gap-[10px] justify-between-  items-center lg:items-start mb-8 lg:mb-0">
 					<div className="flex space-x-4 mb-4">
 						<Link
+							target="_blank"
 							href="https://web.facebook.com/profile.php?id=61556529943063"
 							className="w-8 h-8 flex justify-center items-center bg-[#facc15]  rounded-full  hover:bg-yellow-500 hover:rotate-45 hover:translate-x-1 "
 						>
 							<Image src={Facebook} alt="Facebook" width={16} height={16} />
 						</Link>
 						<Link
+							target="_blank"
 							href="https://www.linkedin.com/company/jobmingle-nigeria/"
 							className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full  hover:bg-yellow-500 hover:rotate-45 hover:translate-x-1 "
 						>
 							<Image src={LinkedIn} alt="Twitter" width={16} height={16} />
 						</Link>
 						<Link
+							target="_blank"
 							href="https://www.instagram.com/jobminglengr?igsh=MTZiODRhdnhqeHJtYg=="
 							className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full  hover:bg-yellow-500 hover:rotate-45 hover:translate-x-1 "
 						>
 							<Image src={Instagram} alt="Instagram" width={16} height={16} />
 						</Link>
 						<Link
+							target="_blank"
 							href="https://twitter.com/JobMingleNGR?t=Y9dBxLTQAtyrLzvvc1xfBA&s=09"
 							className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full hover:bg-black hover:text-yellow-500 hover:rotate-45 hover:translate-x-1 "
 						>
 							<BsTwitterX />
 						</Link>
 						<Link
+							target="_blank"
 							href="https://www.tiktok.com/@jobminglengr?_t=8raeCRQIoa7&_r=1"
 							className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full  hover:bg-black hover:text-yellow-500 hover:rotate-45 hover:translate-x-1 "
 						>
 							<BsTiktok />
 						</Link>
 						<Link
+							target="_blank"
 							href="https://medium.com/@JobMingleNGR"
 							className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full  -hover:bg-yellow-500 hover:rotate-45 hover:translate-x-1 hover:bg-black hover:text-yellow-500 "
 						>
