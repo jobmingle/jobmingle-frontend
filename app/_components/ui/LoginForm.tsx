@@ -45,10 +45,21 @@ export default function LoginForm() {
 			clearErrors();
 		}
 
+		// if (user) {
+		// 	if (user.goals === "Vendor") router.push("/vendor-dashboard");
+		// 	if (user.goals === "Employer") router.push("/employer-dashboard");
+		// 	if (user.goals === "Student") router.push("/dashboard");
+		// 	if (user.goals === "Admin" || user.role === "Admin")
+		// 		router.push("/admin-dashboard");
+		// }
+
 		if (user) {
-			if (user.goals === "Vendor") router.push("/vendor-dashboard");
-			if (user.goals === "Employer") router.push("/employer-dashboard");
-			if (user.goals === "Student") router.push("/dashboard");
+			if (user.goals === "List a course") router.push("/vendor-dashboard");
+
+			if (user.goals === "Post a job") router.push("/employer-dashboard");
+
+			if (user.goals === "Apply for a job / Take a course")
+				router.push("/dashboard");
 			if (user.goals === "Admin" || user.role === "Admin")
 				router.push("/admin-dashboard");
 		}

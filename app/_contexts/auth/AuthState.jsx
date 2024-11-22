@@ -298,9 +298,9 @@ function AuthProvider({ children }) {
 					},
 				}
 			);
-			// console.log(res);
-			// console.log(res.data);
-			dispatch({ type: USER_UPDATED, payload: res?.data });
+			console.log(res);
+			console.log(res.data);
+			dispatch({ type: USER_UPDATED, payload: res?.data?.data });
 			toast.success(`${res?.data?.message}`);
 		} catch (err) {
 			dispatch({
@@ -487,6 +487,13 @@ function AuthProvider({ children }) {
 			dispatch({ type: RESET_FAIL, payload: errorMessage });
 		}
 	}
+
+	useEffect(() => {
+		const token = sessionStorage.getItem("token");
+		if (!token) {
+			Cookies.remove("auth_token", { path: "/" });
+		}
+	}, []);
 
 	// LOGOUT USER
 	async function logout() {

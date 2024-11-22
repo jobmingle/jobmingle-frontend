@@ -165,7 +165,7 @@ function Page() {
 							{...register("job_responsibilities", { required: false })}
 						/>
 						<label className="text-sm montserrat py-1 tracking-wider font-medium">
-							Job Email
+							Application Email
 						</label>
 						<input
 							type="email"

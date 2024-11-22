@@ -128,14 +128,24 @@
 		filter: brightness(40%);
 	}
 	.bg2 {
-		/* background-image: url("./Signup/images/signupbanner.png"); */
-		background-image: url("/image/image-forms/signupbanner.png");
+		background-image: url("/image-forms/signupbanner.png");
+
 		background-repeat: no-repeat;
 		background-position: center;
 		object-fit: contain;
 		background-position: center;
 		background-size: cover;
 		filter: brightness(40%);
+	}
+	.bg-2 {
+		/* background-image: url("/image/scott-graham-5fNmWej4tAA-unsplash.jpg"); */
+		background-image: url("/image/why-us-3.jpg");
+		background-repeat: no-repeat;
+		background-position: center;
+		object-fit: contain;
+		background-position: center;
+		background-size: cover;
+		/* filter: brightness(50%); */
 	}
 
 	button:disabled,

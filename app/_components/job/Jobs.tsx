@@ -13,13 +13,17 @@ import { useJobCourse } from "@/app/_contexts/apis/ApiState";
 import { formatCurrency, timeAgo } from "@/lib/helpers";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import Spinner from "../ui/Spinner";
+import toast from "react-hot-toast";
+import { useAuth } from "@/app/_contexts/auth/AuthState";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 // const JobsPage = async ({ searchQuery }: any) => {
 function JobsPage({ searchQuery, link }: any) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
-	const { jobs } = useJobCourse();
+	const { jobs, isLoading } = useJobCourse();
+	const { user } = useAuth();
 	const { from, to } = usePagination();
 	// const jobs = localStorage?.getItem("jobs")
 	// 	? JSON.parse(localStorage?.getItem("jobs") ?? "[]")
@@ -29,7 +33,7 @@ function JobsPage({ searchQuery, link }: any) {
 	// console.log(jobs);
 	const searchedJobs =
 		searchQuery.length > 0
-			? jobs.filter((job: any) =>
+			? jobs?.filter((job: any) =>
 					`${job.job_type} ${job.job_role} ${job.job_description} `
 						.toLowerCase()
 						.includes(searchQuery.toLowerCase())
@@ -39,15 +43,26 @@ function JobsPage({ searchQuery, link }: any) {
 	const Jobs = searchedJobs?.slice(from, to);
 	// const Jobs = Array.isArray(searchedJobs) ? searchedJobs.slice(from, to) : [];
 
-	const handleApplyClick = (id: any) => {
+	const handleApplyClick = () => {
 		// setShowPopup(true);
 		// const newParams = new URLSearchParams(searchParams);
 		// newParams.set("job", id);
 		// router.push(`/employer-dashboard/jobs/${id}`);
+		if (!user) {
+			toast("Please sign in to continue your job application!", { icon: "🔑" });
+		}
 	};
 	const handleClosePopup = () => {
 		setShowPopup(false);
 	};
+
+	if (!jobs.length || isLoading) {
+		return <Spinner />;
+	}
+
+	if (!isLoading && searchedJobs.length === 0) {
+		return <NoResult />;
+	}
 
 	return (
 		<Content>
@@ -120,10 +135,7 @@ function JobsPage({ searchQuery, link }: any) {
 								{/* <button className="btn" onClick={handleApplyClick}>
 									View Job
 									</button> */}
-								<button
-									className="btn"
-									// onClick={() => handleApplyClick(job.id)}
-								>
+								<button className="btn" onClick={() => handleApplyClick()}>
 									{/* <Link href={`/employer-dashboard/jobs/job/${job?.id}`}> */}
 									<Link href={`/${link}/${job.id}`}>More</Link>
 								</button>
@@ -150,7 +162,7 @@ function JobsPage({ searchQuery, link }: any) {
 				))}
 			</div>
 			<br />
-			{searchedJobs.length === 0 && <NoResult />}
+			{/* {searchedJobs.length === 0 && <NoResult />} */}
 
 			<Pagination count={searchedJobs.length} assets="jobs" />
 		</Content>

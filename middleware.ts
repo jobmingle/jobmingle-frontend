@@ -21,5 +21,6 @@ export const config = {
 		"/admin-dashboard",
 		"/vendor-dashboard",
 		"/employer-dashboard",
+		"/jobs/:path+",
 	],
 };
