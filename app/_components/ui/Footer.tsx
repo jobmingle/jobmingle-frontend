@@ -1,14 +1,14 @@
 import Link from "next/link";
-import Image from "next/image";
-import Email from "@/public/svg-icons/email.svg";
-import Instagram from "@/public/svg-icons/instagram.svg";
-import Facebook from "@/public/svg-icons/facebook.svg";
-import contact from "@/public/svg-icons/call-us.svg";
-import Twitter from "@/public/svg-icons/twitter.svg";
-import LinkedIn from "@/public/svg-icons/linkedin.svg";
-import Tiktok from "@/public/svg-icons/Tiktok.svg";
-import Medium from "@/public/svg-icons/Medium.svg";
-import { BsMedium, BsTiktok, BsTwitterX } from "react-icons/bs";
+
+import { BsInstagram, BsMedium, BsTiktok, BsTwitterX } from "react-icons/bs";
+import {
+	FaFacebook,
+	FaFacebookF,
+	FaLinkedinIn,
+	FaMailBulk,
+	FaPhoneAlt,
+} from "react-icons/fa";
+import { FaPhone } from "react-icons/fa6";
 
 export default function Footer() {
 	const date = new Date();
@@ -27,23 +27,23 @@ export default function Footer() {
 						<Link
 							target="_blank"
 							href="https://web.facebook.com/profile.php?id=61556529943063"
-							className="w-8 h-8 flex justify-center items-center bg-[#facc15]  rounded-full  hover:bg-yellow-500 hover:rotate-45 hover:translate-x-1 "
+							className="w-8 h-8 flex justify-center items-center bg-[#facc15]  rounded-full   hover:bg-black hover:text-yellow-500 hover:rotate-45 hover:translate-x-1 "
 						>
-							<Image src={Facebook} alt="Facebook" width={16} height={16} />
+							<FaFacebookF />
 						</Link>
 						<Link
 							target="_blank"
 							href="https://www.linkedin.com/company/jobmingle-nigeria/"
-							className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full  hover:bg-yellow-500 hover:rotate-45 hover:translate-x-1 "
+							className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full   hover:bg-black hover:text-yellow-500 hover:rotate-45 hover:translate-x-1 "
 						>
-							<Image src={LinkedIn} alt="Twitter" width={16} height={16} />
+							<FaLinkedinIn />
 						</Link>
 						<Link
 							target="_blank"
 							href="https://www.instagram.com/jobminglengr?igsh=MTZiODRhdnhqeHJtYg=="
-							className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full  hover:bg-yellow-500 hover:rotate-45 hover:translate-x-1 "
+							className="w-8 h-8 flex justify-center items-center bg-[#facc15] rounded-full   hover:bg-black hover:text-yellow-500 hover:rotate-45 hover:translate-x-1 "
 						>
-							<Image src={Instagram} alt="Instagram" width={16} height={16} />
+							<BsInstagram />{" "}
 						</Link>
 						<Link
 							target="_blank"
@@ -67,14 +67,15 @@ export default function Footer() {
 							<BsMedium />
 						</Link>
 					</div>
-					<p className="text-white">
-						Call us
-						<Link href="tel:+2347077308481" className="text-yellow-500">
-							+2347077308481
+					<p className="text-white flex gap-2">
+						<span className="rotate-45"></span>
+						Call us :
+						<Link href="tel:07077308481" className="text-yellow-500">
+							07077308481
 						</Link>
 					</p>
-					<p className="text-white">
-						Email us @:
+					<p className="text-white flex gap-2">
+						Email:
 						<Link
 							href="mailto:contact@jobmingle.co"
 							className="text-yellow-500"
