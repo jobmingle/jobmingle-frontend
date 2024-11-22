@@ -39,16 +39,17 @@ export default function PreferencesForm() {
 		}
 
 		if (user) {
-			if (user.goals === "Vendor") router.push("/vendor-dashboard");
+			if (user.goals === "List a course") router.push("/vendor-dashboard");
 
-			if (user.goals === "Employer") router.push("/employer-dashboard");
+			if (user.goals === "Post a job") router.push("/employer-dashboard");
 
-			if (user.goals === "Student") router.push("/dashboard");
+			if (user.goals === "Apply for a job / Take a course")
+				router.push("/dashboard");
 			if (user.goals === "Admin" || user.role === "Admin")
 				router.push("/admin-dashboard");
 		}
 		// eslint-disable-next-line
-	}, [error]);
+	}, [error, user]);
 
 	const handleSelected = (category: string, option: any): void => {
 		setSelectedPreferences((prev) => {
@@ -132,7 +133,7 @@ export default function PreferencesForm() {
 						{userPreferences.usage.map((option) => (
 							<input
 								type="button"
-								className={`w-full list-none py-3 cursor-pointer pl-2 border-black-100 border-solid border-[1px] sora rounded-[10px] capitalize ${
+								className={`w-full list-none py-3 cursor-pointer pl-2 border-black-100 border-solid border-[1px] sora rounded-[10px]  ${
 									selectedPreferences.goals === option
 										? "text-yellow-500 border-yellow-500"
 										: ""

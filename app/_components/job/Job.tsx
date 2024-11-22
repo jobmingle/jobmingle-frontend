@@ -86,11 +86,12 @@ export default function JobDetails(params: JobPageProps) {
 							</span>
 						</div>
 						<div className=" flex items-start py-[.5rem]  gap-5 items-center-">
-							<h2 className="text-[.9rem] font-bold">Task:</h2>
+							<h2 className="text-[.9rem] font-bold">Responsibilities:</h2>
 							<span className="text-[.8rem]font-bold ">
 								{job?.job_responsibilities}
 							</span>
 						</div>
+
 						<div className=" flex items-start py-[.5rem]  gap-5 items-center-">
 							<h2 className="text-[.9rem] font-bold">Salary:</h2>
 							<span className="text-[1rem] font-bold ">

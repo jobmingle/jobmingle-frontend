@@ -372,8 +372,8 @@ export const partnersLogos = [
 ];
 
 export const userPreferences = {
-	// usage: ["apply for a job/ take a course", "Post a job", "List a course"],
-	usage: ["Student", "Employer", "Vendor"],
+	usage: ["Apply for a job / Take a course", "Post a job", "List a course"],
+	// usage: ["Student", "Employer", "Vendor"],
 	interests: [
 		"IT support",
 		"Marketing",

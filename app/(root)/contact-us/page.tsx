@@ -35,20 +35,14 @@ export default function Contact() {
 			</p>
 			<div className="w-full h-1 bg-[#eab308] sm:mb-15"></div>
 
-			<div className="flex flex-col lg:flex-row text-white w-full items-center justify-center gap-6 lg:gap-24 p-6  xsm:p-3 mt-7">
-				<div className="flex  text-black  font-bold flex-col max-md:w-[350px] w-[800px] lg:w-auto bg-white p-6 rounded border-2 border-gray-400 shadow-lg md:items-center">
+			{/* <div className="flex flex-col lg:flex-row text-white w-full items-center justify-center gap-6 lg:gap-24 p-6  xsm:p-3 mt-7"> */}
+			<div className="grid grid-cols-1 lg:grid-cols-2 max-md:gap-10 text-white w-full items-center justify-center gap-6- lg:gap-24 p-6  xsm:p-3 mt-7">
+				<div className="  text-black  font-bold   lg:w-auto bg-white p-6 rounded border-2 border-gray-400 shadow-lg md:items-center">
 					<ContactForm />
 				</div>
-				<div className="flex flex-col items-start justify-center  max-md:w-auto  h-[200px] w-[800px] lg:w-auto bg-white text-black p-10 rounded border-2 border-gray-400 shadow-lg md:items-center">
-					<p className="flex items-center mb-4">
-						<span className="font-bold mr-2">Location:</span> Ajah, Lagos,
-						Nigeria
-					</p>
-					<p className="flex items-center mb-4">
-						<span className="font-bold mr-2">Email:</span> Jobmingle@info.com
-					</p>
-					<p className="flex items-center">
-						<span className="font-bold mr-2">Phone:</span> 12345709876543
+				<div className="bg-2 flex flex-col items-start justify-center  max-md:w-auto  h-[200px] w-[800px] lg:w-auto   text-gray-100 p-10 rounded border-2 z-0  border-gray-400 shadow-2xl  md:items-center  ">
+					<p className="flex items-center mb-4 z-10 text-balance text-3xl font-mono   shadow-inner shadow-yellow-500  ">
+						&#34;Learn Without Breaking The Bank...&#34;
 					</p>
 				</div>
 
