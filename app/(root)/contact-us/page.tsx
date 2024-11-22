@@ -40,9 +40,9 @@ export default function Contact() {
 				<div className="  text-black  font-bold   lg:w-auto bg-white p-6 rounded border-2 border-gray-400 shadow-lg md:items-center">
 					<ContactForm />
 				</div>
-				<div className="bg-2 flex flex-col items-start justify-center  max-md:w-auto  h-[200px] w-[800px] lg:w-auto   text-gray-100 p-10 rounded border-2 z-0  border-gray-400 shadow-2xl  md:items-center  ">
-					<p className="flex items-center mb-4 z-10 text-balance text-3xl font-mono   shadow-inner shadow-yellow-500  ">
-						&#34;Learn Without Breaking The Bank...&#34;
+				<div className="bg-2 flex flex-col items-start justify-center  max-md:w-auto  h-[200px] w-[800px] lg:w-auto   text-yellow-400 p-10 rounded border-2 z-0  border-gray-400 shadow-2xl  md:items-center  ">
+					<p className="flex items-center- mb-4 z-10 text-balance text-md font-mono   shadow-inner shadow-yellow-500 font-bold p-5">
+						Learn A Skill Today Without Breaking The Bank!
 					</p>
 				</div>
 

@@ -45,8 +45,8 @@ const CoursesPage = ({ searchQuery }: any) => {
 				<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] p-2 lg:p-4">
 					{searchedCourses.length >= 1 && (
 						<div className="py-4">
-							<h1 className="text-2xl mb-0  text-center max-md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center">
-								View list of courses!
+							<h1 className="text-2xl mb-0  text-center max-md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center ">
+								Expert-Led Courses For You
 							</h1>
 						</div>
 					)}

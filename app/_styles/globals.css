@@ -139,13 +139,13 @@
 	}
 	.bg-2 {
 		/* background-image: url("/image/scott-graham-5fNmWej4tAA-unsplash.jpg"); */
-		background-image: url("/image/why-us-3.jpg");
+		background-image: url("/image/break-bank.jpg");
 		background-repeat: no-repeat;
 		background-position: center;
 		object-fit: contain;
 		background-position: center;
 		background-size: cover;
-		/* filter: brightness(50%); */
+		filter: brightness(90%);
 	}
 
 	button:disabled,
