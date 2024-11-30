@@ -17,6 +17,7 @@ import {
 	LOGOUT,
 	CLEAR_ERRORS,
 	LOADING,
+	USER_EMAIL_UPDATED,
 } from "@/app/_contexts/types";
 
 export default function authReducer(state, action) {
@@ -40,6 +41,7 @@ export default function authReducer(state, action) {
 		case USERNAME_UPDATED:
 		case USERIMAGE_UPDATED:
 		case USERPASSWORD_UPDATED:
+		case USER_EMAIL_UPDATED:
 			return {
 				...state,
 				isLoading: false,
@@ -61,7 +63,7 @@ export default function authReducer(state, action) {
 				...action.payload,
 				isLoading: false,
 				token: action.payload.token,
-				user: action.payload.data,
+				user: action.payload || action.payload.data,
 				// isAuthenticated: state.token ? true : null,
 				isAuthenticated: true,
 			};
@@ -91,6 +93,7 @@ export default function authReducer(state, action) {
 		case UPDATE_ERROR:
 			return {
 				...state,
+				isLoading: false,
 				error: action.payload,
 			};
 		case LOADING:

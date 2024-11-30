@@ -12,12 +12,15 @@ import {
 	HiPencilSquare,
 } from "react-icons/hi2";
 import Loader from "@/app/_components/ui/Loader";
+import { useJobCourse } from "@/app/_contexts/apis/ApiState";
 
 const UserDashboard = () => {
 	const pathname = usePathname();
 	const { logout, isAuthenticated } = useAuth();
+	const { resetListedItems } = useJobCourse();
 	function handleLogout() {
 		logout();
+		resetListedItems();
 	}
 
 	const isActive = (path: string): boolean => pathname === path;
@@ -39,11 +42,9 @@ const UserDashboard = () => {
 						}`}
 					>
 						<HiHome
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/employer-dashboard") ? "text-yellow-500" : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
-						<p className="hidden md:flex"> Home</p>
+						<p className="hidden md:flex"> Dashboard</p>
 					</Link>
 				</li>
 				<li className=" lg:w-full">
@@ -56,9 +57,7 @@ const UserDashboard = () => {
 						}`}
 					>
 						<HiMiniBriefcase
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/employer-dashboard/jobs") ? "text-yellow-500" : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
 						<p className="hidden md:flex"> Jobs</p>
 					</Link>
@@ -74,11 +73,7 @@ const UserDashboard = () => {
 						}`}
 					>
 						<HiPencilSquare
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/employer-dashboard/list-job")
-									? "text-yellow-500"
-									: ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
 						<p className="hidden md:flex">List Job</p>
 					</Link>
@@ -93,11 +88,7 @@ const UserDashboard = () => {
 						}`}
 					>
 						<HiOutlineCog
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/employer-dashboard/settings")
-									? "text-yellow-500"
-									: ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
 
 						<p className="hidden md:flex">Settings</p>

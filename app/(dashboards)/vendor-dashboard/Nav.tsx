@@ -37,11 +37,25 @@ const Nav = () => {
 						}`}
 					>
 						<HiHome
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/vendor-dashboard") ? "text-yellow-500" : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
-						<p className="hidden md:flex"> Home</p>
+						<p className="hidden md:flex"> Dashboard</p>
+					</Link>
+				</li>
+
+				<li className=" lg:w-full">
+					<Link
+						href="/vendor-dashboard/courses"
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/vendor-dashboard/courses")
+								? "text-yellow-500 md:bg-gray-50"
+								: ""
+						}`}
+					>
+						<HiOutlineBookOpen
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
+						/>
+						<p className="hidden md:flex"> Courses</p>
 					</Link>
 				</li>
 				<li className="lg:w-full">
@@ -54,33 +68,11 @@ const Nav = () => {
 						}`}
 					>
 						<HiPencilSquare
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/vendor-dashboard/list-course")
-									? "text-yellow-500"
-									: ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
 						<p className="hidden md:flex">List Course</p>
 					</Link>
 				</li>
-				<li className=" lg:w-full">
-					<Link
-						href="/vendor-dashboard/courses"
-						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
-							isActive("/vendor-dashboard/courses")
-								? "text-yellow-500 md:bg-gray-50"
-								: ""
-						}`}
-					>
-						<HiOutlineBookOpen
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/vendor-dashboard/courses") ? "text-yellow-500" : ""
-							}`}
-						/>
-						<p className="hidden md:flex"> Courses</p>
-					</Link>
-				</li>
-
 				<li className="lg:w-full">
 					<Link
 						href="/vendor-dashboard/settings"
@@ -91,9 +83,7 @@ const Nav = () => {
 						}`}
 					>
 						<HiOutlineCog
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/vendor-dashboard/settings") ? "text-yellow-500" : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
 
 						<p className="hidden md:flex">Settings</p>
@@ -107,7 +97,7 @@ const Nav = () => {
 					>
 						<HiMiniArrowLeftStartOnRectangle
 							title="Logout"
-							className=" hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem]"
+							className=" hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem]"
 						/>
 						<p className="hidden md:flex text-center "> Logout</p>
 					</button>

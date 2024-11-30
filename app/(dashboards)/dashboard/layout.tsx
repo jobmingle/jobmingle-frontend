@@ -4,6 +4,7 @@ import HeaderDash from "@/app/_components/ui/HeaderDash";
 
 import Logo from "@/app/_components/ui/Logo";
 import Jmlogo from "@/public/image/jobmingle.png";
+import Link from "next/link";
 
 export default function Layout({
 	children,
@@ -14,7 +15,9 @@ export default function Layout({
 		<main className="flex flex-col  lg:grid lg:grid-cols-[15rem_1fr] min-h-screen h-screen lg:grid-rows-[auto_1fr]  overflow-hidden">
 			<HeaderDash />
 			<aside className="hidden lg:flex lg:flex-col  gap-[3.2rem] lg:row-span-full pt-[3.2rem]  bg-gray-400">
-				<Logo path={Jmlogo} width={120} height={120} />
+				<Link href="/">
+					<Logo path={Jmlogo} width={120} height={120} />
+				</Link>
 				<Nav />
 			</aside>
 			<div className=" max-lg:flex-1 overflow-y-auto pb-[5rem]">

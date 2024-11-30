@@ -12,8 +12,19 @@ import { useRouter } from "next/navigation";
 const AppHeader = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [menuOpen, setMenuOpen] = useState(false);
-	const { isAuthenticated, logout } = useAuth();
+	const { isAuthenticated, logout, user } = useAuth();
 	const router = useRouter();
+
+	let url;
+	if (user) {
+		if (user.goals === "List a course") url = "/vendor-dashboard";
+
+		if (user.goals === "Post a job") url = "/employer-dashboard";
+
+		if (user.goals === "Apply for a job / Take a course") url = "/dashboard";
+		if (user.goals === "Admin" || user.role === "Admin")
+			url = "/admin-dashboard";
+	}
 
 	// Effect for sticky navbar after scrolling pass the viewport height
 	useEffect(() => {
@@ -36,6 +47,10 @@ const AppHeader = () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
+
+	function handleBackToDashboard() {
+		router.push(url);
+	}
 
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);
@@ -61,46 +76,54 @@ const AppHeader = () => {
 					</div>
 				</div>
 
-				<div className="inline-flex items-end gap-8 lg:gap-16 max-md:hidden">
-					<div className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
+				<ul className="inline-flex items-end gap-8 lg:gap-16 max-md:hidden">
+					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
+						<Link href="/career">Career</Link>
+					</li>
+					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
+						<Link href="/courses">Courses</Link>
+					</li>
+					<li className="text-sm lg:text-lg font-medium leading-6 hover:text-[#FFBE0B]">
+						<Link href="/jobs">Jobs</Link>
+					</li>
+					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
 						<Link href="/about" onClick={toggleMenu}>
 							About Us
 						</Link>
-					</div>
-					<div className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
-						<Link href="/courses">Courses</Link>
-					</div>
-					<div className="text-sm lg:text-lg font-medium leading-6 hover:text-[#FFBE0B]">
-						<Link href="/jobs">Jobs</Link>
-					</div>
+					</li>
 
-					<div className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
+					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
 						{/* <Link href="#contact">contact</Link> */}
 						<Link href="/contact-us">Contact Us</Link>
-					</div>
-				</div>
-				{/* {isAuthenticated ? (
+					</li>
+				</ul>
+				{isAuthenticated ? (
 					<div className="inline-flex gap-3 items-start  max-md:hidden">
-						<Button type="logout">Profile</Button>
+						{/* <Link href={url || null}> */}
+						<Button type="login" onClick={handleBackToDashboard}>
+							Dashboard
+						</Button>
+						{/* </Link> */}
 						<Button onClick={handleLogout} type="logout">
 							Logout
 						</Button>
 					</div>
-				) : ( */}
-				<div className="inline-flex items-start gap-3 max-md:hidden">
-					<Link href="/sign-up">
-						<Button className="w-[100px]  bg-black text-white rounded-[10px]  hover:text-black hover:bg-yellow-500 transition-colors duration-500">
-							Sign Up
-						</Button>
-					</Link>
+				) : (
+					<div className="inline-flex items-start gap-3 max-md:hidden">
+						<Link href="/sign-up">
+							<Button className="w-[100px]  bg-black text-white rounded-[10px]  hover:text-black hover:bg-yellow-500 transition-colors duration-500">
+								Sign Up
+							</Button>
+						</Link>
 
-					{/* I hid this button on large screen downward with max-lg:hidden , to fix nav items overlap */}
-					<Link href="/sign-in" className="max-lg:hidden">
-						<Button className="w-[100px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 ">
-							Login
-						</Button>
-					</Link>
-				</div>
+						{/* I hid this button on large screen downward with max-lg:hidden , to fix nav items overlap */}
+						<Link href="/sign-in" className="max-lg:hidden">
+							<Button className="w-[100px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 ">
+								Login
+							</Button>
+						</Link>
+					</div>
+				)}
 
 				{/* Mobile Menu Toggle */}
 				<div className="md:hidden flex items-center">
@@ -156,6 +179,11 @@ const AppHeader = () => {
 					<li className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
 						<Link href="/about" onClick={toggleMenu}>
 							About us
+						</Link>
+					</li>
+					<li className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
+						<Link href="/career" onClick={toggleMenu}>
+							Career
 						</Link>
 					</li>
 					<li className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">

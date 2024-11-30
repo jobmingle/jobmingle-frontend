@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Button from "./Button";
@@ -10,6 +10,7 @@ import Error from "./Error";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
 import Spinner from "@/app/_components/ui/Spinner";
 import Loader from "./Loader";
+import ViewPassword from "./VIewPassword";
 
 interface FormData {
 	email: string;
@@ -18,6 +19,8 @@ interface FormData {
 
 export default function LoginForm() {
 	const { register, handleSubmit, formState } = useForm<FormData>();
+	const [Open, setOpen] = useState(false);
+
 	const { errors } = formState;
 	const router = useRouter();
 	const { login, token, error, isAuthenticated, clearErrors, isLoading, user } =
@@ -42,6 +45,10 @@ export default function LoginForm() {
 
 		if (error === "Network Error") {
 			toast.error(`${error}: Please check your internet connection!`);
+			clearErrors();
+		}
+		if (error === "timeout exceeded") {
+			toast.error(`${error}: Please try again!`);
 			clearErrors();
 		}
 
@@ -94,12 +101,12 @@ export default function LoginForm() {
 					{errors?.email?.message && <Error>{errors.email.message}</Error>}
 				</div>
 
-				<div>
+				<div className="relative">
 					<label className="text-sm py-1 montserrat tracking-wider font-medium ">
 						Password
 					</label>
 					<input
-						type="password"
+						type={Open ? "text" : "password"}
 						id="password"
 						className="input"
 						// defaultValue={"Pa$$w0rd!"}
@@ -111,6 +118,11 @@ export default function LoginForm() {
 								message: "Password should be a minimum of six characters",
 							},
 						})}
+					/>
+					<ViewPassword
+						Open={Open}
+						setOpen={setOpen}
+						styles={"right-2 top-6"}
 					/>
 					{errors?.email?.message && <Error>{errors.email.message}</Error>}
 				</div>

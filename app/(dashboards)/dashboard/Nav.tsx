@@ -13,6 +13,9 @@ import {
 	HiOutlineCog,
 	HiPencilSquare,
 } from "react-icons/hi2";
+import { BiBookOpen } from "react-icons/bi";
+import { FaBook } from "react-icons/fa";
+import { FaBookOpenReader } from "react-icons/fa6";
 
 const UserDashboard = () => {
 	const pathname = usePathname();
@@ -25,9 +28,9 @@ const UserDashboard = () => {
 
 	return (
 		<nav
-			className={`flex flex-col justify-center  w-full   py-3 px-0 max-lg:px-2  lg:pl-[2.5rem]  overflow-y-auto`}
+			className={`flex flex-col justify-center  w-full   py-3 px-0 max-lg:px-2  lg:pl-[2.5rem]  md:overflow-y-auto`}
 		>
-			<ul className=" flex flex-row lg:flex-col gap-[0.2rem] w-full justify-between lg:justify-between items-center lg:items-start overflow-y-auto h-full">
+			<ul className=" flex flex-row lg:flex-col gap-[0.2rem] w-full justify-between lg:justify-between items-center lg:items-start md:overflow-y-auto h-full">
 				<li className="lg:w-full">
 					<Link
 						href="/dashboard"
@@ -36,11 +39,25 @@ const UserDashboard = () => {
 						}`}
 					>
 						<HiHome
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/dashboard") ? "text-yellow-500" : ""
-							}`}
+							className={`text-inherit hover:text-yellow-500 w-[1.8rem] h-[1.8rem] `}
 						/>
-						<p className="hidden md:flex"> Home</p>
+						<p className="hidden lg:flex"> Dashboard</p>
+					</Link>
+				</li>
+				<li className=" lg:w-full ">
+					<Link
+						href="/dashboard/my-learning"
+						className={`flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:text-yellow-500 lg:hover:bg-gray-50 max-lg:rounded lg:rounded-l px-[1.2rem] md:px-4 ${
+							isActive("/dashboard/my-learning")
+								? "text-yellow-500 md:bg-gray-50"
+								: ""
+						}`}
+					>
+						{/* <HiOutlineBookOpen */}
+						<FaBookOpenReader
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit `}
+						/>
+						<p className="hidden lg:flex  "> My Learning</p>
 					</Link>
 				</li>
 				<li className=" lg:w-full">
@@ -52,12 +69,10 @@ const UserDashboard = () => {
 								: ""
 						}`}
 					>
-						<HiOutlineBookOpen
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/dashboard/courses") ? "text-yellow-500" : ""
-							}`}
+						<FaBook
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit `}
 						/>
-						<p className="hidden md:flex"> Courses</p>
+						<p className="hidden lg:flex"> Courses</p>
 					</Link>
 				</li>
 
@@ -69,11 +84,9 @@ const UserDashboard = () => {
 						}`}
 					>
 						<HiMiniBriefcase
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/dashboard/jobs") ? "text-yellow-500" : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
-						<p className="hidden md:flex"> Jobs</p>
+						<p className="hidden lg:flex"> Jobs</p>
 					</Link>
 				</li>
 
@@ -87,12 +100,10 @@ const UserDashboard = () => {
 						}`}
 					>
 						<HiOutlineCog
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/dashboard/settings") ? "text-yellow-500" : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
 
-						<p className="hidden md:flex">Settings</p>
+						<p className="hidden lg:flex">Settings</p>
 					</Link>
 				</li>
 
@@ -105,7 +116,7 @@ const UserDashboard = () => {
 							title="Logout"
 							className=" hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem]"
 						/>
-						<p className="hidden md:flex text-center "> Logout</p>
+						<p className="hidden lg:flex text-center "> Logout</p>
 					</button>
 				</li>
 			</ul>

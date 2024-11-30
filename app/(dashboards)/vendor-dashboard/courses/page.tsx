@@ -1,20 +1,26 @@
 "use client";
-import React, { useState } from "react";
-import tiredicon from "@/public/image/tiredicon.png";
-import profilepic from "@/public/image/ceo.jpeg";
-import love from "@/public/image/loveicon.png";
-import share from "@/public/image/shareicon.png";
-import Image from "next/image";
-import { CoursesList } from "@/lib/_exportLinks";
-import Pagination from "@/app/_components/ui/Pagination";
-import { useSearchParams } from "next/navigation";
-import { usePagination } from "@/app/_hooks/usePagination";
+import React, { useEffect, useState } from "react";
 import SearchBar from "@/app/_components/ui/SearchBar";
 import { HiBookOpen } from "react-icons/hi2";
-import Courses from "@/app/_components/course/Courses";
+import Courses from "@/app/_components/course/VendorCourses";
+import { useAuth } from "@/app/_contexts/auth/AuthState";
+import { useJobCourse } from "@/app/_contexts/apis/ApiState";
 
 const Page = () => {
 	const [searchQuery, setSearchQuery] = useState("");
+	const { user } = useAuth();
+	const {
+		listedCourses: courses,
+		fetchListedCourses,
+		isLoading,
+	} = useJobCourse();
+
+	useEffect(() => {
+		// if (user?.goals === "List a course") {
+		fetchListedCourses(user?.id);
+		// fetchListedCourses(user?.moodle_user_id);
+		// }
+	}, [courses?.length]);
 
 	return (
 		<>
@@ -25,7 +31,7 @@ const Page = () => {
 				placeholder="Course title"
 				icon={<HiBookOpen />}
 			/>
-			<Courses searchQuery={searchQuery} />
+			<Courses searchQuery={searchQuery} link="vendor-dashboard/courses" />
 		</>
 	);
 };
