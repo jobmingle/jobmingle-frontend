@@ -10,6 +10,7 @@ import Button from "./Button";
 import Error from "./Error";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
 import Spinner from "@/app/_components/ui/Spinner";
+import ViewPassword from "./VIewPassword";
 
 interface FormData {
 	firstName: string;
@@ -23,6 +24,7 @@ interface FormData {
 export default function SignUpForm() {
 	const router = useRouter();
 	const [agreedToTerms, setAgreedToTerms] = useState(null);
+	const [Open, setOpen] = useState(false);
 
 	const { register, handleSubmit, watch, formState } = useForm<FormData>();
 	const { errors } = formState;
@@ -137,24 +139,34 @@ export default function SignUpForm() {
 					)}
 				</div>
 
-				<div>
+				<div className="relative">
 					<label className="text-sm py-1 montserrat tracking-wider font-medium ">
 						Password
 					</label>
 					<input
-						type="password"
+						type={Open ? "text" : "password"}
 						id="password"
 						className="input"
 						placeholder="Your password"
 						{...register("password", {
 							required: "This field is required!",
+							// pattern: {
+							// 	value:
+							// 		/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+							// 	message:
+							// 		"Password must be at least 8 characters long, and contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+							// },
 							pattern: {
-								value:
-									/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+								value: /^(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
 								message:
-									"Password must be at least 8 characters long, and contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+									"Password must be at least 8 characters long and contain at least one number",
 							},
 						})}
+					/>
+					<ViewPassword
+						Open={Open}
+						setOpen={setOpen}
+						styles={"right-2 top-6"}
 					/>
 					{errors?.password?.message && (
 						<Error>{errors.password.message}</Error>
@@ -166,7 +178,7 @@ export default function SignUpForm() {
 						Confirm Password
 					</label>
 					<input
-						type="password"
+						type={Open ? "text" : "password"}
 						id="password_confirmation"
 						className="input"
 						placeholder="Confirm password"
@@ -175,11 +187,12 @@ export default function SignUpForm() {
 							validate: (value) =>
 								value === password || "Password do not match!",
 							minLength: {
-								value: 6,
-								message: "Password should be a minimum of six characters",
+								value: 8,
+								message: "Password should be a minimum of eight characters",
 							},
 						})}
 					/>
+
 					{errors?.password_confirmation?.message && (
 						<Error>{errors.password_confirmation.message}</Error>
 					)}
@@ -195,7 +208,7 @@ export default function SignUpForm() {
 						/>
 						<label className=" montserrat text-xs font-medium">
 							i have read and agreed to the{" "}
-							<Link className="text-yellow-500" href="/terms">
+							<Link className="text-yellow-500" target="_blank" href="/terms">
 								Terms and Conditions{" "}
 							</Link>{" "}
 							of Jobmingle.

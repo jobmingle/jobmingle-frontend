@@ -16,13 +16,15 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Spinner from "../ui/Spinner";
 import toast from "react-hot-toast";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import { HiHeart, HiMiniHeart } from "react-icons/hi2";
+import { BsHeart } from "react-icons/bs";
+import { BiHeart } from "react-icons/bi";
 
 // const JobsPage = async ({ searchQuery }: any) => {
 function JobsPage({ searchQuery, link }: any) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
-	const { jobs, isLoading } = useJobCourse();
+	const { jobs, isLoading, handleShareJob } = useJobCourse();
 	const { user } = useAuth();
 	const { from, to } = usePagination();
 	// const jobs = localStorage?.getItem("jobs")
@@ -44,16 +46,9 @@ function JobsPage({ searchQuery, link }: any) {
 	// const Jobs = Array.isArray(searchedJobs) ? searchedJobs.slice(from, to) : [];
 
 	const handleApplyClick = () => {
-		// setShowPopup(true);
-		// const newParams = new URLSearchParams(searchParams);
-		// newParams.set("job", id);
-		// router.push(`/employer-dashboard/jobs/${id}`);
 		if (!user) {
 			toast("Please sign in to continue your job application!", { icon: "🔑" });
 		}
-	};
-	const handleClosePopup = () => {
-		setShowPopup(false);
 	};
 
 	if (!jobs.length || isLoading) {
@@ -73,10 +68,22 @@ function JobsPage({ searchQuery, link }: any) {
 				</div>
 			)}
 
+			<div className="text-sm md:text-base font-bold rounded-md border-l-4 border-t-2 border-yellow-600   p-1 my-8 w-[50%] md:w-[30%] text-center">
+				<div className="shadow shadow-yellow-500 rounded p-2">
+					<p>
+						{searchedJobs.length} Top {searchedJobs.length > 1 ? "jobs" : "job"}{" "}
+						for you!
+					</p>
+				</div>
+			</div>
+
 			<div className="box">
 				{Jobs.map((job: any) => (
-					<div key={job.id}>
-						<div className="card relative bg-white  shadow-lg transition transform hover:scale-105 hover:shadow-2xl">
+					<div
+						key={job.id}
+						className="rounded-3xl border-l-8 border-t-2- border-yellow-600  h-full"
+					>
+						<div className="card relative bg-white  shadow transition transform hover:scale-105 hover:shadow-2xl  shadow-yellow-500 p-2 md:p-3 rounded-md ">
 							<div className="head">
 								<div className="logo">
 									<Image
@@ -123,10 +130,13 @@ function JobsPage({ searchQuery, link }: any) {
 							</div>
 
 							<section className="flex flex-row justify-end gap-3 m-1 py-1 ">
-								<button className="w-5 h-5">
+								<button className="w-5 h-5  ">
 									<Image src={love} alt="loveicon" />
 								</button>
-								<button className="w-5 h-5">
+								<button
+									className="w-5 h-5 "
+									onClick={() => handleShareJob(job?.id)}
+								>
 									<Image src={share} alt="shareicon" />
 								</button>
 							</section>
@@ -135,29 +145,14 @@ function JobsPage({ searchQuery, link }: any) {
 								{/* <button className="btn" onClick={handleApplyClick}>
 									View Job
 									</button> */}
-								<button className="btn" onClick={() => handleApplyClick()}>
-									{/* <Link href={`/employer-dashboard/jobs/job/${job?.id}`}> */}
-									<Link href={`/${link}/${job.id}`}>More</Link>
-								</button>
+								<Link href={`/${link}/${job.id}`}>
+									<button className="btn" onClick={() => handleApplyClick()}>
+										{/* <Link href={`/employer-dashboard/jobs/job/${job?.id}`}> */}
+										More
+									</button>
+								</Link>
 							</div>
 						</div>
-
-						{showPopup && (
-							<>
-								<Overlay onClick={handleClosePopup} />
-								<PopupContainer>
-									<button onClick={handleClosePopup} className="close">
-										<IoClose />
-									</button>
-									<h2>Apply for {job?.jobTitle}</h2>
-									<p>Company: {job?.platform}</p>
-									{/* <p>Location: {job.location}</p>
-									<h2>Apply for :Senior Software Engineer</h2>
-									<p>Company: JobMingle</p>
-									<p>Location: Lagos, NG</p> */}
-								</PopupContainer>
-							</>
-						)}
 					</div>
 				))}
 			</div>

@@ -16,6 +16,7 @@ import {
 	USER_LOADED,
 	USER_UPDATED,
 	USERNAME_UPDATED,
+	USER_EMAIL_UPDATED,
 	USERIMAGE_UPDATED,
 	USERPASSWORD_UPDATED,
 	AUTH_ERROR,
@@ -34,10 +35,9 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 function AuthProvider({ children }) {
 	const initialState = {
-		token:
-			typeof window !== "undefined" ? sessionStorage.getItem("token") : null,
+		token: typeof window !== "undefined" ? localStorage.getItem("token") : null,
 		isAuthenticated:
-			typeof window !== "undefined" ? sessionStorage.getItem("token") : null,
+			typeof window !== "undefined" ? localStorage.getItem("token") : null,
 		resetOk: null,
 		isLoading: false,
 		// user:
@@ -61,7 +61,7 @@ function AuthProvider({ children }) {
 			dispatch({ type: LOADING });
 
 			try {
-				const token = sessionStorage.getItem("token");
+				const token = localStorage.getItem("token");
 				if (!token) throw new Error("No token found");
 
 				const res = await axios.get(`${BASE_URL}/me`, {
@@ -70,18 +70,65 @@ function AuthProvider({ children }) {
 				});
 
 				dispatch({ type: USER_LOADED, payload: res.data });
-				sessionStorage.setItem("user", JSON.stringify(res.data));
+				localStorage.setItem("user", JSON.stringify(res.data));
 
 				// console.log(res);
 			} catch (err) {
 				dispatch({ type: AUTH_ERROR });
-				sessionStorage.removeItem("token");
-				sessionStorage.removeItem("user");
+				localStorage.removeItem("token");
+				localStorage.removeItem("user");
 			}
 		}
 		if (token) fetchUser();
 		// eslint-disable-next-line
 	}, []);
+
+	/*
+	// USER PERSIST ACROSS TABS
+	useEffect(() => {
+		// Check if user info is in localStorage and update state
+		const userData = JSON.parse(localStorage.getItem("user"));
+		if (userData) {
+			dispatch({ type: "LOGIN_SUCCESS", payload: userData });
+		}
+
+		// Sync state across tabs using BroadcastChannel API
+		const channel = new BroadcastChannel("auth_channel");
+		channel.onmessage = (event) => {
+			if (event.data.type === "LOGIN_SUCCESS") {
+				dispatch({ type: "LOGIN_SUCCESS", payload: event.data.payload });
+			} else if (event.data.type === "LOGOUT") {
+				dispatch({ type: "LOGOUT" });
+			}
+		};
+
+		return () => {
+			channel.close();
+		};
+	}, []);
+
+	useEffect(() => {
+		// Persist user data in localStorage whenever it changes
+		const token = localStorage.getItem("toke");
+		if (token) {
+			if (user) {
+				localStorage.setItem("user", JSON.stringify(user));
+			} else {
+				localStorage.removeItem("user");
+			}
+		} else {
+			localStorage.removeItem("user");
+		}
+
+		// Notify other tabs about the state change
+		const channel = new BroadcastChannel("auth_channel");
+		if (user) {
+			channel.postMessage({ type: "LOGIN_SUCCESS", payload: user });
+		} else {
+			channel.postMessage({ type: "LOGOUT" });
+		}
+	}, [user]);
+	*/
 
 	// CHECK SESSION EXPIRATION
 	const checkSessionExpiration = () => {
@@ -96,7 +143,7 @@ function AuthProvider({ children }) {
 
 	// RESTORE SESSION ON APP LOAD
 	useEffect(() => {
-		const token = sessionStorage.getItem("token");
+		const token = localStorage.getItem("token");
 		const user = sessionStorage.getItem("user");
 		const expiresAt = sessionStorage.getItem("expiresAt");
 
@@ -150,7 +197,7 @@ function AuthProvider({ children }) {
 			dispatch({ type: LOADING });
 
 			try {
-				const token = sessionStorage.getItem("token");
+				const token = localStorage.getItem("token");
 				if (!token) throw new Error("No token found");
 
 				const res = await axios.get(`${BASE_URL}/me`, {
@@ -159,11 +206,11 @@ function AuthProvider({ children }) {
 				});
 
 				dispatch({ type: USER_LOADED, payload: res.data });
-				sessionStorage.setItem("user", JSON.stringify(res.data));
+				localStorage.setItem("user", JSON.stringify(res.data));
 			} catch (err) {
 				dispatch({ type: AUTH_ERROR });
-				sessionStorage.removeItem("token");
-				sessionStorage.removeItem("user");
+				localStorage.removeItem("token");
+				localStorage.removeItem("user");
 			}
 		}
 		if (initialState.token) fetchUser();
@@ -209,7 +256,7 @@ function AuthProvider({ children }) {
 
 			// console.log(res.data);
 			// console.log(res.data.data.user_id);
-			await router.push("/sign-up/confirm-email");
+			router.push("/sign-up/confirm-email");
 			toast.success(res?.data.message);
 		} catch (err) {
 			dispatch({
@@ -234,7 +281,7 @@ function AuthProvider({ children }) {
 			dispatch({ type: CONFIRMATION_SUCCESS });
 
 			toast.success(res?.data?.message);
-			await router.push("/sign-up/generating-profile"); //
+			router.push("/sign-up/generating-profile"); //
 		} catch (err) {
 			dispatch({
 				type: CONFIRMATION_FAIL,
@@ -284,7 +331,7 @@ function AuthProvider({ children }) {
 				...userData,
 				image: base64Image,
 			};
-			// console.log(formData);
+			console.log(formData);
 
 			const userId = sessionStorage.getItem("userId");
 			// console.log(userId);
@@ -298,6 +345,20 @@ function AuthProvider({ children }) {
 					},
 				}
 			);
+			localStorage.setItem("token", res?.data?.token);
+			localStorage.setItem("user", JSON.stringify(res?.data?.data));
+			Cookies.set("auth_token", res?.data.token, {
+				path: "/",
+				expires: 24 * 60 * 60,
+				secure: process.env.NODE_ENV === "production",
+				sameSite: "Strict",
+			});
+
+			// Store the expiration time
+			// const expirationTime = Date.now() + 60 * 1000; // 1 min
+			const expirationTime = Date.now() + 60 * 60 * 1000; // 1 hour
+			sessionStorage.setItem("expiresAt", expirationTime);
+
 			console.log(res);
 			console.log(res.data);
 			dispatch({ type: USER_UPDATED, payload: res?.data?.data });
@@ -364,6 +425,33 @@ function AuthProvider({ children }) {
 			});
 		}
 	}
+
+	//  UPDATE USER EMAIL
+	async function updateUserEmail(id, formData) {
+		dispatch({ type: LOADING });
+
+		try {
+			const res = await axios.put(
+				`${BASE_URL}/users/${id}/update-email`,
+				formData,
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			);
+
+			dispatch({ type: USER_EMAIL_UPDATED });
+			toast.success(res?.data?.message);
+			// console.log(res);
+			// console.log(res?.data);
+		} catch (err) {
+			dispatch({
+				type: UPDATE_ERROR,
+				payload: err?.response?.data.message || err.message,
+			});
+		}
+	}
 	//  UPDATE PROFILE IMAGE
 	async function updateProfileImage(userId, Image) {
 		dispatch({ type: LOADING });
@@ -414,10 +502,10 @@ function AuthProvider({ children }) {
 			// 	headers: { Authorization: `Bearer ${token}` },
 			// 	"Content-Type": "application/json",
 			// });
-			// sessionStorage.setItem("user", JSON.stringify(userRes?.data));
+			// localStorage.setItem("user", JSON.stringify(userRes?.data));
 
-			sessionStorage.setItem("token", res?.data?.token);
-			sessionStorage.setItem("user", JSON.stringify(res?.data?.data));
+			localStorage.setItem("token", res?.data?.token);
+			localStorage.setItem("user", JSON.stringify(res?.data?.data));
 			// document.cookie = `auth_token=${res?.data?.token}; path=/; secure; httponly; samesite=strict`;
 			Cookies.set("auth_token", res?.data.token, {
 				path: "/",
@@ -431,7 +519,7 @@ function AuthProvider({ children }) {
 			const expirationTime = Date.now() + 60 * 60 * 1000; // 1 hour
 			sessionStorage.setItem("expiresAt", expirationTime);
 
-			dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+			dispatch({ type: LOGIN_SUCCESS, payload: res.data.data });
 
 			// console.log(res);
 			// console.log(res?.data?.data);
@@ -480,7 +568,7 @@ function AuthProvider({ children }) {
 			dispatch({ type: RESET_SUCCESS });
 
 			toast.success("Password has been reset successfully.");
-			await router.push("/sign-in");
+			router.push("/sign-in");
 		} catch (err) {
 			const errorMessage =
 				err.response?.data?.message || "Failed to reset password.";
@@ -489,7 +577,7 @@ function AuthProvider({ children }) {
 	}
 
 	useEffect(() => {
-		const token = sessionStorage.getItem("token");
+		const token = localStorage.getItem("token");
 		if (!token) {
 			Cookies.remove("auth_token", { path: "/" });
 		}
@@ -498,7 +586,7 @@ function AuthProvider({ children }) {
 	// LOGOUT USER
 	async function logout() {
 		try {
-			const token = sessionStorage.getItem("token");
+			const token = localStorage.getItem("token");
 			if (!token) throw new Error("No token found");
 
 			const res = await axios.post(
@@ -512,9 +600,12 @@ function AuthProvider({ children }) {
 			);
 			// console.log(res);
 			dispatch({ type: "LOGOUT" });
-			sessionStorage.removeItem("token");
-			sessionStorage.removeItem("user");
+			localStorage.removeItem("token");
+			localStorage.removeItem("user");
 			sessionStorage.removeItem("expiresAt");
+			sessionStorage.removeItem("userId");
+
+			localStorage.removeItem("listedJobs");
 			router.push("/sign-in");
 			Cookies.remove("auth_token", { path: "/" });
 			toast("Successfully logged out!", { icon: "🔏" });
@@ -543,6 +634,7 @@ function AuthProvider({ children }) {
 				updatePassword,
 				updateUserName,
 				updateProfileImage,
+				updateUserEmail,
 				login,
 				// fetchUser,
 

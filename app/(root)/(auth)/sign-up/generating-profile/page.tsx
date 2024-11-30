@@ -5,9 +5,12 @@ import { useAuth } from "@/app/_contexts/auth/AuthState";
 import toast from "react-hot-toast";
 import Spinner from "@/app/_components/ui/Spinner";
 import { useRouter } from "next/navigation";
+import { FiEdit2 } from "react-icons/fi";
+import Image from "next/image";
 
 export default function PreferencesForm() {
 	const [step, setStep] = useState(0);
+	const [imagePreview, setImagePreview] = useState<string | null>(null);
 	const router = useRouter();
 	const {
 		error,
@@ -37,6 +40,10 @@ export default function PreferencesForm() {
 			toast.error(`Error: ${error}`);
 			clearErrors();
 		}
+		if (error === "The image size must not exceed 1 MB.") {
+			toast.error(`File upload error: ${error}`);
+			clearErrors();
+		}
 
 		if (user) {
 			if (user.goals === "List a course") router.push("/vendor-dashboard");
@@ -55,6 +62,9 @@ export default function PreferencesForm() {
 		setSelectedPreferences((prev) => {
 			if (category === "goals" || category === "image") {
 				// Only one selectable option for 'goals' and 'image'
+				if (category === "image") {
+					setImagePreview(URL.createObjectURL(option));
+				}
 				return {
 					...prev,
 					[category]: option,
@@ -96,7 +106,7 @@ export default function PreferencesForm() {
 			interests: selectedPreferences.interests.join(", "), // Converts array to comma-separated string
 		};
 		updateUser(formattedPreferences);
-		// console.log(formattedPreferences);
+		console.log(formattedPreferences);
 	}
 
 	return (
@@ -148,17 +158,40 @@ export default function PreferencesForm() {
 			)}
 
 			{step === 2 && (
-				<div>
-					<h2 className="text-xl text-stone-800 text-center font-bold mb-5">
-						Upload your profile image
-					</h2>
-					<div className="flex flex-col space-y-6 justify-center">
+				<div className="flex  md:flex-col items-center gap-5">
+					{/* Profile Picture Container */}
+					<div className="relative w-40 h-30 ">
+						<div className="rounded-[50%]- rounded-full overflow-hidden border border-gray-300">
+							{imagePreview ? (
+								<Image
+									src={imagePreview}
+									alt="Profile Picture"
+									width={160}
+									height={160}
+									className="object-cover"
+								/>
+							) : (
+								<div className="bg-gray-200 w-full h-full pl-6 flex items-center justify-center text-gray-500">
+									Upload Image
+								</div>
+							)}
+						</div>
+
+						{/* Edit Icon */}
+						<label
+							htmlFor="profile-picture-input"
+							className="absolute bottom-0 left-2 bg-yellow-600 p-2 rounded-full cursor-pointer"
+						>
+							<FiEdit2 className="text-white" />
+						</label>
 						<input
+							id="profile-picture-input"
 							type="file"
-							className={`w-full list-none py-5 md:py-10 cursor-pointer px-5 border-black-100 border-solid border-[1px] sora rounded-[10px] capitalize file:py-[0.8rem] file:px-[1.2rem] file:rounded-sm file:mr-[1.2rem] file:font-bold file:border-none file:cursor-pointer file:bg-yellow-600 file:hover:bg-yellow-500 file:hover:scale-110 file:transition file:ease-in-out file:delay-150 file:hover:-translate-y-1  file:duration-300  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 `}
+							accept="image/*"
 							onChange={(e) =>
 								handleSelected("image", e.target.files ? e.target.files[0] : "")
 							}
+							className="hidden"
 						/>
 					</div>
 				</div>
@@ -174,15 +207,23 @@ export default function PreferencesForm() {
 					</button>
 				)}
 				<button
-					className="w-[100px] bg-yellow-400 hover:bg-yellow-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 rounded-sm px-5 py-2"
+					className="flex text-center items-center tracking-wider h-[3rem] w-[100px] bg-yellow-400 hover:bg-yellow-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 rounded-sm px-5 py-2"
 					onClick={
 						step < Object.keys(userPreferences).length - 1
 							? handleNext
 							: handleSubmit
 					}
 				>
-					{step < Object.keys(userPreferences).length - 1 ? "Next" : "Finish"}
-					<span>{isLoading && <Spinner />}</span>
+					{!isLoading ? (
+						`${
+							step < Object.keys(userPreferences).length - 1 ? "Next" : "FInish"
+						}`
+					) : (
+						<span>
+							<Spinner />
+						</span>
+					)}
+					{/* // : `${isLoading ? "Loading..." : "Finish"}` */}
 				</button>
 			</div>
 		</div>

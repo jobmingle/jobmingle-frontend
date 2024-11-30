@@ -34,7 +34,7 @@ export const Content = styled.div`
 			flex-direction: column;
 			border: 1px solid grey;
 			width: 100%;
-			height: auto;
+			height: 100%;
 			border-radius: 1rem;
 			padding: 1rem;
 

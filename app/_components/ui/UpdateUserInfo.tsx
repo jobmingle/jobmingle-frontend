@@ -15,13 +15,14 @@ import Spinner from "@/app/_components/ui/Spinner";
 interface FormData {
 	firstName: string;
 	lastName: string;
+	phoneNumber: number;
 }
 
-export default function UpdateUserName() {
+export default function UpdateUserInfo() {
 	const { register, handleSubmit, watch, formState, reset } =
 		useForm<FormData>();
 	const { errors } = formState;
-	const { error, clearErrors, updateUserName, isLoading, user } = useAuth();
+	const { error, clearErrors, updateUserInfo, isLoading, user } = useAuth();
 
 	useEffect(() => {
 		if (error === "Network Error") {
@@ -34,7 +35,7 @@ export default function UpdateUserName() {
 
 	function onSubmit(data: FormData) {
 		// console.log(data);
-		updateUserName(user?.id, data);
+		updateUserInfo(user?.id, data);
 	}
 
 	function onError(errors: any) {
@@ -84,6 +85,24 @@ export default function UpdateUserName() {
 					/>
 					{errors?.lastName?.message && (
 						<Error>{errors.lastName.message}</Error>
+					)}
+				</div>
+				<div>
+					<label className="text-sm montserrat  tracking-wider font-medium">
+						Phone
+					</label>
+					<input
+						type="text"
+						id="phoneNumber"
+						className={style}
+						defaultValue={user?.phoneNumber}
+						placeholder="phoneNumber"
+						{...register("phoneNumber", {
+							required: false,
+						})}
+					/>
+					{errors?.phoneNumber?.message && (
+						<Error>{errors.phoneNumber.message}</Error>
 					)}
 				</div>
 				<Button className="">

@@ -41,9 +41,7 @@ const SideNav = () => {
 						}`}
 					>
 						<HiHome
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/admin-dashboard") ? "text-yellow-500 " : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
 						<p className="hidden md:flex"> Home</p>
 					</Link>
@@ -58,9 +56,7 @@ const SideNav = () => {
 						}`}
 					>
 						<HiChartBar
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem]  ${
-								isActive("/admin-dashboard/analytics") ? "text-yellow-500" : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem]  text-inherit`}
 						/>
 						<p className="hidden md:flex"> Analytics</p>
 					</Link>
@@ -75,9 +71,7 @@ const SideNav = () => {
 						}`}
 					>
 						<HiMiniBriefcase
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem]  ${
-								isActive("/admin-dashboard/jobs") ? "text-yellow-500 " : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem]  text-inherit`}
 						/>
 						<p className="hidden md:flex"> Jobs</p>
 					</Link>
@@ -92,9 +86,7 @@ const SideNav = () => {
 						}`}
 					>
 						<HiUserGroup
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem]  ${
-								isActive("/admin-dashboard/users") ? "text-yellow-500" : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem]  text-inherit`}
 						/>
 						<p className="hidden md:flex"> Users</p>
 					</Link>
@@ -109,9 +101,7 @@ const SideNav = () => {
 						}`}
 					>
 						<HiOutlineCog
-							className={`hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem] ${
-								isActive("/admin-dashboard/settings") ? "text-yellow-500" : ""
-							}`}
+							className={`hover:text-yellow-500 text-stone-950- w-[1.8rem] h-[1.8rem] text-inherit`}
 						/>
 
 						<p className="hidden md:flex">Settings</p>
@@ -120,11 +110,11 @@ const SideNav = () => {
 				<li className=" lg:w-full">
 					<button
 						onClick={handleLogout}
-						className=" flex items-center gap-2 transition-all 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded-l px-8 md:px-4"
+						className=" flex items-center gap-2 transition-all hover:text-yellow-500 0.3s text-sm lg:text-lg py-3 hover:bg-gray-50 rounded px-8 md:px-4"
 					>
 						<HiMiniArrowLeftStartOnRectangle
 							title="Logout"
-							className=" hover:text-yellow-500 text-stone-950 w-[1.8rem] h-[1.8rem]"
+							className="   w-[1.8rem] h-[1.8rem] text-inherit"
 						/>
 						<p className="hidden md:flex text-center "> Logout</p>
 					</button>

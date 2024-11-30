@@ -7,29 +7,60 @@ import love from "@/public/image/loveicon.png";
 import share from "@/public/image/shareicon.png";
 import Link from "next/link";
 import Button from "@/app/_components/ui/Button";
-import { HiArrowLeft, HiMiniArrowTopRightOnSquare } from "react-icons/hi2";
+import {
+	HiArrowLeft,
+	HiMiniArrowTopRightOnSquare,
+	HiPencil,
+} from "react-icons/hi2";
 import { useRouter } from "next/navigation";
 import Spinner from "../ui/Spinner";
+import { useAuth } from "@/app/_contexts/auth/AuthState";
+import { HiTrash } from "react-icons/hi";
+import { useState } from "react";
+import EditJobForm from "../ui/EditJobForm";
 
 interface JobPageProps {
 	params: { id: string };
 }
 
+interface Job {
+	company_name: string;
+	company_site: string;
+	job_role: string;
+	job_type: string;
+	salary: number;
+	id: number;
+	job_description: string;
+	job_responsibilities: string;
+	job_email: string;
+	job_link: string;
+}
 export default function JobDetails(params: JobPageProps) {
-	const { jobs } = useJobCourse();
+	const [showForm, setShowForm] = useState(false);
+
+	const { jobs, deleteJob, isLoading, handleShareJob } = useJobCourse();
+	const { user } = useAuth();
 	const router = useRouter();
 
-	const job = jobs?.find((job: any) => job.id === Number(params.params.id));
+	const job: ReturnType<typeof jobs.find> = jobs?.find(
+		(job: Job) => job.id === Number(params.params.id)
+	);
+	const isEmployer = user?.goals === "Post a job";
+	const isStudent = user?.goals === "Apply for a job / Take a course";
 
-	if (!job) {
-		// return <h1>Job not found!</h1>;
-		return (
-			<div>
-				<Spinner />{" "}
-			</div>
-		);
+	if (isLoading) {
+		return <Spinner />;
 	}
 
+	if (!job && !isLoading) {
+		return <h1>Job not found!</h1>;
+	}
+
+	function handleDeleteJob(jobId: any) {
+		window.alert("Are you sure you want to delete this job?");
+		console.log(jobId);
+		deleteJob(jobId);
+	}
 	function handleBack() {
 		router.back();
 	}
@@ -108,37 +139,64 @@ export default function JobDetails(params: JobPageProps) {
 							<button className="w-5 h-5">
 								<Image src={love} alt="loveicon" />
 							</button>
-							<button className="w-5 h-5">
+							<button
+								className="w-5 h-5"
+								onClick={() => handleShareJob(job?.id)}
+							>
 								<Image src={share} alt="shareicon" />
 							</button>
 						</section>
-						<div>
-							<button
-								className="absolute- flex w-[8rem] justify-center py-3 rounded border border-gray-900 items-center hover:bg-yellow-500"
-								onClick={handleBack}
-							>
-								<span className="text-2xl">
-									<HiArrowLeft />
-								</span>
-								<span>Go back</span>
-							</button>
-						</div>
-
-						<div className=" flex items-center px-[.5rem] justify-center w-[100%]  "></div>
-
-						<div className="lg:m-auto lg:w-[50%] px-10 ">
-							<Link
-								href={`mailto:${job.job_email}`}
-								className="text-yellow-500"
-							>
-								<Button type="login">
-									Apply
-									<span className="text-xl">
-										<HiMiniArrowTopRightOnSquare />
+						<div className=" flex justify-between">
+							<div>
+								<button
+									className="absolute- flex w-[8rem] justify-center py-3 rounded border border-gray-900 items-center hover:bg-yellow-500"
+									onClick={handleBack}
+								>
+									<span className="text-2xl">
+										<HiArrowLeft />
 									</span>
-								</Button>
-							</Link>
+									<span>Go back</span>
+								</button>
+							</div>
+							<div className=" flex items-center px-[.5rem] justify-center w-[100%]  "></div>
+
+							{isEmployer && (
+								<div className="flex gap-3 border- px-2 items-center">
+									{/* <Button type="login"> */}
+									<button
+										className="text-xl hover:text-yellow-500 transition-all duration-700 border p-1 rounded"
+										onClick={() => setShowForm((show) => !show)}
+									>
+										<HiPencil />
+									</button>
+									<button
+										className="text-xl hover:text-yellow-500 transition-all duration-700 border p-1 rounded"
+										onClick={() => handleDeleteJob(job.id)}
+									>
+										<HiTrash />
+									</button>
+									{/* </Button>  */}
+								</div>
+							)}
 						</div>
+
+						{isStudent && (
+							<div className="lg:m-auto lg:w-[50%] px-10 ">
+								<Link
+									href={`mailto:${job.job_email}`}
+									className="text-yellow-500"
+								>
+									<Button type="login">
+										Apply
+										<span className="text-xl">
+											<HiMiniArrowTopRightOnSquare />
+										</span>
+									</Button>
+								</Link>
+							</div>
+						)}
+
+						{showForm && <EditJobForm job={job} />}
 					</div>
 				</div>
 			</div>

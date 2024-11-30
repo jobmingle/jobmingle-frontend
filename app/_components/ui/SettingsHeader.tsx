@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import tiredicon from "@/public/image/tiredicon.png";
+import defaultProfilePic from "@/public/image/default-user.jpg";
 
 import Modal from "@/app/_components/ui/Modal";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
@@ -31,19 +31,19 @@ export default function SettingsHeader() {
 	}, []);
 
 	return (
-		<div className="w-full lg:w-[50%] border border-gray-800 rounded">
+		<div className="w-full lg:w-[50%] ">
 			{/* Edit profile */}
 			<div className="flex  relative">
 				{Active ? <Modal setActive={setActive} /> : null}
-				<div className="sm:px-2 w-full max-h-[100vh] overflow-auto">
+				<div className="sm:px-2 w-full max-h-[100vh] overflow-auto shadow shadow-gray-500 rounded">
 					<section className="m-auto max-w-[22rem] flex flex-col justify-center py-2 sm:px-2 my-4 ">
-						<main className=" flex justify-center flex-row items-center gap-3">
-							<div className="flex justify-center border-2 border-yellow-600 items-center w-16 h-16 rounded-full overflow-hidden">
+						<main className=" flex justify-center flex-row items-center gap-4 ">
+							<div className="flex justify-center border-2 border-yellow-600 items-center w-16 h-16 rounded-full overflow-hidden ">
 								<div className="w-14 h-14 rounded-full overflow-hidden">
 									<Image
 										src={
-											`https:www.rosybrown-spider-442940.hostingersite.com/storage/${user?.image}` ||
-											tiredicon
+											`https://rosybrown-spider-442940.hostingersite.com/${user?.image}` ||
+											defaultProfilePic
 										}
 										alt="User profile pic"
 										width={300}
@@ -52,7 +52,7 @@ export default function SettingsHeader() {
 									/>
 								</div>
 							</div>
-							<div className="flex-grow text-center">
+							<div className="flex-grow text-center shadow shadow-gray-500 rounded p-2">
 								{" "}
 								<h3 className="font-bold text-xl montserrat">
 									<span>{user?.firstName} </span>

@@ -26,7 +26,7 @@ const Page = () => {
 				placeholder="Course title"
 				icon={<HiBookOpen />}
 			/>
-			<Courses searchQuery={searchQuery} />
+			<Courses searchQuery={searchQuery} link="dashboard/courses" />
 		</>
 	);
 };

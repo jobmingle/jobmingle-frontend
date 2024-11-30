@@ -1,4 +1,5 @@
 import {
+	LISTED_JOBS_LOADED,
 	JOBS_LOADED,
 	JOB_LOADED,
 	JOB_CREATED,
@@ -13,15 +14,36 @@ import {
 	COURSE_ERROR,
 	CLEAR_ERRORS,
 	LOADING,
+	RESET_LISTED_ITEMS,
+	LISTED_COURSES_LOADED,
+	PAYMENT_SUCCESS,
+	PAYMENT_FAILED,
 } from "@/app/_contexts/types";
 
 export default function apiReducer(state, action) {
 	switch (action.type) {
+		case PAYMENT_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+			};
 		case JOBS_LOADED:
 			return {
 				...state,
 				jobs: action.payload,
 				// jobs: JSON.parse(localStorage.getItem("jobs")),
+				isLoading: false,
+			};
+		case LISTED_JOBS_LOADED:
+			return {
+				...state,
+				listedJobs: action.payload,
+				isLoading: false,
+			};
+		case LISTED_COURSES_LOADED:
+			return {
+				...state,
+				listedCourses: action.payload,
 				isLoading: false,
 			};
 		case JOB_LOADED:
@@ -54,7 +76,7 @@ export default function apiReducer(state, action) {
 			return {
 				...state,
 				jobs: state.jobs.map((job) =>
-					job._id === action.payload._id ? action.payload : job
+					job.id === action.payload.id ? action.payload : job
 				),
 				isLoading: false,
 			};
@@ -62,7 +84,10 @@ export default function apiReducer(state, action) {
 		case JOB_DELETED:
 			return {
 				...state,
-				jobs: state.jobs?.filter((job) => job._id !== action.payload),
+				jobs: state.jobs?.filter((job) => job.id !== action.payload),
+				listedJobs: state.listedJobs?.filter(
+					(job) => job.id !== action.payload
+				),
 				isLoading: false,
 			};
 
@@ -71,7 +96,15 @@ export default function apiReducer(state, action) {
 				...state,
 				isLoading: true,
 			};
+		case RESET_LISTED_ITEMS:
+			return {
+				...state,
+				listedJobs: [],
+				listedCourses: [],
+			};
 		case JOB_ERROR:
+		case COURSE_ERROR:
+		case PAYMENT_FAILED:
 			return {
 				...state,
 				error: action.payload,

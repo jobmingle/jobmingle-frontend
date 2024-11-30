@@ -31,7 +31,7 @@ export const Content = styled.div`
 			border: 1px solid grey;
 			width: 100%;
 			/* width: 18rem; */
-			height: auto;
+			height: 100%;
 			border-radius: 1rem;
 			padding: 1rem;
 			/* align-items: center; */
