@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiEdit2 } from "react-icons/fi";
 import axios from "axios";
 import { useAuth } from "@/app/_contexts/auth/AuthState";
+import toast from "react-hot-toast";
 
 const UpdateProfileImage: React.FC = () => {
 	const [imagePreview, setImagePreview] = useState<string | null>(null); // Preview URL
@@ -29,6 +30,14 @@ const UpdateProfileImage: React.FC = () => {
 		// console.log(selectedFile);
 		updateProfileImage(user?.id, selectedFile);
 	};
+
+	useEffect(() => {
+		if (error === "The image size must not exceed 1 MB.") {
+			toast.error(`${error}: Please upload a smaller image size!`);
+			clearErrors();
+		}
+	}, [error]);
+
 	return (
 		<div className="flex  md:flex-col items-center gap-5">
 			{/* Profile Picture Container */}

@@ -399,13 +399,13 @@ function AuthProvider({ children }) {
 		}
 	}
 
-	//  UPDATE USER NAME
-	async function updateUserName(id, formData) {
+	//  UPDATE USER INFO
+	async function updateUserInfo(id, formData) {
 		dispatch({ type: LOADING });
 
 		try {
 			const res = await axios.put(
-				`${BASE_URL}/users/${id}/update-name`,
+				`${BASE_URL}/users/${id}/update-info`,
 				formData,
 				{
 					headers: {
@@ -423,6 +423,7 @@ function AuthProvider({ children }) {
 				type: UPDATE_ERROR,
 				payload: err?.response?.data.message || err.message,
 			});
+			throw Error(err.response?.data.message);
 		}
 	}
 
@@ -481,6 +482,7 @@ function AuthProvider({ children }) {
 				type: UPDATE_ERROR,
 				payload: err?.response?.data.message || err.message,
 			});
+			throw Error(err.response?.data.message);
 		}
 	}
 
@@ -632,7 +634,7 @@ function AuthProvider({ children }) {
 				verify,
 				updateUser,
 				updatePassword,
-				updateUserName,
+				updateUserInfo,
 				updateProfileImage,
 				updateUserEmail,
 				login,

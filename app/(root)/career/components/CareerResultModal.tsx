@@ -28,22 +28,24 @@ const CareerResultModal: React.FC<modalprops> = ({
 						className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
 						onClick={closeModal}
 					></div>
-					<div className="bg-white rounded-lg p-4 md:p-8 z-50 w-[90%] max-w-2xl max-h-[90vh] overflow-auto shadow-lg sora">
-						<h2 className="text-xl md:text-2xl font-bold mb-4">
+					<div className="bg-white rounded-lg p-4 md:p-8 z-50 w-[90%] max-w-2xl max-h-[90vh] overflow-auto shadow-lg sora space-y-5">
+						<h2 className="text-xl md:text-2xl font-bold ">
 							Hello Jobmingler,{" "}
 						</h2>
 						<p>
 							We&#39;ve analyzed your answers and scored them against our course
 							criteria. <br />
 							Our results show that this course is an exceptional match for you,
-							with a high score indicating strong potential for success. <br />
+							with a high score indicating strong potential for success.
+						</p>
+						<p>
 							Click the link below to learn more about the course and get
 							started immediately!!!.
 						</p>
 						{/* {}(`Top category/categories:\n${topCategoryString}`); */}
 						{/* {answers} */}
-						<div className="mt-4 text-sm md:text-base flex gap-2">
-							for further questions,{" "}
+						<div className=" text-sm md:text-base flex gap-2">
+							For further questions,{" "}
 							<p>
 								email us here:{" "}
 								<a
@@ -73,7 +75,7 @@ const CareerResultModal: React.FC<modalprops> = ({
 						/>
 
 						{/*  */}
-						<div className="mt-4 flex justify-center">
+						<div className=" flex justify-center">
 							<Button
 								onClick={closeModal}
 								className="w-[100px] rounded-lg text-white border-none bg-[#f5cb1a]"

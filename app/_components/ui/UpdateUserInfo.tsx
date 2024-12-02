@@ -30,6 +30,14 @@ export default function UpdateUserInfo() {
 			clearErrors();
 		}
 
+		if (
+			error ===
+			"The phone number field must not be greater than 15 characters. (and 1 more error)"
+		) {
+			toast.error(`Invalid number format: Please enter a valid phone number!`);
+			clearErrors();
+		}
+
 		// eslint-disable-next-line
 	}, [error]);
 

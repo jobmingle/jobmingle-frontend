@@ -5,8 +5,8 @@ import jwt from "jsonwebtoken";
 export function middleware(request: NextRequest) {
 	const token = request.cookies.get("auth_token")?.value;
 	const deCodedToken = jwt.decode(String(token));
-	console.log(token);
-	console.log(deCodedToken);
+	// console.log(token);
+	// console.log(deCodedToken);
 
 	if (!token) {
 		return NextResponse.redirect(new URL("/sign-in", request.url));

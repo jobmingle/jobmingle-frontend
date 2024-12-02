@@ -9,6 +9,8 @@ import MyApp from "@/app/_app";
 
 import "./_styles/globals.css";
 import "../app/_styles/globals.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import ScrollToTopButton from "./_components/ui/ScrollToTop";
 import { Suspense } from "react";
 import Spinner from "./_components/ui/Spinner";

@@ -6,6 +6,7 @@ import Head from "next/head";
 import { useState } from "react";
 import bg from "@/public/image/hello.png";
 import Button from "../atoms/Button";
+import { useRouter } from "next/navigation";
 
 type Props = {
 	title: string;
@@ -14,12 +15,14 @@ type Props = {
 	aostime: string;
 	n: string;
 	hasMoreInfo?: boolean;
+	isClarityTool?: boolean;
 	onSeeMoreClick?: () => void;
 };
 
 function HowItWorks() {
 	const [isRecruitmentModalOpen, setIsRecruitmentModalOpen] = useState(false);
 	const [isCvModalOpen, setIsCvModalOpen] = useState(false);
+	const router = useRouter();
 
 	const handleRecruitmentSeeMoreClick = () => {
 		setIsRecruitmentModalOpen(true);
@@ -36,6 +39,10 @@ function HowItWorks() {
 	const closeCvModal = () => {
 		setIsCvModalOpen(false);
 	};
+
+	function handleCareerRouter() {
+		router.push("/career");
+	}
 
 	return (
 		<div
@@ -116,6 +123,16 @@ function HowItWorks() {
             By creating a personalized CV and portfolio that meet your needs and help you stand out in the job market."
 						hasMoreInfo={true}
 						onSeeMoreClick={handleCvSeeMoreClick}
+					/>
+					<ServiceCard
+						title="CAREER-CLARITY TOOL"
+						aostime="3000"
+						aos="zoom-in"
+						n="6"
+						description="Feeling uncertain about your career path or the skill to learn for a better income? Take our free 12 career-clarity questions today and discover the perfect skill that suits you. Upon completion, you'll receive instant feedback recommending the ideal course for you. Even if it's not on Jobmingle, we'll guide you to alternative platforms."
+						hasMoreInfo={true}
+						isClarityTool={true}
+						onSeeMoreClick={handleCareerRouter}
 					/>
 
 					{/* video card */}
@@ -315,13 +332,14 @@ function ServiceCard({
 	aostime,
 	n,
 	hasMoreInfo,
+	isClarityTool,
 	onSeeMoreClick,
 }: Props) {
 	return (
 		<div
 			data-aos={aos}
 			data-aos-duration={aostime}
-			className="shadow-lg max-md:mt-3 z-10 flex flex-col h-[550px] max-md:h-fit md:h-fit max-md:w-full w-[350px] text-slate-400 hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:shadow-lg max-md:hover:ml-[5px] max-md:p-[9px] group border-animate service-card"
+			className="shadow-lg max-md:mt-3 z-10 flex flex-col h-[550px] max-md:h-fit md:h-fit max-md:w-full lg:w-[350px] text-slate-400 hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:shadow-lg max-md:hover:ml-[5px] max-md:p-[9px] group border-animate service-card aspect-ratio "
 		>
 			<div className="relative  z-20 flex-shrink-0 w-12 h-12 rounded-full bg-[#FFBE0B] items-center justify-center flex text-center my-5">
 				<p className="text-2xl font-bold text-center text-black">{n}</p>
@@ -336,23 +354,27 @@ function ServiceCard({
 				<div className="mt-auto flex justify-center mb-5">
 					<Button
 						onClick={onSeeMoreClick}
-						className="w-[150px] mt-3 max-md:w-[150px] rounded-lg text-[12px] text-black border-white border-solid  bg-[#f5cb1a]"
+						className="w-[250px] mt-3 max-md:w-[250px] rounded-lg text-[12px] text-black border-white border-solid  bg-[#f5cb1a]"
 					>
-						<span className="mr-2">See More</span>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							className="h-5 w-5"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth={2}
-								d="M19 9l-7 7-7-7"
-							/>
-						</svg>
+						<span className="mr-2">
+							{isClarityTool ? "Get Clarity Here!" : " See More"}
+						</span>
+						{!isClarityTool && (
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								className="h-5 w-5"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M19 9l-7 7-7-7"
+								/>
+							</svg>
+						)}
 					</Button>
 				</div>
 			)}

@@ -78,18 +78,15 @@ const AppHeader = () => {
 
 				<ul className="inline-flex items-end gap-8 lg:gap-16 max-md:hidden">
 					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
-						<Link href="/career">Career</Link>
+						<Link href="/about" onClick={toggleMenu}>
+							About Us
+						</Link>
 					</li>
 					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
 						<Link href="/courses">Courses</Link>
 					</li>
 					<li className="text-sm lg:text-lg font-medium leading-6 hover:text-[#FFBE0B]">
 						<Link href="/jobs">Jobs</Link>
-					</li>
-					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
-						<Link href="/about" onClick={toggleMenu}>
-							About Us
-						</Link>
 					</li>
 
 					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">

@@ -121,7 +121,7 @@ const CoursesPage = ({ searchQuery, link }: any) => {
 											</button>
 										</section>
 										<section className=" border-solid border-x-black-100 py-1">
-											<Link href={`/${link}/${course.id || course.id}`}>
+											<Link href={`/${link}/${course.id || course.course_id}`}>
 												<button
 													className="border w-full bg-white rounded-md font-bold  text-black hover:bg-yellow-500 hover:text-white py-1.5 capitalize transition-all duration-1000"
 													onClick={handleApplyClick}

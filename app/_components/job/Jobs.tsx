@@ -34,7 +34,7 @@ function JobsPage({ searchQuery, link }: any) {
 
 	// console.log(jobs);
 	const searchedJobs =
-		searchQuery.length > 0
+		searchQuery?.length > 0
 			? jobs?.filter((job: any) =>
 					`${job.job_type} ${job.job_role} ${job.job_description} `
 						.toLowerCase()

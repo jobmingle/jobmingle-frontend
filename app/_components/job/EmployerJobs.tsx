@@ -26,7 +26,7 @@ function JobsPage({ searchQuery, link }: any) {
 	const { user } = useAuth();
 	const { from, to } = usePagination();
 
-	console.log(listedJobs);
+	// console.log(listedJobs);
 	const searchedJobs =
 		searchQuery.length > 0
 			? listedJobs?.filter((job: any) =>
