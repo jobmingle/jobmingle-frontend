@@ -71,7 +71,7 @@ function HowItWorks() {
 				OUR SERVICES
 			</h3>
 			<div className="h-full my-[1%] max-md:h-fit mt-[5px] md:mt-[10px]">
-				<div className="flex flex-wrap justify-center items-center  gap-5">
+				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center items-center  gap-5">
 					<ServiceCard
 						title="RE-SKILLING"
 						aostime="3000"
@@ -339,7 +339,7 @@ function ServiceCard({
 		<div
 			data-aos={aos}
 			data-aos-duration={aostime}
-			className="shadow-lg max-md:mt-3 z-10 flex flex-col h-[550px] max-md:h-fit md:h-fit max-md:w-full lg:w-[350px] text-slate-400 hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:shadow-lg max-md:hover:ml-[5px] max-md:p-[9px] group border-animate service-card aspect-ratio "
+			className="shadow-lg max-md:mt-3 z-10 flex flex-col h-[550px] max-md:h-fit md:h-fit max-md:w-full lg:w-[350px]- text-slate-400 hover:text-[#27272a] rounded-2xl border-2 border-blue-100 pl-5 pt-2 transition duration-500 hover:shadow-lg max-md:hover:ml-[5px] max-md:p-[9px] group border-animate service-card aspect-ratio "
 		>
 			<div className="relative  z-20 flex-shrink-0 w-12 h-12 rounded-full bg-[#FFBE0B] items-center justify-center flex text-center my-5">
 				<p className="text-2xl font-bold text-center text-black">{n}</p>

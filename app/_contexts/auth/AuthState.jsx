@@ -331,7 +331,7 @@ function AuthProvider({ children }) {
 				...userData,
 				image: base64Image,
 			};
-			console.log(formData);
+			// console.log(formData);
 
 			const userId = sessionStorage.getItem("userId");
 			// console.log(userId);

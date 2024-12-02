@@ -73,9 +73,6 @@ const Carousel = () => {
 			<div className=" slider-container">
 				<div className="flex flex-col justify-center items-center py-4 ">
 					<h2 className=" text-2xl lg:text-3xl font-bold">FIND REMOTE JOBS</h2>
-					<p className="sora text-center">
-						Find flexible and high-paying remote jobs around you!
-					</p>
 				</div>
 				<div className="w-full mt-5 lg:bg-stone-600-">
 					<div className="w-full  lg:w-[85%] m-auto ">
