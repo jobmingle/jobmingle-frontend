@@ -10,21 +10,24 @@ import Testimonials from "@/app/_components/ui/Testimonials";
 import Services from "@/app/_components/ui/Services";
 import FAQSection from "../_components/ui/FAQSection";
 import Head from "next/head";
+import JobCarousel from "../_components/ui/JobCarousel";
+import CourseCarousel from "../_components/ui/CourseCarousel";
 
 //
 export default function Home() {
-   return (
-      <main className="md:px-8  md:py-8 ">
-        
-         <Hero />
-         <WhyChooseUs />
-         <Steps />
-         <PartnersSponsors />
-         <Services />
-         <Testimonials />
-         <AboutSlider />
-         <FAQSection />
-         <Contact />
-      </main>
-   );
+	return (
+		<main className="md:px-8  md:py-8 ">
+			<Hero />
+			<WhyChooseUs />
+			<Steps />
+			<CourseCarousel />
+			<PartnersSponsors />
+			<Services />
+			<JobCarousel />
+			<Testimonials />
+			<AboutSlider />
+			<FAQSection />
+			<Contact />
+		</main>
+	);
 }

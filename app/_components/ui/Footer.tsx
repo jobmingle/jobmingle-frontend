@@ -102,6 +102,12 @@ export default function Footer() {
 							Courses
 						</Link>
 						<Link
+							href="/career"
+							className="hover:underline hover:text-yellow-400"
+						>
+							Career Tool
+						</Link>
+						<Link
 							href="/about"
 							className="hover:underline hover:text-yellow-400"
 						>

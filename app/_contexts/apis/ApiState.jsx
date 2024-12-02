@@ -145,11 +145,11 @@ function ApiProvider({ children }) {
 	// 	[listedJobs]
 	// );
 
-	useEffect(() => {
-		console.log("Jobs state updated:", jobs);
-		console.log("Listed jobs state updated:", jobs);
-		// Perform actions when jobs state updates
-	}, [jobs, listedJobs]);
+	// useEffect(() => {
+	// 	console.log("Jobs state updated:", jobs);
+	// 	console.log("Listed jobs state updated:", jobs);
+	// 	Perform actions when jobs state updates
+	// }, [jobs, listedJobs]);
 
 	// POST JOB
 	async function postJob(jobData) {
@@ -171,7 +171,7 @@ function ApiProvider({ children }) {
 			dispatch({ type: JOB_CREATED, payload: res.data.data });
 			// toast.success("Job posted successfully! Please await approval");
 			toast.success(res?.data?.message);
-			console.log(res);
+			// console.log(res);
 			// console.log(res.data);
 			router.push("/employer-dashboard/jobs");
 		} catch (err) {
@@ -207,7 +207,7 @@ function ApiProvider({ children }) {
 			dispatch({ type: JOB_UPDATED, payload: res.data.data });
 			// toast.success("Job posted successfully! Please await approval");
 			toast.success(res?.data?.message);
-			console.log(res);
+			// console.log(res);
 			// console.log(res.data);
 			router.push("/employer-dashboard");
 		} catch (err) {
@@ -238,7 +238,7 @@ function ApiProvider({ children }) {
 
 			dispatch({ type: JOB_DELETED, payload: jobId });
 			toast.success(res?.data?.message);
-			console.log(res);
+			// console.log(res);
 			// console.log(res.data);
 			router.push("/employer-dashboard/jobs");
 		} catch (err) {
@@ -262,7 +262,7 @@ function ApiProvider({ children }) {
 
 				dispatch({ type: COURSES_LOADED, payload: res.data.data });
 				localStorage.setItem("courses", JSON.stringify(res.data.data));
-				console.log(res);
+				// console.log(res);
 				// console.log(res.data);
 				// console.log(res.data.data);
 			} catch (err) {
@@ -303,9 +303,9 @@ function ApiProvider({ children }) {
 				"listedCourses",
 				JSON.stringify(res?.data?.data.courses)
 			);
-			console.log(res);
-			console.log(res.data);
-			console.log(res.data.data);
+			// console.log(res);
+			// console.log(res.data);
+			// console.log(res.data.data);
 		} catch (err) {
 			dispatch({
 				type: COURSE_ERROR,
@@ -401,7 +401,8 @@ function ApiProvider({ children }) {
 				.share({
 					title: job?.job_role,
 					text: `Check out this job: ${job?.job_role} at ${job.company_name}`,
-					url: `https:${window.location.origin}/jobs/${jobId}`,
+					// url: `${window.location.origin}`,
+					url: `${window.location.origin}/jobs/${jobId}`,
 					// url: `https://localhost:3000/jobs/${jobId}`,
 				})
 				.then(() => console.log("Job shared successfully!"))
@@ -417,10 +418,11 @@ function ApiProvider({ children }) {
 				.share({
 					title: course?.fullname,
 					text: `Check out this course: ${course?.fullname}  ${course.summary}`,
-					url: `https:${window.location.origin}/courses/${courseId}`,
+					// url: `${window.location.origin}`,
+					url: `${window.location.origin}/courses/${courseId}`,
 					// url: `https://localhost:3000/jobs/${jobId}`,
 				})
-				.then(() => console.log("Job shared successfully!"))
+				.then(() => console.log("Course shared successfully!"))
 				.catch((error) => console.error("Error sharing job:", error));
 		} else {
 			alert("Sharing is not supported on this device.");

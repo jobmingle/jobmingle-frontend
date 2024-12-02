@@ -43,7 +43,7 @@ export default function JobDetails(params: JobPageProps) {
 	const router = useRouter();
 
 	const job: ReturnType<typeof jobs.find> = jobs?.find(
-		(job: Job) => job.id === Number(params.params.id)
+		(job: Job) => job?.id === Number(params?.params?.id)
 	);
 	const isEmployer = user?.goals === "Post a job";
 	const isStudent = user?.goals === "Apply for a job / Take a course";
@@ -58,7 +58,7 @@ export default function JobDetails(params: JobPageProps) {
 
 	function handleDeleteJob(jobId: any) {
 		window.alert("Are you sure you want to delete this job?");
-		console.log(jobId);
+		// console.log(jobId);
 		deleteJob(jobId);
 	}
 	function handleBack() {

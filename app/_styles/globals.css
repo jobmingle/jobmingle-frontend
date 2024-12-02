@@ -74,8 +74,13 @@
 		font-family: "Poppins", sans-serif;
 		scroll-behavior: smooth;
 		color: rgb(var(--foreground-rgb));
-		background: var(--foundation-blue-darker, #ffffff);
+		/* background: var(--foundation-blue-darker, #ffffff); */
+		background: var(--foundation-blue-darker, #14161b);
 		overflow-x: hidden;
+	}
+
+	.slick-slide > div {
+		margin: 0 10px;
 	}
 
 	.input {
