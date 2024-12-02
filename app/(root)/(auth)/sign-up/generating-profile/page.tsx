@@ -106,7 +106,7 @@ export default function PreferencesForm() {
 			interests: selectedPreferences.interests.join(", "), // Converts array to comma-separated string
 		};
 		updateUser(formattedPreferences);
-		console.log(formattedPreferences);
+		// console.log(formattedPreferences);
 	}
 
 	return (
@@ -158,7 +158,7 @@ export default function PreferencesForm() {
 			)}
 
 			{step === 2 && (
-				<div className="flex  md:flex-col items-center gap-5">
+				<div className="flex  md:flex-col items-center justify-center gap-5">
 					{/* Profile Picture Container */}
 					<div className="relative w-40 h-30 ">
 						<div className="rounded-[50%]- rounded-full overflow-hidden border border-gray-300">
@@ -168,10 +168,10 @@ export default function PreferencesForm() {
 									alt="Profile Picture"
 									width={160}
 									height={160}
-									className="object-cover"
+									className="object-cover h-[160px] w-[160px] rounded-full"
 								/>
 							) : (
-								<div className="bg-gray-200 w-full h-full pl-6 flex items-center justify-center text-gray-500">
+								<div className="bg-gray-200 w-full h-[80px] text-center pl-6- flex items-center justify-center text-gray-500">
 									Upload Image
 								</div>
 							)}

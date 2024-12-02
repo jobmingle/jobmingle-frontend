@@ -21,9 +21,9 @@ export default function Home() {
 			<WhyChooseUs />
 			<Steps />
 			<CourseCarousel />
+			<JobCarousel />
 			<PartnersSponsors />
 			<Services />
-			<JobCarousel />
 			<Testimonials />
 			<AboutSlider />
 			<FAQSection />

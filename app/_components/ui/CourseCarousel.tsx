@@ -75,12 +75,9 @@ const Carousel = () => {
 					<h2 className=" text-[1.4rem] lg:text-3xl font-bold text-center">
 						EXPERT LED COURSES FOR YOU
 					</h2>
-					<p className="sora text-center">
-						Find suitable courses to get you prepared for your career!
-					</p>
 				</div>
 				<div className="w-full mt-5 lg:bg-stone-600-">
-					<div className="w-full  lg:w-4/5 m-auto ">
+					<div className="w-full  lg:w-[85%] m-auto ">
 						<Slider {...settings}>
 							{courses.map((course, index) => (
 								<div key={index} className="p-2">

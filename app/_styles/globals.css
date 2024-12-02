@@ -74,8 +74,7 @@
 		font-family: "Poppins", sans-serif;
 		scroll-behavior: smooth;
 		color: rgb(var(--foreground-rgb));
-		/* background: var(--foundation-blue-darker, #ffffff); */
-		background: var(--foundation-blue-darker, #14161b);
+		background: var(--foundation-blue-darker, #ffffff);
 		overflow-x: hidden;
 	}
 
@@ -162,12 +161,12 @@
 	}
 
 	/* Make up for the last profile card standing alone */
-	@media (max-width: 992px) {
+	/* @media (max-width: 992px) {
 		.service-card:nth-child(5) {
-			/* background-color: red; */
+			background-color: red;
 			width: 100%;
 		}
-	}
+	} */
 
 	.montserrat {
 		font-family: "Montserrat", sans-serif;
