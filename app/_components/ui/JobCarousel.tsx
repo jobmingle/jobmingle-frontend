@@ -131,13 +131,7 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
 						<div className="flex flex-col gap-[1.1rem]">
 							<h2 className="text-base font-bold">{job.company_name}</h2>
 							{/* <h2 className="big">{job.platform}</h2> */}
-							<div
-								className={`absolute right-1 top-24 text-white text-xs px-4 py-2 rounded-sm capitalize ${
-									job.status === "approved" ? "bg-green-700" : "bg-red-700"
-								}`}
-							>
-								{job.status ? job.status : null}
-							</div>
+
 							<p className="small mb-5">{job.job_type}</p>
 						</div>
 					</div>
