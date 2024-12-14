@@ -8,9 +8,10 @@ import Link from "next/link";
 
 import Button from "./Button";
 import Error from "./Error";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+
 import Spinner from "@/app/_components/ui/Spinner";
 import { SubmitContactForm } from "@/lib/helpers";
+import { useSubmitMessageMutation } from "@/app/_features/appSlices/apiSlice";
 
 interface FormData {
 	name: string;
@@ -23,31 +24,21 @@ export default function ContactForm() {
 	const { register, handleSubmit, watch, formState, reset } =
 		useForm<FormData>();
 	const { errors } = formState;
-	const { error, clearErrors, isLoading } = useAuth();
-	const [isLoadingContactSubmit, setIsLoadingContactSubmit] = useState(false);
 
-	useEffect(() => {
-		if (error === "Network Error") {
-			toast.error(error);
-			clearErrors();
-		}
-		{
-			isLoading && <Spinner />;
-		}
-		// eslint-disable-next-line
-	}, [error]);
+	const [submitMessage, { isLoading: isSubmittingMessage, error }] =
+		useSubmitMessageMutation();
 
-	function onSubmit(data: FormData) {
-		// try {
-		setIsLoadingContactSubmit(true);
-		console.log(data);
-		SubmitContactForm(data, setIsLoadingContactSubmit);
-		reset();
-		// } catch (err) {
-		// 	throw Error(err);
-		// } finally {
-		// 	setIsLoadingContactSubmit(false);
-		// }
+	async function handleSubmitmessage(data: FormData) {
+		try {
+			const res: any = await submitMessage(data).unwrap();
+			toast.success(res?.message);
+			reset();
+		} catch (err: any) {
+			toast.error(
+				err?.data?.message || "An error occured while performing request!"
+			);
+			console.error(err);
+		}
 	}
 
 	function onError(errors: any) {
@@ -58,7 +49,7 @@ export default function ContactForm() {
 		<div>
 			<form
 				className=" w-full mt-4 "
-				onSubmit={handleSubmit(onSubmit, onError)}
+				onSubmit={handleSubmit(handleSubmitmessage, onError)}
 			>
 				<div>
 					<label className="text-sm montserrat py-1 tracking-wider font-medium">
@@ -126,11 +117,10 @@ export default function ContactForm() {
 
 				<Button
 					type="login"
-					disabled={isLoading}
+					disabled={isSubmittingMessage}
 					// onClick={(e) => handleSubmit(e)}
 				>
-					Send Message
-					<span>{isLoadingContactSubmit && <Spinner />}</span>
+					<span>{isSubmittingMessage ? <Spinner /> : "Send Message"}</span>
 				</Button>
 			</form>
 		</div>

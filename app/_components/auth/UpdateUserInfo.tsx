@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Link from "next/link";
@@ -8,9 +7,15 @@ import Link from "next/link";
 // import Button from "./Button";
 import Button from "@/app/_components/atoms/Button";
 
-import Error from "./Error";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+import Error from "../ui/Error";
+
 import Spinner from "@/app/_components/ui/Spinner";
+import { user as userData } from "@/app/_features/appSlices/userSlice";
+import { useAppSelector } from "@/app/_hooks/hooks";
+import {
+	useGetAuthUserQuery,
+	useUpdateUserInfoMutation,
+} from "@/app/_features/appSlices/apiSlice";
 
 interface FormData {
 	firstName: string;
@@ -22,30 +27,43 @@ export default function UpdateUserInfo() {
 	const { register, handleSubmit, watch, formState, reset } =
 		useForm<FormData>();
 	const { errors } = formState;
-	const { error, clearErrors, updateUserInfo, isLoading, user } = useAuth();
+	const user = useAppSelector(userData);
+	// const { data: user, refetch: refetchUser } = useGetAuthUserQuery();
 
-	useEffect(() => {
-		if (error === "Network Error") {
-			toast.error(error);
-			clearErrors();
+	const [updateUserInfo, { isLoading: isUpdatingInfo, error }] =
+		useUpdateUserInfoMutation();
+
+	async function handleUserInfoUpdate(data: FormData) {
+		const userId = user?.id;
+		try {
+			const res: any = await updateUserInfo({ userId, data }).unwrap();
+			toast.success(res?.message);
+			// router.push("/employer-dashboard/jobs");
+			reset();
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
 		}
-
-		if (
-			error ===
-			"The phone number field must not be greater than 15 characters. (and 1 more error)"
-		) {
-			toast.error(`Invalid number format: Please enter a valid phone number!`);
-			clearErrors();
-		}
-
-		// eslint-disable-next-line
-	}, [error]);
-
-	function onSubmit(data: FormData) {
-		// console.log(data);
-		updateUserInfo(user?.id, data);
 	}
 
+	// useEffect(() => {
+	// 	if (error === "Network Error") {
+	// 		toast.error(error);
+	// 		clearErrors();
+	// 	}
+
+	// 	if (
+	// 		error ===
+	// 		"The phone number field must not be greater than 15 characters. (and 1 more error)"
+	// 	) {
+	// 		toast.error(`Invalid number format: Please enter a valid phone number!`);
+	// 		clearErrors();
+	// 	}
+
+	// 	// eslint-disable-next-line
+	// }, [error]);
 	function onError(errors: any) {
 		console.error(errors);
 	}
@@ -56,8 +74,8 @@ export default function UpdateUserInfo() {
 	return (
 		<div>
 			<form
-				className="flex flex-col gap-4 w-[80%] text-white md:w-auto"
-				onSubmit={handleSubmit(onSubmit, onError)}
+				className="flex flex-col gap-2 w-[80%] text-white md:w-auto"
+				onSubmit={handleSubmit(handleUserInfoUpdate, onError)}
 			>
 				<div>
 					<label className="text-sm montserrat tracking-wider font-medium">
@@ -113,17 +131,17 @@ export default function UpdateUserInfo() {
 						<Error>{errors.phoneNumber.message}</Error>
 					)}
 				</div>
-				<Button className="">
-					<span>{isLoading ? <Spinner /> : "Save"}</span>
+				<Button className="" disabled={isUpdatingInfo}>
+					<span>{isUpdatingInfo ? <Spinner /> : "Save"}</span>
 				</Button>
 			</form>
 			{/* <Button
 				type="login"
-				disabled={isLoading}
+				disabled={isUpdatingInfo}
 				// onClick={(e) => handleSubmit(e)}
 			>
 				Update Password
-				<span>{isLoading && <Spinner />}</span>
+				<span>{isUpdatingInfo && <Spinner />}</span>
 			</Button> */}
 		</div>
 	);

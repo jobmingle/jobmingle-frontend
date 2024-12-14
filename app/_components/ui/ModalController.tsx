@@ -20,7 +20,7 @@ export default function ModalController({
 	};
 	return (
 		<div>
-			<div className="w-auto sm:w-[45rem] h-auto min-h-[12rem] border-yellow-400 border-[1px] border-solid m-auto rounded-md flex flex-col justify-evenly px-2 py-2 gap-3">
+			<div className="w-auto sm:w-[45rem] h-auto min-h-[12rem] border-yellow-400 border-[1px] border-solid m-auto rounded-md flex flex-col justify-evenly px-2 py-2 gap-3 bg-yellow-500 ">
 				<h4 className="sora capitalize text-center text-lg font-semibold ">
 					{/* Tired of Sending Countless Job Applications Without Landing an
 					Interview? */}
@@ -38,7 +38,7 @@ export default function ModalController({
 					{P2}
 				</p>
 				<Button
-					className="w-[50%]- w-full bg-yellow-400 text-white"
+					className="w-[50%]- w-full bg-black text-white"
 					onClick={handleOpen}
 				>
 					{/* Rebuild My CV/Portfolio */}

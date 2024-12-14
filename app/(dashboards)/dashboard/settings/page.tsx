@@ -1,6 +1,6 @@
-import UpdatePassword from "@/app/_components/ui/UpdatePassword";
+import UpdatePassword from "@/app/_components/auth/UpdatePassword";
 import SettingsHeader from "@/app/_components/ui/SettingsHeader";
-import UpdateUserEmail from "@/app/_components/ui/UpdateUserEmail";
+import UpdateUserEmail from "@/app/_components/auth/UpdateUserEmail";
 
 function Page() {
 	return (

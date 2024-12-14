@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { CoursesList } from "@/lib/_exportLinks";
-import { Jobs } from "@/lib/_exportLinks";
+
 import {
 	BarChart,
 	Bar,
@@ -13,21 +12,52 @@ import {
 	ResponsiveContainer,
 	Legend,
 } from "recharts";
-import { useJobCourse } from "@/app/_contexts/apis/ApiState";
+import {
+	useGetAllCoursesQuery,
+	useGetAllJobsQuery,
+	useGetEnrolledCoursesQuery,
+} from "@/app/_features/appSlices/apiSlice";
+import { user as userData } from "@/app/_features/appSlices/userSlice";
+import { useAppSelector } from "@/app/_hooks/hooks";
+import { useRouter } from "next/navigation";
 
 const AccountDashboard = () => {
-	const { courses, jobs } = useJobCourse();
-	const appliedJobs = jobs.filter((job: any) => job.stat === "Applied").length;
-	const totalJobs = jobs.length;
-	const enrolledCourses = courses.filter(
-		(course: any) => course.status === "Enrolled"
-	).length;
-	const finishedCourses = courses.filter(
+	const [isClicked, setIsClicked] = useState(false);
+	const router = useRouter();
+
+	const { currentData: jobsData, error }: any = useGetAllJobsQuery({});
+	const jobs = jobsData?.data;
+
+	const user = useAppSelector(userData);
+	const userId = user?.id;
+	const {
+		currentData: courses,
+		isFetching,
+		isLoading,
+	} = useGetEnrolledCoursesQuery(userId, {
+		// pollingInterval: 3000,
+		refetchOnMountOrArgChange: true,
+		skip: false,
+	});
+
+	const appliedJobs = jobs?.filter((job: any) => job.stat === "Applied").length;
+	const totalJobs = jobs?.length;
+	const enrolledCourses = courses?.length;
+	const finishedCourses = courses?.filter(
 		(course: any) => course.status === "Completed"
 	).length;
-	const certifications = courses.filter(
+	const certifications = courses?.filter(
 		(course: any) => course.status === "Completed"
 	).length;
+
+	function handleVisitCourse() {
+		// setIsClicked((click) => !click);
+		setIsClicked(true);
+		setTimeout(() => {
+			setIsClicked(false);
+		}, 200);
+		router.push("/dashboard/my-learning");
+	}
 
 	// Chart data (example data showing trends over time)
 	const chartData = [
@@ -69,10 +99,16 @@ const AccountDashboard = () => {
 
 			<div className="grid grid-cols-2 gap-3 md:flex  md:justify-between md:gap-6 mb-6 text-stone-200">
 				<div className="w-full  h-28  border-l-4 border-t border-yellow-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-yellow-500 ">
-					<div className=" w-full h-full flex flex-col justify-center pl-5 bg-yellow-500  rounded-lg  ">
+					<div
+						className={`w-full h-full flex flex-col justify-center pl-5 bg-yellow-500  rounded-lg ${
+							isClicked && "-skew-x-3 "
+						} `}
+						onClick={handleVisitCourse}
+					>
 						<p className="text-2xl">{enrolledCourses}</p>
 						<h3 className="text-l font-bold translate-x-6 ">
-							Enrolled <br /> Courses
+							Enrolled <br />
+							{enrolledCourses <= 1 ? "Course" : " Courses"}
 						</h3>
 					</div>
 				</div>
@@ -87,13 +123,15 @@ const AccountDashboard = () => {
 				<div className="w-full  h-28  border-l-4 border-t border-blue-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-blue-500 ">
 					<div className="w-full h-full flex flex-col justify-center pl-5 bg-blue-500  rounded-lg  ">
 						<p className="text-2xl">{certifications}</p>
-						<h3 className="text-l font-bold translate-x-6">Certifications</h3>
+						<h3 className="text-md font-bold translate-x-4">Certifications</h3>
 					</div>
 				</div>
 				<div className="w-full  h-28  border-l-4 border-t border-red-600 rounded-lg p-[2.5px]   shadow-md- shadow-inner shadow-red-500 ">
 					<div className="w-full h-full flex flex-col justify-center pl-5 bg-red-500  rounded-lg ">
 						<p className="text-2xl">{totalJobs}</p>
-						<h3 className="text-l font-bold translate-x-6"> Total Jobs</h3>
+						<h3 className="text-mdradius={[5, 5, 0, 0]}  font-bold translate-x-6">
+							Jobs
+						</h3>
 					</div>
 				</div>
 			</div>
@@ -102,15 +140,26 @@ const AccountDashboard = () => {
 			<div className="w-full h-96 mt-[10%] ">
 				<ResponsiveContainer width="100%" height="100%">
 					<BarChart data={chartData}>
-						<CartesianGrid strokeDasharray="3 3" />
 						<XAxis dataKey="name" />
 						<YAxis />
 						<Tooltip />
 						<Legend />
-						<Bar dataKey="enrolledCourses" fill="#94d845" />
-						<Bar dataKey="finishedCourses" fill="#0c9842" />
-						<Bar dataKey="totalJobs" fill="#3497b2" />
-						<Bar dataKey="certifications" fill="#1848cb" />
+						<Bar
+							dataKey="enrolledCourses"
+							fill="#eab308"
+							radius={[5, 5, 0, 0]}
+						/>
+						<Bar
+							dataKey="finishedCourses"
+							fill="#22c55e"
+							radius={[5, 5, 0, 0]}
+						/>
+						<Bar dataKey="totalJobs" fill="#dc2626" radius={[5, 5, 0, 0]} />
+						<Bar
+							dataKey="certifications"
+							fill="#3b82fc"
+							radius={[5, 5, 0, 0]}
+						/>
 					</BarChart>
 				</ResponsiveContainer>
 			</div>

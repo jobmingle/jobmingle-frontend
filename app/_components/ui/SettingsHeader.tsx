@@ -5,8 +5,13 @@ import Image from "next/image";
 import defaultProfilePic from "@/public/image/default-user.jpg";
 
 import Modal from "@/app/_components/ui/Modal";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+
 import { fetchAddress } from "@/lib/helpers";
+import { useAppSelector } from "@/app/_hooks/hooks";
+import {
+	user as userData,
+	token as authToken,
+} from "@/app/_features/appSlices/userSlice";
 
 interface Location {
 	position: {
@@ -20,7 +25,9 @@ export default function SettingsHeader() {
 	const [address, setAddress] = useState<Location | undefined>(undefined);
 
 	const [Active, setActive] = useState(false);
-	const { user } = useAuth();
+	// const { user } = useAuth();
+	const user = useAppSelector(userData);
+	const token = useAppSelector(authToken);
 
 	useEffect(() => {
 		async function handleGetAddress() {
@@ -42,8 +49,9 @@ export default function SettingsHeader() {
 								<div className="w-14 h-14 rounded-full overflow-hidden">
 									<Image
 										src={
-											`https://rosybrown-spider-442940.hostingersite.com/${user?.image}` ||
-											defaultProfilePic
+											user?.image
+												? `https://rosybrown-spider-442940.hostingersite.com/${user?.image}`
+												: defaultProfilePic
 										}
 										alt="User profile pic"
 										width={300}

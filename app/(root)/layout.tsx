@@ -1,15 +1,43 @@
-import type { Metadata } from "next";
-import { Inter, IBM_Plex_Serif } from "next/font/google";
-import { AuthProvider } from "../_contexts/auth/AuthState";
-import { Toaster } from "react-hot-toast";
-
-import MyApp from "@/app/_app";
+"use client";
+import { useAppDispatch, useAppSelector } from "../_hooks/hooks";
+import { setUser, user as userData } from "../_features/appSlices/userSlice";
+import { useGetAuthUserQuery } from "../_features/appSlices/apiSlice";
+import { useEffect } from "react";
 import AppHeader from "@/app/_components/ui/AppHeader";
 import AppFooter from "../_components/ui/Footer";
-import "../_styles/globals.css";
-import ScrollToTopButton from "../_components/ui/ScrollToTop";
+import { useRouter } from "next/navigation";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+function Layout({ children }: { children: React.ReactNode }) {
+	const dispatch = useAppDispatch();
+	const router = useRouter();
+
+	const token = localStorage.getItem("auth_token")
+		? localStorage.getItem("auth_token")
+		: null;
+
+	const {
+		currentData: user,
+		isFetching,
+		refetch: refetchUser,
+		error,
+	}: any = useGetAuthUserQuery();
+
+	useEffect(() => {
+		if (error?.status === 401) {
+			console.log(error);
+			localStorage.removeItem("access_token");
+			router.push("/");
+		}
+		// eslint-disable-next-line
+	}, [user, error]);
+
+	useEffect(() => {
+		if (token && !user) {
+			refetchUser();
+		}
+		dispatch(setUser({ user: user }));
+	}, [user, token, dispatch]);
+
 	return (
 		<main className="flex flex-col min-h-screen">
 			<header>
@@ -25,3 +53,4 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 		</main>
 	);
 }
+export default Layout;

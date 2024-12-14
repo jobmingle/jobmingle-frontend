@@ -6,14 +6,14 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-import jobmingle from "@/public/image/jobmingle.png";
 import arrowback from "@/public/image/arrowback.png";
 import SuccessModal from "@/Components/SuccessModal";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+
 import Loader from "@/app/_components/ui/Loader";
 import Button from "@/app/_components/ui/Button";
 import Error from "@/app/_components/ui/Error";
 import Spinner from "@/app/_components/ui/Spinner";
+import { useResetPasswordMutation } from "@/app/_features/appSlices/apiSlice";
 
 interface FormData {
 	email: string;
@@ -26,21 +26,43 @@ interface FormData {
 function Page() {
 	const [ResetSuccessful, setResetSuccessful] = useState(false);
 	const router = useRouter();
-	const { register, handleSubmit, watch, formState } = useForm<FormData>();
+	const resetEmail = sessionStorage.getItem("resetEmail")
+		? sessionStorage.getItem("resetEmail")?.toString()
+		: "";
+
+	const { register, handleSubmit, watch, formState } = useForm<FormData>({
+		defaultValues: {
+			email: resetEmail,
+			pin: "",
+			password: "",
+			password_confirmation: "",
+		},
+	});
 	const { errors } = formState;
-	const { resetPassword, error, clearErrors, isLoading, resetOk } = useAuth();
 
-	useEffect(() => {
-		if (error === "Network Error") {
-			toast.error(error);
-			clearErrors();
+	const [resetPassword, { isLoading: isReseting, error }] =
+		useResetPasswordMutation();
+
+	// useEffect(() => {
+	// 	if (error === "Network Error") {
+	// 		toast.error(error);
+	// 		clearErrors();
+	// 	}
+	// 	// eslint-disable-next-line
+	// }, [error]);
+
+	async function handleResetPassword(data: FormData) {
+		try {
+			const res: any = await resetPassword(data).unwrap();
+			toast.success(res?.message);
+			router.push("/sign-in");
+			sessionStorage.removeItem("resetEmail");
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
 		}
-		// eslint-disable-next-line
-	}, [error]);
-
-	function onSubmit(data: FormData) {
-		resetPassword(data);
-		toast.success("Form submitted successfully.");
 	}
 
 	const password = watch("password", "");
@@ -63,15 +85,8 @@ function Page() {
 					linkto={"/sign-in"}
 				/>
 			) : null}{" "}
-			<div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center relative overflow-x-hidden">
-				<div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:min-h-screen bg ">
-					<Image
-						src={jobmingle}
-						alt="logo"
-						className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8"
-					/>
-				</div>
-				<div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE]  flex sm:justify-center flex-col items-center ">
+			<div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center relative overflow-x-hidden  py-3">
+				<div className=" w-[90%] md:w-[50%] h-auto bg-[#FEFEFE]  flex sm:justify-center flex-col items-center border rounded shadow shadow-yellow-600 ">
 					<div
 						className="w-full flex pl-4 items-center py-4 flex-row"
 						onClick={handleback}
@@ -82,16 +97,16 @@ function Page() {
 						Create new Password
 					</h2>
 					<p className="montserrat font-semibold text-[75%] sm:text-sm text-black-100 w-full text-center px-4">
-						please log in to your account to access feautures
+						Provide a new unique password to gain access into your account!
 					</p>
 
 					{/* FORM */}
 					<main className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[70%] mt-7 sm:mt-4 p-2 pb-8 flex flex-col">
 						<form
 							className=" w-full mt-4"
-							onSubmit={handleSubmit(onSubmit, onError)}
+							onSubmit={handleSubmit(handleResetPassword, onError)}
 						>
-							<div>
+							<div className="hidden-">
 								<label className="text-sm montserrat py-1 tracking-wider font-medium">
 									Email
 								</label>
@@ -99,6 +114,7 @@ function Page() {
 									type="text"
 									id="email"
 									className="input"
+									// defaultValue={resetEmail}
 									placeholder="Enter your email"
 									{...register("email", {
 										required: "This field is required!",
@@ -171,8 +187,8 @@ function Page() {
 								)}
 							</div>
 
-							<Button type="login">
-								Update Password <span>{isLoading && <Spinner />} </span>
+							<Button type="login" disabled={isReseting}>
+								<span>{isReseting ? <Spinner /> : "Reset Password"} </span>
 							</Button>
 						</form>
 					</main>

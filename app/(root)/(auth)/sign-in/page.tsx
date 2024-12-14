@@ -3,7 +3,7 @@ import React from "react";
 import jobmingle from "@/public/image/jobmingle.png";
 import Googleicon from "@/public/image/Googleicon.png";
 import Link from "next/link";
-import LoginForm from "@/app/_components/ui/LoginForm";
+import LoginForm from "@/app/_components/auth/LoginForm";
 import Logo from "@/app/_components/ui/Logo";
 import logo from "@/public/image/logo.png";
 

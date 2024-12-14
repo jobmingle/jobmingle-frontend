@@ -1,23 +1,19 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
-import jobmingle from "@/public/image/jobmingle.png";
+import React, { useRef, useState } from "react";
+
 import arrowback from "@/public/image/arrowback.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Timer from "@/Components/Timer";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+
 import Spinner from "@/app/_components/ui/Spinner";
 import Button from "@/app/_components/ui/Button";
 import toast from "react-hot-toast";
-
-interface FormData {
-	digit1: string;
-	digit2: string;
-	digit3: string;
-	digit4: string;
-}
+import {
+	useResendVerificationPinMutation,
+	useVerifyEmailMutation,
+} from "@/app/_features/appSlices/apiSlice";
 
 function Page() {
 	const [timeLeft, setTimeLeft] = useState(1 * 60);
@@ -25,27 +21,22 @@ function Page() {
 	const [otp, setOtp] = useState(new Array(4).fill(""));
 	const router = useRouter();
 	const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
-	const {
-		verify,
-		resendVerificationCode,
-		user,
-		isLoading,
-		error,
-		clearErrors,
-	} = useAuth();
 
-	useEffect(() => {
-		if (error) {
-			toast.error(error);
-			clearErrors();
-		}
-	}, [error, clearErrors]);
+	const [verifyEmail, { isLoading: isVerifying }] = useVerifyEmailMutation();
 
-	function onSubmit(e: any) {
+	const [resendVerificationPin, { isLoading: isResending, error }] =
+		useResendVerificationPinMutation();
+
+	async function handleVerifyEmail(e: any) {
 		e.preventDefault();
-		// console.log(`pin: ${otp.join("")}`);
-		verify({ pin: otp.join("") });
-		// toast.success("Form submitted successfully.");
+		try {
+			const res: any = await verifyEmail({ pin: otp.join("") }).unwrap();
+			toast.success(res?.message);
+			router.push("/sign-up/generating-profile");
+		} catch (error: any) {
+			toast.error(error?.data?.message);
+			console.error(error);
+		}
 	}
 
 	function handleChange(e: any, index: any) {
@@ -67,24 +58,29 @@ function Page() {
 		router.back();
 	};
 
-	const handleResendCode = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleResendCode = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-		const logEmail = { email: user?.email || "creator.prjt@gmail.com" };
-		setTimeLeft(1 * 60);
-		setIsVisible(true);
-		resendVerificationCode(logEmail);
+		try {
+			const userEmail = localStorage.getItem("userEmail")
+				? localStorage.getItem("userEmail")
+				: "";
+			const logEmail = { email: userEmail };
+			setTimeLeft(1 * 60);
+			setIsVisible(true);
+			const res: any = await resendVerificationPin(logEmail).unwrap();
+
+			toast.success(res?.message);
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
+		}
 	};
 
 	return (
 		<main className="text-black min-h-screen h-auto overflow-x-hidden">
 			<div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden">
-				{/* <div className="relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg">
-					<Image
-						src={jobmingle}
-						alt="logo"
-						className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8"
-					/>
-				</div> */}
 				<div className="w-full md:w-[50%] h-auto bg-[#FEFEFE] sm:h-[100vh] flex sm:justify-center relative flex-col items-center">
 					<div
 						className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2"
@@ -100,11 +96,10 @@ function Page() {
 						confirm your email.
 					</p>
 					<main className="relative min-w-[95%] sm:min-w-[70%] mt-7 sm:mt-4 pb-6 flex items-center flex-col">
-						<form className="w-full mt-4 mx-2" onSubmit={onSubmit}>
+						<form className="w-full mt-4 mx-2" onSubmit={handleVerifyEmail}>
 							<div className="otp-area font-semibold text-2xl">
 								{otp.map((data, i) => (
 									<input
-										// className="w-[50px] p-[50px] outline-none text-center "
 										type="text"
 										key={i}
 										ref={(el) => {
@@ -145,8 +140,8 @@ function Page() {
 									</div>
 								)}
 							</div>
-							<Button type="login">
-								Verify <span>{isLoading && <Spinner />}</span>
+							<Button type="login" disabled={isVerifying}>
+								Verify <span>{isVerifying && <Spinner />}</span>
 							</Button>
 						</form>
 					</main>

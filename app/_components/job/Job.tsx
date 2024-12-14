@@ -1,9 +1,7 @@
 "use client";
-import { formatCurrency, timeAgo } from "@/lib/helpers";
-import { useJobCourse } from "@/app/_contexts/apis/ApiState";
+import { formatCurrency, ShareJob, timeAgo } from "@/lib/helpers";
 
 import Image from "next/image";
-import love from "@/public/image/loveicon.png";
 import share from "@/public/image/shareicon.png";
 import Link from "next/link";
 import Button from "@/app/_components/ui/Button";
@@ -14,37 +12,48 @@ import {
 } from "react-icons/hi2";
 import { useRouter } from "next/navigation";
 import Spinner from "../ui/Spinner";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+
 import { HiTrash } from "react-icons/hi";
 import { useState } from "react";
 import EditJobForm from "../ui/EditJobForm";
+import {
+	useDeleteJobMutation,
+	useGetAllJobsQuery,
+	useGetJobByIdQuery,
+} from "@/app/_features/appSlices/apiSlice";
+import { useAppSelector } from "@/app/_hooks/hooks";
+import { user as userData } from "@/app/_features/appSlices/userSlice";
+import EditJobFormModal from "../ui/EditJobFormModal";
+import { JobTypes } from "@/app/_hooks/Helpers";
+import toast from "react-hot-toast";
+import NoListings from "../ui/NoListings";
 
 interface JobPageProps {
 	params: { id: string };
 }
 
-interface Job {
-	company_name: string;
-	company_site: string;
-	job_role: string;
-	job_type: string;
-	salary: number;
-	id: number;
-	job_description: string;
-	job_responsibilities: string;
-	job_email: string;
-	job_link: string;
-}
 export default function JobDetails(params: JobPageProps) {
 	const [showForm, setShowForm] = useState(false);
+	const [Active, setActive] = useState(false);
 
-	const { jobs, deleteJob, isLoading, handleShareJob } = useJobCourse();
-	const { user } = useAuth();
 	const router = useRouter();
+	const user = useAppSelector(userData);
 
-	const job: ReturnType<typeof jobs.find> = jobs?.find(
-		(job: Job) => job?.id === Number(params?.params?.id)
-	);
+	const jobId = params?.params?.id;
+
+	const {
+		currentData: jobData,
+		isFetching: isFetchingJob,
+		isLoading,
+	} = useGetJobByIdQuery(jobId, {
+		// pollingInterval: 3000,
+		refetchOnMountOrArgChange: true,
+		skip: false,
+	});
+	const job = jobData?.data;
+
+	const [deleteJob, { isLoading: isDeleting }] = useDeleteJobMutation();
+
 	const isEmployer = user?.goals === "Post a job";
 	const isStudent = user?.goals === "Apply for a job / Take a course";
 
@@ -53,19 +62,41 @@ export default function JobDetails(params: JobPageProps) {
 	}
 
 	if (!job && !isLoading) {
-		return <h1>Job not found!</h1>;
+		return (
+			<NoListings
+				url="/dashboard/jobs"
+				title="Job not found! :)"
+				comment="Please check out other avaialble jobs..."
+				url_text="Checkout available jobs"
+			/>
+		);
 	}
 
-	function handleDeleteJob(jobId: any) {
-		window.alert("Are you sure you want to delete this job?");
-		// console.log(jobId);
-		deleteJob(jobId);
+	function handleShareJob(jobId: any) {
+		ShareJob(job, jobId);
 	}
+
+	async function handleDeleteJob(id: any) {
+		try {
+			const res: any = await deleteJob(id).unwrap();
+			toast.success(res?.message);
+			router.push("/employer-dashboard/jobs");
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
+		}
+	}
+
 	function handleBack() {
 		router.back();
 	}
 	return (
-		<div className="flex flex-col items-center py-10 ">
+		<div className="relative flex flex-col items-center py-10 ">
+			{Active ? (
+				<EditJobFormModal setActive={setActive} jobId={job?.id} />
+			) : null}
 			<div className="w-full xl:w-[80%]  ">
 				<div className=" flex flex-col ">
 					<div className="flex flex-col border border-gray-900 p-[1rem] h-full-  rounded-2xl  w-[100%]  relative shadow-lg transition transform hover:scale-105 hover:shadow-2xl">
@@ -87,13 +118,7 @@ export default function JobDetails(params: JobPageProps) {
 									</Link>
 								</h2>
 								{/* <h2 className="big">{job?.platform}</h2> */}
-								<div
-									className={`absolute right-0 top-[7rem] md:top-20 text-white text-base px-3 md:px-10 py-3 rounded-l capitalize ${
-										job?.status === "Applied" ? "bg-green-700" : "bg-red-700"
-									}`}
-								>
-									{job?.status ? job?.status : null}
-								</div>
+
 								<div className=" flex items-start py-[.5rem]  gap-5 items-center-">
 									<p className="text-[1rem] font-bold ">{job?.job_type}</p>
 									{/* <h2 className="text-[.9rem] font-bold">Posted:</h2> */}
@@ -135,7 +160,7 @@ export default function JobDetails(params: JobPageProps) {
 								{timeAgo(job?.created_at)}
 							</p>
 						</div>
-						<section className="flex flex-row justify-end gap-3 m-1 py-1 ">
+						{/* <section className="flex flex-row justify-end gap-3 m-1 py-1 ">
 							<button className="w-5 h-5">
 								<Image src={love} alt="loveicon" />
 							</button>
@@ -145,45 +170,78 @@ export default function JobDetails(params: JobPageProps) {
 							>
 								<Image src={share} alt="shareicon" />
 							</button>
-						</section>
-						<div className=" flex justify-between">
-							<div>
+						</section> */}
+						<div className=" flex justify-between w-full py-5">
+							<button
+								className="absolute- flex w-[8rem] justify-center py-3 rounded border border-gray-900 items-center hover:bg-yellow-500"
+								onClick={handleBack}
+							>
+								<span className="text-2xl">
+									<HiArrowLeft />
+								</span>
+								<span>Go back</span>
+							</button>
+							<div className="flex flex-row justify-end gap-3 m-1 py-1 mr-4 ">
 								<button
-									className="absolute- flex w-[8rem] justify-center py-3 rounded border border-gray-900 items-center hover:bg-yellow-500"
-									onClick={handleBack}
+									className="w-5 h-5"
+									onClick={() => handleShareJob(job?.id)}
 								>
-									<span className="text-2xl">
-										<HiArrowLeft />
-									</span>
-									<span>Go back</span>
+									<Image src={share} alt="shareicon" />
 								</button>
 							</div>
-							<div className=" flex items-center px-[.5rem] justify-center w-[100%]  "></div>
-
 							{isEmployer && (
-								<div className="flex gap-3 border- px-2 items-center">
-									{/* <Button type="login"> */}
-									<button
-										className="text-xl hover:text-yellow-500 transition-all duration-700 border p-1 rounded"
-										onClick={() => setShowForm((show) => !show)}
-									>
-										<HiPencil />
-									</button>
-									<button
-										className="text-xl hover:text-yellow-500 transition-all duration-700 border p-1 rounded"
-										onClick={() => handleDeleteJob(job.id)}
-									>
-										<HiTrash />
-									</button>
-									{/* </Button>  */}
+								<div className=" flex items-center px-[.5rem] justify-center w-[100%]-  ">
+									<div className="flex gap-3 border- px-2 items-center">
+										{/* <Button type="login"> */}
+										<button
+											className="text-xl hover:text-yellow-500 transition-all duration-700 border p-1 rounded"
+											onClick={() => setActive((active) => !active)}
+										>
+											<HiPencil />
+										</button>
+										<button
+											className="text-xl hover:text-yellow-500 transition-all duration-700 border p-1 rounded"
+											onClick={() => handleDeleteJob(job.id)}
+										>
+											<HiTrash />
+										</button>
+										{/* </Button>  */}
+									</div>
 								</div>
 							)}
 						</div>
+						{isStudent && job?.job_email ? (
+							<div className="flex flex-row justify-end gap-3- m-1 py-1">
+								<div className="   ">
+									<Link
+										href={`mailto:${job.job_email}`}
+										className=" flex gap-2 text-yellow-400 hover:text-yellow-600 hover:underline"
+									>
+										Apply with email
+										<span className="text-xl">
+											<HiMiniArrowTopRightOnSquare />
+										</span>
+									</Link>
+								</div>
+							</div>
+						) : null}
 
-						{isStudent && (
+						{isStudent && job?.job_link ? (
 							<div className="lg:m-auto lg:w-[50%] px-10 ">
-								<Link
+								{/* <Link
 									href={`mailto:${job.job_email}`}
+									className="text-yellow-500"
+								>
+									<Button type="login">
+										Apply
+										<span className="text-xl">
+											<HiMiniArrowTopRightOnSquare />
+										</span>
+									</Button>
+								</Link> */}
+								<Link
+									href={job?.job_link}
+									target="_blank"
 									className="text-yellow-500"
 								>
 									<Button type="login">
@@ -194,9 +252,9 @@ export default function JobDetails(params: JobPageProps) {
 									</Button>
 								</Link>
 							</div>
-						)}
+						) : null}
 
-						{showForm && <EditJobForm job={job} />}
+						{showForm && <EditJobForm jobId={job.id} />}
 					</div>
 				</div>
 			</div>

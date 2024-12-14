@@ -6,11 +6,12 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import Button from "./Button";
-import Error from "./Error";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+import Button from "../ui/Button";
+import Error from "../ui/Error";
+
 import Spinner from "@/app/_components/ui/Spinner";
-import ViewPassword from "./VIewPassword";
+import ViewPassword from "../ui/VIewPassword";
+import { useCreateUserMutation } from "@/app/_features/appSlices/apiSlice";
 
 interface FormData {
 	firstName: string;
@@ -25,37 +26,45 @@ export default function SignUpForm() {
 	const router = useRouter();
 	const [agreedToTerms, setAgreedToTerms] = useState(null);
 	const [Open, setOpen] = useState(false);
+	const agree = true;
 
-	const { register, handleSubmit, watch, formState } = useForm<FormData>();
+	const { register, handleSubmit, watch, formState } = useForm<FormData>({
+		defaultValues: {
+			firstName: "",
+			lastName: "",
+			email: "",
+			phoneNumber: 0,
+			password: "",
+			password_confirmation: "",
+		},
+	});
 	const { errors } = formState;
-	const {
-		register: registerUser,
-		error,
-		clearErrors,
-		isAuthenticated,
-		isLoading,
-	} = useAuth();
+	// const {
+	// 	register: registerUser,
+	// 	error,
+	// 	clearErrors,
+	// 	isAuthenticated,
+	// 	isCreatingUser,
+	// } = useAuth();
 
-	useEffect(() => {
-		if (error === "The email has already been taken.") {
-			toast.error(error);
-			clearErrors();
-		}
+	// useEffect(() => {
+	// 	if (error === "The email has already been taken.") {
+	// 		toast.error(error);
+	// 		clearErrors();
+	// 	}
 
-		if (error === "Network Error") {
-			toast.error(error);
-			clearErrors();
-		}
-		{
-			isLoading && <Spinner />;
-		}
-		// eslint-disable-next-line
-	}, [error, isAuthenticated]);
+	// 	if (error === "Network Error") {
+	// 		toast.error(error);
+	// 		clearErrors();
+	// 	}
+	// 	{
+	// 		isCreatingUser && <Spinner />;
+	// 	}
+	// 	// eslint-disable-next-line
+	// }, [error, isAuthenticated]);
 
-	function onSubmit(data: FormData) {
-		// console.log(data);
-		registerUser(data);
-	}
+	const [createUser, { isLoading: isCreatingUser, error }] =
+		useCreateUserMutation();
 
 	const password = watch("password", "");
 
@@ -67,9 +76,26 @@ export default function SignUpForm() {
 		setAgreedToTerms(e.target.checked);
 	}
 
+	async function handleCreateUser(data: FormData) {
+		try {
+			const res: any = await createUser(data).unwrap();
+			toast.success(res?.message);
+			sessionStorage.setItem("userId", res?.data?.user_id);
+			sessionStorage.setItem("userEmail", data.email);
+			router.push("/sign-up/confirm-email");
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
+		}
+	}
 	return (
 		<div>
-			<form className=" w-full mt-4" onSubmit={handleSubmit(onSubmit, onError)}>
+			<form
+				className=" w-full mt-4"
+				onSubmit={handleSubmit(handleCreateUser, onError)}
+			>
 				<div>
 					<label className="text-sm montserrat py-1 tracking-wider font-medium">
 						First Name
@@ -218,11 +244,10 @@ export default function SignUpForm() {
 
 				<Button
 					type="login"
-					disabled={!agreedToTerms && isLoading}
+					disabled={!agreedToTerms || isCreatingUser}
 					// onClick={(e) => handleSubmit(e)}
 				>
-					Sign Up
-					<span>{isLoading && <Spinner />}</span>
+					<span>{isCreatingUser ? <Spinner /> : "Sign Up"}</span>
 				</Button>
 			</form>
 			<p className="text-sm montserrat  font-medium float-right mt-4 text-black-100/80">

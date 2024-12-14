@@ -12,7 +12,7 @@ export default function Layout({
 	return (
 		<main className="flex flex-col lg:grid lg:grid-cols-[16rem_1fr] lg:grid-rows-[auto_1fr]   h-[100vh] overflow-hidden">
 			<HeaderDash />
-			<aside className="hidden lg:flex lg:flex-col  gap-[3.2rem] lg:row-span-full pt-[3.2rem]  bg-gray-300">
+			<aside className="hidden lg:flex lg:flex-col  gap-[3.2rem] lg:row-span-full pt-[3.2rem]  bg-gray-400">
 				<Logo path={Jmlogo} width={120} height={120} />
 				<SideNav />
 			</aside>

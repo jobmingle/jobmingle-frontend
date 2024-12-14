@@ -6,10 +6,14 @@ import SuccessModal from "@/Components/SuccessModal";
 import { HiArrowLeft } from "react-icons/hi2";
 import { useForm } from "react-hook-form";
 import Button from "@/app/_components/ui/Button";
-import { useJobCourse } from "@/app/_contexts/apis/ApiState";
+
 import Spinner from "@/app/_components/ui/Spinner";
 import toast from "react-hot-toast";
 import Error from "@/app/_components/ui/Error";
+import {
+	useGetAllJobsQuery,
+	useUpdateJobMutation,
+} from "@/app/_features/appSlices/apiSlice";
 
 interface FormData {
 	company_name: string;
@@ -35,22 +39,22 @@ interface Job {
 	job_link: string;
 }
 
-function EditJobForm({ job }: any) {
+function EditJobForm({ jobId }: any) {
 	const router = useRouter();
 	const [Alert, setAlert] = useState(false);
-	const { updateJob, isLoading, error, clearErrors } = useJobCourse();
 
-	useEffect(() => {
-		if (error === "The company site must be a valid URL (e.g., .com, .net).") {
-			toast.error(error);
-			clearErrors();
-		}
-		if (error === "The company site field is required.") {
-			// toast.error(error);
-			toast.error(`Please fill all inputs`);
-			clearErrors();
-		}
-	}, [error, clearErrors]);
+	const {
+		currentData: jobsData,
+		isFetching,
+	}: // error,
+	any = useGetAllJobsQuery({});
+	const jobs = jobsData?.data;
+	const job: ReturnType<typeof jobs.find> = jobs?.find(
+		(job: Job) => job?.id === jobId
+	);
+
+	const [updateJob, { isLoading: isUpdatingJob, error }] =
+		useUpdateJobMutation();
 
 	const {
 		register,
@@ -63,17 +67,27 @@ function EditJobForm({ job }: any) {
 		router.back();
 	};
 
-	function onSubmit(data: FormData) {
-		console.log(data);
-		updateJob(job.id, data);
-		reset();
+	async function handleJobUpdate(data: FormData) {
+		const jobId = job?.id;
+		try {
+			const res: any = await updateJob({ jobId, data }).unwrap();
+			console.log(res);
+			toast.success(res?.message);
+			router.push("/employer-dashboard/jobs");
+			reset();
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while perfoming request!"
+			);
+			console.error(error);
+		}
 	}
 
 	function onError(errors: any) {
 		console.error(errors);
 	}
 	return (
-		<div className="flex flex-col  min-h-screen lg:w-[60%] pb-20 md:pl-10- mx-auto relative overflow-x-hidden md:py-[2rem]">
+		<div className="flex flex-col  min-h-screen lg:w-[80%] pb-20 md:pl-10- mx-auto relative overflow-x-hidden md:py-[2rem]">
 			{Alert ? (
 				<SuccessModal
 					extrastyling={"min-h-[110vh]  sm:h-[110vh] lg:h-[120vh] xl:h-[110vh]"}
@@ -98,7 +112,7 @@ function EditJobForm({ job }: any) {
 
 				{/*  */}
 				<h3 className="montserrat capitalize text-lg sm:text-2xl font-bold text-center">
-					List your jobs on jobmingle
+					Edit Job
 				</h3>
 				<p className="sora text-sm text-center  tracking-wide px-2 sm:px-0">
 					Note: It will take about 24hours for verification to be completed!
@@ -107,7 +121,7 @@ function EditJobForm({ job }: any) {
 				// className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[90%] p-1 pb-8 sm:pb-2 flex flex-col justify-center items-center"
 				>
 					<form
-						onSubmit={handleSubmit(onSubmit, onError)}
+						onSubmit={handleSubmit(handleJobUpdate, onError)}
 						className="w-full h-full p-4"
 					>
 						<div className=" shadow shadow-gray-500 rounded p-2">
@@ -176,7 +190,7 @@ function EditJobForm({ job }: any) {
 									<Error>{errors.job_type.message}</Error>
 								)}
 								<label className="text-sm montserrat py-1 tracking-wider font-medium">
-									Salary (In naira)
+									Salary
 								</label>
 								<input
 									type="number"
@@ -290,9 +304,8 @@ function EditJobForm({ job }: any) {
 						>
 							Submit{" "}
 						</button> */}
-						<Button type="login">
-							Update
-							<span>{isLoading && <Spinner />}</span>
+						<Button type="login" disabled={isUpdatingJob}>
+							<span>{isUpdatingJob ? <Spinner /> : "Update"}</span>
 						</Button>
 					</form>
 				</main>

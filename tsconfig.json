@@ -29,7 +29,10 @@
 		".next/types/**/*.ts",
 		"Components/SuccessModal.tsx",
 		"app/_contexts/auth/AuthState.jsx",
-		"app/_components/ui/Pagination.jsx"
+		"app/_components/ui/Pagination.tsx",
+		"app/__loading.js",
+		"app/_hooks/apiSlices.js",
+		"app/_app.js"
 	],
 	"exclude": ["node_modules"]
 }

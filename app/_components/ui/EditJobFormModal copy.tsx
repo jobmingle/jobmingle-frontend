@@ -1,9 +1,8 @@
-import UpdateUserInfo from "@/app/_components/auth/UpdateUserInfo";
-import UpdateProfileImage from "@/app/_components/auth/UpdateProfileImage";
 import { useEffect, useRef, useState } from "react";
 import { BsXLg } from "react-icons/bs";
+import EditJobForm from "./EditJobForm";
 
-const Modal = ({ setActive }: any) => {
+const EditJobFormModal = ({ setActive, job }: any) => {
 	const handleclose = () => {
 		setActive(false);
 	};
@@ -52,14 +51,14 @@ const Modal = ({ setActive }: any) => {
 
 	return (
 		<div
-			className="fixed inset-0 md:inset-0 bg-gray-400 bg-opacity-50 flex justify-center  items-center z-50 cursor-grab-"
+			className="fixed inset-0 md:inset-0 bg-gray-400- bg-red-700  bg-opacity-50 flex justify-center  items-center z-50 cursor-grab-"
 			onClick={handleOverlayClick}
 		>
 			<div
 				ref={modalRef}
 				onMouseDown={handleMouseDown}
 				className={
-					"relative  bg-black-100/10  px-5 sm:px-0 left-[50%] top-80 max-lg:left-[50%]- lg:left-[78%] max-lg:top[20%]- xl:left-[80%] xl:top-[16rem] flex flex-col items-center z-40 cursor-grab"
+					"relative-  bg-black-100/10  px-5 top-0 right-0 flex flex-col items-center z-40 cursor-grab"
 				}
 				style={{
 					position: "absolute",
@@ -67,22 +66,15 @@ const Modal = ({ setActive }: any) => {
 					transform: "translate(-50%, -50%)",
 				}}
 			>
-				{/* <div
-					className="cursor-grab bg-gray-700 px-4 py-2 rounded-t-lg"
-					onMouseDown={handleMouseDown}
-				>
-					Drag Me
-				</div> */}
-				<div className="relative h-auto md:h-[15rem]- min-w-[25rem] w-auto  max-w-[32rem] rounded-md  bg-gray-800 m-auto ">
+				<div className="relative- h-auto  min-w-[25rem] w-auto-  max-w-[50rem] w-full- rounded-md  bg-white m-auto ">
 					<button
-						className=" absolute sora text-xs right-5 md:right-1 pr-2 pt-2 text-white p-1"
+						className=" absolute sora text-xs right-5 md:right-1 pr-2 pt-2  p-1"
 						onClick={handleclose}
 					>
 						<BsXLg />
 					</button>
-					<main className=" flex flex-col md:flex-row m-auto w-full  gap-4 items-center justify-center p-3">
-						<UpdateProfileImage />
-						<UpdateUserInfo />
+					<main className=" flex flex-col  m-auto w-full items-center justify-center p-3">
+						<EditJobForm job={job} />{" "}
 					</main>
 				</div>
 			</div>
@@ -90,4 +82,4 @@ const Modal = ({ setActive }: any) => {
 	);
 };
 
-export default Modal;
+export default EditJobFormModal;

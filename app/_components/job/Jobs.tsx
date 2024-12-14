@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import Image from "next/image";
-import { IoClose } from "react-icons/io5";
-import tiredicon from "@/public/image/tiredicon.png";
+
 import love from "@/public/image/loveicon.png";
 import share from "@/public/image/shareicon.png";
 // import { Jobs } from "@/lib/_exportLinks";
@@ -9,30 +8,32 @@ import { Content, PopupContainer, Overlay } from "./styles";
 import NoResult from "../ui/NoResult";
 import { usePagination } from "@/app/_hooks/usePagination";
 import Pagination from "../ui/Pagination";
-import { useJobCourse } from "@/app/_contexts/apis/ApiState";
-import { formatCurrency, timeAgo } from "@/lib/helpers";
+import { formatCurrency, ShareJob, timeAgo } from "@/lib/helpers";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+
 import Spinner from "../ui/Spinner";
 import toast from "react-hot-toast";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
-import { HiHeart, HiMiniHeart } from "react-icons/hi2";
-import { BsHeart } from "react-icons/bs";
-import { BiHeart } from "react-icons/bi";
 
-// const JobsPage = async ({ searchQuery }: any) => {
+import { useGetAllJobsQuery } from "@/app/_features/appSlices/apiSlice";
+import NoListings from "../ui/NoListings";
+import { user as userData } from "@/app/_features/appSlices/userSlice";
+import { useAppSelector } from "@/app/_hooks/hooks";
+
 function JobsPage({ searchQuery, link }: any) {
-	const searchParams = useSearchParams();
-	const router = useRouter();
-	const { jobs, isLoading, handleShareJob } = useJobCourse();
-	const { user } = useAuth();
+	const user = useAppSelector(userData);
+
 	const { from, to } = usePagination();
-	// const jobs = localStorage?.getItem("jobs")
-	// 	? JSON.parse(localStorage?.getItem("jobs") ?? "[]")
-	// 	: [];
+
 	const [showPopup, setShowPopup] = useState(false);
 
-	// console.log(jobs);
+	const {
+		currentData: jobsData,
+		isFetching: isLoading,
+		error,
+	}: any = useGetAllJobsQuery({});
+
+	const jobs = jobsData?.data?.filter((job: any) => job.status === "approved");
+
 	const searchedJobs =
 		searchQuery?.length > 0
 			? jobs?.filter((job: any) =>
@@ -45,18 +46,35 @@ function JobsPage({ searchQuery, link }: any) {
 	const Jobs = searchedJobs?.slice(from, to);
 	// const Jobs = Array.isArray(searchedJobs) ? searchedJobs.slice(from, to) : [];
 
+	function handleShareJob(jobId: string) {
+		const job = jobs?.find((c: any) => c.id === jobId);
+		ShareJob(job, jobId);
+	}
+
 	const handleApplyClick = () => {
 		if (!user) {
 			toast("Please sign in to continue your job application!", { icon: "🔑" });
+			// return;
 		}
 	};
 
-	if (!jobs.length || isLoading) {
+	if (isLoading) {
 		return <Spinner />;
 	}
 
-	if (!isLoading && searchedJobs.length === 0) {
+	if (!isLoading && searchedJobs?.length === 0) {
 		return <NoResult />;
+	}
+
+	if (!jobs?.length || jobs === undefined || (jobs === null && !isLoading)) {
+		return (
+			<NoListings
+				url="/"
+				title="No jobs available yet! :)"
+				comment="Please check back in a while..."
+				url_text="Go Home"
+			/>
+		);
 	}
 
 	return (
@@ -71,14 +89,14 @@ function JobsPage({ searchQuery, link }: any) {
 			<div className="text-sm md:text-base font-bold rounded-md border-l-4 border-t-2 border-yellow-600   p-1 my-8 w-[50%] md:w-[30%] text-center">
 				<div className="shadow shadow-yellow-500 rounded p-2">
 					<p>
-						{searchedJobs.length} Top {searchedJobs.length > 1 ? "jobs" : "job"}{" "}
-						for you!
+						{searchedJobs?.length} Top{" "}
+						{searchedJobs?.length > 1 ? "jobs" : "job"} for you!
 					</p>
 				</div>
 			</div>
 
 			<div className="box">
-				{Jobs.map((job: any) => (
+				{Jobs?.map((job: any) => (
 					<div
 						key={job.id}
 						className="rounded-3xl border-l-8 border-t-2- border-yellow-600  h-full"
@@ -97,13 +115,7 @@ function JobsPage({ searchQuery, link }: any) {
 								<div className="txt">
 									<h2 className="big">{job.company_name}</h2>
 									{/* <h2 className="big">{job.platform}</h2> */}
-									<div
-										className={`absolute right-1 top-20 text-white text-xs px-1 py-0.5 rounded-sm capitalize ${
-											job.status === "Applied" ? "bg-green-700" : "bg-red-700"
-										}`}
-									>
-										{job.status ? job.status : null}
-									</div>
+
 									<p className="small">{job.job_type}</p>
 								</div>
 							</div>
@@ -159,7 +171,9 @@ function JobsPage({ searchQuery, link }: any) {
 			<br />
 			{/* {searchedJobs.length === 0 && <NoResult />} */}
 
-			<Pagination count={searchedJobs.length} assets="jobs" />
+			{isLoading ? null : (
+				<Pagination count={searchedJobs?.length} assets="jobs" />
+			)}
 		</Content>
 	);
 }
