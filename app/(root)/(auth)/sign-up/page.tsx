@@ -1,22 +1,13 @@
-"use client";
 import Image from "next/image";
 import React from "react";
 import jobmingle from "@/public/image/jobmingle.png";
-import SignUpBanner from "@/public/image/image/image-forms/signupbanner.png";
 import Googleicon from "@/public/image/Googleicon.png";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import SignUpForm from "@/app/_components/ui/SignUpForm";
+import SignUpForm from "@/app/_components/auth/SignUpForm";
 import Logo from "@/app/_components/ui/Logo";
 import logo from "@/public/image/logo.png";
 
 //
 const Page = () => {
-	const router = useRouter();
-
-	const handleSubmit = (e: any) => {
-		e.preventDefault();
-	};
 	return (
 		<main className="text-black min-h-[50vh] h-auto bg-sign-up  max-lg:mx-2 max-lg:my-5 ">
 			<div className=" p-0 m-0 h-full flex flex-col  sm:flex-row sm:justify-center  ">

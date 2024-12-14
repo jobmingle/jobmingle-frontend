@@ -8,10 +8,12 @@ import SuccessModal from "@/Components/SuccessModal";
 import { HiArrowLeft } from "react-icons/hi2";
 import { useForm } from "react-hook-form";
 import Button from "@/app/_components/ui/Button";
-import { useJobCourse } from "@/app/_contexts/apis/ApiState";
+
 import Spinner from "@/app/_components/ui/Spinner";
 import Error from "@/app/_components/ui/Error";
 import Btn from "@/app/_components/atoms/Button";
+import { usePostCourseMutation } from "@/app/_features/appSlices/apiSlice";
+import toast from "react-hot-toast";
 
 interface FormData {
 	fullname: string;
@@ -23,7 +25,7 @@ interface FormData {
 }
 
 function Page() {
-	const { postCourse, isLoading, error, clearErrors } = useJobCourse();
+	// const { postCourse, isLoading, error, clearErrors } = useJobCourse();
 
 	const router = useRouter();
 	const [Alert, setAlert] = useState(false);
@@ -45,14 +47,30 @@ function Page() {
 		},
 	});
 
+	const [postCourse, { isLoading: isCreatingCourse, error }] =
+		usePostCourseMutation();
+
 	const handleback = () => {
 		router.back();
 	};
 
-	function onSubmit(data: FormData) {
-		console.log(data);
-		postCourse(data);
-		reset();
+	async function handlePostCourse(data: FormData) {
+		try {
+			const res: any = await postCourse(data).unwrap();
+			toast.success(res?.message);
+			router.push("/vendor-dashboard/courses");
+			window.open(
+				"https://courses.jobmingle.co/login/index.php",
+				"_blank",
+				"noopener,noreferrer"
+			);
+			// reset();
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
+		}
 	}
 	const closeCvModal = () => {
 		setIsModalOpen(false);
@@ -67,18 +85,6 @@ function Page() {
 	}
 	return (
 		<div className="flex flex-col  min-h-screen lg:w-[60%] pb-20 md:pl-10- mx-auto relative overflow-x-hidden md:py-[2rem]">
-			{/* {Alert ? (
-				<SuccessModal
-				extrastyling={"min-h-[110vh]  sm:h-[110vh] lg:h-[120vh] xl:h-[110vh]"}
-				Act={
-						"Job Listed Successfully " +
-						"" +
-						" it will take a while for the verification process to be completed"
-					}
-					linkto={"/vendor-dashboard"}
-					whereto={"Click Here To Go Back To Home"}
-				/>
-			) : null} */}
 			<div className="flex flex-col gap-3 mx-auto  min-h-screen ">
 				{/* <div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden "> */}
 
@@ -97,16 +103,16 @@ function Page() {
 					Note: It will take about 24hours for verification to be completed
 				</p>
 				<p
-					className="sora text-md text-center capitalize tracking-wide px-2 sm:px-0 text-yellow-400 cursor-pointer"
+					className="sora text-md text-center capitalize tracking-wide px-2 py-3 border-2 rounded-lg bg-stone-600 shadow shadow-yellow-500 text-yellow-400 hover:bg-stone-400 hover:text-yellow-500 transition-all duration-700 cursor-pointer "
 					onClick={handleOpen}
 				>
-					see conditions for listing a course
+					See conditions for listing a course
 				</p>
 				<main
 				// className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[90%] p-1 pb-8 sm:pb-2 flex flex-col justify-center items-center"
 				>
 					<form
-						onSubmit={handleSubmit(onSubmit, onError)}
+						onSubmit={handleSubmit(handlePostCourse, onError)}
 						className="w-full h-full md:p-4"
 					>
 						<div className="shadow rounded shadow-gray-500 p-2">
@@ -223,9 +229,8 @@ function Page() {
 								)}
 							</div>
 						</div>
-						<Button type="login">
-							Upload Video
-							<span>{isLoading && <Spinner />}</span>
+						<Button type="login" disabled={isCreatingCourse}>
+							<span>{isCreatingCourse ? <Spinner /> : "Upload Video"}</span>
 						</Button>
 					</form>
 				</main>

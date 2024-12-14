@@ -4,9 +4,11 @@ import React, { useState, useEffect, useRef } from "react";
 import love from "@/public/image/loveicon.png";
 import share from "@/public/image/shareicon.png";
 import Image from "next/image";
-import { formatCurrency, timeAgo } from "@/lib/helpers";
-import { useJobCourse } from "@/app/_contexts/apis/ApiState";
+import { formatCurrency, ShareJob, timeAgo } from "@/lib/helpers";
+
 import Slider from "react-slick";
+import { useGetAllJobsQuery } from "@/app/_features/appSlices/apiSlice";
+import Spinner from "./Spinner";
 
 interface Job {
 	company_name: string;
@@ -28,7 +30,14 @@ interface CarouselProps {
 }
 
 const Carousel = () => {
-	const { jobs }: CarouselProps = useJobCourse();
+	const {
+		currentData: jobData,
+		isFetching: isLoading,
+		error,
+	}: any = useGetAllJobsQuery({});
+	const jobs = jobData?.data?.filter((job: any) => job.status === "approved");
+
+	console.log(jobs);
 
 	const settings = {
 		dots: false,
@@ -68,6 +77,8 @@ const Carousel = () => {
 			},
 		],
 	};
+	if (isLoading) return <Spinner />;
+
 	return (
 		<div className="w-full mt-10 ">
 			<div className=" slider-container">
@@ -77,7 +88,7 @@ const Carousel = () => {
 				<div className="w-full mt-5 lg:bg-stone-600-">
 					<div className="w-full  lg:w-[85%] m-auto ">
 						<Slider {...settings}>
-							{jobs.map((job, index) => (
+							{jobs?.map((job: any, index: any) => (
 								<div key={index} className="p-2">
 									<JobCard job={job} />
 								</div>
@@ -97,8 +108,9 @@ interface JobCardProps {
 }
 
 const JobCard: React.FC<JobCardProps> = ({ job }) => {
-	const { handleShareJob } = useJobCourse();
-
+	function handleShareJob(jobId: any) {
+		ShareJob(job, jobId);
+	}
 	return (
 		<div className="flex flex-col space-y-4 h-[420px]- h-auto ">
 			<div
@@ -116,17 +128,17 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
 								className="image"
 							/>
 						</div>
-						<div className="flex flex-col gap-[0.1rem]">
+						<div className="flex flex-col gap-[1.1rem]">
 							<h2 className="text-base font-bold">{job.company_name}</h2>
 							{/* <h2 className="big">{job.platform}</h2> */}
 							<div
-								className={`absolute right-1 top-28 text-white text-xs px-1 py-0.5 rounded-sm capitalize ${
-									job.status === "Applied" ? "bg-green-700" : "bg-red-700"
+								className={`absolute right-1 top-24 text-white text-xs px-4 py-2 rounded-sm capitalize ${
+									job.status === "approved" ? "bg-green-700" : "bg-red-700"
 								}`}
 							>
 								{job.status ? job.status : null}
 							</div>
-							<p className="small">{job.job_type}</p>
+							<p className="small mb-5">{job.job_type}</p>
 						</div>
 					</div>
 					<div className="txt-1 flex items-center-  gap-5">
@@ -157,12 +169,12 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
 						</button>
 					</section>
 
-					<div className=" flex items-center justify-center border rounded p-2 ">
+					<div className=" flex items-center justify-center border  p-2  bg-white rounded-md font-bold  text-black hover:bg-yellow-500 hover:text-white py-3 capitalize transition-all duration-1000 ">
 						{/* <button className="btn" onClick={handleApplyClick}>
           View Job
           </button> */}
 						<Link href={`/jobs/${job.id}`}>
-							<button className="btn">
+							<button className="btn ">
 								{/* <Link href={`/employer-dashboard/jobs/job/${job?.id}`}> */}
 								Learn More
 							</button>

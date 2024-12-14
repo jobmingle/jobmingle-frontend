@@ -4,9 +4,12 @@ import React, { useState, useEffect, useRef } from "react";
 import love from "@/public/image/loveicon.png";
 import share from "@/public/image/shareicon.png";
 import Image from "next/image";
-import { formatCurrency, timeAgo } from "@/lib/helpers";
-import { useJobCourse } from "@/app/_contexts/apis/ApiState";
+import { formatCurrency, ShareCourse, timeAgo } from "@/lib/helpers";
+
 import Slider from "react-slick";
+import { useGetAllCoursesQuery } from "@/app/_features/appSlices/apiSlice";
+import Spinner from "./Spinner";
+import { HiCreditCard } from "react-icons/hi2";
 
 interface Course {
 	shortname: string;
@@ -28,7 +31,15 @@ interface CarouselProps {
 }
 
 const Carousel = () => {
-	const { courses }: CarouselProps = useJobCourse();
+	// const { courses }: CarouselProps = useJobCourse();
+	const {
+		currentData: courseData,
+		isFetching: isLoading,
+		error,
+	}: any = useGetAllCoursesQuery({});
+	const courses = courseData?.data?.filter(
+		(course: any) => course.visible === 1
+	);
 
 	const settings = {
 		dots: false,
@@ -68,6 +79,8 @@ const Carousel = () => {
 			},
 		],
 	};
+
+	if (isLoading) return <Spinner />;
 	return (
 		<div className="w-full mt-10 ">
 			<div className=" slider-container">
@@ -79,7 +92,7 @@ const Carousel = () => {
 				<div className="w-full mt-5 lg:bg-stone-600-">
 					<div className="w-full  lg:w-[85%] m-auto ">
 						<Slider {...settings}>
-							{courses.map((course, index) => (
+							{courses?.map((course: any, index: any) => (
 								<div key={index} className="p-2">
 									<CourseCard course={course} />
 								</div>
@@ -99,9 +112,9 @@ interface CourseCardProps {
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
-	const { handleShareCourse } = useJobCourse();
-
-	let link = "";
+	function handleShareCourse(courseId: any) {
+		ShareCourse(course, courseId);
+	}
 	return (
 		<div
 			key={course.id}
@@ -123,32 +136,26 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
 					</section>
 					<div className="flex flex-col">
 						<p className=" text-xs sm:text-[85%] montserrat capitalize text-[#f5cb1a] py-0.5 font-semibold">
-							{course.course_creator_name}
-						</p>
-						<p className=" text-xs sm:text-[85%] montserrat capitalize text-[#f5cb1a] py-0.5 font-semibold">
 							{course.displayname}
 						</p>
 						{/* <p className=" text-xs sm:text-[80%] md:text-[85%] sora  text-gray-500 pb-2 tracking-wide">
 							{course.summary.split(" ").slice(0, 2).join(" ") + "..."}
 						</p> */}
 						<section className="flex flex-row justify-between">
-							<div className="flex flex-row items-center gap-1">
-								{/* <Image src={tiredicon} alt="tiredicon" className="w-7 h-7" />
-									<div className="flex flex-col">
-										<p className="sora text-xs font-bold capitalize text-blue-900">
-											prosper
-											</p>
-											<p className="sora text-[65%] font-semibold">15 Lessons</p>
-											</div> */}
-							</div>
-							<p className="text-[#f5cb1a] capitalize text-sm montserrat font-bold">
-								Not Enrolled
-							</p>
+							<div className="flex flex-row items-center gap-1"></div>
 						</section>
+						<div className="flex flex-row items-center gap-1 text-xl">
+							<HiCreditCard />
+							<div className="flex flex-col">
+								<p className="sora text-[65%] font-semibold">
+									{formatCurrency(course?.price)}
+								</p>
+							</div>
+						</div>
 						<section className="flex flex-row justify-between m-1 py-1 ">
-							<button className="w-6 h-6">
-								<Image src={love} alt="loveicon" />
-							</button>
+							<p className=" text-xs sm:text-[85%] montserrat capitalize text-stone-500 -text-[#f5cb1a] py-0.5 font-semibold">
+								{course.course_creator_name}
+							</p>
 							<button
 								className="w-6 h-6"
 								onClick={() => handleShareCourse(course?.id)}
@@ -159,7 +166,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
 						<section className=" border-solid border-x-black-100 py-1">
 							<Link href={`/courses/${course.id || course.course_id}`}>
 								<button
-									className="border w-full bg-white rounded-md font-bold  text-black hover:bg-yellow-500 hover:text-white py-1.5 capitalize transition-all duration-1000"
+									className="border w-full bg-white rounded-md font-bold  text-black hover:bg-yellow-500 hover:text-white py-2 capitalize transition-all duration-1000"
 									// onClick={handleApplyClick}
 								>
 									Learn More

@@ -5,12 +5,20 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import Button from "./Button";
-import Error from "./Error";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+import Button from "../ui/Button";
+import Error from "../ui/Error";
+import Cookies from "js-cookie";
+
 import Spinner from "@/app/_components/ui/Spinner";
-import Loader from "./Loader";
-import ViewPassword from "./VIewPassword";
+import Loader from "../ui/Loader";
+import ViewPassword from "../ui/VIewPassword";
+import {
+	useCreateUserMutation,
+	useGetAuthUserQuery,
+	useObtainTokenMutation,
+} from "@/app/_features/appSlices/apiSlice";
+import { useAppDispatch } from "@/app/_hooks/hooks";
+import { setUser } from "@/app/_features/appSlices/userSlice";
 
 interface FormData {
 	email: string;
@@ -18,17 +26,27 @@ interface FormData {
 }
 
 export default function LoginForm() {
-	const { register, handleSubmit, formState } = useForm<FormData>();
+	const { register, handleSubmit, formState } = useForm<FormData>({
+		defaultValues: {
+			email: "",
+			password: "",
+		},
+	});
 	const [Open, setOpen] = useState(false);
+	const router = useRouter();
 
 	const { errors } = formState;
-	const router = useRouter();
-	const { login, token, error, isAuthenticated, clearErrors, isLoading, user } =
-		useAuth();
+	// const { login, token, error, isAuthenticated, clearErrors, isLoading, user } =
+	// 	useAuth();
+
+	const [obtainToken, { isLoading, error }] = useObtainTokenMutation();
+
+	const dispatch = useAppDispatch();
 
 	// console.log(user);
 	// console.log(user?.firstName);
 
+	/*
 	useEffect(() => {
 		if (error === "Bad credentials") {
 			toast.error(
@@ -67,8 +85,7 @@ export default function LoginForm() {
 
 			if (user.goals === "Apply for a job / Take a course")
 				router.push("/dashboard");
-			if (user.goals === "Admin" || user.role === "Admin")
-				router.push("/admin-dashboard");
+			if (user.role === "admin") router.push("/admin-dashboard");
 		}
 	}, [error, isAuthenticated, clearErrors, router, user]);
 
@@ -76,14 +93,62 @@ export default function LoginForm() {
 		login(data);
 		// toast.success("Form submitted successfully.");
 	}
+		*/
 
 	function onError(errors: any) {
 		console.error(errors);
 	}
 
+	// const { refetch } = useGetAuthUserQuery(undefined, { skip: true });
+	// const [getAuthUser, { isLoading }] = useGetAuthUserQuery(undefined, {
+	// 	skip: true,
+	// });
+
+	const handleObtainToken = async (data: any) => {
+		try {
+			const res: any = await obtainToken(data).unwrap();
+			dispatch(setUser({ user: res?.data, token: res?.token }));
+			if (res?.token) {
+				localStorage.setItem("access_token", res?.token);
+				Cookies.set("auth_token", res?.token, {
+					path: "/",
+					expires: 24 * 60 * 60,
+					secure: process.env.NODE_ENV === "production",
+					sameSite: "Strict",
+				});
+
+				if (res?.data?.goals === "List a course") {
+					router.push("/vendor-dashboard");
+				}
+
+				if (res?.data?.goals === "Post a job") {
+					router.push("/employer-dashboard");
+				}
+
+				if (res?.data?.goals === "Apply for a job / Take a course") {
+					router.push("/dashboard");
+				}
+
+				if (res?.data?.role === "admin") {
+					router.push("/admin-dashboard");
+				}
+
+				toast.success(res?.message);
+			}
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
+		}
+	};
+
 	return (
 		<div>
-			<form className=" w-full mt-4" onSubmit={handleSubmit(onSubmit, onError)}>
+			<form
+				className=" w-full mt-4"
+				onSubmit={handleSubmit(handleObtainToken, onError)}
+			>
 				<div>
 					<label className="text-sm montserrat py-1 tracking-wider font-medium">
 						Email
@@ -144,7 +209,7 @@ export default function LoginForm() {
 					disabled={isLoading}
 					// onClick={(e) => handleSubmit(e)}
 				>
-					Login<span>{isLoading && <Spinner />} </span>
+					<span>{isLoading ? <Spinner /> : "Login"} </span>
 				</Button>
 			</form>
 			<p className="text-sm montserrat  font-medium float-right mt-5 mb-3 text-black-100/80 ">

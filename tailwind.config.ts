@@ -24,10 +24,15 @@ const config: Config = {
 			// 	},
 			// },
 			animation: {
+				borderMove: "border-move 4s linear infinite",
 				fadeIn: "fadeIn 0.2s ease-in-out forwards",
 				bounceIn: "bounceIn 2.5s ease-in-out",
 			},
 			keyframes: {
+				borderMove: {
+					"0%": { backgroundPosition: "0% 0%" },
+					"100%": { backgroundPosition: "200% 0%" },
+				},
 				fadeIn: {
 					"0%": { opacity: " 0 " },
 					"100%": { opacity: "1" },

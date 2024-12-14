@@ -6,23 +6,32 @@ import Button from "../atoms/Button";
 import Image from "next/image";
 import Logo from "./Logo";
 import logo from "@/public/logo.png";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+
 import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/app/_hooks/hooks";
+import {
+	authenticated,
+	user as userData,
+} from "@/app/_features/appSlices/userSlice";
+import LogoutButton from "../auth/LogoutButton";
 
 const AppHeader = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [menuOpen, setMenuOpen] = useState(false);
-	const { isAuthenticated, logout, user } = useAuth();
+	// const { isAuthenticated, logout, user } = useAuth();
 	const router = useRouter();
 
-	let url;
+	const user = useAppSelector(userData);
+	const isAuthenticated = useAppSelector(authenticated);
+
+	let url = "/";
 	if (user) {
-		if (user.goals === "List a course") url = "/vendor-dashboard";
+		if (user?.goals === "List a course") url = "/vendor-dashboard";
 
-		if (user.goals === "Post a job") url = "/employer-dashboard";
+		if (user?.goals === "Post a job") url = "/employer-dashboard";
 
-		if (user.goals === "Apply for a job / Take a course") url = "/dashboard";
-		if (user.goals === "Admin" || user.role === "Admin")
+		if (user?.goals === "Apply for a job / Take a course") url = "/dashboard";
+		if (user?.goals === "admin" || user?.role === "admin")
 			url = "/admin-dashboard";
 	}
 
@@ -56,14 +65,9 @@ const AppHeader = () => {
 		setMenuOpen(!menuOpen);
 	};
 
-	function handleLogout() {
-		logout();
-		router.push("/sign-in");
-	}
-
 	return (
 		<nav
-			className={`bg-white  text-black flex justify-around  md:shrink-0 max-md:contents  top-0 left-0 right- shadow-md transform transition-transform duration-500 ease-in-out z-50 ${
+			className={`bg-white  text-black flex justify-around  md:shrink-0 max-md:contents  top-0 left-0 right- shadow-md transform transition-transform duration-500 ease-in-out z-40  ${
 				isVisible && "fixed"
 			} ${isVisible ? "animate-bounceIn" : "translate-y-0"}`}
 		>
@@ -76,7 +80,7 @@ const AppHeader = () => {
 					</div>
 				</div>
 
-				<ul className="inline-flex items-end gap-8 lg:gap-16 max-md:hidden">
+				<ul className="hidden md:flex  items-end gap-8 lg:gap-16  ">
 					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
 						<Link href="/about" onClick={toggleMenu}>
 							About Us
@@ -94,31 +98,40 @@ const AppHeader = () => {
 						<Link href="/contact-us">Contact Us</Link>
 					</li>
 				</ul>
-				{isAuthenticated ? (
-					<div className="inline-flex gap-3 items-start  max-md:hidden">
-						{/* <Link href={url || null}> */}
-						<Button type="login" onClick={handleBackToDashboard}>
+				{user ? (
+					<div className=" hidden md:flex gap-3 items-start   z-30">
+						<button
+							className="py-[.6rem] px-[1rem] border rounded-md hover:bg-yellow-500 transition-all ease-in-out cursor-pointer duration-500 z-50 shadow shadow-yellow-500  "
+							onClick={handleBackToDashboard}
+						>
 							Dashboard
-						</Button>
-						{/* </Link> */}
-						<Button onClick={handleLogout} type="logout">
-							Logout
-						</Button>
+						</button>
+						<LogoutButton />
 					</div>
 				) : (
-					<div className="inline-flex items-start gap-3 max-md:hidden">
-						<Link href="/sign-up">
-							<Button className="w-[100px]  bg-black text-white rounded-[10px]  hover:text-black hover:bg-yellow-500 transition-colors duration-500">
+					<div className="flex items-start gap-3 max-md:hidden ">
+						<Button className="w-[100px]  bg-black text-white rounded-[10px]  hover:text-black hover:bg-yellow-500 transition-colors duration-500">
+							<Link href="/sign-up" className="">
 								Sign Up
-							</Button>
-						</Link>
+							</Link>
+						</Button>
 
 						{/* I hid this button on large screen downward with max-lg:hidden , to fix nav items overlap */}
-						<Link href="/sign-in" className="max-lg:hidden">
-							<Button className="w-[100px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 ">
-								Login
-							</Button>
-						</Link>
+						<Button className="w-[100px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 max-lg:hidden">
+							<Link href="/sign-in">Login</Link>
+						</Button>
+					</div>
+				)}
+
+				{user && (
+					<div className=" flex text-sm md:hidden  z-30">
+						{/* <Link href={url || null}> */}
+						<button
+							className="py-[.6rem] px-[1rem] border rounded-md hover:bg-yellow-500 transition-all ease-in-out cursor-pointer duration-500 z-50 shadow shadow-yellow-500  "
+							onClick={handleBackToDashboard}
+						>
+							Dashboard
+						</button>
 					</div>
 				)}
 
@@ -178,11 +191,7 @@ const AppHeader = () => {
 							About us
 						</Link>
 					</li>
-					<li className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
-						<Link href="/career" onClick={toggleMenu}>
-							Career
-						</Link>
-					</li>
+
 					<li className="flex text-lg font-medium leading-6  hover:text-white items-center justify-center hover:bg-yellow-300 hover:bg-opacity-10 w-full h-20">
 						<Link href="/courses" onClick={toggleMenu}>
 							Courses
@@ -199,13 +208,17 @@ const AppHeader = () => {
 							Contact Us
 						</Link>
 					</li>
-					<div className="inline-flex items-start mr-6">
-						<Link href="/sign-up" onClick={toggleMenu}>
-							<Button className="w-[200px] bg-[#f5cb1a] text-black border-solid border-10 border-white transition-colors duration-300">
-								Sign Up
-							</Button>
-						</Link>
-					</div>
+					<li className="inline-flex items-start mr-6">
+						{user ? (
+							<LogoutButton styleExtra="bg-white text-black" hidden={false} />
+						) : (
+							<Link href="/sign-up" onClick={toggleMenu}>
+								<Button className="w-[200px] bg-[#f5cb1a] text-black border-solid border-10 border-white transition-colors duration-300">
+									Sign Up
+								</Button>
+							</Link>
+						)}
+					</li>
 				</ul>
 			)}
 		</nav>

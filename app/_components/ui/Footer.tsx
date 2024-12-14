@@ -67,13 +67,13 @@ export default function Footer() {
 							<BsMedium />
 						</Link>
 					</div>
-					<p className="text-white flex gap-2">
+					<div className="text-white flex gap-2">
 						<span className="rotate-45"></span>
 						Call us :
 						<Link href="tel:07077308481" className="text-yellow-500">
 							07077308481
 						</Link>
-					</p>
+					</div>
 					<p className="text-white flex gap-2">
 						Email:
 						<Link

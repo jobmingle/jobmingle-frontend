@@ -12,9 +12,9 @@ export default function SearchBar({
 	}
 
 	return (
-		<div className="bg-gray-200 py-3 md:py-10 rounded-md">
+		<div className="bg-gray-200 py-3 md:py-7 rounded-md">
 			<div className=" md:max-w-5xl mx-auto px-">
-				<h1 className="text-xl md:text-3xl font-bold text-center mb-3 md:mb-5">
+				<h1 className="text-xl md:text-2xl font-bold text-center mb-3 md:mb-5">
 					{title}
 				</h1>
 				<div className="relative bg-white md:rounded-full shadow-lg flex items-center max-md:flex-col max-md:py-2">

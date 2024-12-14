@@ -10,19 +10,22 @@ import {
 	ResponsiveContainer,
 	Legend,
 } from "recharts";
-import { useJobCourse } from "@/app/_contexts/apis/ApiState";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+
 import Loader from "@/app/_components/ui/Loader";
 import { useEffect, useState } from "react";
+import { useGetListedJobsQuery } from "@/app/_features/appSlices/apiSlice";
 
 const AccountDashboard = () => {
-	const { user, isAuthenticated } = useAuth();
-	const { listedJobs: jobs, fetchListedJobs, isLoading } = useJobCourse();
-	const [fetchCount, setFetchCount] = useState(0);
-	const maxCount = 3;
+	const {
+		currentData: jobsData,
+		isFetching: isLoading,
+		refetch: refetchJobs,
+		error,
+	}: any = useGetListedJobsQuery({});
+	const jobs = jobsData?.data;
 
 	const rejectedJobs = jobs?.filter(
-		(job: any) => job.status !== "approved" && job.status !== "draft"
+		(job: any) => job.status === "rejected"
 	).length;
 
 	const pendingJobs = jobs?.filter((job: any) => job.status === "draft").length;
@@ -52,12 +55,6 @@ const AccountDashboard = () => {
 
 		// Add more monthly data as needed
 	];
-
-	useEffect(() => {
-		fetchListedJobs();
-
-		// eslint-disable-next-line
-	}, [jobs.length]);
 
 	return (
 		<div className="container mx-auto md:p-9">
@@ -103,15 +100,14 @@ const AccountDashboard = () => {
 			<div className="w-full h-96 mt-[10%] ">
 				<ResponsiveContainer width="100%" height="100%">
 					<BarChart data={chartData}>
-						<CartesianGrid strokeDasharray="3 3" />
 						<XAxis dataKey="name" />
 						<YAxis />
 						<Tooltip />
 						<Legend />
-						<Bar dataKey="totalJobs" fill="#94d845" />
-						<Bar dataKey="approvedJobs" fill="#0c9842" />
-						<Bar dataKey="pendingJobs" fill="#3497b2" />
-						<Bar dataKey="rejectedJobs" fill="#1848cb" />
+						<Bar dataKey="totalJobs" fill="#3b82fc" radius={[5, 5, 0, 0]} />
+						<Bar dataKey="approvedJobs" fill="#22c55e" radius={[5, 5, 0, 0]} />
+						<Bar dataKey="pendingJobs" fill="#eab308" radius={[5, 5, 0, 0]} />
+						<Bar dataKey="rejectedJobs" fill="#dc2626" radius={[5, 5, 0, 0]} />
 					</BarChart>
 				</ResponsiveContainer>
 			</div>

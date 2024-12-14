@@ -98,13 +98,12 @@ const AccountDashboard = () => {
 			<div className="w-full h-96 mt-[10%] ">
 				<ResponsiveContainer width="100%" height="100%">
 					<BarChart data={chartData}>
-						<CartesianGrid strokeDasharray="3 3" />
 						<XAxis dataKey="name" />
 						<YAxis />
 						<Tooltip />
-						<Bar dataKey="Vendors" fill="#8884d8" />
-						<Bar dataKey="Employees" fill="#82ca9d" />
-						<Bar dataKey="Students" fill="#ffc658" />
+						<Bar dataKey="Vendors" fill="#8884d8" radius={[5, 5, 0, 0]} />
+						<Bar dataKey="Employees" fill="#82ca9d" radius={[5, 5, 0, 0]} />
+						<Bar dataKey="Students" fill="#ffc658" radius={[5, 5, 0, 0]} />
 					</BarChart>
 				</ResponsiveContainer>
 			</div>

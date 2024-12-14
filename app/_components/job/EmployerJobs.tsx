@@ -9,27 +9,46 @@ import { Content, PopupContainer, Overlay } from "./styles";
 import NoResult from "../ui/NoResult";
 import { usePagination } from "@/app/_hooks/usePagination";
 import Pagination from "../ui/Pagination";
-import { useJobCourse } from "@/app/_contexts/apis/ApiState";
+
 import { formatCurrency, timeAgo } from "@/lib/helpers";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import Spinner from "../ui/Spinner";
 import toast from "react-hot-toast";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+
 import NoListings from "../ui/NoListings";
+import EditJobFormModal from "../ui/EditJobFormModal";
+import { HiPencil, HiTrash } from "react-icons/hi2";
+import { JobTypes } from "@/app/_hooks/Helpers";
+import { useAppSelector } from "@/app/_hooks/hooks";
+import { user as userData } from "@/app/_features/appSlices/userSlice";
+import {
+	useDeleteJobMutation,
+	useGetListedJobsQuery,
+} from "@/app/_features/appSlices/apiSlice";
 
 // const JobsPage = async ({ searchQuery }: any) => {
 function JobsPage({ searchQuery, link }: any) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
-	const { jobs, listedJobs, fetchListedJobs, isLoading } = useJobCourse();
-	const { user } = useAuth();
 	const { from, to } = usePagination();
+	const [Active, setActive] = useState(false);
+	const [selectedJob, setSelectedJob] = useState<JobTypes | null>(null);
 
-	// console.log(listedJobs);
+	const {
+		currentData: jobsData,
+		isFetching: isLoading,
+		refetch: refetchJobs,
+		error,
+	}: any = useGetListedJobsQuery({});
+	const listedJobs = jobsData?.data;
+
+	const user = useAppSelector(userData);
+	const [deleteJob] = useDeleteJobMutation();
+
 	const searchedJobs =
-		searchQuery.length > 0
-			? listedJobs?.filter((job: any) =>
+		searchQuery?.length > 0
+			? listedJobs?.filter((job: JobTypes) =>
 					`${job.job_type} ${job.job_role} ${job.job_description} `
 						.toLowerCase()
 						.includes(searchQuery.toLowerCase())
@@ -37,23 +56,35 @@ function JobsPage({ searchQuery, link }: any) {
 			: listedJobs;
 
 	const Jobs = searchedJobs?.slice(from, to);
-	// const Jobs = Array.isArray(searchedJobs) ? searchedJobs.slice(from, to) : [];
 
 	const handleApplyClick = () => {
 		if (!user) {
 			toast("Please sign in to continue your job application!", { icon: "🔑" });
 		}
 	};
+	function hanldeEditJob(job: JobTypes) {
+		setActive((active) => !active);
+		setSelectedJob(job);
+	}
 
-	useEffect(() => {
-		fetchListedJobs();
-	}, [jobs.length, fetchListedJobs]);
+	const handleDeleteJob = async (jobId: number) => {
+		try {
+			window.alert("Are you sure you want to delete this job?");
+			const res = await deleteJob(jobId).unwrap();
+			toast.success(res?.message);
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
+		}
+	};
 
-	if (!listedJobs.length && isLoading) {
+	if (!listedJobs?.length && isLoading) {
 		return <Spinner />;
 	}
 
-	if (!isLoading && listedJobs.length === 0) {
+	if (!isLoading && listedJobs?.length === 0) {
 		return (
 			<NoListings
 				url="/employer-dashboard/list-job"
@@ -64,7 +95,7 @@ function JobsPage({ searchQuery, link }: any) {
 		);
 	}
 
-	if (!isLoading && searchedJobs.length === 0) {
+	if (!isLoading && searchedJobs?.length === 0) {
 		return <NoResult />;
 	}
 
@@ -73,14 +104,14 @@ function JobsPage({ searchQuery, link }: any) {
 			<div className="text-sm md:text-base font-bold rounded-md border-l-4 border-t-2 border-yellow-600   p-1 my-8 w-[50%] md:w-[30%] text-center">
 				<div className="shadow shadow-yellow-500 rounded p-2">
 					<p>
-						{searchedJobs.length} {searchedJobs.length > 1 ? "jobs" : "job"}{" "}
+						{searchedJobs?.length} {searchedJobs?.length > 1 ? "jobs" : "job"}{" "}
 						listed!
 					</p>
 				</div>
 			</div>
 
 			<div className="box">
-				{Jobs.map((job: any) => (
+				{Jobs?.map((job: any) => (
 					<div
 						key={job.id}
 						className="rounded-3xl border-l-8 border-t-2- border-yellow-600  h-full"
@@ -131,13 +162,32 @@ function JobsPage({ searchQuery, link }: any) {
 								<p className="small">{timeAgo(job.created_at)}</p>
 							</div>
 
-							<section className="flex flex-row justify-end gap-3 m-1 py-1 ">
-								<button className="w-5 h-5">
-									<Image src={love} alt="loveicon" />
-								</button>
-								<button className="w-5 h-5">
-									<Image src={share} alt="shareicon" />
-								</button>
+							<section className="flex flex-row justify-between gap-3 m-1 py-1 ">
+								<div className="flex gap-3">
+									<button className="w-5 h-5">
+										<Image src={love} alt="loveicon" />
+									</button>
+									<button className="w-5 h-5">
+										<Image src={share} alt="shareicon" />
+									</button>
+								</div>
+
+								<div className="flex gap-3 border- px-2 items-center">
+									{/* <Button type="login"> */}
+									<button
+										className="text-xl hover:text-yellow-500 transition-all duration-700 border p-1 rounded"
+										onClick={() => hanldeEditJob(job)}
+									>
+										<HiPencil />
+									</button>
+									<button
+										className="text-xl hover:text-red-500 transition-all duration-700 border p-1 rounded"
+										onClick={() => handleDeleteJob(job.id)}
+									>
+										<HiTrash />
+									</button>
+									{/* </Button>  */}
+								</div>
 							</section>
 
 							<div className="txt-3 flex items-center justify-end">
@@ -152,13 +202,16 @@ function JobsPage({ searchQuery, link }: any) {
 								</Link>
 							</div>
 						</div>
+						{Active ? (
+							<EditJobFormModal setActive={setActive} jobId={selectedJob?.id} />
+						) : null}
 					</div>
 				))}
 			</div>
 			<br />
 			{/* {searchedJobs.length === 0 && <NoResult />} */}
 
-			<Pagination count={searchedJobs.length} assets="jobs" />
+			<Pagination count={searchedJobs?.length} assets="jobs" />
 		</Content>
 	);
 }

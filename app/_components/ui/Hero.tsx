@@ -62,7 +62,7 @@ const Hero = () => {
 					id="animationbutton"
 				>
 					<Link href="/sign-up">
-						<Button className="w-[200px] max-md:py-6 text-[16px] border-white border-solid bg-[#f5cb1a]">
+						<Button className="w-[200px] max-md:py-6 text-[16px] border-white border-solid shadow shadow-black bg-[#f5cb1a]">
 							Get Started
 						</Button>
 					</Link>

@@ -5,11 +5,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Link from "next/link";
 
-import Button from "./Button";
-import Error from "./Error";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+import Button from "../ui/Button";
+import Error from "../ui/Error";
+
 import Spinner from "@/app/_components/ui/Spinner";
-import ViewPassword from "./VIewPassword";
+import ViewPassword from "../ui/VIewPassword";
 
 interface FormData {
 	password: string;
@@ -22,20 +22,19 @@ export default function UpdateUserEmail() {
 	const { register, handleSubmit, watch, formState, reset } =
 		useForm<FormData>();
 	const { errors } = formState;
-	const { error, clearErrors, updateUserEmail, isLoading, user } = useAuth();
 
-	useEffect(() => {
-		if (error === "Network Error") {
-			toast.error(error);
-			clearErrors();
-		}
+	// useEffect(() => {
+	// 	if (error === "Network Error") {
+	// 		toast.error(error);
+	// 		clearErrors();
+	// 	}
 
-		// eslint-disable-next-line
-	}, [error]);
+	// 	// eslint-disable-next-line
+	// }, [error]);
 
 	function onSubmit(data: FormData) {
 		// console.log(data);
-		updateUserEmail(user?.id, data);
+		// updateUserEmail(user?.id, data);
 		reset();
 	}
 
@@ -89,7 +88,7 @@ export default function UpdateUserEmail() {
 						type="text"
 						id="new_email"
 						className="input w-full"
-						defaultValue={user?.email}
+						// defaultValue={user?.email}
 						placeholder="Your new_email"
 						{...register("new_email", {
 							required: false,
@@ -102,11 +101,11 @@ export default function UpdateUserEmail() {
 
 				<Button
 					type="login"
-					disabled={isLoading}
+					// disabled={isLoading}
 					// onClick={(e) => handleSubmit(e)}
 				>
 					Update Email
-					<span>{isLoading && <Spinner />}</span>
+					{/* <span>{isLoading && <Spinner />}</span> */}
 				</Button>
 			</form>
 		</div>

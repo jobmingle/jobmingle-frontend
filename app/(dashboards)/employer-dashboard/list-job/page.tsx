@@ -6,10 +6,11 @@ import SuccessModal from "@/Components/SuccessModal";
 import { HiArrowLeft } from "react-icons/hi2";
 import { useForm } from "react-hook-form";
 import Button from "@/app/_components/ui/Button";
-import { useJobCourse } from "@/app/_contexts/apis/ApiState";
+
 import Spinner from "@/app/_components/ui/Spinner";
 import toast from "react-hot-toast";
 import Error from "@/app/_components/ui/Error";
+import { usePostJobMutation } from "@/app/_features/appSlices/apiSlice";
 
 interface FormData {
 	company_name: string;
@@ -26,19 +27,7 @@ interface FormData {
 function Page() {
 	const router = useRouter();
 	const [Alert, setAlert] = useState(false);
-	const { postJob, isLoading, error, clearErrors } = useJobCourse();
-
-	useEffect(() => {
-		if (error === "The company site must be a valid URL (e.g., .com, .net).") {
-			toast.error(error);
-			clearErrors();
-		}
-		if (error === "The company site field is required.") {
-			// toast.error(error);
-			toast.error(`Please fill all inputs`);
-			clearErrors();
-		}
-	}, [error, clearErrors]);
+	// const { postJob, isLoading, error, clearErrors } = useJobCourse();
 
 	const {
 		register,
@@ -58,15 +47,36 @@ function Page() {
 			job_link: "",
 		},
 	});
+	const [postJob, { isLoading: isCreatingJob, error }] = usePostJobMutation();
+
+	// useEffect(() => {
+	// 	if (error === "The company site must be a valid URL (e.g., .com, .net).") {
+	// 		toast.error(error);
+	// 		clearErrors();
+	// 	}
+	// 	if (error === "The company site field is required.") {
+	// 		// toast.error(error);
+	// 		toast.error(`Please fill all inputs`);
+	// 		clearErrors();
+	// 	}
+	// }, [error, clearErrors]);
 
 	const handleback = () => {
 		router.back();
 	};
 
-	function onSubmit(data: FormData) {
-		// console.log(data);
-		postJob(data);
-		reset();
+	async function handlePostJob(data: FormData) {
+		try {
+			const res: any = await postJob(data).unwrap();
+			toast.success(res?.message);
+			reset();
+			router.push("/employer-dashboard/jobs");
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
+		}
 	}
 
 	function onError(errors: any) {
@@ -107,7 +117,7 @@ function Page() {
 				// className="relative min-w-[95%] sm:min-w-[70%] md:min-w-[90%] lg:min-w-[90%] p-1 pb-8 sm:pb-2 flex flex-col justify-center items-center"
 				>
 					<form
-						onSubmit={handleSubmit(onSubmit, onError)}
+						onSubmit={handleSubmit(handlePostJob, onError)}
 						className="w-full h-full md:p-4"
 					>
 						<div className=" shadow shadow-gray-500 rounded p-2">
@@ -175,7 +185,7 @@ function Page() {
 									<Error>{errors.job_type.message}</Error>
 								)}
 								<label className="text-sm montserrat py-1 tracking-wider font-medium">
-									Salary (In naira)
+									Salary
 								</label>
 								<input
 									type="number"
@@ -277,6 +287,10 @@ function Page() {
 									<Error>{errors.job_link.message}</Error>
 								)}
 							</div>
+							<p className="text-md text-black font-extrabold py-2">
+								Note: You can only fill out either the application email or
+								link and not both.
+							</p>
 						</div>
 						{/* <button
 							type="submit"
@@ -284,9 +298,8 @@ function Page() {
 						>
 							Submit{" "}
 						</button> */}
-						<Button type="login">
-							Submit
-							<span>{isLoading && <Spinner />}</span>
+						<Button type="login" disabled={isCreatingJob}>
+							<span>{isCreatingJob ? <Spinner /> : "Submit"}</span>
 						</Button>
 					</form>
 				</main>

@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import Button from "./Button";
-import Error from "./Error";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
+import Button from "../ui/Button";
+import Error from "../ui/Error";
+
 import Spinner from "@/app/_components/ui/Spinner";
+import { user as userData } from "@/app/_features/appSlices/userSlice";
+import { useAppSelector } from "@/app/_hooks/hooks";
+import { useUpdatePasswordMutation } from "@/app/_features/appSlices/apiSlice";
 
 interface FormData {
 	old_password: string;
@@ -17,24 +20,30 @@ interface FormData {
 }
 
 export default function UpdatePassword() {
+	const router = useRouter();
 	const { register, handleSubmit, watch, formState, reset } =
 		useForm<FormData>();
 	const { errors } = formState;
-	const { error, clearErrors, updatePassword, isLoading, user } = useAuth();
 
-	useEffect(() => {
-		if (error === "Network Error") {
-			toast.error(error);
-			clearErrors();
+	const [updatePassword, { isLoading: isUpdatingPassword, error }] =
+		useUpdatePasswordMutation();
+
+	const user = useAppSelector(userData);
+
+	async function handlePasswordUpdate(data: FormData) {
+		const userId = user?.id;
+		try {
+			const res: any = await updatePassword({ userId, data }).unwrap();
+			toast.success(res?.message);
+			// router.push("/employer-dashboard/jobs");
+
+			reset();
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
 		}
-
-		// eslint-disable-next-line
-	}, [error]);
-
-	function onSubmit(data: FormData) {
-		// console.log(data);
-		updatePassword(user?.id, data);
-		reset();
 	}
 
 	const password = watch("password", "");
@@ -52,7 +61,7 @@ export default function UpdatePassword() {
 			</section>
 			<form
 				className=" md:w-[50%]-  mt-3"
-				onSubmit={handleSubmit(onSubmit, onError)}
+				onSubmit={handleSubmit(handlePasswordUpdate, onError)}
 			>
 				<div className="shadow shadow-gray-500 rounded p-2">
 					<div className="p-5 border- shadow shadow-gray-500 rounded border-gray-900">
@@ -129,13 +138,8 @@ export default function UpdatePassword() {
 					</div>
 				</div>
 
-				<Button
-					type="login"
-					disabled={isLoading}
-					// onClick={(e) => handleSubmit(e)}
-				>
-					Update Password
-					<span>{isLoading && <Spinner />}</span>
+				<Button type="login" disabled={isUpdatingPassword}>
+					<span>{isUpdatingPassword ? <Spinner /> : "Update Password"}</span>
 				</Button>
 			</form>
 		</div>

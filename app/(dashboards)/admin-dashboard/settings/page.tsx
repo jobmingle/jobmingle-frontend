@@ -1,4 +1,4 @@
-import UpdatePassword from "@/app/_components/ui/UpdatePassword";
+import UpdatePassword from "@/app/_components/auth/UpdatePassword";
 import SettingsHeader from "@/app/_components/ui/SettingsHeader";
 
 function Page() {

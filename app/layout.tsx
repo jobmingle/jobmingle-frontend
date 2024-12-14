@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Serif } from "next/font/google";
-import { AuthProvider } from "./_contexts/auth/AuthState";
-import { ApiProvider } from "./_contexts/apis/ApiState";
+
 import { Toaster } from "react-hot-toast";
 
 import favicon from "./favicon.ico";
-import MyApp from "@/app/_app";
 
 import "./_styles/globals.css";
-import "../app/_styles/globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ScrollToTopButton from "./_components/ui/ScrollToTop";
 import { Suspense } from "react";
 import Spinner from "./_components/ui/Spinner";
 import Loader from "./_components/ui/Loader";
+import { Provider } from "react-redux";
+import { store } from "./_hooks/store";
+import ClientProvider from "./ClientProvider";
 // import setAuthToken from "@/lib/setAuthToken";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -25,8 +25,9 @@ const ibmPlexSerif = IBM_Plex_Serif({
 });
 
 export const metadata: Metadata = {
-	title: "JobMingle",
-	description: "JobMingle LandingPage",
+	title: { template: "%s JobMingle", default: "Welcome / Jobmingle" },
+	description:
+		"We are a ed-tech and job recruitment platform that empowers individuals seeking to transition to a new career with high-income skills and provides access to numerous remote job opportunities across the country.",
 	icons: `${favicon}`,
 };
 
@@ -37,19 +38,16 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" style={{ overflowX: "hidden" }}>
-			{/* <MyApp /> */}
 			<link rel="icon" href="favicon.ico" type="image/x-icon" />
 
 			<body className={`${inter.className} ${ibmPlexSerif.variable} `}>
-				<ApiProvider>
-					<AuthProvider>
-						{/* <div className="flex-1 md:px-8  md:py-8 "> */}
-						<Suspense fallback={<Loader />}>
-							<main>{children}</main>
-						</Suspense>
-						<ScrollToTopButton />
-					</AuthProvider>
-				</ApiProvider>
+				{/* <Suspense fallback={<Loader />}> */}
+				<ClientProvider>
+					<main>{children}</main>
+				</ClientProvider>
+				{/* </Suspense> */}
+				<ScrollToTopButton />
+
 				<Toaster
 					position="top-center"
 					gutter={12}

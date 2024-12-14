@@ -1,113 +1,138 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { userPreferences } from "@/lib/_exportLinks";
-import { useAuth } from "@/app/_contexts/auth/AuthState";
 import toast from "react-hot-toast";
 import Spinner from "@/app/_components/ui/Spinner";
 import { useRouter } from "next/navigation";
 import { FiEdit2 } from "react-icons/fi";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
-export default function PreferencesForm() {
+import { useUpdateProfileMutation } from "@/app/_features/appSlices/apiSlice";
+import { useAppDispatch, useAppSelector } from "@/app/_hooks/hooks";
+import { setUser, user as userData } from "@/app/_features/appSlices/userSlice";
+import { convertFileToBase64 } from "@/app/_hooks/Helpers";
+
+export default function UpdateProfileForm() {
+	const dispatch = useAppDispatch();
 	const [step, setStep] = useState(0);
 	const [imagePreview, setImagePreview] = useState<string | null>(null);
-	const router = useRouter();
-	const {
-		error,
-		updateUser,
-		user,
-		clearErrors,
-		isLoading,
-		convertFileToBase64,
-	} = useAuth();
 	const [selectedPreferences, setSelectedPreferences] = useState({
 		goals: "" as string,
 		interests: [] as string[],
-		image: File,
+		image: null as File | null,
 	});
 
+	const router = useRouter();
+
+	const user = useAppSelector(userData);
+	const [updateProfile, { isLoading: isGeneratingProfile, error }] =
+		useUpdateProfileMutation();
+
 	useEffect(() => {
-		if (error === "User not found.") {
-			toast.error(`Error: ${error}`);
-			clearErrors();
-		}
-		if (error === "The image field must be a string.") {
-			toast.error(`Error: ${error}`);
-			clearErrors();
-		}
-
-		if (error === "Network Error") {
-			toast.error(`Error: ${error}`);
-			clearErrors();
-		}
-		if (error === "The image size must not exceed 1 MB.") {
-			toast.error(`File upload error: ${error}`);
-			clearErrors();
-		}
-
 		if (user) {
-			if (user.goals === "List a course") router.push("/vendor-dashboard");
-
-			if (user.goals === "Post a job") router.push("/employer-dashboard");
-
-			if (user.goals === "Apply for a job / Take a course")
-				router.push("/dashboard");
-			if (user.goals === "Admin" || user.role === "Admin")
-				router.push("/admin-dashboard");
+			switch (user.goals) {
+				case "List a course":
+					router.push("/vendor-dashboard");
+					break;
+				case "Post a job":
+					router.push("/employer-dashboard");
+					break;
+				case "Apply for a job / Take a course":
+					router.push("/dashboard");
+					break;
+				default:
+					if (user.role === "Admin") router.push("/admin-dashboard");
+			}
 		}
-		// eslint-disable-next-line
-	}, [error, user]);
+	}, [error, user, router]);
 
 	const handleSelected = (category: string, option: any): void => {
 		setSelectedPreferences((prev) => {
-			if (category === "goals" || category === "image") {
-				// Only one selectable option for 'goals' and 'image'
-				if (category === "image") {
-					setImagePreview(URL.createObjectURL(option));
-				}
+			if (category === "goals") {
+				return { ...prev, goals: option };
+			}
+
+			if (category === "image") {
+				setImagePreview(option ? URL.createObjectURL(option) : null);
+				return { ...prev, image: option };
+			}
+
+			if (category === "interests") {
+				const isSelected = prev.interests.includes(option);
 				return {
 					...prev,
-					[category]: option,
-				};
-			} else if (category === "interests") {
-				const alreadySelected = prev.interests.includes(option);
-				return {
-					...prev,
-					interests: alreadySelected
+					interests: isSelected
 						? prev.interests.filter((item) => item !== option)
 						: [...prev.interests, option],
 				};
 			}
+
 			return prev;
 		});
 	};
 
-	const handlePrev = () => {
-		setStep((i) => {
-			if (i <= 0) return i;
-			return i - 1;
-		});
-	};
+	const handlePrev = () => setStep((prev) => Math.max(0, prev - 1));
 
 	const handleNext = () => {
-		if (step < Object.keys(userPreferences).length - 1) {
-			setStep(step + 1);
+		if (step < 2) {
+			setStep((prev) => prev + 1);
 		}
-		// else {
-		// 	// Handle the final submission (e.g., send to backend)
-		// 	console.log("Submitted Preferences: ", selectedPreferences);
-		// }
 	};
 
-	function handleSubmit(e: any) {
+	const handleUpdateProfile = async (e: React.FormEvent) => {
 		e.preventDefault();
-		const formattedPreferences = {
+
+		const userId = sessionStorage.getItem("userId") || "";
+		const base64Image = selectedPreferences.image
+			? await convertFileToBase64(selectedPreferences.image)
+			: null;
+
+		const formData = {
 			...selectedPreferences,
-			interests: selectedPreferences.interests.join(", "), // Converts array to comma-separated string
+			interests: selectedPreferences.interests.join(", "),
+			image: base64Image,
 		};
-		updateUser(formattedPreferences);
-		// console.log(formattedPreferences);
-	}
+
+		try {
+			const res: any = await updateProfile({ userId, formData }).unwrap();
+			dispatch(setUser({ user: res?.data, token: res?.token }));
+			if (res?.token) {
+				localStorage.setItem("access_token", res?.token);
+				Cookies.set("auth_token", res?.token, {
+					path: "/",
+					expires: 24 * 60 * 60,
+					secure: process.env.NODE_ENV === "production",
+					sameSite: "Strict",
+				});
+
+				if (res?.data?.goals === "List a course") {
+					router.push("/vendor-dashboard");
+				}
+
+				if (res?.data?.goals === "Post a job") {
+					router.push("/employer-dashboard");
+				}
+
+				if (res?.data?.goals === "Apply for a job / Take a course") {
+					router.push("/dashboard");
+				}
+
+				if (res?.data?.role === "admin") {
+					router.push("/admin-dashboard");
+				}
+
+				toast.success(res?.message);
+
+				// console.log(userData);
+			}
+		} catch (error: any) {
+			toast.error(error?.data?.message);
+
+			console.error(error);
+		}
+	};
 
 	return (
 		<div className="w-[90%] flex flex-col gap-5 py-10 my-10 px-5 md:px-20 m-auto justify-center border border-stone-950 rounded-md">
@@ -189,7 +214,10 @@ export default function PreferencesForm() {
 							type="file"
 							accept="image/*"
 							onChange={(e) =>
-								handleSelected("image", e.target.files ? e.target.files[0] : "")
+								handleSelected(
+									"image",
+									e.target.files ? e.target.files[0] : null
+								)
 							}
 							className="hidden"
 						/>
@@ -211,10 +239,11 @@ export default function PreferencesForm() {
 					onClick={
 						step < Object.keys(userPreferences).length - 1
 							? handleNext
-							: handleSubmit
+							: handleUpdateProfile
+						// : handleSubmit
 					}
 				>
-					{!isLoading ? (
+					{!isGeneratingProfile ? (
 						`${
 							step < Object.keys(userPreferences).length - 1 ? "Next" : "FInish"
 						}`
@@ -223,7 +252,7 @@ export default function PreferencesForm() {
 							<Spinner />
 						</span>
 					)}
-					{/* // : `${isLoading ? "Loading..." : "Finish"}` */}
+					{/* // : `${isGeneratingProfile ? "Loading..." : "Finish"}` */}
 				</button>
 			</div>
 		</div>

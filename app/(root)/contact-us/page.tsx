@@ -5,6 +5,7 @@ import Input from "../../_components/atoms/Input";
 import { useState } from "react";
 import Textarea from "../../_components/atoms/Textarea";
 import ContactForm from "@/app/_components/ui/ContactForm";
+import Newsletter from "@/app/_components/ui/Newsletter";
 
 export default function Contact() {
 	const [FormData, setFormData] = useState({
@@ -17,7 +18,6 @@ export default function Contact() {
 	function handleChange(event: any) {
 		const { name, value } = event.target;
 		setFormData((p) => ({ ...p, [name]: value }));
-		console.log(FormData);
 	}
 
 	return (
@@ -50,25 +50,12 @@ export default function Contact() {
 			</div>
 
 			{/* Newsletter Section */}
-			<div className="mt-8 text-center max-md:w-[85%]">
+			<div className="mt-8 text-center w-full">
 				<h2 className="text-2xl font-bold mb-4">Join Our Newsletter</h2>
 				<p className="mb-4 max-md:text-1xl ">
 					Never miss out on our updates, freebies and news
 				</p>
-				<div className="flex flex-col lg:flex-row items-center justify-center gap-1 lg:gap-4 mb-5">
-					<Input
-						type="text"
-						id="newsletter"
-						name="NewsLetter"
-						value={FormData.NewsLetter}
-						placeholder="Email"
-						onchange={handleChange}
-						className="w-full text-[#A09999]  bg-[#D2CFCF] md:w-[500.2px] p-5 border rounded  border-opacity-0     "
-					/>
-					<Button className="bg-yellow-400 font-semibold flex justify-center items-center text-white py-2 px-4 rounded   h-[60px] w-[300px] max-md:w-[70%] hover:bg-yellow-500">
-						Subscribe Now
-					</Button>
-				</div>
+				<Newsletter />
 			</div>
 		</section>
 	);

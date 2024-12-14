@@ -6,12 +6,12 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-import { useAuth } from "@/app/_contexts/auth/AuthState";
 import arrowback from "@/public/image/arrowback.png";
-import jobmingle from "@/public/image/jobmingle.png";
 import Button from "@/app/_components/ui/Button";
 import Error from "@/app/_components/ui/Error";
 import Spinner from "@/app/_components/ui/Spinner";
+import CusSpinner from "@/app/_components/ui/CusSpinner";
+import { useForgetPasswordMutation } from "@/app/_features/appSlices/apiSlice";
 
 interface FormData {
 	email: string;
@@ -22,18 +22,31 @@ function Page() {
 
 	const { register, handleSubmit, formState } = useForm<FormData>();
 	const { errors } = formState;
-	const { forgotPassword, error, clearErrors, isLoading } = useAuth();
 
-	useEffect(() => {
-		if (error === "Network Error") {
-			toast.error(error);
-			clearErrors();
+	const [forgotPassword, { isLoading: isRequesting, error }] =
+		useForgetPasswordMutation();
+
+	// useEffect(() => {
+	// 	if (error === "Network Error") {
+	// 		toast.error(error);
+	// 		clearErrors();
+	// 	}
+	// 	// eslint-disable-next-line
+	// }, [error]);
+
+	async function handleForgotPassword(data: FormData) {
+		sessionStorage.setItem("resetEmail", data?.email);
+		try {
+			const res: any = await forgotPassword(data).unwrap();
+			toast.success(res?.message);
+			router.push("/sign-in/reset-password");
+		} catch (error: any) {
+			toast.error(
+				error?.data?.message || "An error occured while performing request!"
+			);
+			console.error(error);
+			console.error(error?.error);
 		}
-		// eslint-disable-next-line
-	}, [error]);
-
-	function onSubmit(data: FormData) {
-		forgotPassword(data);
 	}
 
 	function onError(errors: any) {
@@ -44,16 +57,9 @@ function Page() {
 	};
 
 	return (
-		<main className="text-black min-h-screen h-auto overflow-x-hidden ">
-			<div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center overflow-x-hidden">
-				<div className=" relative sm:hidden md:flex w-full md:w-[50%] h-[55vh] sm:h-[100vh] bg ">
-					<Image
-						src={jobmingle}
-						alt="logo"
-						className="w-[4.5rem] h-12 ml-4 sm:ml-8 mt-8"
-					/>
-				</div>
-				<div className=" w-full md:w-[50%] h-auto bg-[#FEFEFE] sm:h-[100vh] relative flex sm:justify-center flex-col items-center ">
+		<main className="text-black min-h-screen h-auto relative overflow-x-hidden">
+			<div className="p-0 m-0 h-full flex flex-col sm:flex-row sm:justify-center relative overflow-x-hidden  py-3">
+				<div className=" w-[90%] md:w-[50%] py-5 rounded  bg-[#FEFEFE] border shadow shadow-yellow-600 h-full- relative flex sm:justify-center flex-col items-center mt-3   ">
 					<div
 						onClick={handleback}
 						className="w-full flex pl-4 items-center py-4 flex-row sm:absolute sm:top-2 sm:left-2  "
@@ -72,7 +78,7 @@ function Page() {
 					<section className="relative min-w-[95%] sm:min-w-[60%] md:min-w-[90%] lg:min-w-[60%] mt-7 sm:mt-4 p-2 pb-8 flex flex-col mx-4 sm:mx-8">
 						<form
 							className=" w-full mt-4"
-							onSubmit={handleSubmit(onSubmit, onError)}
+							onSubmit={handleSubmit(handleForgotPassword, onError)}
 						>
 							<div>
 								<label className="text-sm montserrat py-1 tracking-wider font-medium">
@@ -92,9 +98,8 @@ function Page() {
 								)}
 							</div>
 
-							<Button type="login">
-								Reset Password
-								<span>{isLoading && <Spinner />} </span>
+							<Button type="login" disabled={isRequesting}>
+								<span>{isRequesting ? <Spinner /> : "Forgot Password"} </span>
 							</Button>
 
 							<Link
