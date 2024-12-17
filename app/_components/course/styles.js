@@ -17,6 +17,16 @@ export const Content = styled.div`
 		&__small {
 			font-size: 1.2rem;
 		}
+
+		@media (max-width: 568px) {
+			&__big {
+				font-size: 1.5rem;
+				font-weight: bold;
+			}
+			&__small {
+				font-size: 1rem;
+			}
+		}
 	}
 
 	.box {

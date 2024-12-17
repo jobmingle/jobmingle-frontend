@@ -37,8 +37,6 @@ const Carousel = () => {
 	}: any = useGetAllJobsQuery({});
 	const jobs = jobData?.data?.filter((job: any) => job.status === "approved");
 
-	console.log(jobs);
-
 	const settings = {
 		dots: false,
 		infinite: true,

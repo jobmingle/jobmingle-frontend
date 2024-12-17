@@ -31,7 +31,6 @@ const CoursesPage = ({ searchQuery, link }: any) => {
 	const courses = courseData?.data?.filter(
 		(course: any) => course.visible === 1
 	);
-	console.log(courses);
 
 	const searchedCourses =
 		searchQuery.length > 0
@@ -45,7 +44,7 @@ const CoursesPage = ({ searchQuery, link }: any) => {
 	const Courses = searchedCourses?.slice(from, to);
 	const handleApplyClick = () => {
 		if (!user) {
-			toast("Please sign in to continue your learning!", { icon: "🔑" });
+			toast("Please sign in to start learning!", { icon: "🔑" });
 		}
 	};
 
@@ -68,7 +67,7 @@ const CoursesPage = ({ searchQuery, link }: any) => {
 	) {
 		return (
 			<NoListings
-				url="/"
+				url="/dashboard"
 				title="No courses available yet! :)"
 				comment="Please check back in a while..."
 				url_text="Go Home"
@@ -82,13 +81,13 @@ const CoursesPage = ({ searchQuery, link }: any) => {
 			<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] p-2 lg:p-4">
 				{searchedCourses?.length >= 1 && (
 					<div className="py-4">
-						<h1 className="text-2xl mb-0  text-center md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center ">
+						<h1 className="text-[22px] mb-0  text-center md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center ">
 							Expert-Led Courses For You
 						</h1>
 					</div>
 				)}
 
-				<div className="text-sm md:text-base font-bold rounded-md border-l-4 border-t-2 border-yellow-600   p-1 mb-5 w-[50%] md:w-[30%] text-center">
+				<div className="text-sm md:text-base font-bold rounded-md border-l-4 border-t-2 border-yellow-600   p-1 my-5 w-[50%] md:w-[30%] text-center">
 					<div className="shadow shadow-yellow-500 rounded p-2">
 						<p>
 							{searchedCourses?.length} Expert{" "}

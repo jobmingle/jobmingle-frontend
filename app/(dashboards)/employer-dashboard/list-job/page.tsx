@@ -287,10 +287,6 @@ function Page() {
 									<Error>{errors.job_link.message}</Error>
 								)}
 							</div>
-							<p className="text-md text-black font-extrabold py-2">
-								Note: You can only fill out either the application email or
-								link and not both.
-							</p>
 						</div>
 						{/* <button
 							type="submit"
