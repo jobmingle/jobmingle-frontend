@@ -69,12 +69,12 @@ export default function UpdateUserInfo() {
 	}
 
 	const style =
-		"border-[#e5bb0a] border-[1px] border-solid h-[2rem] w-full text-xs rounded-sm sora pl-2 bg-transparent text-white focus:outline-none";
+		"border-[#e5bb0a] border-[1px] border-solid h-[2rem] w-full rounded-sm sora pl-2 bg-transparent text-white text-[16px] focus:outline-none";
 
 	return (
 		<div>
 			<form
-				className="flex flex-col gap-2 w-[80%] text-white md:w-auto"
+				className="flex flex-col  gap-2 w-[80%] text-white md:w-auto"
 				onSubmit={handleSubmit(handleUserInfoUpdate, onError)}
 			>
 				<div>

@@ -34,7 +34,10 @@ export default function LogoutButton({
 			localStorage.removeItem("access_token");
 			router.push("/");
 		} catch (error: any) {
-			toast.error(error?.data?.message);
+			toast.error(
+				error?.data?.message ||
+					"You can not perform this request at the moment!"
+			);
 			console.error(error);
 		}
 	}

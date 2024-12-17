@@ -72,8 +72,8 @@ const MyCourses = ({ searchQuery, link }: any) => {
 			<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] p-2 lg:p-4">
 				{searchedCourses?.length >= 1 && (
 					<div className="py-4">
-						<h1 className="text-2xl mb-0  text-center md:text-3xl text-yellow-400 max-md:font-bold font-bold justify-center items-center ">
-							Expert-Led Courses For You
+						<h1 className="text-2xl mb-0  text-center md:text-3xl- text-yellow-400 max-md:font-bold font-bold justify-center items-center ">
+							My Learning
 						</h1>
 					</div>
 				)}

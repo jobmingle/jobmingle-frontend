@@ -53,7 +53,7 @@ function JobsPage({ searchQuery, link }: any) {
 
 	const handleApplyClick = () => {
 		if (!user) {
-			toast("Please sign in to continue your job application!", { icon: "🔑" });
+			toast("Please sign in to see job apllication details!", { icon: "🔑" });
 			// return;
 		}
 	};
@@ -69,7 +69,7 @@ function JobsPage({ searchQuery, link }: any) {
 	if (!jobs?.length || jobs === undefined || (jobs === null && !isLoading)) {
 		return (
 			<NoListings
-				url="/"
+				url="/dashboard"
 				title="No jobs available yet! :)"
 				comment="Please check back in a while..."
 				url_text="Go Home"
@@ -80,9 +80,8 @@ function JobsPage({ searchQuery, link }: any) {
 	return (
 		<Content>
 			{searchedJobs?.length >= 1 && (
-				<div className="head text-yellow-400">
-					<h1 className="head__big">Featured Jobs</h1>
-					<p className="head__small">Find a job that best suits your skills!</p>
+				<div className="head text-yellow-400 mt-5">
+					<h1 className="head__big"> Find your dream job here</h1>
 				</div>
 			)}
 
@@ -142,9 +141,9 @@ function JobsPage({ searchQuery, link }: any) {
 							</div>
 
 							<section className="flex flex-row justify-end gap-3 m-1 py-1 ">
-								<button className="w-5 h-5  ">
+								{/* <button className="w-5 h-5  ">
 									<Image src={love} alt="loveicon" />
-								</button>
+								</button> */}
 								<button
 									className="w-5 h-5 "
 									onClick={() => handleShareJob(job?.id)}

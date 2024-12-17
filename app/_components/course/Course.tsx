@@ -1,15 +1,17 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import love from "@/public/image/loveicon.png";
 import share from "@/public/image/shareicon.png";
-import Image from "next/image";
+import ceo from "@/public/image/ceo.jpg";
 
 import Spinner from "../ui/Spinner";
 
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Button from "../ui/Button";
-import { HiArrowLeft, HiCreditCard } from "react-icons/hi2";
+import { HiArrowDown, HiArrowLeft, HiCreditCard } from "react-icons/hi2";
 import {
 	useCoursePaymentMutation,
 	useGetAllCoursesQuery,
@@ -21,11 +23,21 @@ import { useAppSelector } from "@/app/_hooks/hooks";
 import { user as userData } from "@/app/_features/appSlices/userSlice";
 import NoListings from "../ui/NoListings";
 
+import Certificate from "../ui/Certificate";
+
 interface CoursePageProps {
 	params: { id: string };
 }
 
 const CoursesPage = (params: CoursePageProps) => {
+	const [showCertificate, setShowCertificate] = useState(false);
+	const [certData, setCertData] = useState({
+		studentName: "John Doe", // Replace dynamically with student data
+		courseName: "Advanced Web Development", // Replace dynamically
+		provider: "JobMingle", // Course provider
+		date: new Date().toLocaleDateString(),
+	});
+
 	const user = useAppSelector(userData);
 	const router = useRouter();
 
@@ -55,10 +67,12 @@ const CoursesPage = (params: CoursePageProps) => {
 	// 	(job: any) => job.id === Number(params.params.id)
 	// );
 
-	const isPaid = studentCourse.some(
+	const isPaid = studentCourse?.some(
 		(paidCourse: any) => paidCourse.id === +courseId
 	);
-
+	const isCompleted = studentCourse?.some(
+		(course: any) => course.completed === true
+	);
 
 	const [coursePayment, { isLoading: isPaying, error: paymentError }] =
 		useCoursePaymentMutation();
@@ -129,22 +143,27 @@ const CoursesPage = (params: CoursePageProps) => {
 								height={90}
 							/>
 						</section>
-						<section className="flex flex-col gap-4">
+						<section className="flex flex-col gap-2 md:gap-4">
 							{/* <p className=" font-semibold sm:font-bold text-[90%] montserrat capitalize  ">
 								{course?.shortname}
 								</p> */}
 							<p className=" text-xl sm:text-[85%]- montserrat capitalize text-[#f5cb1a] py-0.5 font-semibold">
 								{course[0].displayname}
 							</p>
-							<p className=" text-xs sm:text-[80%] md:text-[85%] sora  text-gray-500 pb-2 tracking-wide">
-								{course[0].summary}
-							</p>
-							<p className=" text-xs sm:text-[80%] md:text-[85%] sora  text-gray-500 pb-2 tracking-wide">
-								<strong>Requirements:</strong> {course?.course_requirements}
-							</p>
+							<div className=" flex flex-col gap-2  items-start py-[.5rem]   text-center-">
+								<h2 className="text-[.9rem] font-bold">Summary:</h2>
+								<span className="text-[.8rem]  p-1">{course[0]?.summary}</span>
+							</div>
+							<div className=" flex flex-col gap-2  items-start py-[.5rem]   text-balance-">
+								<h2 className="text-[.9rem] font-bold">Requirements:</h2>
+								<span className="text-[.8rem] p-1 ">
+									{course?.course_requirements}
+								</span>
+							</div>
+
 							<div className="flex flex-row justify-between">
 								<p className=" font-semibold sm:font-bold text-[90%] montserrat capitalize  ">
-									Course by {course?.course_creator_name}
+									<strong>Course by</strong> {course?.course_creator_name}
 								</p>
 								<button
 									className="w-6 h-6"
@@ -153,7 +172,7 @@ const CoursesPage = (params: CoursePageProps) => {
 									<Image src={share} alt="shareicon" />
 								</button>
 							</div>
-							<div className="flex flex-row justify-between">
+							<div className="flex flex-row justify-between items-center">
 								<div className="flex flex-row items-center gap-1 text-xl">
 									<HiCreditCard />
 									<div className="flex flex-col">
@@ -162,29 +181,51 @@ const CoursesPage = (params: CoursePageProps) => {
 										</p>
 									</div>
 								</div>
-								<p className="text-[#f5cb1a] capitalize text-sm montserrat font-bold">
-									{course?.enrolled_users}
-								</p>
+
+								{/* <p className="text-[#f5cb1a] capitalize text-sm montserrat font-bold">
+									{course?.enrolled_users}Blue
+								</p> */}
+							</div>
+							<div className="flex flex-row justify-center items-center">
+								{isCompleted && (
+									<Certificate
+										studentName={`${user?.firstName} ${user?.lastName}`}
+										courseName={course[0]?.fullname}
+										completionDate={new Date().toLocaleDateString()}
+									/>
+								)}
+
+								{/* <p className="text-[#f5cb1a] capitalize text-sm montserrat font-bold">
+									{course?.enrolled_users}Blue
+								</p> */}
 							</div>
 
-							<div>
+							<div className="py-3">
 								<button
-									className="absolute- flex w-[8rem] justify-center py-3 rounded border border-gray-900 items-center hover:bg-yellow-500"
+									className="text-sm absolute- flex px-3  justify-center py-2 rounded border border-gray-900 items-center hover:bg-yellow-500 font-semibold shadow shadow-yellow-500 transition-colors duration-700"
 									onClick={handleBack}
 								>
-									<span className="text-2xl">
+									<span className="text-xl">
 										<HiArrowLeft />
 									</span>
 									<span>Go back</span>
 								</button>
 							</div>
+							{isPaid && (
+								<>
+									<p className="text-sm text-black py-2">
+										<strong>Note :</strong> Click button below to proceed with
+										the same Jobmingle email and password to access your course!
+									</p>
+								</>
+							)}
 							<div className="border-b-[2px]- border-solid border-x-black-100 py-1">
 								{isPaid ? (
 									<Button
 										type="regular"
 										onClick={() => {
 											window.open(
-												"https://courses.jobmingle.co/",
+												"https://courses.jobmingle.co/login/",
 												"_blank",
 												"noopener,noreferrer"
 											);

@@ -71,7 +71,6 @@ function EditJobForm({ jobId }: any) {
 		const jobId = job?.id;
 		try {
 			const res: any = await updateJob({ jobId, data }).unwrap();
-			console.log(res);
 			toast.success(res?.message);
 			router.push("/employer-dashboard/jobs");
 			reset();
@@ -134,7 +133,7 @@ function EditJobForm({ jobId }: any) {
 									id="company_name"
 									defaultValue={job?.company_name}
 									placeholder="Enter company name here"
-									className="focus:outline-none mb-3 h-[2.5rem] bg-transparent border-black-100 border-[1px] text-[68%] sora border-solid w-full rounded-[10px] sm:h-[2.5rem] pl-4"
+									className="input"
 									{...register("company_name", { required: false })}
 								/>
 								{errors?.company_name?.message && (

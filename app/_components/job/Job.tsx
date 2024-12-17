@@ -133,50 +133,38 @@ export default function JobDetails(params: JobPageProps) {
 						</div>
 						<div className=" flex py-[.5rem] items-center-  gap-5 mt-5">
 							<h2 className="text-[.9rem] font-bold">Job Title:</h2>
-							<span className="text-[.8rem] font-bold">{job?.job_role}</span>
+							<span className="text-[.8rem] ">{job?.job_role}</span>
 						</div>
-						<div className=" flex items-start py-[.5rem]  gap-5 items-center-">
+						<div className=" flex flex-col gap-2 items-start py-[.5rem]   items-center-">
 							<h2 className="text-[.9rem] font-bold">Description:</h2>
-							<span className="text-[.8rem]font-bold ">
-								{job?.job_description}
-							</span>
+							<span className="text-[.8rem]  ">{job?.job_description}</span>
 						</div>
-						<div className=" flex items-start py-[.5rem]  gap-5 items-center-">
+						<div className=" flex flex-col gap-2  items-start py-[.5rem]   items-center-">
 							<h2 className="text-[.9rem] font-bold">Responsibilities:</h2>
-							<span className="text-[.8rem]font-bold ">
+							<span className="text-[.8rem]  ">
 								{job?.job_responsibilities}
 							</span>
 						</div>
 
-						<div className=" flex items-start py-[.5rem]  gap-5 items-center-">
+						<div className=" flex items-center py-[.5rem]  gap-5 items-center-">
 							<h2 className="text-[.9rem] font-bold">Salary:</h2>
-							<span className="text-[1rem] font-bold ">
+							<span className="text-[.8rem] font-bold ">
 								{formatCurrency(job?.salary)}
 							</span>
 						</div>
-						<div className=" flex items-start py-[.5rem]  gap-5 items-center-">
+						<div className=" flex items-center py-[.5rem]  gap-5 items-center-">
 							<h2 className="text-[.9rem] font-bold">Posted:</h2>
-							<p className="text-[1rem] font-bold ">
+							<p className="text-[.9rem] font-bold ">
 								{timeAgo(job?.created_at)}
 							</p>
 						</div>
-						{/* <section className="flex flex-row justify-end gap-3 m-1 py-1 ">
-							<button className="w-5 h-5">
-								<Image src={love} alt="loveicon" />
-							</button>
-							<button
-								className="w-5 h-5"
-								onClick={() => handleShareJob(job?.id)}
-							>
-								<Image src={share} alt="shareicon" />
-							</button>
-						</section> */}
+
 						<div className=" flex justify-between w-full py-5">
 							<button
-								className="absolute- flex w-[8rem] justify-center py-3 rounded border border-gray-900 items-center hover:bg-yellow-500"
+								className="text-sm absolute- flex px-3  justify-center py-2 rounded border border-gray-900 items-center hover:bg-yellow-500 font-semibold shadow shadow-yellow-500 transition-colors duration-700"
 								onClick={handleBack}
 							>
-								<span className="text-2xl">
+								<span className="text-xl">
 									<HiArrowLeft />
 								</span>
 								<span>Go back</span>

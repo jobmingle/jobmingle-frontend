@@ -13,6 +13,7 @@ const config: Config = {
 		extend: {
 			screens: {
 				xsm: "320px",
+				smd: "395px",
 			},
 			fontFamily: {
 				sans: ["Poppins", "ui-sans-serif", "system-ui", "sans-serif"],

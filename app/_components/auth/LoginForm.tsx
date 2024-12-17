@@ -10,10 +10,8 @@ import Error from "../ui/Error";
 import Cookies from "js-cookie";
 
 import Spinner from "@/app/_components/ui/Spinner";
-import Loader from "../ui/Loader";
 import ViewPassword from "../ui/VIewPassword";
 import {
-	useCreateUserMutation,
 	useGetAuthUserQuery,
 	useObtainTokenMutation,
 } from "@/app/_features/appSlices/apiSlice";
@@ -36,64 +34,10 @@ export default function LoginForm() {
 	const router = useRouter();
 
 	const { errors } = formState;
-	// const { login, token, error, isAuthenticated, clearErrors, isLoading, user } =
-	// 	useAuth();
 
 	const [obtainToken, { isLoading, error }] = useObtainTokenMutation();
 
 	const dispatch = useAppDispatch();
-
-	// console.log(user);
-	// console.log(user?.firstName);
-
-	/*
-	useEffect(() => {
-		if (error === "Bad credentials") {
-			toast.error(
-				`${error}: Please enter correct details! || reset your password or sign up to continue if you do not have an account yet!.`
-			);
-			clearErrors();
-		}
-		if (error === "The provided credentials are incorrect.") {
-			toast.error(
-				`${error} Please input correct details or reset your password!`
-			);
-			clearErrors();
-		}
-
-		if (error === "Network Error") {
-			toast.error(`${error}: Please check your internet connection!`);
-			clearErrors();
-		}
-		if (error === "timeout exceeded") {
-			toast.error(`${error}: Please try again!`);
-			clearErrors();
-		}
-
-		// if (user) {
-		// 	if (user.goals === "Vendor") router.push("/vendor-dashboard");
-		// 	if (user.goals === "Employer") router.push("/employer-dashboard");
-		// 	if (user.goals === "Student") router.push("/dashboard");
-		// 	if (user.goals === "Admin" || user.role === "Admin")
-		// 		router.push("/admin-dashboard");
-		// }
-
-		if (user) {
-			if (user.goals === "List a course") router.push("/vendor-dashboard");
-
-			if (user.goals === "Post a job") router.push("/employer-dashboard");
-
-			if (user.goals === "Apply for a job / Take a course")
-				router.push("/dashboard");
-			if (user.role === "admin") router.push("/admin-dashboard");
-		}
-	}, [error, isAuthenticated, clearErrors, router, user]);
-
-	function onSubmit(data: FormData): void {
-		login(data);
-		// toast.success("Form submitted successfully.");
-	}
-		*/
 
 	function onError(errors: any) {
 		console.error(errors);
