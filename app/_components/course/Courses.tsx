@@ -31,6 +31,8 @@ const CoursesPage = ({ searchQuery, link }: any) => {
 	const courses = courseData?.data?.filter(
 		(course: any) => course.visible === 1
 	);
+	// console.log(courses);
+	// console.log(courseData);
 
 	const searchedCourses =
 		searchQuery.length > 0
@@ -106,17 +108,21 @@ const CoursesPage = ({ searchQuery, link }: any) => {
 								className="shadow shadow-yellow-500 p-2 md:p-3 rounded-md h-[100%] flex flex-col justify-center"
 							>
 								<div className="grid grid-cols-2  gap-4  ">
-									<section className="flex items-center">
+									<div className="flex items-center border rounded">
 										<Image
-											src="/image/break-bank.jpg"
-											alt="company-icon"
-											className="w-full h-[8rem] md:h-[9rem] lg:h-full rounded"
+											src={
+												course?.thumbnail
+													? `https://rosybrown-spider-442940.hostingersite.com/${course?.thumbnail}`
+													: "/image/question_mark.jpg"
+											}
+											alt="Upload thumbnail"
+											className="w-full h-[8rem] md:h-[9rem] lg:h-full rounded "
 											width={90}
 											height={90}
 										/>
-									</section>
+									</div>
 									<div className="flex flex-col">
-										<p className=" text-xs sm:text-[85%] montserrat capitalize text-[#f5cb1a] py-0.5 font-semibold">
+										<p className=" text-xs sm:text-[85%] montserrat- capitalize text-[#f5cb1a] py-0.5 ">
 											{course.displayname}
 										</p>
 										{/* <p className=" text-xs sm:text-[80%] md:text-[85%] sora  text-gray-500 pb-2 tracking-wide">
@@ -133,7 +139,7 @@ const CoursesPage = ({ searchQuery, link }: any) => {
 											</div>
 										</section>
 										<section className="flex flex-row justify-between m-1 py-1 ">
-											<p className=" text-xs sm:text-[85%] montserrat capitalize text-stone-500 -text-[#f5cb1a] py-0.5 font-semibold">
+											<p className=" text-xs sm:text-[85%] montserrat- capitalize text-stone-500 -text-[#f5cb1a] py-0.5 font-semibold">
 												{course.course_creator_name}
 											</p>
 											<button
@@ -146,7 +152,7 @@ const CoursesPage = ({ searchQuery, link }: any) => {
 										<section className=" border-solid border-x-black-100 py-1">
 											<Link href={`/${link}/${course.id || course.course_id}`}>
 												<button
-													className="border w-full bg-white rounded-md font-bold  text-black hover:bg-yellow-500 hover:text-white py-1.5 capitalize transition-all duration-1000"
+													className="border w-full bg-white rounded-md font-semibold text-sm sora  text-black hover:bg-yellow-500 hover:text-white py-1.5 capitalize transition-all duration-1000"
 													onClick={handleApplyClick}
 												>
 													Learn More

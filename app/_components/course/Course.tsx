@@ -11,33 +11,32 @@ import Spinner from "../ui/Spinner";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Button from "../ui/Button";
-import { HiArrowDown, HiArrowLeft, HiCreditCard } from "react-icons/hi2";
+import {
+	HiArrowDown,
+	HiArrowLeft,
+	HiCamera,
+	HiCreditCard,
+	HiPencil,
+} from "react-icons/hi2";
 import {
 	useCoursePaymentMutation,
 	useGetAllCoursesQuery,
 	useGetCourseByIdQuery,
 	useGetEnrolledCoursesQuery,
 } from "@/app/_features/appSlices/apiSlice";
-import { formatCurrency, ShareCourse } from "@/lib/helpers";
+import { formatCurrency, ShareCourse, timeAgo } from "@/lib/helpers";
 import { useAppSelector } from "@/app/_hooks/hooks";
 import { user as userData } from "@/app/_features/appSlices/userSlice";
 import NoListings from "../ui/NoListings";
 
 import Certificate from "../ui/Certificate";
+import { TimestampToDateString } from "@/app/_hooks/Helpers";
 
 interface CoursePageProps {
 	params: { id: string };
 }
 
 const CoursesPage = (params: CoursePageProps) => {
-	const [showCertificate, setShowCertificate] = useState(false);
-	const [certData, setCertData] = useState({
-		studentName: "John Doe", // Replace dynamically with student data
-		courseName: "Advanced Web Development", // Replace dynamically
-		provider: "JobMingle", // Course provider
-		date: new Date().toLocaleDateString(),
-	});
-
 	const user = useAppSelector(userData);
 	const router = useRouter();
 
@@ -52,6 +51,7 @@ const CoursesPage = (params: CoursePageProps) => {
 	);
 
 	const courseId = params?.params?.id;
+	sessionStorage.setItem("params", courseId);
 	const {
 		currentData: courseData,
 		isFetching: isFetchingCourse,
@@ -67,11 +67,15 @@ const CoursesPage = (params: CoursePageProps) => {
 	// 	(job: any) => job.id === Number(params.params.id)
 	// );
 
+	const [certCourse] =
+		studentCourse?.filter((cert: any) => cert.id === course?.course_id) || [];
+
 	const isPaid = studentCourse?.some(
 		(paidCourse: any) => paidCourse.id === +courseId
 	);
+
 	const isCompleted = studentCourse?.some(
-		(course: any) => course.completed === true
+		(course: any) => course.completed === true && course.progress === "100"
 	);
 
 	const [coursePayment, { isLoading: isPaying, error: paymentError }] =
@@ -134,14 +138,34 @@ const CoursesPage = (params: CoursePageProps) => {
 						key={course?.id}
 						className="flex flex-col mg:grid grid-rows-2  gap-4 border p-2  md:p-5 rounded-md  lg:h-[850px]- "
 					>
-						<section className="items-center max-md:place-self-center ">
+						<section className="relative items-center max-md:place-self-center ">
 							<Image
-								src="/image/break-bank.jpg"
+								src={
+									course?.thumbnail
+										? `https://rosybrown-spider-442940.hostingersite.com/${course?.thumbnail}`
+										: "/image/question_mark.jpg"
+								}
 								alt="company-icon"
 								className="w-full h-[7rem]- md:h-[20rem]  rounded-t-lg"
 								width={90}
 								height={90}
 							/>
+
+							{isVendor && (
+								<>
+									<div className="absolute bottom-0 right-1 z-10">
+										<HiCamera className="text-3xl text-white" />
+									</div>
+									<button
+										className="absolute bottom-2 right-0 z-20"
+										onClick={() => {
+											router.push("/vendor-dashboard/upload-thumbnail");
+										}}
+									>
+										<HiPencil className="text-2xl text-yellow-600" />
+									</button>
+								</>
+							)}
 						</section>
 						<section className="flex flex-col gap-2 md:gap-4">
 							{/* <p className=" font-semibold sm:font-bold text-[90%] montserrat capitalize  ">
@@ -187,10 +211,14 @@ const CoursesPage = (params: CoursePageProps) => {
 								</p> */}
 							</div>
 							<div className="flex flex-row justify-center items-center">
-								{isCompleted && (
+								{isCompleted && isStudent && (
 									<Certificate
 										studentName={`${user?.firstName} ${user?.lastName}`}
-										courseName={course[0]?.fullname}
+										courseName={certCourse?.fullname}
+										// completionDate={TimestampToDateString(
+										// 	certCourse?.timemodified
+										// )}
+
 										completionDate={new Date().toLocaleDateString()}
 									/>
 								)}

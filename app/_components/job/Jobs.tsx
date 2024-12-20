@@ -79,12 +79,6 @@ function JobsPage({ searchQuery, link }: any) {
 
 	return (
 		<Content>
-			{searchedJobs?.length >= 1 && (
-				<div className="head text-yellow-400 mt-5">
-					<h1 className="head__big"> Find your dream job here</h1>
-				</div>
-			)}
-
 			<div className="text-sm md:text-base font-bold rounded-md border-l-4 border-t-2 border-yellow-600   p-1 my-8 w-[50%] md:w-[30%] text-center">
 				<div className="shadow shadow-yellow-500 rounded p-2">
 					<p>

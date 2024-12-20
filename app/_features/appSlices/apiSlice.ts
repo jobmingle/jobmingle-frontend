@@ -134,6 +134,19 @@ export const apiSlice = createApi({
 			}),
 			invalidatesTags: ["AuthUser"],
 		}),
+		uploadCourseThumbnail: builder.mutation({
+			query: ({ courseId, imageData }) => ({
+				url: `/moodle/${courseId}/thumbnail`,
+				method: "PUT",
+				body: imageData,
+			}),
+			invalidatesTags: [
+				"ListedCourses",
+				"AllCourses",
+				"SingleCourse",
+				"EnrolledCourses",
+			],
+		}),
 
 		logoutUser: builder.mutation({
 			query: () => ({
@@ -285,6 +298,7 @@ export const {
 	useResetPasswordMutation,
 	useUpdatePasswordMutation,
 	useUpdateProfileImageMutation,
+	useUploadCourseThumbnailMutation,
 	useUpdateUserInfoMutation,
 	useLogoutUserMutation,
 	usePostCourseMutation,

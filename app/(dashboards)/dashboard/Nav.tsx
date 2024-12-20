@@ -19,7 +19,7 @@ const UserDashboard = () => {
 
 	return (
 		<nav
-			className={`flex flex-col justify-center  w-full   py-3 px-0 max-lg:px-2-  lg:pl-[2.5rem]  overflow-auto-`}
+			className={`flex flex-col justify-center  w-full   py-3 px-0 max-lg:px-2-  lg:pl-[2.5rem]  overflow-auto`}
 		>
 			<ul className=" flex flex-row lg:flex-col md:gap-[0.2rem]  w-full justify-between lg:justify-between items-center lg:items-start md:overflow-y-auto h-full">
 				<li className="lg:w-full">

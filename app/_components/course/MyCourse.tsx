@@ -31,6 +31,7 @@ const MyCourses = ({ searchQuery, link }: any) => {
 		skip: false,
 	});
 
+	// console.log("STUDENT COURSES:", courses);
 	const searchedCourses =
 		searchQuery?.length > 0
 			? courses?.filter((course: any) =>
@@ -94,20 +95,24 @@ const MyCourses = ({ searchQuery, link }: any) => {
 						>
 							<div className="shadow shadow-yellow-500 p-2 md:p-3 rounded-md h-[100%] flex flex-col justify-center">
 								<div key={course.id} className="grid grid-cols-2  gap-4  ">
-									<section className="flex items-center">
+									<div className="flex items-center border rounded">
 										<Image
-											src="/image/break-bank.jpg"
+											src={
+												course?.thumbnail
+													? `https://rosybrown-spider-442940.hostingersite.com/${course?.thumbnail}`
+													: "/image/question_mark.jpg"
+											}
 											alt="company-icon"
 											className="w-full h-[8rem] md:h-[9rem] lg:h-full rounded"
 											width={90}
 											height={90}
 										/>
-									</section>
+									</div>
 									<div className="flex flex-col">
-										<p className=" text-xs sm:text-[85%] montserrat capitalize text-[#f5cb1a] py-0.5 font-semibold">
+										<p className=" text-xs sm:text-[85%]  capitalize text-[#f5cb1a] py-0.5 ">
 											{course.displayname}
 										</p>
-										<p className=" text-xs sm:text-[80%] md:text-[85%] sora  text-gray-500 pb-2 tracking-wide">
+										<p className=" text-xs sm:text-[80%] md:text-[85%] sora text-gray-500 pb-2 tracking-wide">
 											{course.summary.split(" ").slice(0, 7).join(" ") + "..."}
 										</p>
 
@@ -126,10 +131,10 @@ const MyCourses = ({ searchQuery, link }: any) => {
 										<section className=" border-solid border-x-black-100 py-1">
 											<Link href={`/${link}/${course.id}`}>
 												<button
-													className="border w-full bg-white rounded-md font-bold  text-black hover:bg-yellow-500 hover:text-white py-1.5 capitalize transition-all duration-1000"
+													className="border w-full bg-white rounded-md font-semibold text-sm  sora  text-black hover:bg-yellow-500 hover:text-white py-1.5 capitalize transition-all duration-1000"
 													onClick={handleApplyClick}
 												>
-													More
+													Learn More
 												</button>
 											</Link>
 										</section>
