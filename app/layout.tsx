@@ -40,7 +40,8 @@ export default function RootLayout({
 		<html lang="en" style={{ overflowX: "hidden" }}>
 			<link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-			<body className={`${inter.className} ${ibmPlexSerif.variable} `}>
+			{/* <body className={` ${ibmPlexSerif.className} ${inter.className}`}> */}
+			<body className={` ${ibmPlexSerif.className} `}>
 				{/* <Suspense fallback={<Loader />}> */}
 				<ClientProvider>
 					<main>{children}</main>

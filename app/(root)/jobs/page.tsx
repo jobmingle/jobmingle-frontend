@@ -27,7 +27,7 @@ const Page = () => {
 			<SearchBar
 				searchQuery={searchQuery}
 				setSearchQuery={setSearchQuery}
-				title="Find your dream job!"
+				title="Find your dream job here!"
 				placeholder="Job title"
 				icon={<HiBriefcase />}
 			/>

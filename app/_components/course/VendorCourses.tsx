@@ -34,6 +34,8 @@ const VendorCourses = ({ searchQuery, link }: any) => {
 	});
 	const courses = courseData?.data?.courses;
 
+	console.log(courses);
+
 	const searchedCourses =
 		searchQuery.length > 0
 			? courses?.filter((course: any) =>
@@ -83,26 +85,30 @@ const VendorCourses = ({ searchQuery, link }: any) => {
 				<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  ">
 					{Courses?.map((course: any) => (
 						<div
-							key={course?.id}
+							key={course?.course_id}
 							className="rounded-2xl border-l-8 border-t-2- border-yellow-600 h-full "
 						>
 							<div className="shadow shadow-yellow-500 p-2 md:p-3 rounded-md h-[100%] flex flex-col justify-center">
-								<div key={course.id} className="grid grid-cols-2  gap-4  ">
-									<section className="flex items-center">
+								<div className="grid grid-cols-2  gap-4  ">
+									<div className="flex items-center border rounded">
 										<Image
-											src="/image/break-bank.jpg"
+											src={
+												course?.thumbnail
+													? `https://rosybrown-spider-442940.hostingersite.com/${course?.thumbnail}`
+													: "/image/question_mark.jpg"
+											}
 											alt="company-icon"
 											className="w-full h-[8rem] md:h-[9rem] lg:h-full rounded"
 											width={90}
 											height={90}
 										/>
-									</section>
-									<div key={course?.id} className="flex flex-col">
+									</div>
+									<div className="flex flex-col ">
 										{/* <p className=" font-semibold sm:font-bold text-[90%] montserrat capitalize  ">
 											{course.shortname}
 										</p> */}
-										<p className=" text-xs sm:text-[85%] montserrat capitalize text-[#f5cb1a] py-0.5 font-semibold">
-											{course.fullname}
+										<p className=" text-xs sm:text-[85%] montserrat capitalize text-[#f5cb1a] py-0.5 font-semibold- ">
+											{course.fullname.split(" ").slice(0, 5).join(" ")}
 										</p>
 
 										<section className="flex flex-col w-full"></section>
@@ -144,24 +150,6 @@ const VendorCourses = ({ searchQuery, link }: any) => {
 				{/* {searchedCourses.length === 0 && <NoResult />} */}
 				<Pagination count={searchedCourses?.length} assets="courses" />
 			</main>
-			{/* ) : (
-				<main className=" w-full h-auto min-h-[35vh] md:min-h-[50vh] border-solid mt-10 p-2">
-					<section className="flex flex-col justify-center items-center py-4">
-						<Image
-							src={tiredicon}
-							alt="tiredicon"
-							className="w-24 h-24 md:w-28 md:h-28 m-auto"
-						/>
-						<p className="sora capitalize pt-2 ">
-							you have not paid for any course yet!
-						</p>
-						<p className="sora capitalize text-md text-[#f5cb1a] underline">
-							click here to see courses now!
-						</p>
-					</section>
-					<br />
-				</main>
-			)} */}
 		</div>
 	);
 };

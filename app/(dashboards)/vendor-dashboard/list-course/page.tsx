@@ -57,13 +57,10 @@ function Page() {
 	async function handlePostCourse(data: FormData) {
 		try {
 			const res: any = await postCourse(data).unwrap();
-			toast.success(res?.message);
-			router.push("/vendor-dashboard/courses");
-			window.open(
-				"https://courses.jobmingle.co/login/index.php",
-				"_blank",
-				"noopener,noreferrer"
-			);
+			toast.success(res?.data?.original?.success);
+			sessionStorage.setItem("courseId", res?.data?.original?.course_id);
+			router.push("/vendor-dashboard/upload-thumbnail");
+			console.log(res);
 			// reset();
 		} catch (error: any) {
 			toast.error(
@@ -230,7 +227,7 @@ function Page() {
 							</div>
 						</div>
 						<Button type="login" disabled={isCreatingCourse}>
-							<span>{isCreatingCourse ? <Spinner /> : "Upload Video"}</span>
+							<span>{isCreatingCourse ? <Spinner /> : "Submit"}</span>
 						</Button>
 					</form>
 				</main>
