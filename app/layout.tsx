@@ -25,9 +25,13 @@ const ibmPlexSerif = IBM_Plex_Serif({
 });
 
 export const metadata: Metadata = {
-	title: { template: "%s JobMingle", default: "Welcome / Jobmingle" },
+	title: {
+		template: "%s JobMingle",
+		default:
+			"Jobmingle Nigeria | Best ed-tech and remote job recruitment company in Nigeria for job applicants, employers, and course creators. ",
+	},
 	description:
-		"We are a ed-tech and job recruitment platform that empowers individuals seeking to transition to a new career with high-income skills and provides access to numerous remote job opportunities across the country.",
+		"We are a ed-tech and job recruitment company that empowers individuals seeking to transition to a new career with high-income skills and provides access to numerous remote job opportunities across the country.",
 	icons: `${favicon}`,
 };
 
@@ -37,14 +41,12 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" style={{ overflowX: "hidden" }}>
-			<link rel="icon" href="favicon.ico" type="image/x-icon" />
-
+		<html lang="en">
 			{/* <body className={` ${ibmPlexSerif.className} ${inter.className}`}> */}
-			<body className={` ${ibmPlexSerif.className} `}>
+			<body className={` ${ibmPlexSerif.className}`}>
 				{/* <Suspense fallback={<Loader />}> */}
 				<ClientProvider>
-					<main>{children}</main>
+					<main className="flex-1">{children}</main>
 				</ClientProvider>
 				{/* </Suspense> */}
 				<ScrollToTopButton />

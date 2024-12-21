@@ -7,7 +7,7 @@ import Image from "next/image";
 import Logo from "./Logo";
 import logo from "@/public/logo.png";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAppSelector } from "@/app/_hooks/hooks";
 import {
 	authenticated,
@@ -20,6 +20,7 @@ const AppHeader = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	// const { isAuthenticated, logout, user } = useAuth();
 	const router = useRouter();
+	const pathname = usePathname();
 
 	const user = useAppSelector(userData);
 	const isAuthenticated = useAppSelector(authenticated);
@@ -66,42 +67,60 @@ const AppHeader = () => {
 	};
 
 	return (
-		<nav
-			className={`bg-white  text-black flex justify-around  md:shrink-0 max-md:contents  top-0 left-0 right- shadow-md transform transition-transform duration-500 ease-in-out z-40  ${
+		<header
+			className={`bg-white  text-black flex justify-around  md:shrink-0 max-md:contents  top-0 left-0 right-0 shadow-md transform transition-transform duration-500 ease-in-out w-full z-30 fixed   ${
 				isVisible && "fixed"
 			} ${isVisible ? "animate-bounceIn" : "translate-y-0"}`}
 		>
-			<div className="w-[100vw] h-24 border-b-[0.5px] border-b-[#9a8888] bg-white flex items-center justify-between px-8">
-				<div className="flex items-center ">
-					<div className="m-auto">
-						<Link href="/">
-							<Logo path={logo} />
-						</Link>
-					</div>
+			<nav className="w-full h-24 border-b-[0.5px] border-b-[#9a8888] bg-white  flex items-center justify-between px-8 z-40">
+				<div className="flex items-center  ">
+					<Link href="/">
+						<Logo path={logo} />
+					</Link>
 				</div>
 
-				<ul className="hidden md:flex  items-end gap-8 lg:gap-16  ">
-					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
-						<Link href="/about" onClick={toggleMenu}>
-							About Us
+				<ul className="hidden md:flex  items-end gap-8 lg:gap-16  z-50">
+					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-yellow-500">
+						<Link
+							href="/about"
+							className={`${pathname === "/about" ? "text-yellow-500" : ""}`}
+						>
+							About us
 						</Link>
 					</li>
-					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
-						<Link href="/courses">Courses</Link>
+					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-yellow-500">
+						<Link
+							href="/courses"
+							className={`${pathname === "/courses" ? "text-yellow-500" : ""}`}
+						>
+							Courses
+						</Link>
 					</li>
-					<li className="text-sm lg:text-lg font-medium leading-6 hover:text-[#FFBE0B]">
-						<Link href="/jobs">Jobs</Link>
+					<li className="text-sm lg:text-lg font-medium leading-6 hover:text-yellow-500">
+						<Link
+							href="/jobs"
+							className={`${pathname === "/jobs" ? "text-yellow-500" : ""}`}
+						>
+							Jobs
+						</Link>
 					</li>
 
-					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-[#FFBE0B]">
+					<li className="text-sm lg:text-lg  font-medium leading-6 hover:text-yellow-500">
 						{/* <Link href="#contact">contact</Link> */}
-						<Link href="/contact-us">Contact Us</Link>
+						<Link
+							href="/contact-us"
+							className={`${
+								pathname === "/contact-us" ? "text-yellow-500" : ""
+							}`}
+						>
+							Contact us
+						</Link>
 					</li>
 				</ul>
 				{user ? (
-					<div className=" hidden md:flex gap-3 items-start   z-30">
+					<div className=" hidden md:flex gap-3 items-start   ">
 						<button
-							className="py-[.6rem] px-[1rem] border rounded-md hover:bg-yellow-500 transition-all ease-in-out cursor-pointer duration-500 z-50 shadow shadow-yellow-500  "
+							className="py-[.6rem] px-[1rem] border rounded-md hover:bg-yellow-500 transition-colors ease-in-out cursor-pointer duration-500  shadow shadow-yellow-500  "
 							onClick={handleBackToDashboard}
 						>
 							Dashboard
@@ -110,24 +129,26 @@ const AppHeader = () => {
 					</div>
 				) : (
 					<div className="flex items-start gap-3 max-md:hidden ">
-						<Button className="w-[100px]  bg-black text-white rounded-[10px]  hover:text-black hover:bg-yellow-500 transition-colors duration-500">
-							<Link href="/sign-up" className="">
+						<Link href="/sign-up" className="">
+							<Button className="w-[100px]  bg-black text-white rounded-[10px]  hover:text-black hover:bg-yellow-500 transition-colors duration-500">
 								Sign Up
-							</Link>
-						</Button>
+							</Button>
+						</Link>
 
 						{/* I hid this button on large screen downward with max-lg:hidden , to fix nav items overlap */}
-						<Button className="w-[100px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 max-lg:hidden">
-							<Link href="/sign-in">Login</Link>
-						</Button>
+						<Link href="/sign-in">
+							<Button className="w-[100px]  bg-white border-2 border-yellow-500 text-black rounded-[10px] hover:text-black hover:bg-yellow-500 transition-colors duration-500 max-lg:hidden">
+								Login
+							</Button>
+						</Link>
 					</div>
 				)}
 
 				{user && (
-					<div className=" flex text-sm md:hidden  z-30">
+					<div className=" flex text-sm md:hidden  ">
 						{/* <Link href={url || null}> */}
 						<button
-							className="py-[.6rem] px-[1rem] border rounded-md hover:bg-yellow-500 transition-all ease-in-out cursor-pointer duration-500 z-50 shadow shadow-yellow-500  "
+							className="py-[.6rem] px-[1rem] border rounded-md hover:bg-yellow-500 transition-colors ease-in-out cursor-pointer duration-500  shadow shadow-yellow-500  "
 							onClick={handleBackToDashboard}
 						>
 							Dashboard
@@ -170,12 +191,12 @@ const AppHeader = () => {
 						)}
 					</button>
 				</div>
-			</div>
+			</nav>
 
 			{/* Mobile menu */}
 			{menuOpen && (
 				<ul
-					className={`bg-stone-800 md:hidden pb-10 absolute h-[50%] w-[100%] z-[30] justify-center gap-[5px]  text-[#d9d9e8] flex flex-col items-center transition-all duration-500 ${
+					className={`bg-stone-800 md:hidden pb-10 absolute h-[50%] w-[100%]  justify-center gap-[5px]  text-[#d9d9e8] flex flex-col items-center transition-colors duration-500 ${
 						menuOpen
 							? "clip-path-[polygon(0 0, 100% 0, 100% 100%, 0 80%)]"
 							: "clip-path-[polygon(0 0, 100% 0, 100% 100%, 0 0)]"
@@ -221,7 +242,7 @@ const AppHeader = () => {
 					</li>
 				</ul>
 			)}
-		</nav>
+		</header>
 	);
 };
 

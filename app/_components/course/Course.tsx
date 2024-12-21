@@ -153,8 +153,8 @@ const CoursesPage = (params: CoursePageProps) => {
 
 							{isVendor && (
 								<>
-									<div className="absolute bottom-0 right-1 z-10">
-										<HiCamera className="text-3xl text-white" />
+									<div className="absolute bottom-0 right-1 z-10 bg-stone-100 rounded p-1 mb-1">
+										<HiCamera className="text-3xl text-black" />
 									</div>
 									<button
 										className="absolute bottom-2 right-0 z-20"
@@ -172,7 +172,7 @@ const CoursesPage = (params: CoursePageProps) => {
 								{course?.shortname}
 								</p> */}
 							<p className=" text-xl sm:text-[85%]- montserrat capitalize text-[#f5cb1a] py-0.5 font-semibold">
-								{course[0].displayname}
+								{course[0]?.displayname}
 							</p>
 							<div className=" flex flex-col gap-2  items-start py-[.5rem]   text-center-">
 								<h2 className="text-[.9rem] font-bold">Summary:</h2>

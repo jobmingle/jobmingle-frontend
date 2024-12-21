@@ -7,6 +7,7 @@ import { useAppDispatch } from "@/app/_hooks/hooks";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { HiMiniArrowLeftStartOnRectangle } from "react-icons/hi2";
+import Cookies from "js-cookie";
 
 interface ButtonProps {
 	styleExtra?: string;
@@ -32,6 +33,8 @@ export default function LogoutButton({
 			sessionStorage.removeItem("userId");
 			sessionStorage.removeItem("userEmail");
 			localStorage.removeItem("access_token");
+			Cookies.remove("access_token", { path: "/" });
+
 			router.push("/");
 		} catch (error: any) {
 			toast.error(

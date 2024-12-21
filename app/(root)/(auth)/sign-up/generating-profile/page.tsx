@@ -100,7 +100,7 @@ export default function UpdateProfileForm() {
 			dispatch(setUser({ user: res?.data, token: res?.token }));
 			if (res?.token) {
 				localStorage.setItem("access_token", res?.token);
-				Cookies.set("auth_token", res?.token, {
+				Cookies.set("access_token", res?.token, {
 					path: "/",
 					expires: 24 * 60 * 60,
 					secure: process.env.NODE_ENV === "production",
