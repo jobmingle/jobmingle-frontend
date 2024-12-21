@@ -34,7 +34,7 @@ function Header() {
 	// if (isLoading && !isAuthenticated) return <Loader />;
 
 	return (
-		<div className=" flex flex-row py-1- items-center  justify-between py-[0.6rem] px-[1rem] md:py-[1.2rem] md:px-[4rem] border-b border-gray-800  ">
+		<div className=" flex flex-row py-1- items-center  justify-between py-[0.6rem] px-[1rem] md:py-[1.2rem] md:px-[4rem] border-b border-gray-800  bg-white">
 			<div className="flex lg:hidden">
 				<Link href={"/"}>
 					<Logo path={Jmlogo} width={55} height={55} />
