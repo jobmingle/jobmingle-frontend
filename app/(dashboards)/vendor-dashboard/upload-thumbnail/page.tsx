@@ -26,7 +26,7 @@ const UploadCourseThumbnail: React.FC = () => {
 	const paramId = sessionStorage.getItem("params")
 		? sessionStorage.getItem("params")
 		: "";
-	console.log(paramId);
+
 	const [
 		UploadCourseThumbnail,
 		{ isLoading: isUploadingThumbnail, error: updatingImageError },

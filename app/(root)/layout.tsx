@@ -39,14 +39,13 @@ function Layout({ children }: { children: React.ReactNode }) {
 	}, [user, token, dispatch]);
 
 	return (
-		<main className="flex flex-col min-h-screen">
-			<header>
+		<main className="flex flex-col justify-between min-h-screen">
+			<header className="md:mb-24">
 				<AppHeader />
 			</header>
 			<div className="flex-1  ">
 				<main className=" mx-auto">{children}</main>
 			</div>
-			{/* <ScrollToTopButton /> */}
 			<footer>
 				<AppFooter />
 			</footer>

@@ -34,8 +34,6 @@ const VendorCourses = ({ searchQuery, link }: any) => {
 	});
 	const courses = courseData?.data?.courses;
 
-	console.log(courses);
-
 	const searchedCourses =
 		searchQuery.length > 0
 			? courses?.filter((course: any) =>

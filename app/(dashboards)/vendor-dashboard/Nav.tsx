@@ -24,9 +24,9 @@ const Nav = () => {
 
 	return (
 		<nav
-			className={`flex flex-col justify-center w-full py-3 px-0 max-lg:px-2 lg:pl-[2.5rem]  overflow-auto`}
+			className={`flex flex-col justify-center w-full py-3 px-0 max-lg:px-2 lg:pl-[2.5rem]  overflow-auto z-20`}
 		>
-			<ul className=" flex flex-row lg:flex-col gap-[0.2rem] w-full justify-between lg:justify-between items-center lg:items-start overflow-y-auto h-full">
+			<ul className=" flex flex-row lg:flex-col gap-[0.2rem] w-full justify-between lg:justify-between items-center lg:items-start overflow-y-auto h-full z-50">
 				<li className=" lg:w-full">
 					<Link
 						href="/vendor-dashboard"

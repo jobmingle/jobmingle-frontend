@@ -60,7 +60,6 @@ function Page() {
 			toast.success(res?.data?.original?.success);
 			sessionStorage.setItem("courseId", res?.data?.original?.course_id);
 			router.push("/vendor-dashboard/upload-thumbnail");
-			console.log(res);
 			// reset();
 		} catch (error: any) {
 			toast.error(
