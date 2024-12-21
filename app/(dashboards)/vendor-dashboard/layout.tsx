@@ -12,14 +12,16 @@ export default function Layout({
 }>) {
 	return (
 		<main className="flex flex-col lg:grid lg:grid-cols-[16rem_1fr] lg:grid-rows-[auto_1fr]   h-[100vh] overflow-hidden">
-			<HeaderDash />
+			<header className=" max-md:fixed max-md:right-0 max-md:left-0 max-md:top-0 z-[2] ">
+				<HeaderDash />
+			</header>
 			<aside className="hidden lg:flex lg:flex-col  gap-[3.2rem] lg:row-span-full pt-[3.2rem]  bg-gray-400">
 				<Link href={"/"}>
 					<Logo path={Jmlogo} width={120} height={120} />
 				</Link>
 				<Nav />
 			</aside>
-			<div className="  overflow-y-auto pb-[5rem]">
+			<div className=" overflow-y-auto pb-[5rem] max-md:mt-24">
 				<div className="p-[.5rem] lg:p-[1rem]  mx-auto max-w-[120rem] ">
 					{children}
 				</div>
