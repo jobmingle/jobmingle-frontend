@@ -20,12 +20,12 @@ export default function Layout({
 				</Link>
 				<Nav />
 			</aside>
-			<div className=" max-lg:flex-1 overflow-y-auto pb-[5rem]">
-				<div className="p-[1rem] flex flex-col mx-auto max-w-[120rem] ">
+			<div className=" overflow-y-auto pb-[5rem]">
+				<div className="p-[.5rem] lg:p-[1rem]  mx-auto max-w-[120rem] ">
 					{children}
 				</div>
 			</div>
-			<footer className="lg:hidden bg-gray-300 h-[80px]  fixed right-0 left-0 bottom-0 z-[2]">
+			<footer className="lg:hidden bg-gray-300   fixed right-0 left-0 bottom-0 z-[2]">
 				<Nav />
 			</footer>
 		</main>

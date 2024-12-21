@@ -196,7 +196,7 @@ const AppHeader = () => {
 			{/* Mobile menu */}
 			{menuOpen && (
 				<ul
-					className={`bg-stone-800 md:hidden pb-10 absolute h-[50%] w-[100%]  justify-center gap-[5px]  text-[#d9d9e8] flex flex-col items-center transition-colors duration-500 ${
+					className={`bg-stone-800 md:hidden pb-10 absolute h-[50%] w-[100%] z-[2]  justify-center gap-[5px]  text-[#d9d9e8] flex flex-col items-center transition-colors duration-500 ${
 						menuOpen
 							? "clip-path-[polygon(0 0, 100% 0, 100% 100%, 0 80%)]"
 							: "clip-path-[polygon(0 0, 100% 0, 100% 100%, 0 0)]"

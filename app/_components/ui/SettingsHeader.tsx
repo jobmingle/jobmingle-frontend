@@ -44,7 +44,7 @@ export default function SettingsHeader() {
 				{Active ? <Modal setActive={setActive} /> : null}
 				<div className="sm:px-2 w-full max-h-[100vh] overflow-auto shadow shadow-gray-500 rounded">
 					<section className="m-auto max-w-[22rem] flex flex-col justify-center py-2 sm:px-2 my-4 ">
-						<main className=" flex justify-center flex-row items-center gap-4 ">
+						<main className=" flex justify-center flex-row items-center gap-4  ">
 							<div className="flex justify-center border-2 border-yellow-600 items-center w-16 h-16 rounded-full overflow-hidden ">
 								<div className="w-14 h-14 rounded-full overflow-hidden">
 									<Image
