@@ -14,38 +14,9 @@ import { UserTypes } from "@/app/_hooks/Helpers";
 import Logo from "./Logo";
 
 function Header() {
-	// const { user, isLoading, isAuthenticated } = useAuth();
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 	const user = useAppSelector(userData);
-
-	// const {
-	// 	currentData: userObj,
-	// 	isFetching,
-	// 	refetch: refetchUser,
-	// 	error,
-	// }: any = useGetAuthUserQuery();
-
-	// useEffect(() => {
-	// 	dispatch(setUser({ user: userObj }));
-	// }, [userObj, dispatch]);
-
-	// useEffect(() => {
-	// 	if (!user) {
-	// 		refetchUser();
-	// 	}
-	// }, [user, refetchUser]);
-
-	// console.log(userData);
-
-	// useEffect(() => {
-	// 	if (error?.status === 401) {
-	// 		console.log(error);
-	// 		localStorage.removeItem("access_token");
-	// 		router.push("/");
-	// 	}
-	// 	// eslint-disable-next-line
-	// }, [error]);
 
 	let url;
 	if (user) {
@@ -63,7 +34,7 @@ function Header() {
 	// if (isLoading && !isAuthenticated) return <Loader />;
 
 	return (
-		<div className=" flex flex-row py-1- items-center justify-between py-[0.6rem] px-[1rem] md:py-[1.2rem] md:px-[4rem] border-b border-gray-800  ">
+		<div className=" flex flex-row py-1- items-center  justify-between py-[0.6rem] px-[1rem] md:py-[1.2rem] md:px-[4rem] border-b border-gray-800  ">
 			<div className="flex lg:hidden">
 				<Link href={"/"}>
 					<Logo path={Jmlogo} width={55} height={55} />

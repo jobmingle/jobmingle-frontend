@@ -19,8 +19,8 @@ export default function Layout({
 				</Link>
 				<Nav />
 			</aside>
-			<div className=" max-lg:flex-1 overflow-y-auto pb-[5rem]">
-				<div className="p-[1rem] flex flex-col mx-auto max-w-[120rem] ">
+			<div className="  overflow-y-auto pb-[5rem]">
+				<div className="p-[.5rem] lg:p-[1rem]  mx-auto max-w-[120rem] ">
 					{children}
 				</div>
 			</div>
